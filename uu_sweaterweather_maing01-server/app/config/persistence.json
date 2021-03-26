@@ -6,6 +6,9 @@
       "schemaMap": {
         "sweaterweatherMain": {
           "realization": "dao/SweaterweatherMainMongo"
+        },
+        "gateway": {
+          "realization": "dao/GatewayMongo"
         }
       }
     }
