@@ -40,6 +40,21 @@
         "realization": "api/controllers/GatewayController.list",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "data/create": {
+        "realization": "api/controllers/DataController.create",
+        "httpMethod": "POST",
+        "type": "CMD"
+      },
+      "data/list": {
+        "realization": "api/controllers/DataController.list",
+        "httpMethod": "GET",
+        "type": "CMD"
+      },
+      "data/get": {
+        "realization": "api/controllers/DataController.get",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

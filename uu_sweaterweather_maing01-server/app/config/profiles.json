@@ -36,6 +36,18 @@
       "gateway/list": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "data/create": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "data/list": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
+      },
+      "data/get": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }
