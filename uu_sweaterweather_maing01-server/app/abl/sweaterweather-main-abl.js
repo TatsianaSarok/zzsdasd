@@ -35,7 +35,7 @@ class SweaterweatherMainAbl {
 
     return{
       workspace,
-      authorizedProfileList: authResult._uuIdentity,
+      authorizedProfileList: authResult.getIdentityProfiles(),
       awsc: awscResponse && awscResponse.data
     };
   }

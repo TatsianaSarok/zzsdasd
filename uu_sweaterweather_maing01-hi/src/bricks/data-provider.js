@@ -23,7 +23,6 @@ const DataProvider = createComponent({
 
     let { state, data, newData, pendingData, errorData, handlerMap } = listDataValues;
     //@@viewOff:hooks
-console.log(listDataValues);
     //@@viewOn:render
     return children({
       state,

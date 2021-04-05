@@ -1,19 +1,15 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import "uu5g04-bricks";
-import { createVisualComponent } from "uu5g04-hooks";
-import Config from "./config/config.js";
+import { createVisualComponent, useState, useContext, useSession } from "uu5g04-hooks";
+import Config from "./config/config";
+import Uu5Tiles from "uu5tilesg02";
+import DataOne from "./data-one";
 //@@viewOff:imports
 
-const STATICS = {
+const DataList = createVisualComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "DataList",
   //@@viewOff:statics
-};
-
-
-export const DataList = createVisualComponent({
-  ...STATICS,
 
   //@@viewOn:propTypes
   propTypes: {
@@ -27,18 +23,53 @@ export const DataList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render(data) { 
-console.log(data);
+  render({ data }) {
 
+    //@@viewOff:hooks
+
+    //@@viewOn:private
     //@@viewOff:private
 
+
+
+
     //@@viewOn:interface
-    //@@viewOff:interface
+    function renderItem(data) {
+      console.log(data.data.data);
+      return (
+        <DataOne
+         data={data.data.data}
+        />
+      );
+    }
+    //@@viewOn:interface
+
+    //@@viewOn:handlers
+
+    //@@viewOff:handlers
 
     //@@viewOn:render
- 
+
+
+
+
+    if (data.length === 0) {
+      return <>
+        <Uu5Tiles.ControllerProvider data={data}>
+        </Uu5Tiles.ControllerProvider>
+        <UU5.Common.Error content="WTF No data!" />
+      </>
+    }
+
     return (
-  <div>Hello World</div>
+      <>
+          <Uu5Tiles.ControllerProvider data={data}>
+            <Uu5Tiles.Grid tileHeight="auto" tileMinWidth={200} tileMaxWidth={300} tileSpacing={8} rowSpacing={8}>
+              {renderItem}
+            </Uu5Tiles.Grid>
+          </Uu5Tiles.ControllerProvider>
+
+      </>
     );
     //@@viewOff:render
   },

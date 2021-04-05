@@ -14,8 +14,8 @@ const Lsi = {
       en: "About Application",
     },
     sweaterweather: {
-      cs: "Sweater-weather",
-      en: "Sweater-weather",
+      cs: "Sweaterweather",
+      en: "Sweaterweather",
     },
   },
 
