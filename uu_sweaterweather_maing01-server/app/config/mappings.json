@@ -55,6 +55,11 @@
         "realization": "api/controllers/DataController.get",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "sweaterweatherMain/load": {
+        "realization": "api/controllers/SweaterweatherMainController.load",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

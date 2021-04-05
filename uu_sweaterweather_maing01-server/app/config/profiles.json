@@ -48,6 +48,10 @@
       "data/get": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
+      },
+      "sweaterweatherMain/load": {
+        "sysStateList": ["active"],
+        "profileList": ["Public"]
       }
     }
   }

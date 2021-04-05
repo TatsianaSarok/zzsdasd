@@ -38,6 +38,12 @@ const Init = {
   },
 };
 
+const Load = {
+  UC_CODE: `${SweaterweatherMainUseCaseError.ERROR_PREFIX}load/`,
+  
+};
+
 module.exports = {
+  Load,
   Init,
 };

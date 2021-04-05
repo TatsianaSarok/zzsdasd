@@ -21,6 +21,28 @@ class SweaterweatherMainAbl {
     this.validator = Validator.load();
   }
 
+  async load(awid, session, authResult) {
+    let workspace = await UuAppWorkspace.get(awid);
+    let awscResponse;
+
+    if (workspace.artifactUri) {
+      let uuBtUriBuilder = UriBuilder.parse(workspace.artifactUri);
+      let awscId = uuBtUriBuilder.toUri().parameters.id;
+      let awscLoadUri = uuBtUriBuilder.setUseCase("uuAwsc/load").clearParameters().toUri();
+  
+      awscResponse = await AppClient.get(awscLoadUri, { id: awscId }, { session })  
+    }
+
+    return{
+      workspace,
+      authorizedProfileList: authResult._uuIdentity,
+      awsc: awscResponse && awscResponse.data
+    };
+  }
+
+
+
+
   async init(uri, dtoIn, session) {
     const awid = uri.getAwid();
     // HDS 1

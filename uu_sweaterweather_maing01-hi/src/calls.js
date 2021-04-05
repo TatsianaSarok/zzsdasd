@@ -18,6 +18,11 @@ let Calls = {
     return Calls.call("get", commandUri, dtoIn);
   },
 
+  loadSweaterweatherMain(dtoIn) {
+    let commandUri = Calls.getCommandUri("sweaterweatherMain/load");
+    return Calls.call("get", commandUri, dtoIn);
+  },
+
   loadIdentityProfiles() {
     let commandUri = Calls.getCommandUri("sys/uuAppWorkspace/initUve");
     return Calls.call("get", commandUri, {});
@@ -36,6 +41,12 @@ let Calls = {
   async initAndGetWorkspace(dtoInData) {
     await Calls.initWorkspace(dtoInData);
     return await Calls.getWorkspace();
+  },
+
+  listData(dtoIn) {
+    console.log("List", dtoIn);
+    let commandUri = Calls.getCommandUri("data/list");
+    return Calls.call("get", commandUri, dtoIn);
   },
 
   /*

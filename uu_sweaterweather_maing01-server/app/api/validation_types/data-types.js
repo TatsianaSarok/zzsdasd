@@ -1,6 +1,6 @@
 /* eslint-disable */
 const dataCreateDtoInType = shape({
-    gatewayId: id().isRequired(),
+    gatewayName: uu5String().isRequired(),
     timestamp: Date(),
     temperature: uu5String(),
     humidity: uu5String()
