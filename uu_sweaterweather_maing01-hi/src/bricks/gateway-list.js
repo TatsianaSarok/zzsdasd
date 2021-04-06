@@ -63,7 +63,7 @@ const GatewayList = createVisualComponent({
 
     return (
       <>
-       <UU5.Bricks.Text >Gateways</UU5.Bricks.Text>
+       <UU5.Bricks.Text >Manage devices</UU5.Bricks.Text>
           <Uu5Tiles.ControllerProvider data={data}>
             <Uu5Tiles.Grid tileHeight="auto" tileMinWidth={200} tileMaxWidth={300} tileSpacing={8} rowSpacing={8}>
               {renderItem}
