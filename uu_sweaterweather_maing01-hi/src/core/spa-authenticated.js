@@ -10,6 +10,7 @@ import Left from "./left";
 import Bottom from "./bottom";
 import Home from "../routes/home";
 import Data from "../routes/data";
+import Gateways from "../routes/gateways";
 //@@viewOff:imports
 
 const STATICS = {
@@ -28,6 +29,7 @@ const ROUTES = {
   home: { component: <Home /> },
   about: { component: <About /> },
   sweaterweather: { component: <Data /> },
+  managedevices: { component: <Gateways /> },
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
   controlPanel: { component: <ControlPanel /> },
 };
