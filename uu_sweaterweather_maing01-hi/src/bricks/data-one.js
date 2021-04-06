@@ -42,7 +42,7 @@ const DataOne = createVisualComponent({
       <>
         {" "}
           <UU5.Bricks.Card >
-            <UU5.Bricks.Text content= {data.gatewayId} />
+            <UU5.Bricks.Text content= {data.gatewayName} />
             <UU5.Bricks.Text content={data.temperature} />
             <UU5.Bricks.Text content={data.humidity} />
           </UU5.Bricks.Card>
