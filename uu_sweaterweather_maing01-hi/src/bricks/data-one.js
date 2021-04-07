@@ -23,10 +23,13 @@ const DataOne = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data}) {
+  render({ data, onDeleteData}) {
     //@@viewOn:private
 
-
+    function handleDelete() {
+      console.log(data.id);
+      onDeleteData(data.id);
+    }
 
     //@@viewOff:private
 
@@ -40,7 +43,10 @@ const DataOne = createVisualComponent({
 
     return (
       <>
-        {" "}
+    
+        <UU5.Bricks.Button size="s" onClick={handleDelete} bgStyle="transparent">
+                <UU5.Bricks.Icon icon="glyphicon-trash" />
+              </UU5.Bricks.Button>
           <UU5.Bricks.Card >
             <UU5.Bricks.Text content= {data.gatewayName} />
             <UU5.Bricks.Text content={data.temperature} />

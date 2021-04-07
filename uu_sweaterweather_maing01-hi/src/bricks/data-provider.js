@@ -9,7 +9,7 @@ const DataProvider = createComponent({
   displayName: Config.TAG + "DataProvider",
   //@@viewOff:statics
 
-  render({ children }) {
+  render({ children, id }) {
     //@@viewOn:hooks
     let listDataValues = useDataList({
       pageSize: 200,
@@ -17,7 +17,7 @@ const DataProvider = createComponent({
         load: Calls.listData,
         // createJoke: Calls.createJoke,
         // updateJoke: Calls.updateJoke,
-        // deleteJoke: Calls.deleteJoke
+         deleteData: Calls.deleteData
       }
     });
 

@@ -14,7 +14,7 @@ const Data = createVisualComponent({
   render() {
     //@@viewOn:hooks
     //@viewOff:hooks
-
+    const deleteDataRef = useRef();
     //@@viewOn:private
     function showError(content) {
       UU5.Environment.getPage()
@@ -42,13 +42,14 @@ const Data = createVisualComponent({
     //   }
     // }
 
-    // async function handleDeleteData(data) {
-    //   try {
-    //     await deleteDataRef.current({ id: data.id });
-    //   } catch {
-    //     showError(`Deletion of ${data.name} failed!`);
-    //   }
-    // }
+    async function handleDeleteData(id) {
+      console.log(id);
+      try {
+        await deleteDataRef.current({ id: id });
+      } catch {
+        showError(`Deletion failed!`);
+      }
+    }
     //@@viewOff:private
 
     //@@viewOn:render
@@ -57,10 +58,12 @@ const Data = createVisualComponent({
     }
 
     function renderReady(data) {
+      console.log("data", data);
       return (
         <>
           {/* <DataCreate onCreate={handleCreateData} /> */}
-          <DataList data={data} />
+          <DataList data={data} 
+           onDeleteData={handleDeleteData}/>
         </>
       );
     }
@@ -76,9 +79,9 @@ const Data = createVisualComponent({
 
     return (
       <UU5.Bricks.Container>
-        <DataProvider>
+        <DataProvider >
           {({ state, data, errorData, pendingData, handlerMap }) => {
-
+          deleteDataRef.current = handlerMap.deleteData;
             switch (state) {
               case "pending":
               case "pendingNoData":

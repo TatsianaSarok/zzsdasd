@@ -48,6 +48,11 @@ let Calls = {
     let commandUri = Calls.getCommandUri("data/list");
     return Calls.call("get", commandUri, dtoIn);
   },
+  deleteData(dtoIn) {
+    console.log("DtoIn", dtoIn);
+    let commandUri = Calls.getCommandUri("data/delete");
+    return Calls.call("post", commandUri, dtoIn);
+  },
   listGateway(dtoIn) {
     console.log("List", dtoIn);
     let commandUri = Calls.getCommandUri("gateway/list");

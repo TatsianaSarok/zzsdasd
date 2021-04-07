@@ -24,7 +24,7 @@ const DataList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data }) {
+  render({ data, onDeleteData }) {
 
     //@@viewOff:hooks
 
@@ -45,6 +45,7 @@ const DataList = createVisualComponent({
       return (
         <DataOne
          data={data.data.data}
+         onDeleteData={onDeleteData}
         />
       );
     }
