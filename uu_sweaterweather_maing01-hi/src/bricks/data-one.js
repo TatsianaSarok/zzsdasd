@@ -43,7 +43,6 @@ const DataOne = createVisualComponent({
 
     return (
       <>
-    
         <UU5.Bricks.Button size="s" onClick={handleDelete} bgStyle="transparent">
                 <UU5.Bricks.Icon icon="glyphicon-trash" />
               </UU5.Bricks.Button>
