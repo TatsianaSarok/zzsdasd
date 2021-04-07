@@ -1,0 +1,39 @@
+{
+  "product": "uu_sweaterweather_maing01",
+  "version": "0.1.0",
+  "license": "License Commercial",
+  "description": {
+    "en": "",
+    "cs": ""
+  },
+  "docUri": "",
+  "flsUri": "",
+  "imageUri": "",
+  "devkit": {
+    "development": {
+      "appBoxLocationUri": "----- VALUE REQUIRED -----",
+      "appDeploymentUri": null,
+      "resourcePoolUri": "----- VALUE REQUIRED -----"
+    }
+  },
+  "uu_sweaterweather_maing01-hi": {
+    "namespace": "UuSweaterweatherMainHi",
+    "sourceUri": "https://cdn.plus4u.net/uu-sweaterweather-maing01/%s/uu_sweaterweather_maing01-hi.min.js",
+    "componentList": [
+      {
+        "code": "UuSweaterweatherMainHi.Dashboard",
+        "name": "Dashboard",
+        "tagList": [
+          "UuSweaterweatherMainHi",
+          "Dashboard"
+        ],
+        "docCode": "UuSweaterweatherMainHiDashboard",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweatherMainHi.Dashboard />"
+      }
+    ]
+  }
+}
