@@ -12,6 +12,10 @@ const dataListDtoInType = shape({
     })
 })
 
+const dataDeleteDtoInType = shape({
+    id: string(50).isRequired()
+});
+
 const dataGetDtoInType = shape({
     id: id().isRequired()
 })

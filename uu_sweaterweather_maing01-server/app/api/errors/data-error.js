@@ -51,7 +51,19 @@ const Get = {
   }
 };
 
+const Delete = {
+  UC_CODE: `${DATA_ERROR_PREFIX}delete/`,
+  InvalidDtoIn: class extends SweaterweatherMainUseCaseError {
+    constructor() {
+      super(...arguments);
+      this.code = `${Delete.UC_CODE}invalidDtoIn`;
+      this.message = "DtoIn is not valid.";
+    }
+}
+};
+
 module.exports = {
+  Delete,
   Get,
   List,
   Create

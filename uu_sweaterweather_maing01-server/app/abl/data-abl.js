@@ -15,9 +15,9 @@ const WARNINGS = {
   getUnsupportedKeys: {
     code: `${Errors.Get.UC_CODE}unsupportedKeys`,
   },
-  // deleteUnsupportedKeys: {
-  //   code: `${Errors.Delete.UC_CODE}unsupportedKeys`,
-  // },
+  deleteUnsupportedKeys: {
+    code: `${Errors.Delete.UC_CODE}unsupportedKeys`,
+  },
   listUnsupportedKeys: {
     code: `${Errors.List.UC_CODE}unsupportedKeys`,
   },
@@ -28,6 +28,20 @@ class DataAbl {
   constructor() {
     this.validator = Validator.load();
     this.dao = DaoFactory.getDao("data");
+  }
+
+  async delete(awid, dtoIn) {
+    let validationResult = this.validator.validate("dataDeleteDtoInType", dtoIn);
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.deleteUnsupportedKeys.code,
+      Errors.Delete.InvalidDtoIn
+    );
+    await this.dao.delete(awid, dtoIn.id);
+    let dtoOut = {};
+    dtoOut.uuAppErrorMap = uuAppErrorMap;
+    return dtoOut;
   }
 
   async get(awid, dtoIn, session) {

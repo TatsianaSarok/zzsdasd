@@ -60,6 +60,11 @@
         "realization": "api/controllers/SweaterweatherMainController.load",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "data/delete": {
+        "realization": "api/controllers/DataController.delete",
+        "httpMethod": "POST",
+        "type": "CMD"
       }
     }
   }

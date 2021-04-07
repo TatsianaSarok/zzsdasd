@@ -3,6 +3,10 @@ const DataAbl = require("../../abl/data-abl.js");
 
 class DataController {
 
+  delete(ucEnv) {
+    return DataAbl.delete(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
   get(ucEnv) {
     return DataAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
   }
