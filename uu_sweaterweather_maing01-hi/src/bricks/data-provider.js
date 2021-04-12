@@ -1,39 +1,40 @@
+
 //@@viewOn:imports
-import { createComponent, useDataList } from "uu5g04-hooks";
+import UU5 from "uu5g04";
+import { createComponent, useDataObject } from "uu5g04-hooks";
 import Calls from "calls";
 import Config from "./config/config";
-//@@viewOff:imports
+//@@viewOff:impor<<<<
 
 const DataProvider = createComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "DataProvider",
   //@@viewOff:statics
 
-  render({ children, id }) {
-    //@@viewOn:hooks
-    let listDataValues = useDataList({
-      pageSize: 200,
+  render({ children, gatewayName }) {
+    console.log(gatewayName);
+    let objectDataValues = useDataObject({
+      initialDtoIn: {gatewayName: gatewayName},
       handlerMap: {
         load: Calls.listData,
-        // createJoke: Calls.createJoke,
-        // updateJoke: Calls.updateJoke,
-         deleteData: Calls.deleteData
-      }
+      },
     });
 
-    let { state, data, newData, pendingData, errorData, handlerMap } = listDataValues;
-    //@@viewOff:hooks
+    let { state, data, pendingData, errorData, handlerMap } = objectDataValues;
+      console.log(data);
+      console.log("Data in provider");
+
     //@@viewOn:render
     return children({
       state,
       data,
-      newData,
       pendingData,
       errorData,
-      handlerMap
+      handlerMap,
+      // handlerMap2,
     });
     //@@viewOff:render
-  }
+  },
 });
 
 export default DataProvider;

@@ -6,9 +6,10 @@ const dataCreateDtoInType = shape({
     humidity: uu5String()
 })
 const dataListDtoInType = shape({
+    gatewayName: uu5String(),
     pageInfo: shape({
-        pageIndex: integer(),
-        pageSize: integer()
+      pageIndex: integer(),
+      pageSize: integer()
     })
 })
 

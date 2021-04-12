@@ -58,6 +58,11 @@ let Calls = {
     let commandUri = Calls.getCommandUri("gateway/list");
     return Calls.call("get", commandUri, dtoIn);
   },
+  getGateway(dtoIn) {
+    console.log("Get", dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/get");
+    return Calls.call("get", commandUri, dtoIn);
+  },
 
   /*
   For calling command on specific server, in case of developing client site with already deployed

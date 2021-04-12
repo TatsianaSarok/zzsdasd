@@ -1,6 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useState, useContext, useSession } from "uu5g04-hooks";
+import GatewayGraph from "../routes/gateway-graph";
 import Config from "./config/config";
 import Css from "./sweaterweather.css";
 //@@viewOff:imports
@@ -23,16 +24,16 @@ const GatewayList = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ data }) {
-console.log("Data", data.map(data=>{
- return data.data.gatewayName
-}));
+    console.log("Data", data.map(data => {
+      return data.data.gatewayName
+    }));
     //@@viewOff:hooks
 
     //@@viewOn:private
+    function goToGatewayGraph(gatewayName) {
+      UU5.Environment.getRouter().setRoute({ component: <GatewayGraph gatewayName={gatewayName} />, url: { useCase: "sweaterweather", parameters: { gatewayName: gatewayName } } }); 
+    }
     //@@viewOff:private
-
-
-
 
     //@@viewOn:interface
 
@@ -44,9 +45,6 @@ console.log("Data", data.map(data=>{
 
     //@@viewOn:render
 
-
-
-
     if (data.length === 0) {
       return <>
         <UU5.Common.Error content="WTF No data!" />
@@ -55,21 +53,22 @@ console.log("Data", data.map(data=>{
 
     return (
       <>
-      <UU5.Bricks.Header 
-      className="uu5-common-center" 
-      level="2"
-      content="Sweater weather"    
-      /> 
-       <UU5.Bricks.Dropdown 
-       className={Css.dropdown()}
-       label="Choose location" 
-       size="m" colorSchema="brown"
-       iconClosed="mdi-menu">
-       {data.map(data=>{
-    return <UU5.Bricks.Dropdown.Item label={data.data.gatewayName}/>
-   })}
-</UU5.Bricks.Dropdown>
+        <UU5.Bricks.Header
+          className="uu5-common-center"
+          level="2"
+          content="Sweater weather"
+        />
+        <UU5.Bricks.Dropdown
+          className={Css.dropdown()}
+          label="Choose location"
+          size="m" colorSchema="brown"
+          iconClosed="mdi-menu">
+          {data.map(data => {
+            return <UU5.Bricks.Dropdown.Item label={data.data.gatewayName} onClick={() => { goToGatewayGraph(data.data.gatewayName)}} />
+          })}
+        </UU5.Bricks.Dropdown>
       </>
+
     );
     //@@viewOff:render
   },

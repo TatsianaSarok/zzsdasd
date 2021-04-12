@@ -1,19 +1,19 @@
-//@@viewOn:imports
+// //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
-import GatewayList from "../bricks/gateway-list";
-import GatewayProvider from "../bricks/gateway-provider";
-import GatewayGraph from "./gateway-graph";
+import DataList from "../bricks/data-list";
+import DataProvider from "../bricks/data-provider";
 
-//@@viewOff:imports
 
-const Sweaterweather = createVisualComponent({
+//@@viewOff:imports 
+
+const GatewayGraph = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "Sweaterweather",
+  displayName: Config.TAG + "GatewayGraph",
   //@@viewOff:statics
 
-  render() {
+  render({gatewayName}) {
     //@@viewOn:hooks
     //@viewOff:hooks
 
@@ -58,12 +58,12 @@ const Sweaterweather = createVisualComponent({
       return <UU5.Bricks.Loading />;
     }
 
-    function renderReady(data) {
-      console.log("DAta", data);
+    function renderReady(gatewayName) {
+      console.log("gatewayNames",gatewayName);
+      console.log("DAta", gatewayName);
       return (
         <>
-          <GatewayList data={data} />
-          {/* <GatewayGraph/> */}
+          <DataList  gatewayName={gatewayName}/>
         </>
       );
     }
@@ -79,9 +79,8 @@ const Sweaterweather = createVisualComponent({
 
     return (
       <UU5.Bricks.Container>
-        <GatewayProvider>
+        <DataProvider gatewayName={gatewayName}>
           {({ state, data, errorData, pendingData, handlerMap }) => {
-
             switch (state) {
               case "pending":
               case "pendingNoData":
@@ -96,11 +95,13 @@ const Sweaterweather = createVisualComponent({
                 return renderReady(data);
             }
           }}
-        </GatewayProvider>
+        </DataProvider>
       </UU5.Bricks.Container>
     );
     //@@viewOff:render
   }
 }); 
 
-export default Sweaterweather;
+export default GatewayGraph;
+
+//@@viewOn:imports

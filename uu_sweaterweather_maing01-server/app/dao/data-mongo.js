@@ -23,8 +23,10 @@ class DataMongo extends UuObjectDao {
     await super.deleteOne({ awid, id });
   }
 
-  async list(awid, pageInfo) {
-    return await super.find({ awid }, pageInfo);
+  async list(awid, gatewayName) {
+    let filter = { awid };
+    gatewayName && (filter.gatewayName = gatewayName);
+    return await super.find(filter);
   }
 }
 
