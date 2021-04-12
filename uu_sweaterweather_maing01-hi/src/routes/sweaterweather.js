@@ -4,11 +4,12 @@ import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayList from "../bricks/gateway-list";
 import GatewayProvider from "../bricks/gateway-provider";
+
 //@@viewOff:imports
 
-const Gateways = createVisualComponent({
+const Sweaterweather = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "Gateways",
+  displayName: Config.TAG + "Sweaterweather",
   //@@viewOff:statics
 
   render() {
@@ -57,7 +58,7 @@ const Gateways = createVisualComponent({
     }
 
     function renderReady(data) {
-      console.log("DAta",data);
+      console.log("DAta", data);
       return (
         <>
           <GatewayList data={data} />
@@ -100,4 +101,4 @@ const Gateways = createVisualComponent({
   }
 }); 
 
-export default Gateways;
+export default Sweaterweather;
