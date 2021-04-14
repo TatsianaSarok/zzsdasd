@@ -1,7 +1,8 @@
 import Config from "./config/config";
-const dropdown = () => Config.Css.css`
-margin-top: -150px;
+const switcher = () => Config.Css.css`
+display: flex;
+justify-content: center;
 `;
 export default {
-    dropdown
+    switcher
 };

@@ -57,24 +57,29 @@ const GatewayList = createVisualComponent({
 
       return (
         <>
-          <UU5.Forms.SwitchSelector
-            items={location.map(value => ({ value }))}
-            label="Choose location"
-            onChange={({ value }) => { setGatewayName(value) }}
-            value={gatewayName} />
+          <UU5.Bricks.Row className={Css.switcher()} >
+            <UU5.Bricks.Column colWidth="m-4">
+              <UU5.Forms.SwitchSelector 
+                colorSchema="green"
+                items={location.map(value => ({ value }))}
+               // label="Choose location"
+                onChange={({ value }) => { setGatewayName(value) }}
+                value={gatewayName} />
+            </UU5.Bricks.Column>
+          </UU5.Bricks.Row>
         </>
       )
     }
 
     return (
       <>
-        <UU5.Bricks.Header
+        {/* <UU5.Bricks.Header
           className="uu5-common-center"
           level="2"
           content="Sweater weather"
-        />
-        <Location />
-        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>  
+        /> */}
+        <Location  />
+        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
         <GatewayGraph gatewayName={gatewayName} />
       </>
 
