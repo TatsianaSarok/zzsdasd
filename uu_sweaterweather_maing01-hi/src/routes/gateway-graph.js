@@ -61,6 +61,7 @@ const GatewayGraph = createVisualComponent({
 
     function renderReady(gatewayName) {
       console.log("gatewayNames",gatewayName);
+      
       return (
         <>
           <DataList  gatewayName={gatewayName}/>
