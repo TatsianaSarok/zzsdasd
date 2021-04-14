@@ -14,6 +14,7 @@ const GatewayGraph = createVisualComponent({
   //@@viewOff:statics
 
   render({gatewayName}) {
+    console.log(gatewayName);
     //@@viewOn:hooks
     //@viewOff:hooks
 
@@ -60,7 +61,6 @@ const GatewayGraph = createVisualComponent({
 
     function renderReady(gatewayName) {
       console.log("gatewayNames",gatewayName);
-      console.log("DAta", gatewayName);
       return (
         <>
           <DataList  gatewayName={gatewayName}/>

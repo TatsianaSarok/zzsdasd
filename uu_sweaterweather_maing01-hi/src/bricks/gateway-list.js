@@ -25,11 +25,15 @@ const GatewayList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data }) { 
-    //@@viewOn:hooks
-    const [gatewayName, setGatewayName] = useState('')
-    //@@viewOff:hooks
+  render({ data }) {
 
+    //@@viewOn:hooks
+    const [gatewayName, setGatewayName] = useState('Works')
+    let location = data.map(value => {
+      return value.data.gatewayName
+    })
+    //@@viewOff:hooks
+    console.log(gatewayName);
     //@@viewOn:private    
     //@@viewOff:private
 
@@ -49,6 +53,19 @@ const GatewayList = createVisualComponent({
       </>
     }
 
+    function Location() {
+
+      return (
+        <>
+          <UU5.Forms.SwitchSelector
+            items={location.map(value => ({ value }))}
+            label="Choose location"
+            onChange={({ value }) => { setGatewayName(value) }}
+            value={gatewayName} />
+        </>
+      )
+    }
+
     return (
       <>
         <UU5.Bricks.Header
@@ -56,25 +73,8 @@ const GatewayList = createVisualComponent({
           level="2"
           content="Sweater weather"
         />
-        <UU5.Forms.SwitchSelector
-          items={data.map(value => ({ value: value?.data?.gatewayName }))}
-          label="Choose location"
-          onChange={({ value }) => { setGatewayName(value)  }}
-          value={gatewayName}
-        />
-        {/* <UU5.Forms.Select
-          //className={Css.dropdown()}
-          label="Choose location"
-          size="m"
-          onChange={({ value }) => { goToGatewayGraph(value) }}
-        >
-          {data.map(data => {
-            return <UU5.Forms.Select.Option
-              value={data.data.gatewayName}
-            />
-          })}
-        </UU5.Forms.Select> */}
-        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
+        <Location />
+        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>  
         <GatewayGraph gatewayName={gatewayName} />
       </>
 

@@ -63,7 +63,7 @@ const Sweaterweather = createVisualComponent({
       return (
         <>
           <GatewayList data={data} />
-          {/* <GatewayGraph/> */}
+          
         </>
       );
     }
