@@ -4,6 +4,8 @@ import { createVisualComponent, useState, useContext, useSession } from "uu5g04-
 import GatewayGraph from "../routes/gateway-graph";
 import Config from "./config/config";
 import Css from "./sweaterweather.css";
+import "uu5g04-bricks";
+import "uu5g04-forms";
 //@@viewOff:imports
 
 const GatewayList = createVisualComponent({
@@ -23,16 +25,12 @@ const GatewayList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data }) {
-    console.log("Data", data.map(data => {
-      return data.data.gatewayName
-    }));
+  render({ data }) { 
+    //@@viewOn:hooks
+    const [gatewayName, setGatewayName] = useState('')
     //@@viewOff:hooks
 
-    //@@viewOn:private
-    function goToGatewayGraph(gatewayName) {
-      UU5.Environment.getRouter().setRoute({ component: <GatewayGraph gatewayName={gatewayName} />, url: { useCase: "sweaterweather", parameters: { gatewayName: gatewayName } } }); 
-    }
+    //@@viewOn:private    
     //@@viewOff:private
 
     //@@viewOn:interface
@@ -58,15 +56,26 @@ const GatewayList = createVisualComponent({
           level="2"
           content="Sweater weather"
         />
-        <UU5.Bricks.Dropdown
-          className={Css.dropdown()}
+        <UU5.Forms.SwitchSelector
+          items={data.map(value => ({ value: value?.data?.gatewayName }))}
           label="Choose location"
-          size="m" colorSchema="brown"
-          iconClosed="mdi-menu">
+          onChange={({ value }) => { setGatewayName(value)  }}
+          value={gatewayName}
+        />
+        {/* <UU5.Forms.Select
+          //className={Css.dropdown()}
+          label="Choose location"
+          size="m"
+          onChange={({ value }) => { goToGatewayGraph(value) }}
+        >
           {data.map(data => {
-            return <UU5.Bricks.Dropdown.Item label={data.data.gatewayName} onClick={() => { goToGatewayGraph(data.data.gatewayName)}} />
+            return <UU5.Forms.Select.Option
+              value={data.data.gatewayName}
+            />
           })}
-        </UU5.Bricks.Dropdown>
+        </UU5.Forms.Select> */}
+        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
+        <GatewayGraph gatewayName={gatewayName} />
       </>
 
     );

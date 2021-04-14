@@ -1,7 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
+import "uu5g04-bricks"
 import { createVisualComponent, useState, useContext, useSession } from "uu5g04-hooks";
 import Config from "./config/config";
+import './data-list.css'
 //@@viewOff:imports
 
 const DataList = createVisualComponent({
@@ -22,8 +24,9 @@ const DataList = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ gatewayName }) {
-      console.log(gatewayName.itemList.map(item=>{
-        return item.gatewayName}));
+    console.log(gatewayName.itemList.map(item => {
+      return item.gatewayName
+    }));
     //@@viewOff:hooks
 
     //@@viewOn:private
@@ -50,10 +53,16 @@ const DataList = createVisualComponent({
     // }
 
     return (
-      <>
-{gatewayName.itemList.map(item=>{
-        return item.gatewayName})}
-      </>
+      <div className="left">
+        {gatewayName.itemList.map(item => {
+          return (<>
+          <UU5.Bricks.Text className="location">{item.gatewayName}</UU5.Bricks.Text>
+          <UU5.Bricks.Text className="temperature">{item.temperature}</UU5.Bricks.Text>
+          <UU5.Bricks.Text className="location">{item.humidity}</UU5.Bricks.Text>
+          </>)
+        })
+        }
+      </div>
     );
     //@@viewOff:render
   },
