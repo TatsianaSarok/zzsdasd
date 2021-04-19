@@ -21,7 +21,7 @@
   },
   "uuBuildSettings": {
     "externals": {
-      "uu_meteo_maing01": {
+      "uu_sweaterweatherg01": {
         "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/0.1.0-beta/"
       }
     }
