@@ -1,6 +1,6 @@
 {
   "product": "uu_sweaterweatherg01",
-  "version": "0.1.0",
+  "version": "0.1.0-beta",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -11,9 +11,9 @@
   "imageUri": "",
   "devkit": {
     "development": {
-      "appBoxLocationUri": "----- VALUE REQUIRED -----",
-      "appDeploymentUri": null,
-      "resourcePoolUri": "----- VALUE REQUIRED -----"
+      "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
+      "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UU.SWEATERWEATHERG01[60797f01f90380cd9390e456]",
+      "resourcePoolUri": "ues:UCL-BT:UUN_STUDENTS01_AWE"
     }
   },
   "uu_sweaterweatherg01": {

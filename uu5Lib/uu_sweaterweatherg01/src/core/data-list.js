@@ -5,7 +5,6 @@ import { createVisualComponent, useState, useContext, useSession } from "uu5g04-
 import Config from "./config/config";
 import GraphWeek from "./graph-week";
 import Graph24 from "./graph24";
-import './data-list.css'
 //@@viewOff:imports
 
 const DataList = createVisualComponent({

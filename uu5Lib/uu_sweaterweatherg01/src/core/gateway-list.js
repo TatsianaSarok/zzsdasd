@@ -6,7 +6,6 @@ import Config from "./config/config";
 import "uu5g04-bricks";
 import "uu5g04-forms";
 import DateTime from "./date-time";
-import Css from "./sweaterweather.css";
 //@@viewOff:imports
 
 const GatewayList = createVisualComponent({
@@ -57,7 +56,7 @@ const GatewayList = createVisualComponent({
       console.log(gatewayName);
       return (
         <>
-          <UU5.Bricks.Row className={Css.switcher()}>
+          <UU5.Bricks.Row >
             <UU5.Bricks.Column colWidth="m-4">
               <UU5.Forms.SwitchSelector
                 colorSchema="green"
@@ -78,7 +77,7 @@ const GatewayList = createVisualComponent({
         <div
           /*className={Css.header()}*/>
           Sweaterweather
-        <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
+        <UU5.Bricks.Icon icon="mdi-cloud"  />
         </div>
         <Location />
       </>

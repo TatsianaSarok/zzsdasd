@@ -2,9 +2,10 @@
 import UU5 from "uu5g04";
 import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
-import GatewayList from "../bricks/gateway-list";
-import GatewayProvider from "../bricks/gateway-provider";
-import GatewayGraph from "./gateway-graph";
+import * as UuSweaterweather from "uu_sweaterweatherg01";
+// import GatewayList from "../bricks/gateway-list";
+// import GatewayProvider from "../bricks/gateway-provider";
+// import GatewayGraph from "./gateway-graph";
 
 //@@viewOff:imports
 
@@ -18,14 +19,14 @@ const Sweaterweather = createVisualComponent({
     //@viewOff:hooks
 
     //@@viewOn:private
-    function showError(content) {
-      UU5.Environment.getPage()
-        .getAlertBus()
-        .addAlert({
-          content,
-          colorSchema: "red"
-        });
-    }
+    // function showError(content) {
+    //   UU5.Environment.getPage()
+    //     .getAlertBus()
+    //     .addAlert({
+    //       content,
+    //       colorSchema: "red"
+    //     });
+    // }
 
     // async function handleCreateData(data) {
     //   try {
@@ -53,51 +54,52 @@ const Sweaterweather = createVisualComponent({
     // }
     //@@viewOff:private
 
-    //@@viewOn:render
-    function renderLoad() {
-      return <UU5.Bricks.Loading />;
-    }
+    // //@@viewOn:render
+    // function renderLoad() {
+    //   return <UU5.Bricks.Loading />;
+    // }
 
-    function renderReady(data) {
-      console.log("DAta", data);
-      return (
-        <>
-          <GatewayList data={data} />
+    // function renderReady(data) {
+    //   console.log("DAta", data);
+    //   return (
+    //     <>
+    //       <GatewayList data={data} />
           
-        </>
-      );
-    }
+    //     </>
+    //   );
+    // }
 
-    function renderError(errorData) {
-      switch (errorData.operation) {
-        case "load":
-        case "loadNext":
-        default:
-          return <UU5.Bricks.Error content="Error happened!" error={errorData.error} errorData={errorData.data} />;
-      }
-    }
+    // function renderError(errorData) {
+    //   switch (errorData.operation) {
+    //     case "load":
+    //     case "loadNext":
+    //     default:
+    //       return <UU5.Bricks.Error content="Error happened!" error={errorData.error} errorData={errorData.data} />;
+    //   }
+    // }
 
     return (
-      <UU5.Bricks.Container>
-        <GatewayProvider>
-          {({ state, data, errorData }) => {
+      <UuSweaterweather.Core.Dashboard/>
+      // <UU5.Bricks.Container>
+      //   <GatewayProvider>
+      //     {({ state, data, errorData }) => {
 
-            switch (state) {
-              case "pending":
-              case "pendingNoData":
-                return renderLoad();
-              case "error":
-              case "errorNoData":
-                return renderError(errorData);
-              case "itemPending":
-              case "ready":
-              case "readyNoData":
-              default:
-                return renderReady(data);
-            }
-          }}
-        </GatewayProvider>
-      </UU5.Bricks.Container>
+      //       switch (state) {
+      //         case "pending":
+      //         case "pendingNoData":
+      //           return renderLoad();
+      //         case "error":
+      //         case "errorNoData":
+      //           return renderError(errorData);
+      //         case "itemPending":
+      //         case "ready":
+      //         case "readyNoData":
+      //         default:
+      //           return renderReady(data);
+      //       }
+      //     }}
+      //   </GatewayProvider>
+      // </UU5.Bricks.Container>
     );
     //@@viewOff:render
   }
