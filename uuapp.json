@@ -12,15 +12,9 @@
   "devkit": {
     "development": {
       "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
-      "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT03.MAING01[606b48d5f903808d6790cf17]",
-      "resourcePoolUri": "----- VALUE REQUIRED -----"
+      "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT03.MAING01[606b48d5f903808d6790cf17]"
     }
   },
   "uu_sweaterweather_maing01-hi": {},
-  "uu_sweaterweather_maing01-server": {},
-  "uu_sweaterweatherg01": {
-    "namespace": "UuSweaterweather",
-    "sourceUri": "https://cdn.plus4u.net/uu-sweaterweatherg01/%s/uu_sweaterweatherg01.min.js",
-    "componentList": []
-  }
+  "uu_sweaterweather_maing01-server": {}
 }

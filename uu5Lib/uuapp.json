@@ -1,0 +1,160 @@
+{
+  "product": "uu_sweaterweatherg01",
+  "version": "0.1.0",
+  "license": "License Commercial",
+  "description": {
+    "en": "",
+    "cs": ""
+  },
+  "docUri": "",
+  "flsUri": "",
+  "imageUri": "",
+  "devkit": {
+    "development": {
+      "appBoxLocationUri": "----- VALUE REQUIRED -----",
+      "appDeploymentUri": null,
+      "resourcePoolUri": "----- VALUE REQUIRED -----"
+    }
+  },
+  "uu_sweaterweatherg01": {
+    "namespace": "UuSweaterweather",
+    "sourceUri": "https://cdn.plus4u.net/uu-sweaterweatherg01/%s/uu_sweaterweatherg01.min.js",
+    "componentList": [
+      {
+        "code": "UuSweaterweather.Core.Dashboard",
+        "name": "Dashboard",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dashboard"
+        ],
+        "docCode": "UuSweaterweatherCoreDashboard",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dashboard />"
+      },
+      {
+        "code": "UuSweaterweather.Core.GatewayProvider",
+        "name": "GatewayProvider",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "GatewayProvider"
+        ],
+        "docCode": "UuSweaterweatherCoreGatewayProvider",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.GatewayProvider />"
+      },
+      {
+        "code": "UuSweaterweather.Core.GatewayGraph",
+        "name": "GatewayGraph",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "GatewayGraph"
+        ],
+        "docCode": "UuSweaterweatherCoreGatewayGraph",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.GatewayGraph />"
+      },
+      {
+        "code": "UuSweaterweather.Core.DataProvider",
+        "name": "DataProvider",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "DataProvider"
+        ],
+        "docCode": "UuSweaterweatherCoreDataProvider",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.DataProvider />"
+      },
+      {
+        "code": "UuSweaterweather.Core.DataList",
+        "name": "DataList",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "DataList"
+        ],
+        "docCode": "UuSweaterweatherCoreDataList",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.DataList />"
+      },
+      {
+        "code": "UuSweaterweather.Core.GraphWeek",
+        "name": "GraphWeek",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "GraphWeek"
+        ],
+        "docCode": "UuSweaterweatherCoreGraphWeek",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.GraphWeek />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Graph24",
+        "name": "Graph24",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Graph24"
+        ],
+        "docCode": "UuSweaterweatherCoreGraph24",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Graph24 />"
+      },
+      {
+        "code": "UuSweaterweather.Core.GatewayList",
+        "name": "GatewayList",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "GatewayList"
+        ],
+        "docCode": "UuSweaterweatherCoreGatewayList",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.GatewayList />"
+      },
+      {
+        "code": "UuSweaterweather.Core.DateTime",
+        "name": "DateTime",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "DateTime"
+        ],
+        "docCode": "UuSweaterweatherCoreDateTime",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.DateTime />"
+      }
+    ]
+  }
+}
