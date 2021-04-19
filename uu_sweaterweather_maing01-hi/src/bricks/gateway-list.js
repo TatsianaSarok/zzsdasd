@@ -6,6 +6,7 @@ import Config from "./config/config";
 import Css from "./sweaterweather.css";
 import "uu5g04-bricks";
 import "uu5g04-forms";
+import DateTime from "./date-time";
 //@@viewOff:imports
 
 const GatewayList = createVisualComponent({
@@ -28,36 +29,11 @@ const GatewayList = createVisualComponent({
   render({ data }) {
 
     //@@viewOn:hooks
-    const [gatewayName, setGatewayName] = useState('')
-    const [time, setTime] = useState(time);
+    const [gatewayName, setGatewayName] = useState('Works')
+    //@@viewOff:hooks
     let location = data.map(value => {
       return value.data.gatewayName
     })
-    let d = new Date();
-    let seconds = d.getUTCSeconds();
-    let minutes = d.getUTCMinutes();
-    let hours = d.getUTCHours();
-    let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"
-];
-    let day = days[d.getDay()];
-    let month = monthNames[d.getMonth()+1];
-    let date = d.getDate();
-    let year = d.getFullYear();
-    let currentDate = day+" "+date+" "+month+" "+year+" "+hours+":"+minutes+":"+seconds
-    useEffect(() => {
-      setTimeout(
-        // Calling of setCount changes state and it ALWAYS triggers the effect because there are NO dependencies.
-        () => setTime(currentDate),
-        1000000000
-      );
-
-      // The returned value is used to clean up before next execution of the effect or component unmounting.
-      return () => console.log("I have nothing to clean up!");
-    });
-    //@@viewOff:hooks
-
     //@@viewOn:private    
     //@@viewOff:private
 
@@ -86,12 +62,13 @@ const GatewayList = createVisualComponent({
               <UU5.Forms.SwitchSelector
                 colorSchema="green"
                 items={location.map(value => ({ value }))}
-                // label="Choose location"
                 onChange={({ value }) => { setGatewayName(value) }}
                 value={gatewayName} />
-               
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
+          <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
+          <DateTime/>
+          <GatewayGraph gatewayName={gatewayName} />
         </>
       )
     }
@@ -104,11 +81,7 @@ const GatewayList = createVisualComponent({
         <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
         </div>
         <Location />
-        <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
-        <UU5.Bricks.Text>{time}</UU5.Bricks.Text>
-        <GatewayGraph gatewayName={gatewayName} />
       </>
-
     );
     //@@viewOff:render
   },

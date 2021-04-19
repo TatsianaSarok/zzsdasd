@@ -15,9 +15,6 @@ const GatewayProvider = createComponent({
       pageSize: 200,
       handlerMap: {
         load: Calls.listGateway,
-        // createJoke: Calls.createJoke,
-        // updateJoke: Calls.updateJoke,
-        // deleteJoke: Calls.deleteJoke
       }
     });
 

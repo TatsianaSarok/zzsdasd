@@ -4,13 +4,11 @@ import "uu5g04-bricks"
 import { createVisualComponent, useState, useContext, useSession } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5chartg01";
-import GatewayGraph from "../routes/gateway-graph";
-
 //@@viewOff:imports
 
-const Graph = createVisualComponent({
+const GraphWeek = createVisualComponent({
     //@@viewOn:statics
-    displayName: Config.TAG + "Graph",
+    displayName: Config.TAG + "GraphWeek",
     //@@viewOff:statics
 
     //@@viewOn:propTypes
@@ -32,18 +30,6 @@ const Graph = createVisualComponent({
         //@@viewOff:private
 
         //@@viewOn:interface
-
-        //@@viewOn:interface
-
-        //@@viewOn:handlers
-
-        //@@viewOff:handlers
-
-        //@@viewOn:render
-
-
-
-
         let graphData = gatewayName.gatewayName.itemList.map(item =>
         ({
             value: parseInt(item.temperature),
@@ -52,37 +38,42 @@ const Graph = createVisualComponent({
         )
             .filter(item => (item.label.getTime() >= getMonday(new Date())
             ))
-         .map(item=>({
-             
-             value: item.value,
-             label: item.label.getDay()
-             
-         }))  
-         .sort((a, b) => {
-            return a.label - b.label
-          })
+            .sort((a, b) => {
+                return a.label.getDay() - b.label.getDay()
+            })
+            .map(item => {
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+                return {
+                    value: item.value,
+                    label: days[item.label.getDay()]
+
+                }
+            })
 
         function getMonday(d) {
             d = new Date(d);
             var day = d.getDay(),
                 diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-               let monday = new Date(d.setDate(diff));
-               monday.setHours(0,0,0,0)
-            //   console.log("monday", monday,"setHours",monday.setHours(0,0,0,0));
-
-                return monday//.setHours(0,0,0,0);
+            let monday = new Date(d.setDate(diff));
+            monday.setHours(0, 0, 0, 0)
+            return monday
         }
 
-        console.log("graphData", graphData);
+        //@@viewOn:interface
+
+        //@@viewOn:handlers
+
+        //@@viewOff:handlers
+
+        //@@viewOn:render
         getMonday(new Date())
         return (
             <div>
                 <UU5.Bricks.Container >
                     {/*@@viewOn:0*/}
-
                     <UU5.SimpleChart.LineChart data={
                         graphData
-                    } />
+                    } />                 
                     {/*@@viewOff:0*/}
                 </UU5.Bricks.Container>
             </div>
@@ -91,4 +82,4 @@ const Graph = createVisualComponent({
     },
 });
 
-export default Graph;
+export default GraphWeek;
