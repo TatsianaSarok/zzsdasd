@@ -154,6 +154,21 @@
         "imageUri": "",
         "uuEccReady": false,
         "template": "<UuSweaterweather.Core.DateTime />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Sweaterweather",
+        "name": "Sweaterweather",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Sweaterweather"
+        ],
+        "docCode": "UuSweaterweatherCoreSweaterweather",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Sweaterweather />"
       }
     ]
   }

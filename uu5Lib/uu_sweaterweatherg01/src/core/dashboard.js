@@ -38,7 +38,6 @@ export const Dashboard = createComponent({
       return (
         <>
           <GatewayList data={data} />
-          
         </>
       );
     }

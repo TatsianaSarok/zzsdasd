@@ -30,9 +30,8 @@ const DataList = createVisualComponent({
     //@@viewOff:hooks
     let graphName = ["last 24h", "week", "month"];
     let currentData = gatewayName?.itemList.sort((a, b) => {
-      return a.timestamp - b.timestamp
+      return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
     });
-
     //@@viewOn:private
 
     //@@viewOff:private
@@ -48,20 +47,29 @@ const DataList = createVisualComponent({
         graphType === "week" ?
           <GraphWeek gatewayName={gatewayName} /> : <div>graph for monthly data</div>
     }
+
     //@@viewOff:handlers
     //@@viewOn:render
     return (
       <div>
-        <UU5.Bricks.Text > temperature{currentData[0]?.temperature}</UU5.Bricks.Text>
-        <UU5.Bricks.Text > humidity</UU5.Bricks.Text>
-        <UU5.Bricks.ProgressBar progress={parseInt(currentData[0]?.humidity)} striped />
-        <UU5.Forms.SwitchSelector
-          colorSchema="blue"
-          items={graphName?.map(value => ({ value }))}
-          onChange={({ value }) => { setGraphType(value) }}
-          value={graphType}
-        />
-          <DisplayGraph />
+        <UU5.Bricks.ProgressBar.Item progress={parseInt(currentData[0]?.temperature)} content={currentData[0]?.temperature + '°C'}
+          colorSchema="yellow" />
+        <UU5.Bricks.Row >
+          <UU5.Bricks.Column colWidth="m-4">
+            <UU5.Bricks.ProgressBar.Item progress={parseInt(currentData[0]?.humidity)} colorSchema="blue" />
+          </UU5.Bricks.Column>
+        </UU5.Bricks.Row>
+        <UU5.Bricks.Row >
+          <UU5.Bricks.Column colWidth="m-4">
+            <UU5.Forms.SwitchSelector
+              colorSchema="blue"
+              items={graphName?.map(value => ({ value }))}
+              onChange={({ value }) => { setGraphType(value) }}
+              value={graphType}
+            />
+          </UU5.Bricks.Column>
+        </UU5.Bricks.Row>
+        <DisplayGraph />
       </div>
     );
     //@@viewOff:render
