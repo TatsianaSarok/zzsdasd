@@ -20,7 +20,8 @@ let Calls = {
 
   loadSweaterweatherMain(dtoIn) {
     let commandUri = Calls.getCommandUri("sweaterweatherMain/load");
-    return Calls.call("get", commandUri, dtoIn);
+   // let baseUri = Calls.APP_BASE_URI 
+    return Calls.call("get", commandUri, dtoIn );
   },
 
   loadIdentityProfiles() {

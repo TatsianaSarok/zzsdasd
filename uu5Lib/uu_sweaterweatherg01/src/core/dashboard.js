@@ -16,14 +16,19 @@ export const Dashboard = createComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
-  propTypes: {},
+  propTypes: {
+    baseUri: UU5.PropTypes.string
+  },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {},
+  defaultProps: {
+    baseUri: undefined
+  },
   //@@viewOff:defaultProps
 
   render(props) {
+    console.log("props",props.baseUri);
     //@@viewOn:private
     //@@viewOff:private
 
@@ -54,7 +59,7 @@ export const Dashboard = createComponent({
 
     return  (
       <UU5.Bricks.Container>
-      <GatewayProvider>
+      <GatewayProvider baseUri={props.baseUri}>
         {({ state, data, errorData }) => {
 
           switch (state) {

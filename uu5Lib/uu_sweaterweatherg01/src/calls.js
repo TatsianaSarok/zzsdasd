@@ -7,7 +7,7 @@ import Plus4U5 from "uu_plus4u5g01";
 let Calls = {
   /** URL containing app base, e.g. "https://uuapp.plus4u.net/vendor-app-subapp/awid/". */
   APP_BASE_URI: location.protocol + "//" + location.host + UU5.Environment.getAppBasePath(),
-  isLocal: location.host.match(/localhost:4321/)??false,
+ // isLocal: location.host.match(/localhost:4321/)??false,
 
   async call(method, url, dtoIn, clientOptions) {
     let response = await Plus4U5.Common.Calls.call(method, url, dtoIn, clientOptions);
@@ -54,9 +54,9 @@ let Calls = {
     let commandUri = Calls.getCommandUri("data/delete");
     return Calls.call("post", commandUri, dtoIn);
   },
-  listGateway(dtoIn) {
+  listGateway(baseUri, dtoIn) {
     console.log("List", dtoIn);
-    let commandUri = Calls.getCommandUri("gateway/list");
+    let commandUri = Calls.getCommandUri("gateway/list", baseUri);
     return Calls.call("get", commandUri, dtoIn);
   },
   getGateway(dtoIn) {
@@ -80,13 +80,17 @@ let Calls = {
      }
    }
    */
-  getCommandUri(aUseCase) {
+  getCommandUri(aUseCase, baseUri) {
   //if (Calls.isLocal) return "http://localhost:8080/uu-sweaterweather-maing01/22222222222222222222222222222222/" +aUseCase.replace(/^\/+/, "");
- return "https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" + aUseCase.replace(/^\/+/, "");
+ //return "https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" + aUseCase.replace(/^\/+/, "");
     // useCase <=> e.g. "getSomething" or "sys/getSomething"
     // add useCase to the application base URI
-    let targetUriStr = Calls.APP_BASE_URI + aUseCase.replace(/^\/+/, "");
-
+    //let targetUriStr = Calls.APP_BASE_URI + aUseCase.replace(/^\/+/, "");
+    let properBaseUri = Calls.APP_BASE_URI;
+    if (baseUri) properBaseUri = !baseUri.endsWith("/") ? baseUri.concat("/") : baseUri;
+    
+    let targetUriStr = properBaseUri + aUseCase.replace(/^\/+/, "");
+    
     // override tid / awid if it's present in environment (use also its gateway in such case)
     if (process.env.NODE_ENV !== "production") {
       let env = UU5.Environment;
