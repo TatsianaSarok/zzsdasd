@@ -1,6 +1,6 @@
 // //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useRef } from "uu5g04-hooks";
+import { createComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import DataList from "./data-list";
 import DataProvider from "./data-provider";
@@ -8,13 +8,24 @@ import DataProvider from "./data-provider";
 
 //@@viewOff:imports 
 
-const GatewayGraph = createVisualComponent({
+const GatewayGraph = createComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "GatewayGraph",
   //@@viewOff:statics
+  //@@viewOn:propTypes
+  propTypes: {
+    baseUri: UU5.PropTypes.string
+  },
+  //@@viewOff:propTypes
 
+  //@@viewOn:defaultProps
+  defaultProps: {
+    baseUri: undefined
+  },
+  //@@viewOff:defaultProps
   render({gatewayName}) {
-    console.log(gatewayName);
+   // console.log(gatewayName);
+    console.log("props data",gatewayName);
     //@@viewOn:hooks
     //@viewOff:hooks
 
@@ -80,8 +91,8 @@ const GatewayGraph = createVisualComponent({
 
     return (
       <UU5.Bricks.Container>
-        <DataProvider gatewayName={gatewayName}>
-          {({ state, data, errorData, pendingData, handlerMap }) => {
+        <DataProvider baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162" gatewayName={gatewayName} >
+          {({ state, data, errorData }) => {
             switch (state) {
               case "pending":
               case "pendingNoData":

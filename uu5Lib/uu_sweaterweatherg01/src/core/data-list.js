@@ -26,6 +26,7 @@ const DataList = createVisualComponent({
 
   render({ gatewayName }) {
     //@@viewOn:hooks
+
     const [graphType, setGraphType] = useState('last 24h')
     //@@viewOff:hooks
     let graphName = ["last 24h", "week", "month"];

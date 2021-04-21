@@ -44,9 +44,10 @@ let Calls = {
     return await Calls.getWorkspace();
   },
 
-  listData(dtoIn) {
-    console.log("List", dtoIn);
-    let commandUri = Calls.getCommandUri("data/list");
+  listData( dtoIn) {
+    console.log("List", dtoIn.baseUri);
+    let commandUri = Calls.getCommandUri("data/list", dtoIn.baseUri);
+    console.log("return",Calls.call("get", commandUri, dtoIn) );
     return Calls.call("get", commandUri, dtoIn);
   },
   deleteData(dtoIn) {
@@ -55,7 +56,7 @@ let Calls = {
     return Calls.call("post", commandUri, dtoIn);
   },
   listGateway(baseUri, dtoIn) {
-    console.log("List", dtoIn);
+    console.log("ListGateway", dtoIn);
     let commandUri = Calls.getCommandUri("gateway/list", baseUri);
     return Calls.call("get", commandUri, dtoIn);
   },
