@@ -26,6 +26,7 @@ const DateTime = createVisualComponent({
 
     render() {
         //@@viewOn:hooks
+        console.log("Version", process.env.VERSION);
         const [time, setTime] = useState(time);
         //@@viewOff:hooks
 

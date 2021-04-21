@@ -58,6 +58,13 @@
       }).catch(handleUuAppScriptError);
     </script>
 
+    
+<script>
+SystemJS.config({ 
+  "paths":{ "uu_sweaterweatherg01": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/0.1.5-beta/uu_sweaterweatherg01.js"}
+})
+</script>
+
 <%=
   // insert <noscript> snippet for users with turned off JavaScript
   htmlWebpackPlugin.options.renderTemplate("index-noscript.html")
