@@ -169,6 +169,214 @@
         "imageUri": "",
         "uuEccReady": false,
         "template": "<UuSweaterweather.Core.Sweaterweather />"
+      },
+      {
+        "code": "UuSweaterweather.Core.ManageGateways.Gateways",
+        "name": "Gateways",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "ManageGateways",
+          "Gateways"
+        ],
+        "docCode": "UuSweaterweatherCoreManageGatewaysGateways",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.ManageGateways.Gateways />"
+      },
+      {
+        "code": "UuSweaterweather.Core.ManageGateways.GatewayProvider",
+        "name": "GatewayProvider",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "ManageGateways",
+          "GatewayProvider"
+        ],
+        "docCode": "UuSweaterweatherCoreManageGatewaysGatewayProvider",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.ManageGateways.GatewayProvider />"
+      },
+      {
+        "code": "UuSweaterweather.Core.ManageGateways.GatewayList",
+        "name": "GatewayList",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "ManageGateways",
+          "GatewayList"
+        ],
+        "docCode": "UuSweaterweatherCoreManageGatewaysGatewayList",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.ManageGateways.GatewayList />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.DashboardPage",
+        "name": "DashboardPage",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "DashboardPage"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardDashboardPage",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.DashboardPage />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.DataList",
+        "name": "DataList",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "DataList"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardDataList",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.DataList />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.DataProvider",
+        "name": "DataProvider",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "DataProvider"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardDataProvider",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.DataProvider />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.DateTime",
+        "name": "DateTime",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "DateTime"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardDateTime",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.DateTime />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.GatewayGraph",
+        "name": "GatewayGraph",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "GatewayGraph"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardGatewayGraph",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.GatewayGraph />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.GatewayList",
+        "name": "GatewayList",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "GatewayList"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardGatewayList",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.GatewayList />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.GatewayProvider",
+        "name": "GatewayProvider",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "GatewayProvider"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardGatewayProvider",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.GatewayProvider />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.GraphWeek",
+        "name": "GraphWeek",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "GraphWeek"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardGraphWeek",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.GraphWeek />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.Graph24",
+        "name": "Graph24",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "Graph24"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardGraph24",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.Graph24 />"
+      },
+      {
+        "code": "UuSweaterweather.Core.Dasboard.Sweaterweather",
+        "name": "Sweaterweather",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "Dasboard",
+          "Sweaterweather"
+        ],
+        "docCode": "UuSweaterweatherCoreDasboardSweaterweather",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.Dasboard.Sweaterweather />"
       }
     ]
   }

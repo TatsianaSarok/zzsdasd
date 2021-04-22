@@ -1,10 +1,6 @@
-export * from "./dashboard.js";
-export * from "./gateway-provider.js";
-export * from "./gateway-graph.js";
-export * from "./data-provider.js";
-export * from "./data-list.js";
-export * from "./graph-week.js";
-export * from "./graph24.js";
-export * from "./gateway-list.js";
-export * from "./date-time.js";
-export * from "./sweaterweather.css.js";
+// export * from "./dashboard.js";
+
+import * as ManageGateways from "./manage-gateways/manage-gateways.js";
+export { ManageGateways };
+import * as Dasboard from "./dasboard/dasboard.js";
+export { Dasboard };

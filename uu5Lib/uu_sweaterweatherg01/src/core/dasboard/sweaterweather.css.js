@@ -17,6 +17,5 @@ font-size: 35px;
 export default {
     switcher,
     header,
-    iconSun
-    
+    iconSun   
 };

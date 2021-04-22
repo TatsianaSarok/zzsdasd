@@ -8,11 +8,11 @@ import GatewayList from "./gateway-list"
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Dashboard",
+  displayName: Config.TAG + "DashboardPage",
   //@@viewOff:statics
 };
 
-export const Dashboard = createComponent({
+export const DashboardPage = createComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -83,4 +83,4 @@ export const Dashboard = createComponent({
   },
 });
 
-export default Dashboard;
+export default DashboardPage;
