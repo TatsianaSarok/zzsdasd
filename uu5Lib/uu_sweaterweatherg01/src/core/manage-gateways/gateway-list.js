@@ -4,6 +4,7 @@ import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5g04-bricks";
 import "uu5g04-forms";
+import Css from "./gateway.css";
 //@@viewOff:imports
 
 const GatewayList = createVisualComponent({
@@ -23,8 +24,10 @@ const GatewayList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data, baseUri }) {
-console.log("DAta data", data, baseUri);
+  render({ data }) {
+    console.log("DAta data", data.map(value => {
+      return value.data.gatewayName
+    }));
     //@@viewOn:hooks
 
     //@@viewOff:hooks
@@ -49,9 +52,32 @@ console.log("DAta data", data, baseUri);
     }
 
     return (
-      <>
-          Sweaterweather
-      </>
+      <div className={Css.gateway()}  >
+        <UU5.Bricks.Card
+          colorSchema="grey"
+          width={100}>
+          <div className={Css.icon()}>
+            <UU5.Bricks.Button
+              bgStyle="transparent" size="xl">
+              <UU5.Bricks.Icon icon="mdi-plus-circle"/>
+            </UU5.Bricks.Button>
+          </div>
+        </UU5.Bricks.Card>
+
+        {data.map(value => {
+          return (<UU5.Bricks.Card
+            className={Css.gatewayStyle()}
+            bgStyle="transparent"
+            colorSchema="blue"
+            width={350}
+            bgStyle="filled" >
+            <UU5.Bricks.Text colorSchema="grey" >Gatewat name: {value.data.gatewayName}</UU5.Bricks.Text>
+            <UU5.Bricks.Text colorSchema="black" >Gatewat location: {value.data.location}</UU5.Bricks.Text>
+            <UU5.Bricks.Text colorSchema="grey" >Gatewat id: {value.data.id}</UU5.Bricks.Text>
+          </UU5.Bricks.Card>
+          )
+        })}
+      </div>
     );
     //@@viewOff:render
   },
