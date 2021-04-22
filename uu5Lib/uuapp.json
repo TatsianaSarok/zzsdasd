@@ -1,6 +1,6 @@
 {
   "product": "uu_sweaterweatherg01",
-  "version": "0.1.5-beta",
+  "version": "0.1.6-beta",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -377,6 +377,22 @@
         "imageUri": "",
         "uuEccReady": false,
         "template": "<UuSweaterweather.Core.Dasboard.Sweaterweather />"
+      },
+      {
+        "code": "UuSweaterweather.Core.ManageGateways.AddGatewayForm",
+        "name": "AddGatewayForm",
+        "tagList": [
+          "UuSweaterweather",
+          "Core",
+          "ManageGateways",
+          "AddGatewayForm"
+        ],
+        "docCode": "UuSweaterweatherCoreManageGatewaysAddGatewayForm",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Core.ManageGateways.AddGatewayForm />"
       }
     ]
   }

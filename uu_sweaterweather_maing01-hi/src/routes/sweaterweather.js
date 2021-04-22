@@ -79,7 +79,7 @@ const Sweaterweather = createVisualComponent({
     // }
 
     return (
-      <UuSweaterweather.Core.Dashboard/>
+      <UuSweaterweather.Core.Dashboard.DashboardPage/>
       // <UU5.Bricks.Container>
       //   <GatewayProvider>
       //     {({ state, data, errorData }) => {

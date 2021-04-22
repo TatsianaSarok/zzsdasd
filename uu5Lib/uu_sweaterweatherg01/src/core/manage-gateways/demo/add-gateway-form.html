@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manage gateways</title>
+    <title>UuSweaterweather.Core.ManageGateways.AddGatewayForm Demo</title>
 
     <script>
       if (!location.href.match(/^(about:|file:)/)) {
@@ -37,9 +37,7 @@
           "uu_plus4u5g01": "https://cdn.plus4u.net/uu-plus4u5g01/4.0.0/uu_plus4u5g01.js",
           "uu_plus4u5g01-bricks": "https://cdn.plus4u.net/uu-plus4u5g01/4.0.0/uu_plus4u5g01-bricks.js",
           "uu_plus4u5g01-app": "https://cdn.plus4u.net/uu-plus4u5g01/4.0.0/uu_plus4u5g01-app.js",
-          "uu5chartg01": "https://cdn.plus4u.net/uu-uu5chartg01/2.5.1/uu5chartg01.min.js",
-          "uu5tilesg02": "https://cdn.plus4u.net/uu-uu5tilesg02/1.0.0/uu5tilesg02.min.js",
-          
+
           "uu_sweaterweatherg01": "/uu_sweaterweatherg01.js",
         }
       });
@@ -58,8 +56,8 @@
       const Page = createComponent({
         render() {
           return (
-            <UU5.Bricks.Container header="Manage gateways" level={3} className="uu5-common-center">
-              <UuSweaterweather.Core.ManageGateways.Gateways baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"  />
+            <UU5.Bricks.Container header="UuSweaterweather.Core.ManageGateways.AddGatewayForm Demo">
+              <UuSweaterweather.Core.ManageGateways.AddGatewayForm />
             </UU5.Bricks.Container>
           );
         }

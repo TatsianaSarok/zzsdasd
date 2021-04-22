@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent } from "uu5g04-hooks";
+import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "./gateway-provider";
 import GatewayList from "./gateway-list"
@@ -12,7 +12,7 @@ const STATICS = {
   //@@viewOff:statics
 };
 
-export const Gateways = createComponent({
+export const Gateways = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -29,20 +29,39 @@ export const Gateways = createComponent({
 
   render(props) {
     console.log("props",props.baseUri);
+    const createRef = useRef();
     //@@viewOn:private
     //@@viewOff:private
 
     //@@viewOn:interface
     //@@viewOff:interface
+
+    // function showError(content) {
+    //   UU5.Environment.getPage().getAlertBus().addAlert({
+    //     content,
+    //     colorSchema: "red",
+    //   });
+    // }
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
-
+    async function handleAddGateway(data) {
+      console.log("inputGate", data);
+      try {
+        await createRef.current(data);
+        //return handleHome()
+      } catch {
+        showError(`Create of  failed!`);
+      }
+    }
     function renderReady(data) {
       console.log("DAta", data);
       return (
         <>
-          <GatewayList data={data} />
+          <GatewayList
+          data={data} 
+          onAddGateway={handleAddGateway}
+          />
         </>
       );
     }
@@ -60,7 +79,8 @@ export const Gateways = createComponent({
     return  (
       <UU5.Bricks.Container>
       <GatewayProvider baseUri={props.baseUri}>
-        {({ state, data, errorData }) => {
+        {({ state, data, errorData, handlerMap }) => {
+        createRef.current = handlerMap.create;
 
           switch (state) {
             case "pending":

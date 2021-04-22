@@ -19,8 +19,8 @@ let Calls = {
     return Calls.call("get", commandUri, dtoIn);
   },
 
-  loadSweaterweatherMain(dtoIn) {
-    let commandUri = Calls.getCommandUri("sweaterweatherMain/load");
+  loadSweaterweatherMain(baseUri, dtoIn) {
+    let commandUri = Calls.getCommandUri("sweaterweatherMain/load", baseUri);
     return Calls.call("get", commandUri, dtoIn);
   },
 
@@ -64,6 +64,12 @@ let Calls = {
     console.log("Get", dtoIn);
     let commandUri = Calls.getCommandUri("gateway/get");
     return Calls.call("get", commandUri, dtoIn);
+  },
+
+  createGateway(baseUri, dtoIn) {
+    console.log("DtoIn", baseUri, dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/create",baseUri);
+    return Calls.call("post", commandUri, dtoIn);
   },
 
   /*

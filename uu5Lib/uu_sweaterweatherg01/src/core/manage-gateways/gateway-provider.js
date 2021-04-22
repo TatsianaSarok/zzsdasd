@@ -24,15 +24,19 @@ const GatewayProvider = createComponent({
     let listDataValues = useDataList({
       pageSize: 200,
       handlerMap: {
-        load: handleLoad,
+        load: handleLoadGatewayList,
+        create: handleCreateGateway
       }
 
     });
 
     let { state, data, newData, pendingData, errorData, handlerMap } = listDataValues;
     //@@viewOff:hooks
-    async function handleLoad() {
+    async function handleLoadGatewayList() {
       return await Calls.listGateway(baseUri)
+    }
+    async function handleCreateGateway() {
+      return await Calls.createGateway(baseUri)
     }
     //@@viewOn:render
     return children({
