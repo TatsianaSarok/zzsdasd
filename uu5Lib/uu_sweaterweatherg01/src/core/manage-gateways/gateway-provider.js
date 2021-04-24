@@ -25,7 +25,8 @@ const GatewayProvider = createComponent({
       pageSize: 200,
       handlerMap: {
         load: handleLoadGatewayList,
-        create: handleCreateGateway
+        create: handleCreateGateway,
+        delete: handleDeleteGateway
       }
 
     });
@@ -35,8 +36,12 @@ const GatewayProvider = createComponent({
     async function handleLoadGatewayList() {
       return await Calls.listGateway(baseUri)
     }
-    async function handleCreateGateway() {
-      return await Calls.createGateway(baseUri)
+    async function handleCreateGateway(dtoIn) {
+      return await Calls.createGateway(baseUri, dtoIn)
+    }
+    async function handleDeleteGateway(dtoIn) {
+      console.log("dtoInProvid", dtoIn);
+      return await Calls.deleteGateway(baseUri, dtoIn)
     }
     //@@viewOn:render
     return children({

@@ -71,6 +71,11 @@ let Calls = {
     let commandUri = Calls.getCommandUri("gateway/create",baseUri);
     return Calls.call("post", commandUri, dtoIn);
   },
+  deleteGateway(baseUri,dtoIn) {
+    console.log("this is dtoIn ++++++++++++++++++++++", baseUri, dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/delete", baseUri);
+    return Calls.call("post", commandUri, dtoIn);
+  },
 
   /*
   For calling command on specific server, in case of developing client site with already deployed

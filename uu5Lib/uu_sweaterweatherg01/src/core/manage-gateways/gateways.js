@@ -30,18 +30,19 @@ export const Gateways = createVisualComponent({
   render(props) {
     console.log("props",props.baseUri);
     const createRef = useRef();
+    const deleteRef = useRef();
     //@@viewOn:private
     //@@viewOff:private
 
     //@@viewOn:interface
     //@@viewOff:interface
 
-    // function showError(content) {
-    //   UU5.Environment.getPage().getAlertBus().addAlert({
-    //     content,
-    //     colorSchema: "red",
-    //   });
-    // }
+    function showError(content) {
+      UU5.Environment.getPage().getAlertBus().addAlert({
+        content,
+        colorSchema: "red",
+      });
+    }
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
@@ -54,6 +55,15 @@ export const Gateways = createVisualComponent({
         showError(`Create of  failed!`);
       }
     }
+
+    async function handleDeleteGateway(data) {
+      console.log("dataid", data);
+      try {
+        await deleteRef.current(data);
+      } catch {
+        showError(`Deletion failed!`);
+      }
+    }
     function renderReady(data) {
       console.log("DAta", data);
       return (
@@ -61,6 +71,7 @@ export const Gateways = createVisualComponent({
           <GatewayList
           data={data} 
           onAddGateway={handleAddGateway}
+          onDeleteGateway={handleDeleteGateway}
           />
         </>
       );
@@ -81,6 +92,7 @@ export const Gateways = createVisualComponent({
       <GatewayProvider baseUri={props.baseUri}>
         {({ state, data, errorData, handlerMap }) => {
         createRef.current = handlerMap.create;
+        deleteRef.current = handlerMap.delete;
 
           switch (state) {
             case "pending":

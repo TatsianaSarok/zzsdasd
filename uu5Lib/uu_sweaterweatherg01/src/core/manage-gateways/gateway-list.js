@@ -17,6 +17,8 @@ const GatewayList = createVisualComponent({
   propTypes: {
     onSave: UU5.PropTypes.func,
     onCancel: UU5.PropTypes.func,
+    onAddGateway: UU5.PropTypes.func,
+    onDeleteGateway: UU5.PropTypes.func,
     shown: UU5.PropTypes.bool,
   },
   //@@viewOff:propTypes
@@ -25,11 +27,13 @@ const GatewayList = createVisualComponent({
   defaultProps: {
     onSave: () => { },
     onCancel: () => { },
+    onAddGateway: () => { },
+    onDeleteGateway: () => { },
     shown: false,
   },
   //@@viewOff:defaultProps
 
-  render({ data, onAddGateway }) {
+  render({ data, onAddGateway, onDeleteGateway }) {
     console.log("onAdd", onAddGateway);
     const [showCreateModal, setShowCreateModal] = useState(false);
 
@@ -54,25 +58,28 @@ const GatewayList = createVisualComponent({
     }
 
     function handleAddGatewaySave(opt) {
-console.log("opt", opt);
+      console.log("opt", opt);
       const input = {
-          gatewayName: opt.values.gatewayName,
-          location: opt.values.location
+        gatewayName: opt.values.gatewayName,
+        location: opt.values.location
       }
-      console.log("input", input);
-     console.log(onAddGateway(input)); 
-     onAddGateway(input)
+      onAddGateway(input)
       setShowCreateModal(false);
+    }
+
+    function handleDeleteGateway(item) {
+      onDeleteGateway({id: item});
+      console.log("item",item)
     }
     //@@viewOff:handlers
 
     //@@viewOn:render
 
-    if (data.length === 0) {
-      return <>
-        <UU5.Common.Error content="WTF No data!" />
-      </>
-    }
+    // if (data.length === 0) {
+    //   return <>
+    //     <UU5.Common.Error content="WTF No data!" />
+    //   </>
+    // }
 
     return (
       <>
@@ -97,16 +104,24 @@ console.log("opt", opt);
           </UU5.Bricks.Card>
 
           {data.map(value => {
-            return (<UU5.Bricks.Card
-              className={Css.gatewayStyle()}
-              bgStyle="transparent"
-              colorSchema="blue"
-              width={350}
-              bgStyle="filled" >
-              <UU5.Bricks.Text colorSchema="grey" >Gatewat name: {value.data.gatewayName}</UU5.Bricks.Text>
-              <UU5.Bricks.Text colorSchema="black" >Gatewat location: {value.data.location}</UU5.Bricks.Text>
-              <UU5.Bricks.Text colorSchema="grey" >Gatewat id: {value.data.id}</UU5.Bricks.Text>
-            </UU5.Bricks.Card>
+            return (
+              <>
+                <UU5.Bricks.Card
+                  className={Css.gatewayStyle()}
+                  bgStyle="transparent"
+                  colorSchema="blue"
+                  width={350}
+                  bgStyle="filled" >
+                  <UU5.Bricks.Button size="s"
+                    onClick={()=>handleDeleteGateway(value.data.id)}
+                    bgStyle="transparent">
+                    <UU5.Bricks.Icon icon="glyphicon-trash" />
+                  </UU5.Bricks.Button>
+                  <UU5.Bricks.Text colorSchema="grey" >Gatewat name: {value.data.gatewayName}</UU5.Bricks.Text>
+                  <UU5.Bricks.Text colorSchema="black" >Gatewat location: {value.data.location}</UU5.Bricks.Text>
+                  <UU5.Bricks.Text colorSchema="grey" >Gatewat id: {value.data.id}</UU5.Bricks.Text>
+                </UU5.Bricks.Card>
+              </>
             )
           })}
 
