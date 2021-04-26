@@ -68,7 +68,7 @@ const GatewayList = createVisualComponent({
           </UU5.Bricks.Row>
           <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
           <DateTime/>
-          <GatewayGraph gatewayName={gatewayName} baseUri={"https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"}  />
+          <GatewayGraph gatewayName={gatewayName}  />
         </>
       )
     }

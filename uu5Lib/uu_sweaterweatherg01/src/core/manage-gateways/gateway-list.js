@@ -6,6 +6,7 @@ import "uu5g04-bricks";
 import "uu5g04-forms";
 import Css from "./gateway.css";
 import AddGatewayForm from "./add-gateway-form";
+import UpdateGatewayForm from "./update-gateway-form";
 //@@viewOff:imports
 
 const GatewayList = createVisualComponent({
@@ -33,12 +34,12 @@ const GatewayList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data, onAddGateway, onDeleteGateway }) {
-    console.log("onAdd", onAddGateway);
-    const [showCreateModal, setShowCreateModal] = useState(false);
-
+  render({ data, onAddGateway, onDeleteGateway, onUpdateGateway }) {
+    console.log("onAdd", data);
     //@@viewOn:hooks
-
+    const [showCreateModal, setShowCreateModal] = useState(false);
+    const [showUpdateModal, setShowUpdateModal] = useState(false);
+    const [showGateway, setShowGateway] = useState('');
     //@@viewOff:hooks
 
     //@@viewOn:private    
@@ -66,27 +67,45 @@ const GatewayList = createVisualComponent({
       onAddGateway(input)
       setShowCreateModal(false);
     }
+    function handleUpdateGatewayForm(value) {
+      setShowUpdateModal(true)
+      setShowGateway(value)
+    }
+
+    function handleCloseUpdateGatewayForm() {
+      setShowUpdateModal(false);
+    }
+
+    function handleUpdateGatewaySave(opt) {
+      console.log("opt", opt);
+      const input = {
+        id: showGateway.id,
+        gatewayName: opt.values.gatewayName,
+        location: opt.values.location
+      }
+      onUpdateGateway(input)
+      setShowUpdateModal(false);
+    }
 
     function handleDeleteGateway(item) {
-      onDeleteGateway({id: item});
-      console.log("item",item)
+      onDeleteGateway({ id: item });
+      console.log("item", item)
     }
     //@@viewOff:handlers
 
     //@@viewOn:render
-
-    // if (data.length === 0) {
-    //   return <>
-    //     <UU5.Common.Error content="WTF No data!" />
-    //   </>
-    // }
-
     return (
       <>
         <AddGatewayForm
           shown={showCreateModal}
           onSave={handleAddGatewaySave}
           onCancel={handleCloseAddGatewayForm}
+        />
+        <UpdateGatewayForm
+          shown={showUpdateModal}
+          gateway={showGateway}
+          onSave={handleUpdateGatewaySave}
+          onCancel={handleCloseUpdateGatewayForm}
         />
 
         <div className={Css.gateway()} >
@@ -111,12 +130,20 @@ const GatewayList = createVisualComponent({
                   bgStyle="transparent"
                   colorSchema="blue"
                   width={350}
-                  bgStyle="filled" >
+                  bgStyle="filled">
+
                   <UU5.Bricks.Button size="s"
-                    onClick={()=>handleDeleteGateway(value.data.id)}
+                    onClick={() => handleDeleteGateway(value.data.id)}
                     bgStyle="transparent">
                     <UU5.Bricks.Icon icon="glyphicon-trash" />
                   </UU5.Bricks.Button>
+                  <UU5.Bricks.Button
+                    onClick={() => handleUpdateGatewayForm(value.data)}
+                    bgStyle="transparent"
+                    colorSchema="blue"
+                    size="m"
+                    content={<UU5.Bricks.Icon icon="glyphicon-edit" />}
+                  ></UU5.Bricks.Button>
                   <UU5.Bricks.Text colorSchema="grey" >Gatewat name: {value.data.gatewayName}</UU5.Bricks.Text>
                   <UU5.Bricks.Text colorSchema="black" >Gatewat location: {value.data.location}</UU5.Bricks.Text>
                   <UU5.Bricks.Text colorSchema="grey" >Gatewat id: {value.data.id}</UU5.Bricks.Text>

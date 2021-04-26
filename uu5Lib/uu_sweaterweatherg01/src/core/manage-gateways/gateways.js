@@ -31,6 +31,7 @@ export const Gateways = createVisualComponent({
     console.log("props",props.baseUri);
     const createRef = useRef();
     const deleteRef = useRef();
+    const updateRef = useRef();
     //@@viewOn:private
     //@@viewOff:private
 
@@ -64,6 +65,15 @@ export const Gateways = createVisualComponent({
         showError(`Deletion failed!`);
       }
     }
+
+    async function handleUpdateGateway(data) {
+      try {
+        await updateRef.current(data);
+      } catch {
+        showError(`Create  failed!`);
+      }
+    }
+
     function renderReady(data) {
       console.log("DAta", data);
       return (
@@ -72,6 +82,7 @@ export const Gateways = createVisualComponent({
           data={data} 
           onAddGateway={handleAddGateway}
           onDeleteGateway={handleDeleteGateway}
+          onUpdateGateway={handleUpdateGateway}
           />
         </>
       );
@@ -93,6 +104,7 @@ export const Gateways = createVisualComponent({
         {({ state, data, errorData, handlerMap }) => {
         createRef.current = handlerMap.create;
         deleteRef.current = handlerMap.delete;
+        updateRef.current = handlerMap.update;
 
           switch (state) {
             case "pending":
