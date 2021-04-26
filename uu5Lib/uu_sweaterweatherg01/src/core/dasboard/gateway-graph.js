@@ -88,10 +88,11 @@ const GatewayGraph = createComponent({
           return <UU5.Bricks.Error content="Error happened!" error={errorData.error} errorData={errorData.data} />;
       }
     }
-
+let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
+console.log("startTime", startTime);
     return (
       <UU5.Bricks.Container>
-        <DataProvider baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162" gatewayName={gatewayName} >
+        <DataProvider  baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162" gatewayName={gatewayName} startTime={startTime} >
           {({ state, data, errorData }) => {
             switch (state) {
               case "pending":

@@ -3,7 +3,7 @@ const { UuObjectDao } = require("uu_appg01_server").ObjectStore;
 
 class DataMongo extends UuObjectDao {
 
-  async createSchema(){
+  async createSchema() {
     await super.createIndex({ awid: 1, _id: 1 }, { unique: true });
   }
   async create(uuObject) {
@@ -19,15 +19,38 @@ class DataMongo extends UuObjectDao {
     return await super.findOne({ awid, id });
   }
 
+  // async delete(awid, id) {
+  //   await super.deleteOne({ awid, id });
+  // }
   async delete(awid, id) {
-    await super.deleteOne({ awid, id });
+    await super.deleteMany({ });
   }
 
-  async list(awid, gatewayName) {
-    let filter = { awid };
-    gatewayName && (filter.gatewayName = gatewayName);
-    return await super.find(filter);
+  // async list(awid, gatewayName) {
+  //   let filter = { awid };
+  //   gatewayName && (filter.gatewayName = gatewayName);
+  //   return await super.find(filter);
+  // }
+
+  async list(awid, gatewayName, startTime) {
+    startTime = new Date(startTime)
+    return await super.aggregate([
+      {
+        $match:
+          awid &&
+          { timestamp: { $gte: startTime } } &&
+          { gatewayName: gatewayName }
+      },
+      {
+        $group: {
+          _id: { $hour: "$timestamp" },
+          "Temperature": { "$avg": "$temperature" },
+          "Humidity": { "$avg": "$humidity" }
+        }
+      }
+    ]);
   }
+
 }
 
 module.exports = DataMongo;

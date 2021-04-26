@@ -94,6 +94,7 @@ class DataAbl {
       );
       dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
       dtoIn.awid = awid;
+      dtoIn.timestamp = new Date(dtoIn.timestamp)
       let data;
       try {
         data = await this.dao.create(dtoIn);
@@ -106,7 +107,8 @@ class DataAbl {
       }
       // hds 4
       data.uuAppErrorMap = uuAppErrorMap;
-      return data;
+
+      return data
   }
 
 }

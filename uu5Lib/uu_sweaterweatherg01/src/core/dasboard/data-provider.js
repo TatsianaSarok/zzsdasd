@@ -11,14 +11,14 @@ const DataProvider = createComponent({
   displayName: Config.TAG + "DataProvider",
   //@@viewOff:statics
 
-  render({ children, baseUri, gatewayName }) {
+  render({ children, baseUri, gatewayName, startTime }) {
     console.log(gatewayName);
     let objectDataValues = useDataObject({
       //initialDtoIn: {gatewayName: gatewayName, baseUri:baseUri},
       handlerMap: {
         load: handleListDataLoad,
       },
-      initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName)
+      initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName, startTime)
     });
 
     let { state, data, pendingData, errorData, handlerMap } = objectDataValues;
@@ -27,12 +27,13 @@ const DataProvider = createComponent({
  async function  handleListDataLoad() {
    return await Calls.listData(getInitLoadDtoIn(baseUri, gatewayName))
    }
-   function getInitLoadDtoIn(baseUri, gatewayName) {
+   function getInitLoadDtoIn(baseUri, gatewayName, startTime) {
     //  console.log("baseUri", baseUri);
       let dtoIn = {data:{} };
       if (baseUri) {
         dtoIn.baseUri = baseUri;
         dtoIn.data.gatewayName = gatewayName
+        dtoIn.data.startTime = startTime
       }
       return dtoIn;
     }

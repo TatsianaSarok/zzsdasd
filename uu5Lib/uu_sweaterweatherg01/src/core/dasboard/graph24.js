@@ -25,8 +25,11 @@ const Graph24 = createVisualComponent({
 
     render(data) {
         //@@viewOn:hooks
+        console.log("24", data);
         const [currentTime, setCurrentTime] = useState(new Date().getTime());
         console.log(new Date().getTime());
+
+
         //@@viewOff:hooks
         let unique = [];
 

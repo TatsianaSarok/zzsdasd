@@ -2,8 +2,8 @@
 const dataCreateDtoInType = shape({
     gatewayName: uu5String().isRequired(),
     timestamp: Date(),
-    temperature: uu5String(),
-    humidity: uu5String()
+    temperature: integer(),
+    humidity: integer()
 })
 const dataListDtoInType = shape({
     gatewayName: uu5String(),
@@ -14,7 +14,7 @@ const dataListDtoInType = shape({
 })
 
 const dataDeleteDtoInType = shape({
-    id: string(50).isRequired()
+    // id: string(50).isRequired()
 });
 
 const dataGetDtoInType = shape({

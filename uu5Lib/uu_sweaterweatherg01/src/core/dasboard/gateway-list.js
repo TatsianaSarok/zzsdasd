@@ -52,7 +52,8 @@ const GatewayList = createVisualComponent({
         <UU5.Common.Error content="WTF No data!" />
       </>
     }
-
+    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
+    console.log("startTime", startTime);
     function Location() {
       console.log(gatewayName);
       return (
@@ -68,7 +69,7 @@ const GatewayList = createVisualComponent({
           </UU5.Bricks.Row>
           <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
           <DateTime/>
-          <GatewayGraph gatewayName={gatewayName}  />
+          <GatewayGraph gatewayName={gatewayName} startTime={startTime} />
         </>
       )
     }

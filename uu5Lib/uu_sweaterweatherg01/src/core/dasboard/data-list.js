@@ -44,7 +44,7 @@ const DataList = createVisualComponent({
     //@@viewOn:handlers
     function DisplayGraph() {
       return graphType === "last 24h" ?
-        <Graph24 data={gatewayName?.itemList} /> :
+        <Graph24 data={gatewayName?.itemList}  /> :
         graphType === "week" ?
           <GraphWeek gatewayName={gatewayName} /> : <div>graph for monthly data</div>
     }
