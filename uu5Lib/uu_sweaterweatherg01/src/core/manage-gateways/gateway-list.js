@@ -144,9 +144,9 @@ const GatewayList = createVisualComponent({
                     size="m"
                     content={<UU5.Bricks.Icon icon="glyphicon-edit" />}
                   ></UU5.Bricks.Button>
-                  <UU5.Bricks.Text colorSchema="grey" >Gatewat name: {value.data.gatewayName}</UU5.Bricks.Text>
-                  <UU5.Bricks.Text colorSchema="black" >Gatewat location: {value.data.location}</UU5.Bricks.Text>
-                  <UU5.Bricks.Text colorSchema="grey" >Gatewat id: {value.data.id}</UU5.Bricks.Text>
+                  <UU5.Bricks.Text colorSchema="grey" >Gateway name: {value.data.gatewayName}</UU5.Bricks.Text>
+                  <UU5.Bricks.Text colorSchema="black" >Gateway location: {value.data.location}</UU5.Bricks.Text>
+                  <UU5.Bricks.Text colorSchema="grey" >Gateway id: {value.data.id}</UU5.Bricks.Text>
                 </UU5.Bricks.Card>
               </>
             )

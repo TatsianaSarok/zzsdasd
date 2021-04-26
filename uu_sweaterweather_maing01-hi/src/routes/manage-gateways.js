@@ -7,9 +7,9 @@ import * as UuSweaterweather from "uu_sweaterweatherg01";
 
 //@@viewOff:imports 
 
-const GatewayGraph = createVisualComponent({
+const ManageGateways = createVisualComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "GatewayGraph",
+  displayName: Config.TAG + "ManageGateways",
   //@@viewOff:statics
 
   render() {
@@ -26,6 +26,6 @@ const GatewayGraph = createVisualComponent({
   }
 }); 
 
-export default GatewayGraph;
+export default ManageGateways;
 
 //@@viewOn:imports
