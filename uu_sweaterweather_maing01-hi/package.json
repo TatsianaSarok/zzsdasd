@@ -20,8 +20,10 @@
   },
   "uuBuildSettings": {
     "externals": {
-      "uu_sweaterweatherg01": true
+      "uu_sweaterweatherg01": {
+        "cdnBaseUri":  "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/0.1.9-beta/"
     }
+  }
   },
   "devDependencies": {
     "uu_appg01_devkit": "^4.0.1"

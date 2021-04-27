@@ -12,6 +12,13 @@ const dataListDtoInType = shape({
       pageSize: integer()
     })
 })
+const dataDayListDtoInType = shape({
+    gatewayName: uu5String(),
+    pageInfo: shape({
+      pageIndex: integer(),
+      pageSize: integer()
+    })
+})
 
 const dataDeleteDtoInType = shape({
     // id: string(50).isRequired()

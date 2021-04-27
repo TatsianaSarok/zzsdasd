@@ -62,7 +62,13 @@ const Delete = {
 }
 };
 
+const DayList = {
+  UC_CODE: `${DATA_ERROR_PREFIX}dayList/`,
+  
+};
+
 module.exports = {
+  DayList,
   Delete,
   Get,
   List,

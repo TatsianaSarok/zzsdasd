@@ -17,6 +17,7 @@ const DataProvider = createComponent({
       //initialDtoIn: {gatewayName: gatewayName, baseUri:baseUri},
       handlerMap: {
         load: handleListDataLoad,
+        loadList: handleDayListDataLoad
       },
       initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName, startTime)
     });
@@ -25,8 +26,13 @@ const DataProvider = createComponent({
       console.log(data);
       console.log("Data in provider");
  async function  handleListDataLoad() {
-   return await Calls.listData(getInitLoadDtoIn(baseUri, gatewayName))
+   return await Calls.listData(getInitLoadDtoIn(baseUri, gatewayName, startTime))
    }
+
+   async function  handleDayListDataLoad() {
+    return await Calls.listData(getInitLoadDtoIn(baseUri, gatewayName, startTime))
+    }
+
    function getInitLoadDtoIn(baseUri, gatewayName, startTime) {
     //  console.log("baseUri", baseUri);
       let dtoIn = {data:{} };

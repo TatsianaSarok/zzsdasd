@@ -50,6 +50,12 @@ let Calls = {
     console.log("return",Calls.call("get", commandUri, dtoIn) );
     return Calls.call("get", commandUri, dtoIn);
   },
+  dayList( dtoIn) {
+    console.log("List", dtoIn.startTime);
+    let commandUri = Calls.getCommandUri("data/list", dtoIn.baseUri);
+    console.log("return",Calls.call("get", commandUri, dtoIn) );
+    return Calls.call("get", commandUri, dtoIn);
+  },
   deleteData(dtoIn) {
     console.log("DtoIn", dtoIn);
     let commandUri = Calls.getCommandUri("data/delete");

@@ -65,6 +65,11 @@
         "realization": "api/controllers/DataController.delete",
         "httpMethod": "POST",
         "type": "CMD"
+      },
+      "data/dayList": {
+        "realization": "api/controllers/DataController.dayList",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

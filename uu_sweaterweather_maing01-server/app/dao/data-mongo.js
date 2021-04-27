@@ -22,17 +22,18 @@ class DataMongo extends UuObjectDao {
   // async delete(awid, id) {
   //   await super.deleteOne({ awid, id });
   // }
+  
   async delete(awid, id) {
     await super.deleteMany({ });
   }
 
-  // async list(awid, gatewayName) {
-  //   let filter = { awid };
-  //   gatewayName && (filter.gatewayName = gatewayName);
-  //   return await super.find(filter);
-  // }
+  async list(awid, gatewayName) {
+    let filter = { awid };
+    gatewayName && (filter.gatewayName = gatewayName);
+    return await super.find(filter);
+  }
 
-  async list(awid, gatewayName, startTime) {
+  async dayList(awid, gatewayName, startTime) {
     startTime = new Date(startTime)
     return await super.aggregate([
       {

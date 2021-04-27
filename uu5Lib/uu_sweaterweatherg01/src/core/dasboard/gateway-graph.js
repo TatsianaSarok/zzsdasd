@@ -4,6 +4,7 @@ import { createComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import DataList from "./data-list";
 import DataProvider from "./data-provider";
+import Graph24 from "./graph24";
 
 
 //@@viewOff:imports 
@@ -76,6 +77,7 @@ const GatewayGraph = createComponent({
       return (
         <>
           <DataList  gatewayName={gatewayName}/>
+          <Graph24 />
         </>
       );
     }
