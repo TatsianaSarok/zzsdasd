@@ -4,6 +4,7 @@ import "uu5g04-bricks"
 import { createVisualComponent, useState, useEffect, useSession } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5chartg01";
+import Calls from "calls"
 
 //@@viewOff:imports
 
@@ -23,8 +24,15 @@ const Graph24 = createVisualComponent({
     },
     //@@viewOff:defaultProps
 
-    render(data) {
-
+    render() {
+        async function getData(){
+            let dtoIn = {data:{} };
+        dtoIn.baseUri = "https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/";
+        dtoIn.data.gatewayName = "Works"
+        dtoIn.data.startTime = new Date ("2021-04-26T05:46:08.872Z")
+         return await Calls.dayList(dtoIn)
+        }
+console.log("Data", getData());  
         
         //@@viewOn:hooks
     //     console.log("24", data);
