@@ -48,7 +48,8 @@ class DataMongo extends UuObjectDao {
           "Temperature": { "$avg": "$temperature" },
           "Humidity": { "$avg": "$humidity" }
         }
-      }
+      },
+      { $sort : { _id : 1} }
     ]);
   }
 

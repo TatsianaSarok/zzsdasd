@@ -26,7 +26,7 @@ const DateTime = createVisualComponent({
 
     render() {
         //@@viewOn:hooks
-        console.log("Version", process.env.VERSION);
+       // console.log("Version", process.env.VERSION);
         const [time, setTime] = useState(time);
         //@@viewOff:hooks
 
@@ -44,7 +44,7 @@ const DateTime = createVisualComponent({
             "July", "August", "September", "October", "November", "December"
         ];
         let day = days[d.getDay()];
-        let month = monthNames[d.getMonth() + 1];
+        let month = monthNames[d.getMonth() ];
         let date = d.getDate();
         let year = d.getFullYear();
         let currentDate = day + " " + date + " " + month + " " + year + " " + hours + ":" + minutes + ":" + seconds

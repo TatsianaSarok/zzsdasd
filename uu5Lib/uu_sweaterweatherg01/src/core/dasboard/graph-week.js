@@ -30,34 +30,34 @@ const GraphWeek = createVisualComponent({
         //@@viewOff:private
 
         //@@viewOn:interface
-        let graphData = gatewayName.gatewayName.itemList.map(item =>
-        ({
-            value: parseInt(item.temperature),
-            label: new Date(item.timestamp)
-        })
-        )
-            .filter(item => (item.label.getTime() >= getMonday(new Date())
-            ))
-            .sort((a, b) => {
-                return a.label.getDay() - b.label.getDay()
-            })
-            .map(item => {
-                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-                return {
-                    value: item.value,
-                    label: days[item.label.getDay()]
+        // let graphData = gatewayName.gatewayName.itemList.map(item =>
+        // ({
+        //     value: parseInt(item.temperature),
+        //     label: new Date(item.timestamp)
+        // })
+        // )
+        //     .filter(item => (item.label.getTime() >= getMonday(new Date())
+        //     ))
+        //     .sort((a, b) => {
+        //         return a.label.getDay() - b.label.getDay()
+        //     })
+        //     .map(item => {
+        //         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        //         return {
+        //             value: item.value,
+        //             label: days[item.label.getDay()]
 
-                }
-            })
+        //         }
+        //     })
 
-        function getMonday(d) {
-            d = new Date(d);
-            var day = d.getDay(),
-                diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-            let monday = new Date(d.setDate(diff));
-            monday.setHours(0, 0, 0, 0)
-            return monday
-        }
+        // function getMonday(d) {
+        //     d = new Date(d);
+        //     var day = d.getDay(),
+        //         diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+        //     let monday = new Date(d.setDate(diff));
+        //     monday.setHours(0, 0, 0, 0)
+        //     return monday
+        // }
 
         //@@viewOn:interface
 
@@ -66,16 +66,10 @@ const GraphWeek = createVisualComponent({
         //@@viewOff:handlers
 
         //@@viewOn:render
-        getMonday(new Date())
+        // getMonday(new Date())
         return (
             <div>
-                <UU5.Bricks.Container >
-                    {/*@@viewOn:0*/}
-                    <UU5.SimpleChart.LineChart data={
-                        graphData
-                    } />                 
-                    {/*@@viewOff:0*/}
-                </UU5.Bricks.Container>
+           Graph Week
             </div>
         );
         //@@viewOff:render

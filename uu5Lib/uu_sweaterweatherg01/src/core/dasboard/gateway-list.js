@@ -27,7 +27,6 @@ const GatewayList = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ data, baseUri }) {
-
     //@@viewOn:hooks
     const [gatewayName, setGatewayName] = useState('Works')
     //@@viewOff:hooks
@@ -53,9 +52,7 @@ const GatewayList = createVisualComponent({
       </>
     }
     let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
-    console.log("startTime", startTime);
     function Location() {
-      console.log(gatewayName);
       return (
         <>
           <UU5.Bricks.Row className={Css.switcher()} >
@@ -68,8 +65,8 @@ const GatewayList = createVisualComponent({
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
           <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
-          <DateTime/>
-          <GatewayGraph gatewayName={gatewayName} startTime={startTime} />
+          <DateTime />
+          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} startTime={startTime} />
         </>
       )
     }
@@ -79,7 +76,7 @@ const GatewayList = createVisualComponent({
         <div
           className={Css.header()}>
           Sweaterweather
-        <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()}  />
+        <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
         </div>
         <Location />
       </>

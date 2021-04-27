@@ -4,6 +4,7 @@ import { createComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "./gateway-provider";
 import GatewayList from "./gateway-list"
+import GatewayGraph from "./gateway-graph";
 //@@viewOff:imports
 
 const STATICS = {
@@ -31,18 +32,19 @@ export const DashboardPage = createComponent({
     console.log("props",props.baseUri);
     //@@viewOn:private
     //@@viewOff:private
-
     //@@viewOn:interface
     //@@viewOff:interface
+
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
 
     function renderReady(data) {
-      console.log("DAta", data);
+      let baseUri = props.baseUri
+      console.log("DAta", data );
       return (
         <>
-          <GatewayList data={data} />
+          <GatewayList data={data}  baseUri={baseUri}/>
         </>
       );
     }

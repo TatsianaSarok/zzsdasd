@@ -1,9 +1,9 @@
 // //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent, useRef } from "uu5g04-hooks";
+import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
-import DataList from "./data-list";
 import DataProvider from "./data-provider";
+import GraphWeek from "./graph-week";
 import Graph24 from "./graph24";
 
 
@@ -24,46 +24,14 @@ const GatewayGraph = createComponent({
     baseUri: undefined
   },
   //@@viewOff:defaultProps
-  render({gatewayName}) {
-   // console.log(gatewayName);
-    console.log("props data",gatewayName);
+  render({ gatewayName, baseUri }) {
+    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
     //@@viewOn:hooks
+    const [graphType, setGraphType] = useState('last 24h')
+    let graphName = ["last 24h", "week", "month"];
     //@viewOff:hooks
 
     //@@viewOn:private
-    function showError(content) {
-      UU5.Environment.getPage()
-        .getAlertBus()
-        .addAlert({
-          content,
-          colorSchema: "red"
-        });
-    }
-
-    // async function handleCreateData(data) {
-    //   try {
-    //     await createDataRef.current(data);
-    //   } catch {
-    //     showError(`Creation of ${data.name} failed!`);
-    //   }
-    // }
-
-    // /* eslint no-unused-vars: "off" */
-    // async function handleUpdateData(data, values) {
-    //   try {
-    //     await updateDataRef.current({ id: data.id, ...values });
-    //   } catch {
-    //     showError(`Update of ${data.name} failed!`);
-    //   }
-    // }
-
-    // async function handleDeleteData(data) {
-    //   try {
-    //     await deleteDataRef.current({ id: data.id });
-    //   } catch {
-    //     showError(`Deletion of ${data.name} failed!`);
-    //   }
-    // }
     //@@viewOff:private
 
     //@@viewOn:render
@@ -72,12 +40,23 @@ const GatewayGraph = createComponent({
     }
 
     function renderReady(gatewayName) {
-      console.log("gatewayNames",gatewayName);
-      
+      console.log("gatewayNames", gatewayName);
+
       return (
         <>
-          <DataList  gatewayName={gatewayName}/>
-          <Graph24 />
+          <UU5.Bricks.Row >
+            <UU5.Bricks.Column colWidth="m-4">
+              <UU5.Forms.SwitchSelector
+                colorSchema="blue"
+                items={graphName?.map(value => ({ value }))}
+                onChange={({ value }) => { setGraphType(value) }}
+                value={graphType}
+              />
+            </UU5.Bricks.Column>
+          </UU5.Bricks.Row>
+          {graphType === 'last 24h' ? (<Graph24 data={gatewayName} graphType={graphType} />) :
+            graphType === 'week' ? <GraphWeek data={gatewayName} graphType={graphType} /> :
+              <div>Graph Month</div>}
         </>
       );
     }
@@ -90,11 +69,10 @@ const GatewayGraph = createComponent({
           return <UU5.Bricks.Error content="Error happened!" error={errorData.error} errorData={errorData.data} />;
       }
     }
-let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
-console.log("startTime", startTime);
+
     return (
       <UU5.Bricks.Container>
-        <DataProvider  baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162" gatewayName={gatewayName} startTime={startTime} >
+        <DataProvider baseUri={baseUri} gatewayName={gatewayName} startTime={startTime} >
           {({ state, data, errorData }) => {
             switch (state) {
               case "pending":
@@ -115,7 +93,7 @@ console.log("startTime", startTime);
     );
     //@@viewOff:render
   }
-}); 
+});
 
 export default GatewayGraph;
 

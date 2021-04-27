@@ -13,6 +13,7 @@ const dataListDtoInType = shape({
     })
 })
 const dataDayListDtoInType = shape({
+    startTime: Date(),
     gatewayName: uu5String(),
     pageInfo: shape({
       pageIndex: integer(),
