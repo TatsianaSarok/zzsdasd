@@ -23,7 +23,7 @@ const Graph24 = createVisualComponent({
     //@@viewOff:defaultProps
 
     render(data) {
-
+console.log("data", data);
         //@@viewOn:interface
 
         //@@viewOn:handlers

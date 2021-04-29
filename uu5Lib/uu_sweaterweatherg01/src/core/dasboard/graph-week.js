@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState, useContext, useSession } from "uu5g04-hooks";
+import { createVisualComponent, useState, useEffect, useSession } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5chartg01";
 //@@viewOff:imports
@@ -10,7 +10,6 @@ const GraphWeek = createVisualComponent({
     //@@viewOn:statics
     displayName: Config.TAG + "GraphWeek",
     //@@viewOff:statics
-
     //@@viewOn:propTypes
     propTypes: {
 
@@ -23,42 +22,8 @@ const GraphWeek = createVisualComponent({
     },
     //@@viewOff:defaultProps
 
-    render(gatewayName) {
-        console.log("gatewayName", gatewayName);
-        //@@viewOn:private
-
-        //@@viewOff:private
-
-        //@@viewOn:interface
-        // let graphData = gatewayName.gatewayName.itemList.map(item =>
-        // ({
-        //     value: parseInt(item.temperature),
-        //     label: new Date(item.timestamp)
-        // })
-        // )
-        //     .filter(item => (item.label.getTime() >= getMonday(new Date())
-        //     ))
-        //     .sort((a, b) => {
-        //         return a.label.getDay() - b.label.getDay()
-        //     })
-        //     .map(item => {
-        //         var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
-        //         return {
-        //             value: item.value,
-        //             label: days[item.label.getDay()]
-
-        //         }
-        //     })
-
-        // function getMonday(d) {
-        //     d = new Date(d);
-        //     var day = d.getDay(),
-        //         diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-        //     let monday = new Date(d.setDate(diff));
-        //     monday.setHours(0, 0, 0, 0)
-        //     return monday
-        // }
-
+    render(data) {
+console.log("Dataweek", data);
         //@@viewOn:interface
 
         //@@viewOn:handlers
@@ -66,11 +31,20 @@ const GraphWeek = createVisualComponent({
         //@@viewOff:handlers
 
         //@@viewOn:render
-        // getMonday(new Date())
+
+
         return (
-            <div>
-           Graph Week
-            </div>
+            <>
+             <UU5.Bricks.Text className="uu5-common-center"></UU5.Bricks.Text>
+                <UU5.SimpleChart.LineChart 
+                   data={[data.data.map(value=>{
+                    return (
+                        {label: value._id ,
+                         value: value.Temperature } 
+                    )
+                })][0]}
+                />         
+            </>
         );
         //@@viewOff:render
     },

@@ -28,11 +28,14 @@ const GatewayList = createVisualComponent({
 
   render({ data, baseUri }) {
     //@@viewOn:hooks
-    const [gatewayName, setGatewayName] = useState('Works')
+    const [gatewayName, setGatewayName] = useState('Works');
+    const [graphType, setGraphType] = useState('last 24h')
     //@@viewOff:hooks
     let location = data.map(value => {
       return value.data.gatewayName
     })
+    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
+    let graphName = ["last 24h", "week", "month"];
     //@@viewOn:private    
     //@@viewOff:private
 
@@ -51,7 +54,7 @@ const GatewayList = createVisualComponent({
         <UU5.Common.Error content="WTF No data!" />
       </>
     }
-    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
+
     function Location() {
       return (
         <>
@@ -66,7 +69,17 @@ const GatewayList = createVisualComponent({
           </UU5.Bricks.Row>
           <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
           <DateTime />
-          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} startTime={startTime} />
+          <UU5.Bricks.Row >
+            <UU5.Bricks.Column colWidth="m-4">
+              <UU5.Forms.SwitchSelector
+                colorSchema="blue"
+                items={graphName?.map(value => ({ value }))}
+                onChange={({ value }) => { setGraphType(value) }}
+                value={graphType}
+              />
+            </UU5.Bricks.Column>
+          </UU5.Bricks.Row>
+          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} startTime={startTime} graphType={graphType} />
         </>
       )
     }

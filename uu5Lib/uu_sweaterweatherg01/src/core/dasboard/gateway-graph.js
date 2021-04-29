@@ -24,13 +24,15 @@ const GatewayGraph = createComponent({
     baseUri: undefined
   },
   //@@viewOff:defaultProps
-  render({ gatewayName, baseUri }) {
-    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
+  render({ gatewayName, baseUri, startTime, graphType }) {
+    console.log("All",gatewayName, baseUri, startTime, graphType );
+    // let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
     //@@viewOn:hooks
-    const [graphType, setGraphType] = useState('last 24h')
-    let graphName = ["last 24h", "week", "month"];
+    // const [graphType, setGraphType] = useState('last 24h')
+    // let graphName = ["last 24h", "week", "month"];
     //@viewOff:hooks
-
+let last24h = graphType === 'last 24h'
+let week = graphType === 'week'
     //@@viewOn:private
     //@@viewOff:private
 
@@ -39,25 +41,17 @@ const GatewayGraph = createComponent({
       return <UU5.Bricks.Loading />;
     }
 
-    function renderReady(gatewayName) {
-      console.log("gatewayNames", gatewayName);
+ 
 
-      return (
+    function renderReady(data) {
+      console.log("gatewayNames", data);
+
+      return (  
         <>
-          <UU5.Bricks.Row >
-            <UU5.Bricks.Column colWidth="m-4">
-              <UU5.Forms.SwitchSelector
-                colorSchema="blue"
-                items={graphName?.map(value => ({ value }))}
-                onChange={({ value }) => { setGraphType(value) }}
-                value={graphType}
-              />
-            </UU5.Bricks.Column>
-          </UU5.Bricks.Row>
-          {graphType === 'last 24h' ? (<Graph24 data={gatewayName} graphType={graphType} />) :
-            graphType === 'week' ? <GraphWeek data={gatewayName} graphType={graphType} /> :
-              <div>Graph Month</div>}
-        </>
+        {last24h? (<Graph24 data={data} />) :
+        week ? <GraphWeek data={data} /> :
+          <div>Graph Month</div>}
+          </>
       );
     }
 
@@ -72,7 +66,7 @@ const GatewayGraph = createComponent({
 
     return (
       <UU5.Bricks.Container>
-        <DataProvider baseUri={baseUri} gatewayName={gatewayName} startTime={startTime} >
+        <DataProvider baseUri={baseUri} gatewayName={gatewayName} startTime={startTime} graphType={graphType} >
           {({ state, data, errorData }) => {
             switch (state) {
               case "pending":

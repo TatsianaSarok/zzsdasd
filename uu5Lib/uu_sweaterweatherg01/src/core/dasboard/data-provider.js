@@ -11,29 +11,30 @@ const DataProvider = createComponent({
   displayName: Config.TAG + "DataProvider",
   //@@viewOff:statics
 
-  render({ children, baseUri, gatewayName, startTime }) {
+  render({ children, baseUri, gatewayName, startTime, graphType }) {
     console.log(gatewayName);
     let objectDataValues = useDataObject({
       handlerMap: {
         load: handleListDataLoad,
       },
-      initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName, startTime)
+      initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType)
     });
 
     let { state, data, pendingData, errorData, handlerMap } = objectDataValues;
     async function handleListDataLoad() {
-      console.log("Out", await Calls.dayList(getInitLoadDtoIn(baseUri, gatewayName, startTime)));
-      return await Calls.dayList(getInitLoadDtoIn(baseUri, gatewayName, startTime))
+      console.log("Out", await Calls.dayList(getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType)));
+      return await Calls.dayList(getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType))
     }
 
 
-    function getInitLoadDtoIn(baseUri, gatewayName, startTime) {
+    function getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType) {
       //  console.log("baseUri", baseUri);
       let dtoIn = {};
       if (baseUri) {
         dtoIn.baseUri = baseUri;
         dtoIn.gatewayName = gatewayName
         dtoIn.startTime = startTime
+        dtoIn.graphType  = graphType
       }
       return dtoIn;
     }
