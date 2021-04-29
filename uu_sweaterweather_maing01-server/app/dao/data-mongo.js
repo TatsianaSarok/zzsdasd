@@ -49,6 +49,7 @@ class DataMongo extends UuObjectDao {
           "Humidity": { "$avg": "$humidity" }
         }
       },
+      { $addFields: {"gatewayName": gatewayName}},
       { $sort : { _id : 1} }
     ])}
     else {
@@ -66,6 +67,7 @@ class DataMongo extends UuObjectDao {
             "Humidity": { "$avg": "$humidity" }
           }
         },
+        { $addFields: {"gatewayName": gatewayName}},
         { $sort : { _id : 1} }
       ])
     }

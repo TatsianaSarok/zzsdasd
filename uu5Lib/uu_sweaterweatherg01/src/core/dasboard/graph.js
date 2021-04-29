@@ -40,7 +40,7 @@ console.log("data", data);
                    data={[data.data.map(value=>{
                     return (
                         {label: value._id + ":00",
-                         value: value.Temperature } 
+                         value: value.Temperature} 
                     )
                 })][0]}
                 />         
