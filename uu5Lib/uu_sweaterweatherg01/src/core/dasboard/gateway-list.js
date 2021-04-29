@@ -52,7 +52,7 @@ const GatewayList = createVisualComponent({
     //@@viewOn:handlers
     function handleChange(value) {
       setGraphType(value)
-      value === 'last 24h' ? setStartTime(startTime) :
+      value === 'last 24h' ? setStartTime(dayTime) :
         value === 'week' ? setStartTime(weekTime) :
           setStartTime(monthTime)
     }
