@@ -8,6 +8,7 @@ import "uu5chartg01";
 
 const Graph = createVisualComponent({
     //@@viewOn:statics
+
     displayName: Config.TAG + "Graph",
     //@@viewOff:statics
     //@@viewOn:propTypes
@@ -38,9 +39,11 @@ console.log("data", data);
              <UU5.Bricks.Text className="uu5-common-center"></UU5.Bricks.Text>
                 <UU5.SimpleChart.LineChart 
                    data={[data.data.map(value=>{
+                       let time = `${value._id.hour+ ":00"}` +`${value._id.day}` 
+                       
                     return (
-                        {label: value._id + ":00",
-                         value: value.Temperature} 
+                        {label: time ,
+                         value: value.temperature} 
                     )
                 })][0]}
                 />         

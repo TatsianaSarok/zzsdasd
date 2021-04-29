@@ -21,7 +21,7 @@
   "uuBuildSettings": {
     "externals": {
       "uu_sweaterweatherg01": {
-        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/0.2.6-beta/"
+        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/0.2.7-beta/"
       }
     }
   },
