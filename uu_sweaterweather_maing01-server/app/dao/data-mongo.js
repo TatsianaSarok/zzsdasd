@@ -42,15 +42,13 @@ class DataMongo extends UuObjectDao {
         { timestamp: { $gte: startTime } },
         { gatewayName: gatewayName }
      ]}},
-      {
-        $group: {
-          _id: { $hour: "$timestamp" },
-          "Temperature": { "$avg": "$temperature" },
-          "Humidity": { "$avg": "$humidity" }
-        }
-      },
-      { $addFields: {"gatewayName": gatewayName}},
-      { $sort : { _id : 1} }
+     { $group: { _id: {"month":{$month :"$timestamp" }, 
+     "day":{ $dayOfMonth: "$timestamp" },
+     "hour":{ $hour: "$timestamp" }},
+      "temperature": { "$avg": "$temperature" }, 
+      "humidity": { "$avg": "$humidity" }}},
+     { $addFields: {"gatewayName": gatewayName}},
+     { $sort:{_id:1}}
     ])}
     else {
       return await super.aggregate([
@@ -60,15 +58,12 @@ class DataMongo extends UuObjectDao {
             { timestamp: { $gte: startTime } },
             { gatewayName: gatewayName }
          ]}},
-        {
-          $group: {
-            _id: { $dayOfMonth: "$timestamp" },
-            "Temperature": { "$avg": "$temperature" },
-            "Humidity": { "$avg": "$humidity" }
-          }
-        },
+        { $group: { _id: {"month":{$month :"$timestamp" }, 
+        "day":{ $dayOfMonth: "$timestamp" }},
+         "temperature": { "$avg": "$temperature" }, 
+         "humidity": { "$avg": "$humidity" }}},
         { $addFields: {"gatewayName": gatewayName}},
-        { $sort : { _id : 1} }
+        { $sort:{_id:1}}
       ])
     }
   }
