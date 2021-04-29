@@ -6,9 +6,9 @@ import Config from "./config/config";
 import "uu5chartg01";
 //@@viewOff:imports
 
-const Graph24 = createVisualComponent({
+const Graph = createVisualComponent({
     //@@viewOn:statics
-    displayName: Config.TAG + "Graph24",
+    displayName: Config.TAG + "Graph",
     //@@viewOff:statics
     //@@viewOn:propTypes
     propTypes: {
@@ -50,4 +50,4 @@ console.log("data", data);
     },
 });
 
-export default Graph24;
+export default Graph;

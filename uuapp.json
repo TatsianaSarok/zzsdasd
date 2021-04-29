@@ -1,6 +1,6 @@
 {
   "product": "uu_sweaterweather_maing01",
-  "version": "0.1.9-DEV",
+  "version": "0.2.1-DEV",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -12,6 +12,25 @@
       "appDeploymentUri": "ues:UCL-BT[118500965363973101]:UUN_STUDENTS01_AWE[5f9fea37f439f9fab6743983]:UUN.BOT21SFT03.MAING01[606b48d5f903808d6790cf17]"
     }
   },
-  "uu_sweaterweather_maing01-hi": {},
+  "uu_sweaterweather_maing01-hi": {
+    "namespace": "UuSweaterweatherMainHi",
+    "sourceUri": "https://cdn.plus4u.net/uu-sweaterweather-maing01/%s/uu_sweaterweather_maing01-hi.min.js",
+    "componentList": [
+      {
+        "code": "UuSweaterweatherMainHi.Dashboard",
+        "name": "Dashboard",
+        "tagList": [
+          "UuSweaterweatherMainHi",
+          "Dashboard"
+        ],
+        "docCode": "UuSweaterweatherMainHiDashboard",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweatherMainHi.Dashboard />"
+      }
+    ]
+  },
   "uu_sweaterweather_maing01-server": {}
 }

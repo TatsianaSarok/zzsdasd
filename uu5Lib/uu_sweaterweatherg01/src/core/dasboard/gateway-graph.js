@@ -3,8 +3,8 @@ import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
 import DataProvider from "./data-provider";
-import GraphWeek from "./graph-week";
-import Graph24 from "./graph24";
+import Graph from "./graph";
+
 
 
 //@@viewOff:imports 
@@ -25,32 +25,20 @@ const GatewayGraph = createComponent({
   },
   //@@viewOff:defaultProps
   render({ gatewayName, baseUri, startTime, graphType }) {
-    console.log("All",gatewayName, baseUri, startTime, graphType );
-    // let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
-    //@@viewOn:hooks
-    // const [graphType, setGraphType] = useState('last 24h')
-    // let graphName = ["last 24h", "week", "month"];
-    //@viewOff:hooks
-let last24h = graphType === 'last 24h'
-let week = graphType === 'week'
+    console.log("All",gatewayName, baseUri,startTime, graphType );
+    
     //@@viewOn:private
     //@@viewOff:private
-
     //@@viewOn:render
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
 
- 
-
     function renderReady(data) {
       console.log("gatewayNames", data);
-
       return (  
         <>
-        {last24h? (<Graph24 data={data} />) :
-        week ? <GraphWeek data={data} /> :
-          <div>Graph Month</div>}
+          <Graph data={data}/>
           </>
       );
     }

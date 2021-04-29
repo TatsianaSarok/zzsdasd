@@ -27,15 +27,21 @@ const GatewayList = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ data, baseUri }) {
-    //@@viewOn:hooks
-    const [gatewayName, setGatewayName] = useState('Works');
-    const [graphType, setGraphType] = useState('last 24h')
-    //@@viewOff:hooks
     let location = data.map(value => {
       return value.data.gatewayName
     })
-    let startTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let graphName = ["last 24h", "week", "month"];
+    let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
+    let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+    let d = new Date();
+    d.setMonth(d.getMonth() - 1)
+    let monthTime = d.toISOString()
+    //@@viewOn:hooks
+    const [gatewayName, setGatewayName] = useState('Works');
+    const [graphType, setGraphType] = useState('last 24h')
+    const [startTime, setStartTime] = useState(dayTime)
+    //@@viewOff:hooks
+
     //@@viewOn:private    
     //@@viewOff:private
 
@@ -44,16 +50,15 @@ const GatewayList = createVisualComponent({
     //@@viewOn:interface
 
     //@@viewOn:handlers
-
+    function handleChange(value) {
+      setGraphType(value)
+      value === 'last 24h' ? setStartTime(startTime) :
+        value === 'week' ? setStartTime(weekTime) :
+          setStartTime(monthTime)
+    }
     //@@viewOff:handlers
 
     //@@viewOn:render
-
-    if (data.length === 0) {
-      return <>
-        <UU5.Common.Error content="WTF No data!" />
-      </>
-    }
 
     function Location() {
       return (
@@ -74,12 +79,13 @@ const GatewayList = createVisualComponent({
               <UU5.Forms.SwitchSelector
                 colorSchema="blue"
                 items={graphName?.map(value => ({ value }))}
-                onChange={({ value }) => { setGraphType(value) }}
+                onChange={({ value }) => { handleChange(value) }}
                 value={graphType}
               />
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
-          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} startTime={startTime} graphType={graphType} />
+
+          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} graphType={graphType} startTime={startTime} />
         </>
       )
     }

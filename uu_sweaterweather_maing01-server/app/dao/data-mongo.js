@@ -36,12 +36,12 @@ class DataMongo extends UuObjectDao {
   async dayList(awid, gatewayName, startTime, graphType) {
     startTime = new Date(startTime)
    if(graphType === 'last 24h'){ return await super.aggregate([
-      {
-        $match:
-          awid &&
-          { timestamp: { $gte: startTime } } &&
-          { gatewayName: gatewayName }
-      },
+    {
+      $match:
+     { $and: [
+        { timestamp: { $gte: startTime } },
+        { gatewayName: gatewayName }
+     ]}},
       {
         $group: {
           _id: { $hour: "$timestamp" },
@@ -51,14 +51,14 @@ class DataMongo extends UuObjectDao {
       },
       { $sort : { _id : 1} }
     ])}
-    if (graphType === 'week') {
+    else {
       return await super.aggregate([
         {
           $match:
-            awid &&
-            { timestamp: { $gte: startTime } } &&
+         { $and: [
+            { timestamp: { $gte: startTime } },
             { gatewayName: gatewayName }
-        },
+         ]}},
         {
           $group: {
             _id: { $dayOfMonth: "$timestamp" },

@@ -1,6 +1,6 @@
 {
   "product": "uu_sweaterweatherg01",
-  "version": "0.2.3-beta",
+  "version": "0.2.4-beta",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -111,14 +111,14 @@
         "template": "<UuSweaterweather.Core.GraphWeek />"
       },
       {
-        "code": "UuSweaterweather.Core.Graph24",
-        "name": "Graph24",
+        "code": "UuSweaterweather.Core.Graph",
+        "name": "Graph",
         "tagList": [
           "UuSweaterweather",
           "Core",
-          "Graph24"
+          "Graph"
         ],
-        "docCode": "UuSweaterweatherCoreGraph24",
+        "docCode": "UuSweaterweatherCoreGraph",
         "desc": "",
         "icon": "",
         "imageUri": "",
@@ -347,20 +347,20 @@
         "template": "<UuSweaterweather.Core.Dasboard.GraphWeek />"
       },
       {
-        "code": "UuSweaterweather.Core.Dasboard.Graph24",
-        "name": "Graph24",
+        "code": "UuSweaterweather.Core.Dasboard.Graph",
+        "name": "Graph",
         "tagList": [
           "UuSweaterweather",
           "Core",
           "Dasboard",
-          "Graph24"
+          "Graph"
         ],
-        "docCode": "UuSweaterweatherCoreDasboardGraph24",
+        "docCode": "UuSweaterweatherCoreDasboardGraph",
         "desc": "",
         "icon": "",
         "imageUri": "",
         "uuEccReady": false,
-        "template": "<UuSweaterweather.Core.Dasboard.Graph24 />"
+        "template": "<UuSweaterweather.Core.Dasboard.Graph />"
       },
       {
         "code": "UuSweaterweather.Core.Dasboard.Sweaterweather",

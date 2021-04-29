@@ -12,7 +12,7 @@ const DataProvider = createComponent({
   //@@viewOff:statics
 
   render({ children, baseUri, gatewayName, startTime, graphType }) {
-    console.log(gatewayName);
+    console.log("log", baseUri, gatewayName, startTime, graphType );
     let objectDataValues = useDataObject({
       handlerMap: {
         load: handleListDataLoad,
