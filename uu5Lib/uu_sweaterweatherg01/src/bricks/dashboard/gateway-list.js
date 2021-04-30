@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useState, useEffect, useSession } from "uu5g04-hooks";
-import GatewayGraph from "./gateway-graph";
+import GatewayGraphs from "./gateway-graph";
 import Config from "./config/config";
 import "uu5g04-bricks";
 import "uu5g04-forms";
@@ -26,7 +26,7 @@ const GatewayList = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ data, baseUri }) {
+  render({ data }) {
     let location = data.map(value => {
       return value.data.gatewayName
     })
@@ -85,7 +85,7 @@ const GatewayList = createVisualComponent({
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
 
-          <GatewayGraph gatewayName={gatewayName} baseUri={baseUri} graphType={graphType} startTime={startTime} />
+          <GatewayGraphs gatewayName={gatewayName}  graphType={graphType} startTime={startTime} />
         </>
       )
     }

@@ -39,8 +39,8 @@ class DataAbl {
       WARNINGS.listUnsupportedKeys.code,
       Errors.List.InvalidDtoIn
     );
-    dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-    let dtoOut = await this.dao.dayList(awid, dtoIn.gatewayName, dtoIn.startTime, dtoIn.graphType);
+    //dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
+    let dtoOut = await this.dao.dayList(dtoIn.gatewayName, dtoIn.startTime, dtoIn.graphType);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut; 
@@ -82,21 +82,21 @@ class DataAbl {
     return data;
   }
 
-  async list(awid, dtoIn, session) {
-    let validationResult = this.validator.validate("dataListDtoInType", dtoIn);
-    // hds 2.2, 2.3, A4, A5
-    let uuAppErrorMap = ValidationHelper.processValidationResult(
-      dtoIn,
-      validationResult,
-      WARNINGS.listUnsupportedKeys.code,
-      Errors.List.InvalidDtoIn
-    );
-    dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-    let dtoOut = await this.dao.list(awid, dtoIn.gatewayName);
-    // hds 4
-    dtoOut.uuAppErrorMap = uuAppErrorMap;
-    return dtoOut; 
-   }
+  // async list(awid, dtoIn, session) {
+  //   let validationResult = this.validator.validate("dataListDtoInType", dtoIn);
+  //   // hds 2.2, 2.3, A4, A5
+  //   let uuAppErrorMap = ValidationHelper.processValidationResult(
+  //     dtoIn,
+  //     validationResult,
+  //     WARNINGS.listUnsupportedKeys.code,
+  //     Errors.List.InvalidDtoIn
+  //   );
+  //   dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
+  //   let dtoOut = await this.dao.list(awid, dtoIn.gatewayName);
+  //   // hds 4
+  //   dtoOut.uuAppErrorMap = uuAppErrorMap;
+  //   return dtoOut; 
+  //  }
 
   async create(awid, dtoIn, session) {
       // hds 2, 2.1

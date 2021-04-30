@@ -1,6 +1,6 @@
 {
   "product": "uu_sweaterweatherg01",
-  "version": "0.2.9-beta",
+  "version": "0.3.9-beta",
   "license": "License Commercial",
   "description": {
     "en": "",
@@ -393,6 +393,66 @@
         "imageUri": "",
         "uuEccReady": false,
         "template": "<UuSweaterweather.Core.ManageGateways.AddGatewayForm />"
+      },
+      {
+        "code": "UuSweaterweather.Bricks.Dashboard",
+        "name": "Dashboard",
+        "tagList": [
+          "UuSweaterweather",
+          "Bricks",
+          "Dashboard"
+        ],
+        "docCode": "UuSweaterweatherBricksDashboard",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Bricks.Dashboard />"
+      },
+      {
+        "code": "UuSweaterweather.Bricks.ManageGateways",
+        "name": "ManageGateways",
+        "tagList": [
+          "UuSweaterweather",
+          "Bricks",
+          "ManageGateways"
+        ],
+        "docCode": "UuSweaterweatherBricksManageGateways",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Bricks.ManageGateways />"
+      },
+      {
+        "code": "UuSweaterweather.Bricks.GatewayGraph",
+        "name": "GatewayGraph",
+        "tagList": [
+          "UuSweaterweather",
+          "Bricks",
+          "GatewayGraph"
+        ],
+        "docCode": "UuSweaterweatherBricksGatewayGraph",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Bricks.GatewayGraph />"
+      },
+      {
+        "code": "UuSweaterweather.Bricks.GatewayGraphs",
+        "name": "GatewayGraphs",
+        "tagList": [
+          "UuSweaterweather",
+          "Bricks",
+          "GatewayGraphs"
+        ],
+        "docCode": "UuSweaterweatherBricksGatewayGraphs",
+        "desc": "",
+        "icon": "",
+        "imageUri": "",
+        "uuEccReady": false,
+        "template": "<UuSweaterweather.Bricks.GatewayGraphs />"
       }
     ]
   }

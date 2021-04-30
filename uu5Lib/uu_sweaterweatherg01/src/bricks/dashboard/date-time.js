@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState, useEffect, useSession } from "uu5g04-hooks";
+import { createVisualComponent, useState, useEffect } from "uu5g04-hooks";
 import Config from "./config/config";
 
 

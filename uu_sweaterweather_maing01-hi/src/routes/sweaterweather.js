@@ -19,8 +19,7 @@ const Sweaterweather = createVisualComponent({
     return (
       <>
         <ManageGatewaysButton />
-        <UuSweaterweather.Core.Dasboard.DashboardPage />
-
+        <UuSweaterweather.Bricks.Dashboard/>
       </>
     );
     //@@viewOff:render

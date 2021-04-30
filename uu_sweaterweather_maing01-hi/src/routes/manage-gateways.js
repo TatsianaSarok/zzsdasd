@@ -20,7 +20,7 @@ const ManageGateways = createVisualComponent({
     //@@viewOn:private
   
     return (
-      <UuSweaterweather.Core.ManageGateways.Gateways/>
+      <UuSweaterweather.Bricks.ManageGateways/>
     );
     //@@viewOff:render
   }

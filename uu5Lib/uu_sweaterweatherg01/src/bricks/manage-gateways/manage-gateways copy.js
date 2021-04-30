@@ -8,11 +8,11 @@ import GatewayList from "./gateway-list"
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "Gateways",
+  displayName: Config.TAG + "ManageGateways",
   //@@viewOff:statics
 };
 
-export const Gateways = createVisualComponent({
+export const ManageGateways = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -127,4 +127,4 @@ export const Gateways = createVisualComponent({
   },
 });
 
-export default Gateways;
+export default ManageGateways;

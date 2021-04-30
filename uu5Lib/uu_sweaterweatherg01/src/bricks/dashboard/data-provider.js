@@ -17,7 +17,7 @@ const DataProvider = createComponent({
       handlerMap: {
         load: handleListDataLoad,
       },
-      initialDtoIn: getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType)
+      initialDtoIn: getInitLoadDtoIn(baseUri)
     });
 
     let { state, data, pendingData, errorData, handlerMap } = objectDataValues;

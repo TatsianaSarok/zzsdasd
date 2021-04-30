@@ -1,7 +1,7 @@
 import UU5 from "uu5g04";
 import Config from "../../config/config.js";
 
-const TAG = Config.TAG + "Dasboard.";
+const TAG = Config.TAG + "ManageGateways";
 
 export default {
   ...Config,

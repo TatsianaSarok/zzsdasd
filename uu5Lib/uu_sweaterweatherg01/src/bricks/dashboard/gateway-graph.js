@@ -4,6 +4,7 @@ import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
 import DataProvider from "./data-provider";
 import Graph from "./graph";
+import CurrentMeasurement from "./current-measurement";
 
 
 
@@ -24,9 +25,8 @@ const GatewayGraph = createComponent({
     baseUri: undefined
   },
   //@@viewOff:defaultProps
-  render({ gatewayName, baseUri, startTime, graphType }) {
-    console.log("All",gatewayName, baseUri,startTime, graphType );
-    
+  render(props) {
+  
     //@@viewOn:private
     //@@viewOff:private
     //@@viewOn:render
@@ -38,6 +38,7 @@ const GatewayGraph = createComponent({
       console.log("gatewayNames", data);
       return (  
         <>
+        <CurrentMeasurement data={data} />
           <Graph data={data}/>
           </>
       );
@@ -54,7 +55,7 @@ const GatewayGraph = createComponent({
 
     return (
       <UU5.Bricks.Container>
-        <DataProvider baseUri={baseUri} gatewayName={gatewayName} startTime={startTime} graphType={graphType} >
+        <DataProvider baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" gatewayName={props.gatewayName} startTime={props.startTime} graphType={props.graphType} >
           {({ state, data, errorData }) => {
             switch (state) {
               case "pending":

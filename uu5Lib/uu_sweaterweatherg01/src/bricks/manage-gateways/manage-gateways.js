@@ -1,19 +1,18 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent } from "uu5g04-hooks";
+import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "./gateway-provider";
 import GatewayList from "./gateway-list"
-import GatewayGraph from "./gateway-graph";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "DashboardPage",
+  displayName: Config.TAG + "ManageGateways",
   //@@viewOff:statics
 };
 
-export const DashboardPage = createComponent({
+export const ManageGateways = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -30,21 +29,61 @@ export const DashboardPage = createComponent({
 
   render(props) {
     console.log("props",props.baseUri);
+    const createRef = useRef();
+    const deleteRef = useRef();
+    const updateRef = useRef();
     //@@viewOn:private
     //@@viewOff:private
+
     //@@viewOn:interface
     //@@viewOff:interface
 
+    function showError(content) {
+      UU5.Environment.getPage().getAlertBus().addAlert({
+        content,
+        colorSchema: "red",
+      });
+    }
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
+    async function handleAddGateway(data) {
+      console.log("inputGate", data);
+      try {
+        await createRef.current(data);
+        //return handleHome()
+      } catch {
+        showError(`Create of  failed!`);
+      }
+    }
+
+    async function handleDeleteGateway(data) {
+      console.log("dataid", data);
+      try {
+        await deleteRef.current(data);
+      } catch {
+        showError(`Deletion failed!`);
+      }
+    }
+
+    async function handleUpdateGateway(data) {
+      try {
+        await updateRef.current(data);
+      } catch {
+        showError(`Create  failed!`);
+      }
+    }
 
     function renderReady(data) {
-      let baseUri = props.baseUri
-      console.log("DAta", data );
+      console.log("DAta", data);
       return (
         <>
-          <GatewayList data={data}  baseUri={baseUri}/>
+          <GatewayList
+          data={data} 
+          onAddGateway={handleAddGateway}
+          onDeleteGateway={handleDeleteGateway}
+          onUpdateGateway={handleUpdateGateway}
+          />
         </>
       );
     }
@@ -62,7 +101,10 @@ export const DashboardPage = createComponent({
     return  (
       <UU5.Bricks.Container>
       <GatewayProvider baseUri={props.baseUri}>
-        {({ state, data, errorData }) => {
+        {({ state, data, errorData, handlerMap }) => {
+        createRef.current = handlerMap.create;
+        deleteRef.current = handlerMap.delete;
+        updateRef.current = handlerMap.update;
 
           switch (state) {
             case "pending":
@@ -85,4 +127,4 @@ export const DashboardPage = createComponent({
   },
 });
 
-export default DashboardPage;
+export default ManageGateways;
