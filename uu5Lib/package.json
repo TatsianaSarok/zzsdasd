@@ -1,6 +1,6 @@
 {
   "name": "uu_sweaterweatherg01",
-  "version": "0.3.9-beta",
+  "version": "0.4.0-beta",
   "private": true,
   "workspaces": [
     "uu_sweaterweatherg01"
