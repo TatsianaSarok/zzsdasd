@@ -30,11 +30,16 @@ class DataMongo extends UuObjectDao {
   async list(awid, gatewayName) {
     let filter = { awid };
     gatewayName && (filter.gatewayName = gatewayName);
-    return await super.find(filter);
+    return await super.find(filter)
   }
 
   async dayList(awid, gatewayName, startTime, graphType) {
     startTime = new Date(startTime)
+    let currentTime = await super.aggregate([
+      { $sort: { "timestamp": -1 } },
+      { $limit: 1 },
+      { $project: { temperature: 1, humidity: 1 } }
+    ])
     if (graphType === 'last 24h') {
       return await super.aggregate([
         {
@@ -58,7 +63,7 @@ class DataMongo extends UuObjectDao {
             "humidity": { "$avg": "$humidity" }
           }
         },
-        { $addFields: { "gatewayName": gatewayName } },
+        { $addFields: { "currentTime": currentTime } },
         { $sort: { _id: 1 } }
       ])
     }
@@ -85,6 +90,7 @@ class DataMongo extends UuObjectDao {
           }
         },
         { $addFields: { "gatewayName": gatewayName } },
+        { $addFields: { "currentTime": currentTime } },
         { $sort: { _id: 1 } }
       ])
     }
