@@ -19,7 +19,7 @@ const GatewayProvider = createComponent({
     baseUri: undefined
   },
   //@@viewOff:defaultProps
-  render({ children, baseUri }) {
+  render({ children }) {
     //@@viewOn:hooks
     let listDataValues = useDataList({
       pageSize: 200,
@@ -35,20 +35,20 @@ const GatewayProvider = createComponent({
     let { state, data, newData, pendingData, errorData, handlerMap } = listDataValues;
     //@@viewOff:hooks
     async function handleLoadGatewayList() {
-      return await Calls.listGateway(baseUri)
+      return await Calls.listGateway()
     }
     async function handleCreateGateway(dtoIn) {
-      return await Calls.createGateway(baseUri, dtoIn)
+      return await Calls.createGateway( dtoIn)
     }
     async function handleDeleteGateway(dtoIn) {
       console.log("dtoInProvid", dtoIn);
-      return await Calls.deleteGateway(baseUri, dtoIn)
+      return await Calls.deleteGateway( dtoIn)
     }
     async function handleUpdateGateway(dtoIn) {
-      const dtoOut = await Calls.updateGateway(baseUri, dtoIn)
+      const dtoOut = await Calls.updateGateway( dtoIn)
       console.log("dtoIn",dtoIn);
       console.log("dtoOut",dtoOut);
-      return await Calls.updateGateway(baseUri, dtoIn);
+      return await Calls.updateGateway( dtoIn);
     }
     //@@viewOn:render
     return children({

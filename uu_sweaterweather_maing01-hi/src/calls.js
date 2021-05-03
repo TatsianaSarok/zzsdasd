@@ -64,7 +64,21 @@ let Calls = {
     let commandUri = Calls.getCommandUri("gateway/get");
     return Calls.call("get", commandUri, dtoIn);
   },
-
+  createGateway( dtoIn) {
+    console.log("DtoIn",  dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/create");
+    return Calls.call("post", commandUri, dtoIn);
+  },
+  deleteGateway(dtoIn) {
+    console.log("this is dtoIn ++++++++++++++++++++++",  dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/delete");
+    return Calls.call("post", commandUri, dtoIn);
+  },
+  updateGateway( dtoIn) {
+    console.log("dtoIn", dtoIn);
+    const commandUri = Calls.getCommandUri("gateway/update",  dtoIn);
+    return Calls.call("post", commandUri, dtoIn);
+  },
   /*
   For calling command on specific server, in case of developing client site with already deployed
   server in uuCloud etc. You can specify url of this application (or part of url) in development

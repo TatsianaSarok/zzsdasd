@@ -5,7 +5,6 @@ import GatewayGraphs from "./gateway-graph";
 import Config from "./config/config";
 import "uu5g04-bricks";
 import "uu5g04-forms";
-import DateTime from "./date-time";
 import Css from "./sweaterweather.css";
 //@@viewOff:imports
 
@@ -37,7 +36,7 @@ const GatewayList = createVisualComponent({
     d.setMonth(d.getMonth() - 1)
     let monthTime = d.toISOString()
     //@@viewOn:hooks
-    const [gatewayName, setGatewayName] = useState('Works');
+    const [gatewayName, setGatewayName] = useState(location[0]);
     const [graphType, setGraphType] = useState('last 24h')
     const [startTime, setStartTime] = useState(dayTime)
     //@@viewOff:hooks
@@ -73,7 +72,6 @@ const GatewayList = createVisualComponent({
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
           <UU5.Bricks.Text>{gatewayName}</UU5.Bricks.Text>
-          <DateTime />
           <UU5.Bricks.Row >
             <UU5.Bricks.Column colWidth="m-4">
               <UU5.Forms.SwitchSelector
@@ -92,11 +90,6 @@ const GatewayList = createVisualComponent({
 
     return (
       <>
-        <div
-          className={Css.header()}>
-          Sweaterweather
-        <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
-        </div>
         <Location />
       </>
     );

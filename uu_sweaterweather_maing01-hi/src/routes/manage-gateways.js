@@ -2,7 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
-import * as UuSweaterweather from "uu_sweaterweatherg01";
+import ManageGateway from "../bricks/manage-gateways/manage-gateways"
 
 
 //@@viewOff:imports 
@@ -20,7 +20,7 @@ const ManageGateways = createVisualComponent({
     //@@viewOn:private
   
     return (
-      <UuSweaterweather.Bricks.ManageGateways/>
+      <ManageGateway/>
     );
     //@@viewOff:render
   }

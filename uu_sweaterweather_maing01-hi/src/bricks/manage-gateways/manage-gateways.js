@@ -100,7 +100,7 @@ export const ManageGateways = createVisualComponent({
 
     return  (
       <UU5.Bricks.Container>
-      <GatewayProvider baseUri={props.baseUri}>
+      <GatewayProvider >
         {({ state, data, errorData, handlerMap }) => {
         createRef.current = handlerMap.create;
         deleteRef.current = handlerMap.delete;

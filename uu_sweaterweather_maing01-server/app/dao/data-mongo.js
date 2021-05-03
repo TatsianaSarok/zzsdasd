@@ -78,6 +78,9 @@ class DataMongo extends UuObjectDao {
             ]
           }
         },
+        // {
+        //   $autoBucket
+        // }
         {
           $group: {
             _id: {
