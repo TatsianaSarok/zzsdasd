@@ -15,7 +15,7 @@
       },
       "sys/uuAppWorkspace/initUve": {
         "sysStateList": ["created"],
-        "profileList": ["Public","AwidLicenseOwner"]
+        "profileList": ["Public","AwidLicenseOwner", "Authorities"]
       },
       "gateway/create": {
         "sysStateList": ["active"],
@@ -51,7 +51,7 @@
       },
       "sweaterweatherMain/load": {
         "sysStateList": ["active"],
-        "profileList": ["Public"]
+        "profileList": ["Public","AwidLicenseOwner", "Authorities"]
       },
       "data/delete": {
         "sysStateList": ["active"],

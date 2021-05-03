@@ -17,6 +17,7 @@ export default {
   Profiles: {
     AUTHORITIES: "Authorities",
     EXECUTIVES: "Executives",
-    PUBLIC: "Public"
+    PUBLIC: "Public",
+    AWIDLICENCEOWNER : "AwidLicenceOwner"
   },
 };

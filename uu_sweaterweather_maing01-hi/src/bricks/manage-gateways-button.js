@@ -1,8 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useContext } from "uu5g04-hooks";
 import ManageGateways from "../routes/manage-gateways";
 import Config from "./config/config";
+import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
 
 //@@viewOff:imports
 
@@ -24,14 +25,23 @@ const ManageGatewaysButton = createVisualComponent({
   //@@viewOff:defaultProps
 
   render() {
-
+    const contextData = useContext(SweaterweatherMainContext);
     //@@viewOn:hooks
-
     //@@viewOff:hooks
 
     //@@viewOn:private    
     //@@viewOff:private
+    const isAwidLicenceOwner = contextData?.data?.authorizedProfileList?.some(
+      (profile) => profile === Config.Profiles.AWIDLICENCEOWNER
+    );
+    const isAuthorities = contextData?.data?.authorizedProfileList?.some(
+      (profile) => profile === Config.Profiles.AUTHORITIES
+    );
 
+    function canManage() {
+      return isAwidLicenceOwner 
+     }
+     console.log(canManage());
     //@@viewOn:interface
 
     //@@viewOn:interface
@@ -46,12 +56,16 @@ const ManageGatewaysButton = createVisualComponent({
 
     //@@viewOn:render
     return (
-        <UU5.Bricks.Button
+      <>
+       {canManage() && ( 
+      <UU5.Bricks.Button
         onClick={handleClick}
         bgStyle="transparent"
         colorSchema="blue"
         size="m"
       >ManageGateways</UU5.Bricks.Button>
+       )}
+      </>
     );
     //@@viewOff:render
   },
