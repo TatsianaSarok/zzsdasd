@@ -24,7 +24,7 @@ const CurrentMeasurement = createVisualComponent({
     //@@viewOff:defaultProps
 
     render(data) {
-        console.log("data", data.data[0].currentTime[0]);
+        console.log("data", data?.data[0]?.currentTime[0]);
         //@@viewOn:interface
         //@@viewOn:handlers
 
