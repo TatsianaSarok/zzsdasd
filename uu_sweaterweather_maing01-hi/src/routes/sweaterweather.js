@@ -21,8 +21,7 @@ const Sweaterweather = createVisualComponent({
     return (
       <>
         <ManageGatewaysButton />
-        <div
-          className={Css.header()}>
+        <div className={Css.header()}>
           Sweaterweather
         <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
         </div>

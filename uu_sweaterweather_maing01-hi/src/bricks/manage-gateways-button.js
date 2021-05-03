@@ -41,7 +41,7 @@ const ManageGatewaysButton = createVisualComponent({
     function canManage() {
       return isAwidLicenceOwner 
      }
-     console.log(canManage());
+
     //@@viewOn:interface
 
     //@@viewOn:interface

@@ -24,7 +24,6 @@ const CurrentMeasurement = createVisualComponent({
     //@@viewOff:defaultProps
 
     render(data) {
-        console.log("data", data?.data[0]?.currentTime[0]);
         //@@viewOn:interface
         //@@viewOn:handlers
 
@@ -35,8 +34,8 @@ const CurrentMeasurement = createVisualComponent({
 
         return (
             <>
-           <UU5.Bricks.Text>Current temperature: { data.data[0].currentTime[0].temperature} &#8451;</UU5.Bricks.Text>
-            <UU5.Bricks.Text>Current humidity: { data.data[0].currentTime[0].humidity}% </UU5.Bricks.Text>
+           <UU5.Bricks.Text>Current temperature: { data?.data[0]?.currentTime[0]?.temperature} &#8451;</UU5.Bricks.Text>
+            <UU5.Bricks.Text>Current humidity: { data?.data[0]?.currentTime[0]?.humidity}% </UU5.Bricks.Text>
             </>
         );
         //@@viewOff:render
