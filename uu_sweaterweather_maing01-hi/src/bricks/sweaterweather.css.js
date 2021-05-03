@@ -4,7 +4,6 @@ display: flex;
 justify-content: center;
 `;
 const header = () => Config.Css.css`
-margin-top:-30px;
 display: flex;
 justify-content: center;
 font-size: 30px;
