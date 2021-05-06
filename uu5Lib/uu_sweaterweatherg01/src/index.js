@@ -1,7 +1,15 @@
 import UU5 from "uu5g04";
-import * as Bricks from "./bricks/bricks.js";
-export { Bricks };
-export default { Bricks };
+import Common from "./common/common.js";
+import Data from "./data/data.js";
+
+const UuSweatherweather = {
+  Common,
+  Gateway,
+  Data,
+};
+
+export { Common, Data };
+export default UuSweatherweather;
 
 if (process.env.NODE_ENV !== "test") {
   console.log(
