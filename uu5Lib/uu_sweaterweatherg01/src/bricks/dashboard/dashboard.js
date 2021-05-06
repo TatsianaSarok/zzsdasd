@@ -4,7 +4,7 @@ import { createComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "./gateway-provider";
 import GatewayList from "./gateway-list"
-import GatewayGraph from "./gateway-graph";
+
 //@@viewOff:imports
 
 const STATICS = {
@@ -29,7 +29,7 @@ export const Dashboard = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    console.log("props",props.baseUri);
+    console.log("props",props);
     //@@viewOn:private
     //@@viewOff:private
     //@@viewOn:interface
@@ -41,10 +41,11 @@ export const Dashboard = createComponent({
 
     function renderReady(data) {
       let baseUri = props.baseUri
+      let gatewayName =props.gatewayName
       console.log("DAta", data );
       return (
         <>
-          <GatewayList data={data}  baseUri={baseUri}/>
+          <GatewayList data={data} gatewayName={props.gatewayName} baseUri={baseUri}/>
         </>
       );
     }

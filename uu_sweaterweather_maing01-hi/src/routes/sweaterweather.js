@@ -2,9 +2,9 @@
 import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
-import * as UuSweaterweather from "uu_sweaterweatherg01";
-import ManageGatewaysButton from "../bricks/manage-gateways/manage-gateways-button";
-
+import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-provider";
+import GatewayContext from "../bricks/manage-gateways/gateway-context/gateway-context";
+import Menu from "../bricks/menu";
 //@@viewOff:imports
 
 const Sweaterweather = createVisualComponent({
@@ -19,8 +19,24 @@ const Sweaterweather = createVisualComponent({
     //@@viewOn:render
     return (
       <>
-        <ManageGatewaysButton />
-        <UuSweaterweather.Bricks.Dashboard/>
+        <GatewayProvider>
+          <GatewayContext.Consumer>
+            {({ state, errorData }) => {
+              switch (state) {
+                case "pending":
+                case "pendingNoData":
+                  return <UU5.Bricks.Loading />;
+                case "error":
+                case "errorNoData":
+                  return <UU5.Bricks.Error error={errorData.error} />;
+                case "ready":
+                case "readyNoData":
+                default:
+                  return <Menu />;
+              }
+            }}
+          </GatewayContext.Consumer>
+        </GatewayProvider>
       </>
     );
     //@@viewOff:render

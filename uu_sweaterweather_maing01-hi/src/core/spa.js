@@ -53,7 +53,6 @@ export const Spa = createVisualComponent({
             }}
           </SweaterweatherMainContext.Consumer>
 </SweaterweatherMainProvider>
-
 </SessionProvider>
      
 
