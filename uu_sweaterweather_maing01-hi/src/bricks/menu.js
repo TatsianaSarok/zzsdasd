@@ -82,7 +82,7 @@ const Menu = createComponent({
                     />
                     <br />
            
-                <UuSweaterweather.Data.ListByGateway baseUri="http://localhost:8080/uu-sweaterweather-maing01/22222222222222222222222222222222/" gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
+                <UuSweaterweather.Data.ListByGateway  gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
             </>
         )
         //@@viewOff:render
