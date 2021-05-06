@@ -3,7 +3,8 @@ import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "./gateway-provider";
-import GatewayList from "./gateway-list"
+import Graph from "./graph.js"
+import CLASS_NAMES from "./sweaterweather.css.js"
 
 //@@viewOff:imports
 
@@ -18,59 +19,53 @@ export const Dashboard = createComponent({
 
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string
+    baseUri: UU5.PropTypes.string,
+    gatewayId: UU5.PropTypes.string,
+    graphType: UU5.PropTypes.oneOf(["last 24h", "week", "month"]),
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined
+    baseUri: undefined,
+    gatewayId: "6083ddbc4a956e001b951fe1",
+    graphType: "week",
   },
   //@@viewOff:defaultProps
 
   render(props) {
-    console.log("props",props);
     //@@viewOn:private
     //@@viewOff:private
     //@@viewOn:interface
     //@@viewOff:interface
-
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
 
     function renderReady(data) {
-      let baseUri = props.baseUri
-      let gatewayName =props.gatewayName
-      console.log("DAta", data );
-      return (
-        <>
-          <GatewayList data={data} gatewayName={props.gatewayName} baseUri={baseUri}/>
-        </>
-      );
+      return <UU5.Bricks.Div className={CLASS_NAMES.dashboard()} >
+        <Graph data={data} baseUri={props.baseUri} graphType={props.graphType} />
+      </UU5.Bricks.Div>
     }
 
     function renderError(errorData) {
-      switch (errorData.operation) {
-        case "load":
-        case "loadNext":
-        default:
-          return <UU5.Bricks.Error content="Error happened!" error={errorData.error} errorData={errorData.data} />;
-      }
+      return <UU5.Bricks.Error 
+      content={errorData.reason||'Error happened!'}
+      error={errorData.error}
+      errorData={errorData.data} />
     }
     //@@viewOn:render
-
+    if(!props.gatewayId) return renderError({reason: 'Please pass a getwayId propery!'})
     return  (
-      <UU5.Bricks.Container>
-      <GatewayProvider baseUri={props.baseUri}>
+      <GatewayProvider baseUri={props.baseUri} gatewayId={props.gatewayId} >
         {({ state, data, errorData }) => {
-
           switch (state) {
             case "pending":
             case "pendingNoData":
               return renderLoad();
             case "error":
             case "errorNoData":
+              errorData.reason = `Error happened! Most likely gateway with ${props.gatewayId} id couldn't be fetched.`
               return renderError(errorData);
             case "itemPending":
             case "ready":
@@ -80,7 +75,6 @@ export const Dashboard = createComponent({
           }
         }}
       </GatewayProvider>
-    </UU5.Bricks.Container>
     ) 
     //@@viewOff:render
   },

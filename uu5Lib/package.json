@@ -1,6 +1,6 @@
 {
   "name": "uu_sweaterweatherg01",
-  "version": "0.6.0-beta",
+  "version": "0.6.1-beta",
   "private": true,
   "workspaces": [
     "uu_sweaterweatherg01"
@@ -8,7 +8,6 @@
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-multi; uu_appg01_devkit@4.1.0",
-  "dependencies": {},
   "uuBuildSettings": {},
   "devDependencies": {
     "uu_appg01_devkit": "^4.1.0"

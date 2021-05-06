@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useDataList } from "uu5g04-hooks";
+import { createComponent, useDataObject } from "uu5g04-hooks";
 import Calls from "calls";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -19,21 +19,17 @@ const GatewayProvider = createComponent({
     baseUri: undefined
   },
   //@@viewOff:defaultProps
-  render({ children, baseUri }) {
+  render({ children, baseUri, gatewayId }) {
     //@@viewOn:hooks
-    let listDataValues = useDataList({
-      pageSize: 200,
+    let listDataValues = useDataObject({
+      initialDtoIn: { baseUri, id: gatewayId },
       handlerMap: {
-        load: handleLoad,
+        load: Calls.getGateway,
       }
-
     });
 
     let { state, data, newData, pendingData, errorData, handlerMap } = listDataValues;
     //@@viewOff:hooks
-    async function handleLoad() {
-      return await Calls.listGateway(baseUri)
-    }
     //@@viewOn:render
     return children({
       state,

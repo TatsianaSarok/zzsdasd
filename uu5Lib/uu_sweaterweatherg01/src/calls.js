@@ -1,146 +1,45 @@
-/**
- * Server calls of application client.
- */
- import UU5 from "uu5g04";
  import Plus4U5 from "uu_plus4u5g01";
  
  let Calls = {
-   /** URL containing app base, e.g. "https://uuapp.plus4u.net/vendor-app-subapp/awid/". */
-   APP_BASE_URI: location.protocol + "//" + location.host + UU5.Environment.getAppBasePath(),
-  // isLocal: location.host.match(/localhost:4321/)??false,
+   SERVER_BASE_URI: 'https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/',
  
    async call(method, url, dtoIn, clientOptions) {
      let response = await Plus4U5.Common.Calls.call(method, url, dtoIn, clientOptions);
      return response.data;
    },
  
-   loadDemoContent(dtoIn) {
-     let commandUri = Calls.getCommandUri("loadDemoContent");
-     return Calls.call("get", commandUri, dtoIn);
-   },
- 
-   loadSweaterweatherMain(baseUri, dtoIn) {
-     let commandUri = Calls.getCommandUri("sweaterweatherMain/load", baseUri);
-     return Calls.call("get", commandUri, dtoIn);
-   },
- 
-   loadIdentityProfiles() {
-     let commandUri = Calls.getCommandUri("sys/uuAppWorkspace/initUve");
-     return Calls.call("get", commandUri, {});
-   },
- 
-   initWorkspace(dtoInData) {
-     let commandUri = Calls.getCommandUri("sys/uuAppWorkspace/init");
-     return Calls.call("post", commandUri, dtoInData);
-   },
- 
-   getWorkspace() {
-     let commandUri = Calls.getCommandUri("sys/uuAppWorkspace/get");
-     return Calls.call("get", commandUri, {});
-   },
- 
-   async initAndGetWorkspace(dtoInData) {
-     await Calls.initWorkspace(dtoInData);
-     return await Calls.getWorkspace();
-   },
- 
    listData( dtoIn) {
      let commandUri = Calls.getCommandUri("data/list", dtoIn.baseUri);
-     console.log("return",Calls.call("get", commandUri, dtoIn));
      return Calls.call("get", commandUri, dtoIn);
    },
  
-   async dayList(dtoIn) {
-     console.log("dtoIn", dtoIn);
+   dayList(dtoIn) {
      let commandUri = Calls.getCommandUri("data/dayList", dtoIn.baseUri);
-     console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
-     return await Calls.call("get", commandUri, dtoIn.data);
+     delete dtoIn.baseUri;
+     return Calls.call("get", commandUri, dtoIn);
    },
    deleteData(dtoIn) {
-     console.log("DtoIn", dtoIn);
      let commandUri = Calls.getCommandUri("data/delete");
      return Calls.call("post", commandUri, dtoIn);
    },
-   listGateway( dtoIn) {
-     let commandUri = Calls.getCommandUri("gateway/list",dtoIn.uri);
-     console.log("Poy",Calls.call("get", commandUri) );
-     return Calls.call("get", commandUri);
-   },
    getGateway(dtoIn) {
-     console.log("Get", dtoIn);
-     let commandUri = Calls.getCommandUri("gateway/get");
+     let commandUri = Calls.getCommandUri("gateway/get", dtoIn.baseUri);
+     delete dtoIn.baseUri;
      return Calls.call("get", commandUri, dtoIn);
    },
- 
-   createGateway(baseUri, dtoIn) {
-     console.log("DtoIn", baseUri, dtoIn);
-     let commandUri = Calls.getCommandUri("gateway/create",baseUri);
-     return Calls.call("post", commandUri, dtoIn);
-   },
+
    deleteGateway(baseUri,dtoIn) {
-     console.log("this is dtoIn ++++++++++++++++++++++", baseUri, dtoIn);
      let commandUri = Calls.getCommandUri("gateway/delete", baseUri);
      return Calls.call("post", commandUri, dtoIn);
    },
    updateGateway(baseUri, dtoIn) {
-     console.log("dtoIn", dtoIn);
-     const commandUri = Calls.getCommandUri("gateway/update", baseUri, dtoIn);
+     let commandUri = Calls.getCommandUri("gateway/update", baseUri, dtoIn);
      return Calls.call("post", commandUri, dtoIn);
    },
- 
-   /*
-   For calling command on specific server, in case of developing client site with already deployed
-   server in uuCloud etc. You can specify url of this application (or part of url) in development
-   configuration in *-client/env/development.json, for example:
-    {
-      ...
-      "uu5Environment": {
-        "gatewayUri": "https://uuapp.plus4u.net",
-        "awid": "b9164294f78e4cd51590010882445ae5",
-        "vendor": "uu",
-        "app": "demoappg01",
-        "subApp": "main"
-      }
-    }
-    */
    getCommandUri(aUseCase, baseUri) {
-   //if (Calls.isLocal) return "http://localhost:8080/uu-sweaterweather-maing01/22222222222222222222222222222222/" +aUseCase.replace(/^\/+/, "");
-  //return "https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" + aUseCase.replace(/^\/+/, "");
-     // useCase <=> e.g. "getSomething" or "sys/getSomething"
-     // add useCase to the application base URI
-     //let targetUriStr = Calls.APP_BASE_URI + aUseCase.replace(/^\/+/, "");
-     let properBaseUri = Calls.APP_BASE_URI;
-     if (baseUri) properBaseUri = !baseUri.endsWith("/") ? baseUri.concat("/") : baseUri;
-     
-     let targetUriStr = properBaseUri + aUseCase.replace(/^\/+/, "");
-     
-     // override tid / awid if it's present in environment (use also its gateway in such case)
-     if (process.env.NODE_ENV !== "production") {
-       let env = UU5.Environment;
-       if (env.tid || env.awid || env.vendor || env.app) {
-         let url = Plus4U5.Common.Url.parse(targetUriStr);
-         if (env.tid || env.awid) {
-           if (env.gatewayUri) {
-             let match = env.gatewayUri.match(/^([^:]*):\/\/([^/]+?)(?::(\d+))?(\/|$)/);
-             if (match) {
-               url.protocol = match[1];
-               url.hostName = match[2];
-               url.port = match[3];
-             }
-           }
-           if (env.tid) url.tid = env.tid;
-           if (env.awid) url.awid = env.awid;
-         }
-         if (env.vendor || env.app) {
-           if (env.vendor) url.vendor = env.vendor;
-           if (env.app) url.app = env.app;
-           if (env.subApp) url.subApp = env.subApp;
-         }
-         targetUriStr = url.toString();
-       }
-     }
- 
-     return targetUriStr;
+     if (!baseUri) return Calls.SERVER_BASE_URI + aUseCase.replace(/^\/+/, "");
+     if(!baseUri.match(/^http.?:\/\//)) baseUri = "https://" + baseUri;
+     return baseUri + (!baseUri.match(/\/$/)?"/":"") + aUseCase.replace(/^\/+/, "");
    },
  };
  

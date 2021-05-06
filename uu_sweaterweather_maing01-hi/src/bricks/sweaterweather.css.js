@@ -11,10 +11,16 @@ font-size: 30px;
 const iconSun = () => Config.Css.css`
 color: blue;
 font-size: 35px;
-`; 
+`;
+const graphTypeSwitcher = () => Config.Css.css`
+margin: 0 auto;
+max-width: 200px;
+display: block;
+`;
 
 export default {
     switcher,
     header,
-    iconSun   
+    iconSun,
+    graphTypeSwitcher  
 };

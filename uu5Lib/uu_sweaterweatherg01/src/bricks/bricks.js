@@ -1,2 +1,6 @@
-export * from "./dashboard/dashboard.js";
+import Dashboard from "./dashboard/dashboard.js";
+
+export default {
+    Dashboard,
+}
 

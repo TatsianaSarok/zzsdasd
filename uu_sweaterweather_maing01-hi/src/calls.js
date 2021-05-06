@@ -20,7 +20,6 @@ let Calls = {
 
   loadSweaterweatherMain(dtoIn) {
     let commandUri = Calls.getCommandUri("sweaterweatherMain/load");
-   // let baseUri = Calls.APP_BASE_URI 
     return Calls.call("get", commandUri, dtoIn );
   },
 
@@ -44,12 +43,6 @@ let Calls = {
     return await Calls.getWorkspace();
   },
 
-  async dayList(dtoIn) {
-    console.log("dtoIn", dtoIn);
-    let commandUri = Calls.getCommandUri("data/dayList", dtoIn.baseUri);
-    console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
-    return await Calls.call("get", commandUri, dtoIn.data);
-  },
   deleteData(dtoIn) {
     console.log("DtoIn", dtoIn);
     let commandUri = Calls.getCommandUri("data/delete");
@@ -71,13 +64,11 @@ let Calls = {
     return Calls.call("post", commandUri, dtoIn);
   },
   deleteGateway(dtoIn) {
-    console.log("this is dtoIn ++++++++++++++++++++++",  dtoIn);
     let commandUri = Calls.getCommandUri("gateway/delete");
     return Calls.call("post", commandUri, dtoIn);
   },
   updateGateway( dtoIn) {
-    console.log("dtoIn", dtoIn);
-    const commandUri = Calls.getCommandUri("gateway/update",  dtoIn);
+    let commandUri = Calls.getCommandUri("gateway/update",  dtoIn);
     return Calls.call("post", commandUri, dtoIn);
   },
   /*

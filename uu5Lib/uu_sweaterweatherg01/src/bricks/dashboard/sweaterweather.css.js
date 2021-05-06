@@ -1,21 +1,16 @@
 import Config from "./config/config";
-const switcher = () => Config.Css.css`
-display: flex;
-justify-content: center;
+
+const dashboard = () => Config.Css.css`
+max-width: 900px;
+margin: 0 auto;
+padding: 1.5em;
+position: relative;
+.loader-custom {
+    position: absolute;
+    right: 0; 
+}
 `;
-const header = () => Config.Css.css`
-margin-top:-30px;
-display: flex;
-justify-content: center;
-font-size: 30px;
-`;  
-const iconSun = () => Config.Css.css`
-color: blue;
-font-size: 35px;
-`; 
 
 export default {
-    switcher,
-    header,
-    iconSun   
+    dashboard,  
 };

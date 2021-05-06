@@ -5,8 +5,7 @@ import GatewayContext from './manage-gateways/gateway-context/gateway-context';
 import ManageGateways from "../routes/manage-gateways";
 import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
 import Css from "../bricks/sweaterweather.css";
-import DateTime from "../bricks/date-time";
-import * as UuSweaterweather from "uu_sweaterweatherg01";
+import UU5Sweaterweather from "uu_sweaterweatherg01";
 //@@viewOff:imports
 
 const Menu = createComponent({
@@ -16,20 +15,15 @@ const Menu = createComponent({
 
     render() {
         //@@viewOn:hooks
-        let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
-        let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-        let d = new Date();
-        d.setMonth(d.getMonth() - 1)
-        let monthTime = d.toISOString()
-
+    
         let graphName = ["last 24h", "week", "month"];
-        const [startTime, setStartTime] = useState(dayTime)
         const [graphType, setGraphType] = useState('last 24h')
         let contextGateway = useContext(GatewayContext)
+        console.log(contextGateway);
         const contextData = useContext(SweaterweatherMainContext);
         const [gatewayName, setGatewayName] = useState("Works"/*contextGateway?.data?.itemList[0].gatewayName*/)
         //@@viewOff:hooks
-
+        console.log(graphType);
         //@@viewOn:handlers
         const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
             (profile) => profile === Config.Profiles.AWIDLISENCEOWNER
@@ -47,11 +41,7 @@ const Menu = createComponent({
         }
         function handleChange(value) {
             setGraphType(value)
-            value === 'last 24h' ? setStartTime(dayTime) :
-                value === 'week' ? setStartTime(weekTime) :
-                    setStartTime(monthTime)
         }
-        console.log("GatNam", gatewayName);
         //@@viewOff:handlers
         return (
             <>
@@ -71,18 +61,17 @@ const Menu = createComponent({
                     Sweaterweather
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
-
-                <DateTime gatewayName={gatewayName}/>
                
                     <UU5.Bricks.SwitchSelector
-                        bgStyle="filled"
+                        bgStyle="transparent"
                         items={graphName?.map(value => ({ value }))}
                         onChange={({ value }) => { handleChange(value) }}
                         value={graphType}
+                        className={Css.graphTypeSwitcher()}
                     />
                     <br />
            
-                <UuSweaterweather.Data.ListByGateway baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
+                <UU5Sweaterweather.Bricks.Dashboard baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" graphType={graphType} />
             </>
         )
         //@@viewOff:render

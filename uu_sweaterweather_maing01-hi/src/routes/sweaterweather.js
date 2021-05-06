@@ -5,6 +5,7 @@ import Config from "./config/config";
 import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-provider";
 import GatewayContext from "../bricks/manage-gateways/gateway-context/gateway-context";
 import Menu from "../bricks/menu";
+import DateTime from "../bricks/date-time";
 //@@viewOff:imports
 
 const Sweaterweather = createVisualComponent({
@@ -19,6 +20,7 @@ const Sweaterweather = createVisualComponent({
     //@@viewOn:render
     return (
       <>
+        <DateTime />
         <GatewayProvider>
           <GatewayContext.Consumer>
             {({ state, errorData }) => {
