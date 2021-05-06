@@ -11,9 +11,9 @@
   "imageUri": "",
   "devkit": {
     "development": {
-      "appBoxLocationUri": "----- VALUE REQUIRED -----",
+      "appBoxLocationUri": "ues:UCL-BT:OPR.RSP/APPBOXES",
       "appDeploymentUri": null,
-      "resourcePoolUri": "----- VALUE REQUIRED -----"
+      "resourcePoolUri": "ues:UCL-BT:UUN_STUDENTS01_AWE"
     }
   },
   "uu_sweaterweather_maing01-hi": {
@@ -21,13 +21,14 @@
     "sourceUri": "https://cdn.plus4u.net/uu-sweaterweather-maing01/%s/uu_sweaterweather_maing01-hi.min.js",
     "componentList": [
       {
-        "code": "UuSweaterweatherMainHi.Dashboard",
+        "code": "UuSweaterweatherMainHi.Data.ListByGateway",
         "name": "Dashboard",
         "tagList": [
           "UuSweaterweatherMainHi",
-          "Dashboard"
+          "Data",
+          "ListByGateway"
         ],
-        "docCode": "UuSweaterweatherMainHiDashboard",
+        "docCode": "UuSweaterweather.Data.ListByGateway",
         "desc": "",
         "icon": "",
         "imageUri": "",
