@@ -27,7 +27,7 @@ const Menu = createComponent({
         const [graphType, setGraphType] = useState('last 24h')
         let contextGateway = useContext(GatewayContext)
         const contextData = useContext(SweaterweatherMainContext);
-        const [gatewayName, setGatewayName] = useState(contextGateway?.data?.itemList[0].gatewayName)
+        const [gatewayName, setGatewayName] = useState("Works"/*contextGateway?.data?.itemList[0].gatewayName*/)
         //@@viewOff:hooks
 
         //@@viewOn:handlers

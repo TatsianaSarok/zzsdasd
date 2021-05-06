@@ -28,7 +28,7 @@ export const ListView = createComponent({
 
   render(props) {
 
-    let data = props.dataList?.map(item => { return item.data })
+    let data = props?.dataList?.map(item => { return item.data })
     //@@viewOn:private
     //@@viewOff:private
     //@@viewOn:interface
@@ -39,7 +39,7 @@ export const ListView = createComponent({
     return (
 <>
         {props.dataList?.length > 0 ? <UU5.SimpleChart.LineChart
-          data={[data.map(value => {
+          data={[data?.map(value => {
 
             let dateObj = new Date(value._id.year.toString() + "-" +
               value._id.month.toString() + "-" + value._id.day.toString());

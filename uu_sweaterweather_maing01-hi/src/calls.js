@@ -44,10 +44,11 @@ let Calls = {
     return await Calls.getWorkspace();
   },
 
-  listData(dtoIn) {
-    console.log("List", dtoIn);
-    let commandUri = Calls.getCommandUri("data/list");
-    return Calls.call("get", commandUri, dtoIn);
+  async dayList(dtoIn) {
+    console.log("dtoIn", dtoIn);
+    let commandUri = Calls.getCommandUri("data/dayList", dtoIn.baseUri);
+    console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
+    return await Calls.call("get", commandUri, dtoIn.data);
   },
   deleteData(dtoIn) {
     console.log("DtoIn", dtoIn);
