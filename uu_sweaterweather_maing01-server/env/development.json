@@ -3,7 +3,7 @@
   "uuSubAppDataStoreMap": {
     "primary": "mongodb://127.0.0.1:27017/sweaterweatherMainPrimary"
   },
-  "asid_license_owner_list": ["24-9575-1"],
+  "asid_license_owner_list": ["24-9525-1"],
   "asid": "11111111111111111111111111111111",
   "log_level": "INFO"
 }
