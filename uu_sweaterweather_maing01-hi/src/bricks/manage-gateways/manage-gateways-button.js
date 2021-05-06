@@ -7,6 +7,9 @@ import SweaterweatherMainContext from "../sweaterweather-main-context";
 import DateTime from "../date-time";
 import Css from "../sweaterweather.css";
 import Menu from '../menu';
+import GatewayProvider from "./gateway-context/gateway-provider";
+import GatewayContext from "./gateway-context/gateway-context";
+
 //@@viewOff:imports
 
 const ManageGatewaysButton = createVisualComponent({
@@ -30,7 +33,7 @@ const ManageGatewaysButton = createVisualComponent({
     const contextData = useContext(SweaterweatherMainContext);
     //@@viewOn:hooks
     //@@viewOff:hooks
-//console.log("ContextData", contextData?.data?.authorizedProfileList);
+    //console.log("ContextData", contextData?.data?.authorizedProfileList);
     //@@viewOn:private    
     //@@viewOff:private
     const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
@@ -41,7 +44,7 @@ const ManageGatewaysButton = createVisualComponent({
     );
 
     function canManage() {
-      return isAuthorities  || isAwidLisenceOwner
+      return isAuthorities || isAwidLisenceOwner
     }
 
     //@@viewOn:interface
@@ -67,7 +70,25 @@ const ManageGatewaysButton = createVisualComponent({
             size="m"
           >ManageGateways</UU5.Bricks.Button>
         )}
-        <Menu/>
+        <GatewayProvider>
+          <GatewayContext.Consumer>
+            {({ state, errorData }) => {
+              switch (state) {
+                case "pending":
+                case "pendingNoData":
+                  return <UU5.Bricks.Loading />;
+                case "error":
+                case "errorNoData":
+                  return <UU5.Bricks.Error error={errorData.error} />;
+                case "ready":
+                case "readyNoData":
+                default:
+                  return <Menu />;
+              }
+            }}
+          </GatewayContext.Consumer>
+        </GatewayProvider>
+
         <div className={Css.header()}>
           Sweaterweather
         <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
