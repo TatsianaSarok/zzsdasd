@@ -4,7 +4,7 @@ const DataAbl = require("../../abl/data-abl.js");
 class DataController {
 
   dayList(ucEnv) {
-    return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
+    return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }
 
   delete(ucEnv) {

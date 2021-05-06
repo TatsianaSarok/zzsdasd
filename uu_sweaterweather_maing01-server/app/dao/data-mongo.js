@@ -19,13 +19,13 @@ class DataMongo extends UuObjectDao {
     return await super.findOne({ awid, id });
   }
 
-  // async delete(awid, id) {
-  //   await super.deleteOne({ awid, id });
-  // }
-
   async delete(awid, id) {
-    await super.deleteMany({});
+    await super.deleteOne({ awid, id });
   }
+
+  // async delete(awid, id) {
+  //   await super.deleteMany({});
+  // }
 
   async list(awid, gatewayName) {
     let filter = { awid };
@@ -37,6 +37,7 @@ class DataMongo extends UuObjectDao {
     startTime = new Date(startTime)
     if (graphType === 'last 24h') {
       return await super.aggregate([
+
         {
           $match:
           {
@@ -52,7 +53,10 @@ class DataMongo extends UuObjectDao {
               "year": { $year: "$timestamp" },
               "month": { $month: "$timestamp" },
               "day": { $dayOfMonth: "$timestamp" },
-              "hour": { $hour: "$timestamp" }
+              
+                $cond: { if: { $gte: [ graphType, "last 24h" ] }, then: {"hour": { $hour: "$timestamp" }} , else: null },
+              
+             
             },
             "temperature": { "$avg": "$temperature" },
             "humidity": { "$avg": "$humidity" }

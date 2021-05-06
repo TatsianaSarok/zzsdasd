@@ -5,6 +5,7 @@ import Config from "./config/config";
 import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-provider";
 import GatewayContext from "../bricks/manage-gateways/gateway-context/gateway-context";
 import Menu from "../bricks/menu";
+
 //@@viewOff:imports
 
 const Sweaterweather = createVisualComponent({
@@ -31,8 +32,8 @@ const Sweaterweather = createVisualComponent({
                   return <UU5.Bricks.Error error={errorData.error} />;
                 case "ready":
                 case "readyNoData":
-                default:
-                  return <Menu />;
+                 default:
+                   return <Menu />;
               }
             }}
           </GatewayContext.Consumer>

@@ -23,11 +23,11 @@ const Menu = createComponent({
         let monthTime = d.toISOString()
 
         let graphName = ["last 24h", "week", "month"];
-        const [startTime, setStartTime] = useState(dayTime)
+        const [startTime, setStartTime] = useState(startTime)
         const [graphType, setGraphType] = useState('last 24h')
         let contextGateway = useContext(GatewayContext)
         const contextData = useContext(SweaterweatherMainContext);
-        const [gatewayName, setGatewayName] = useState("Works"/*contextGateway?.data?.itemList[0].gatewayName*/)
+        const [gatewayName, setGatewayName] = useState(contextGateway?.data?.itemList[0].gatewayName)
         //@@viewOff:hooks
 
         //@@viewOn:handlers
@@ -49,15 +49,14 @@ const Menu = createComponent({
             setGraphType(value)
             value === 'last 24h' ? setStartTime(dayTime) :
                 value === 'week' ? setStartTime(weekTime) :
-                    setStartTime(monthTime)
+                    setStartTime(monthTime);
+
         }
         console.log("GatNam", gatewayName);
-        //@@viewOff:handlers
-        return (
-            <>
+        function DropdownMenu() {
+            return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {contextGateway?.data?.itemList?.map(item => {
-
                         return (
                             <UU5.Bricks.Dropdown.Item label={item.gatewayName}
                                 onClick={() => setGatewayName(item.gatewayName)} />
@@ -66,14 +65,12 @@ const Menu = createComponent({
                     {canManage() && (<UU5.Bricks.Dropdown.Item divider />)}
                     {canManage() && (<UU5.Bricks.Dropdown.Item label="Manage gateways" onClick={handleClick} />)}
                 </UU5.Bricks.Dropdown>
+            )
+        }
 
-                <div className={Css.header()}>
-                    Sweaterweather
-                  <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
-                </div>
-
-                <DateTime gatewayName={gatewayName}/>
-               
+        function Switch() {
+            return (
+                <>
                     <UU5.Bricks.SwitchSelector
                         bgStyle="filled"
                         items={graphName?.map(value => ({ value }))}
@@ -81,8 +78,21 @@ const Menu = createComponent({
                         value={graphType}
                     />
                     <br />
-           
-                <UuSweaterweather.Data.ListByGateway baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
+                    <UuSweaterweather.Data.ListByGateway baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+                        gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
+                </>
+            )
+        }
+        //@@viewOff:handlers
+        return (
+            <>
+                <DropdownMenu />
+                <div className={Css.header()}>
+                    Sweaterweather
+                  <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
+                </div>
+                <DateTime gatewayName={gatewayName} />
+                <Switch />
             </>
         )
         //@@viewOff:render

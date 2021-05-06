@@ -120,6 +120,7 @@ export const ManageGateways = createVisualComponent({
               return renderReady(data);
           }
         }}
+        
       </GatewayProvider>
     </UU5.Bricks.Container>
     ) 

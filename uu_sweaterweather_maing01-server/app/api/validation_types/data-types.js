@@ -23,7 +23,7 @@ const dataDayListDtoInType = shape({
 })
 
 const dataDeleteDtoInType = shape({
-    // id: string(50).isRequired()
+     id: string(50).isRequired()
 });
 
 const dataGetDtoInType = shape({
