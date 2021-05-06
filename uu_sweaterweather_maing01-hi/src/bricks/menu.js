@@ -13,6 +13,17 @@ const Menu = createComponent({
   render() {
     let contextData= useContext(GatewayContext)
     console.log("Context", contextData?.data?.itemList);
+    <UU5.Bricks.Dropdown
+  label="transparent"
+  bgStyle="transparent"
+  size="l"
+  colorSchema="green"
+>
+  <UU5.Bricks.Dropdown.Item label="{user name}" header />
+  <UU5.Bricks.Dropdown.Item label="Profile" />
+  <UU5.Bricks.Dropdown.Item label="Settings" />
+  <UU5.Bricks.Dropdown.Item label="Logout" />
+</UU5.Bricks.Dropdown>
     //@@viewOn:hooks
    return(
        <div>Lala</div>
