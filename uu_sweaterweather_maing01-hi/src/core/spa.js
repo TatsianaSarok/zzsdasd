@@ -7,6 +7,9 @@ import Config from "./config/config.js";
 import SpaAuthenticated from "./spa-authenticated.js";
 import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
 import SweaterweatherMainProvider from "../bricks/sweaterweather-main-provider";
+import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-provider";
+import GatewayContext from "../bricks/manage-gateways/gateway-context/gateway-context";
+import Menu from "../bricks/menu.js";
 //@@viewOff:imports
 
 const STATICS = {
@@ -52,6 +55,24 @@ export const Spa = createVisualComponent({
             }}
           </SweaterweatherMainContext.Consumer>
 </SweaterweatherMainProvider>
+<GatewayProvider>
+          <GatewayContext.Consumer>
+          {({ state, errorData }) => {
+              switch (state) {
+                case "pending":
+                case "pendingNoData":
+                  return <UU5.Bricks.Loading />;
+                case "error":
+                case "errorNoData":
+                  return <UU5.Bricks.Error error={errorData.error} />;
+                case "ready":
+                case "readyNoData":
+                default:
+                  return    <Menu {...props} />;
+              }
+            }}
+          </GatewayContext.Consumer>
+</GatewayProvider>
 </SessionProvider>
      
 

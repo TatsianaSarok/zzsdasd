@@ -3,7 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
-import ManageGatewaysButton from "../bricks/manage-gateways-button";
+import ManageGatewaysButton from "../bricks/manage-gateways/manage-gateways-button";
 
 //@@viewOff:imports
 

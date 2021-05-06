@@ -1,11 +1,12 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createVisualComponent, useContext } from "uu5g04-hooks";
-import ManageGateways from "../routes/manage-gateways";
+import ManageGateways from "../../routes/manage-gateways";
 import Config from "./config/config";
-import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
-import DateTime from "../bricks/date-time";
-import Css from "./sweaterweather.css";
+import SweaterweatherMainContext from "../sweaterweather-main-context";
+import DateTime from "../date-time";
+import Css from "../sweaterweather.css";
+import Menu from '../menu';
 //@@viewOff:imports
 
 const ManageGatewaysButton = createVisualComponent({
@@ -66,6 +67,7 @@ const ManageGatewaysButton = createVisualComponent({
             size="m"
           >ManageGateways</UU5.Bricks.Button>
         )}
+        <Menu/>
         <div className={Css.header()}>
           Sweaterweather
         <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />

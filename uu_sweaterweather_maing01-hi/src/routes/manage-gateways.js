@@ -2,7 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent, useRef } from "uu5g04-hooks";
 import Config from "./config/config";
-import ManageGateway from "../bricks/manage-gateways/manage-gateways"
+import ManageGateway from "../bricks/manage-gateways/manage-gateways";
 
 
 //@@viewOff:imports 
