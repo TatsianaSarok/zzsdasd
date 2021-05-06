@@ -29,18 +29,18 @@ const ManageGatewaysButton = createVisualComponent({
     const contextData = useContext(SweaterweatherMainContext);
     //@@viewOn:hooks
     //@@viewOff:hooks
-console.log("ContextData", contextData);
+//console.log("ContextData", contextData?.data?.authorizedProfileList);
     //@@viewOn:private    
     //@@viewOff:private
-    const isAwidLicenceOwner = contextData?.data?.authorizedProfileList?.some(
-      (profile) => profile === Config.Profiles.AWIDLICENCEOWNER
+    const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
+      (profile) => profile === Config.Profiles.AWIDLISENCEOWNER
     );
     const isAuthorities = contextData?.data?.authorizedProfileList?.some(
       (profile) => profile === Config.Profiles.AUTHORITIES
     );
 
     function canManage() {
-      return isAuthorities || isAwidLicenceOwner
+      return isAuthorities  || isAwidLisenceOwner
     }
 
     //@@viewOn:interface

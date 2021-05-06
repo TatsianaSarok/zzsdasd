@@ -18,6 +18,6 @@ export default {
     AUTHORITIES: "Authorities",
     EXECUTIVES: "Executives",
     PUBLIC: "Public",
-    AWIDLICENCEOWNER : "AwidLicenceOwner"
+    AWIDLISENCEOWNER : "AwidLicenseOwner"
   },
 };
