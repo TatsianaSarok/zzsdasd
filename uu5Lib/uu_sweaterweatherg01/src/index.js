@@ -4,8 +4,7 @@ import Data from "./data/data.js";
 
 const UuSweatherweather = {
   Common,
-  Gateway,
-  Data,
+  Data
 };
 
 export { Common, Data };

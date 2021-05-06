@@ -28,6 +28,7 @@ export const ListByGatewayLoader = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    console.log("prop", props);
     //@@viewOn:hooks
     const dataDataList = useDataList({
       handlerMap: {

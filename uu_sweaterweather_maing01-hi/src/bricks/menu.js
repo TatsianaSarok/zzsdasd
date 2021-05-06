@@ -16,9 +16,18 @@ const Menu = createComponent({
 
     render() {
         //@@viewOn:hooks
+        let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
+        let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
+        let d = new Date();
+        d.setMonth(d.getMonth() - 1)
+        let monthTime = d.toISOString()
+
+        let graphName = ["last 24h", "week", "month"];
+        const [startTime, setStartTime] = useState(dayTime)
+        const [graphType, setGraphType] = useState('last 24h')
         let contextGateway = useContext(GatewayContext)
         const contextData = useContext(SweaterweatherMainContext);
-        let [gatewayName, setGatewayName] = useState(contextGateway?.data?.itemList[0].gatewayName)
+        const [gatewayName, setGatewayName] = useState(contextGateway?.data?.itemList[0].gatewayName)
         //@@viewOff:hooks
 
         //@@viewOn:handlers
@@ -36,6 +45,12 @@ const Menu = createComponent({
                 component: <ManageGateways />,
             });
         }
+        function handleChange(value) {
+            setGraphType(value)
+            value === 'last 24h' ? setStartTime(dayTime) :
+                value === 'week' ? setStartTime(weekTime) :
+                    setStartTime(monthTime)
+        }
         console.log("GatNam", gatewayName);
         //@@viewOff:handlers
         return (
@@ -51,12 +66,23 @@ const Menu = createComponent({
                     {canManage() && (<UU5.Bricks.Dropdown.Item divider />)}
                     {canManage() && (<UU5.Bricks.Dropdown.Item label="Manage gateways" onClick={handleClick} />)}
                 </UU5.Bricks.Dropdown>
+
                 <div className={Css.header()}>
                     Sweaterweather
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
-                <DateTime />
-                <UuSweaterweather.Bricks.Dashboard gatewayName={gatewayName} />
+
+                <DateTime gatewayName={gatewayName}/>
+               
+                    <UU5.Bricks.SwitchSelector
+                        bgStyle="filled"
+                        items={graphName?.map(value => ({ value }))}
+                        onChange={({ value }) => { handleChange(value) }}
+                        value={graphType}
+                    />
+                    <br />
+           
+                <UuSweaterweather.Bricks.Dashboard gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
             </>
         )
         //@@viewOff:render
