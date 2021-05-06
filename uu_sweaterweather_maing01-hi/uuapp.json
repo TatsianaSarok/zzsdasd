@@ -22,7 +22,7 @@
     "componentList": [
       {
         "code": "UuSweaterweatherMainHi.Data.ListByGateway",
-        "name": "Dashboard",
+        "name": "ListByGateway",
         "tagList": [
           "UuSweaterweatherMainHi",
           "Data",
@@ -33,7 +33,7 @@
         "icon": "",
         "imageUri": "",
         "uuEccReady": false,
-        "template": "<UuSweaterweatherMainHi.Dashboard />"
+        "template": "<UuSweaterweatherMainHi.ListByGateway />"
       }
     ]
   }
