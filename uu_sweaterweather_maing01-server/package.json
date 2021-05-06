@@ -1,7 +1,6 @@
 {
   "name": "uu_sweaterweather_maing01-server",
-  "version": "0.5.6-DEV",
-  "proxy": "http://localhost:4321",
+  "version": "0.5.7-DEV",
   "description": "",
   "license": "License Commercial",
   "spec": "nodejs-app; uu_appg01_devkit@4.0.1",
@@ -45,5 +44,6 @@
   ],
   "prettier": {
     "printWidth": 120
-  }
+  },
+  "proxy": "http://localhost:4321"
 }
