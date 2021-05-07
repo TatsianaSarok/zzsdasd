@@ -29,7 +29,7 @@ const ROUTES = {
   home: { component: <Home /> },
   about: { component: <About /> },
   sweaterweather: { component: <Sweaterweather /> },
-  //managegateways: { component: <ManageGateways /> },
+  managegateways: { component: <ManageGateways /> },
   "sys/uuAppWorkspace/initUve": { component: <InitAppWorkspace /> },
   controlPanel: { component: <ControlPanel /> },
 };

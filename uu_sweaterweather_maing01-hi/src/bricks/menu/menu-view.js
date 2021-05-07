@@ -1,20 +1,19 @@
 //@@viewOn:imports
 import { createComponent, useContext, useState } from "uu5g04-hooks";
-import Config from "./config/config";
-import GatewayContext from './manage-gateways/gateway-context/gateway-context';
-import ManageGateways from "../routes/manage-gateways";
-import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
-import Css from "../bricks/sweaterweather.css";
-import DateTime from "../bricks/date-time";
+import Config from "../config/config";
+import ManageGateways from "../../routes/manage-gateways";
+import SweaterweatherMainContext from "../sweaterweather-main-context";
+import Css from "../sweaterweather.css";
+import DateTime from "./date-time";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
 //@@viewOff:imports
 
-const Menu = createComponent({
+const MenuView = createComponent({
     //@@viewOn:statics
-    displayName: Config.TAG + "Menu",
+    displayName: Config.TAG + "MenuView",
     //@@viewOff:statics
 
-    render() {
+    render(props) {
         //@@viewOn:hooks
         let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
         let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
@@ -25,9 +24,11 @@ const Menu = createComponent({
         let graphName = ["last 24h", "week", "month"];
         const [startTime, setStartTime] = useState(startTime)
         const [graphType, setGraphType] = useState('last 24h')
-        let contextGateway = useContext(GatewayContext)
+        console.log("ContextMenu", props?.dataList?.map(value => {
+            return value.data.gatewayName
+        }));
         const contextData = useContext(SweaterweatherMainContext);
-        const [gatewayName, setGatewayName] = useState(contextGateway?.data?.itemList[0].gatewayName)
+        const [gatewayName, setGatewayName] = useState(props?.dataList[0].data.gatewayName)
         //@@viewOff:hooks
 
         //@@viewOn:handlers
@@ -42,7 +43,7 @@ const Menu = createComponent({
         }
         function handleClick() {
             return UU5.Environment.getRouter().setRoute({
-                component: <ManageGateways />,
+                component: <ManageGateways />, url: { useCase: "managegateways" }
             });
         }
         function handleChange(value) {
@@ -56,10 +57,10 @@ const Menu = createComponent({
         function DropdownMenu() {
             return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
-                    {contextGateway?.data?.itemList?.map(item => {
+                    {props?.dataList?.map(item => {
                         return (
-                            <UU5.Bricks.Dropdown.Item label={item.gatewayName}
-                                onClick={() => setGatewayName(item.gatewayName)} />
+                            <UU5.Bricks.Dropdown.Item label={item.data.gatewayName}
+                                onClick={() => setGatewayName(item.data.gatewayName)} />
                         )
                     })}
                     {canManage() && (<UU5.Bricks.Dropdown.Item divider />)}
@@ -84,6 +85,7 @@ const Menu = createComponent({
             )
         }
         //@@viewOff:handlers
+        //@@viewOn:render
         return (
             <>
                 <DropdownMenu />
@@ -99,4 +101,4 @@ const Menu = createComponent({
     }
 });
 
-export default Menu;
+export default MenuView;
