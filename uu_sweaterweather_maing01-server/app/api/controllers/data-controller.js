@@ -3,6 +3,10 @@ const DataAbl = require("../../abl/data-abl.js");
 
 class DataController {
 
+  getCurrent(ucEnv) {
+    return DataAbl.getCurrent(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+  }
+
   dayList(ucEnv) {
     return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }

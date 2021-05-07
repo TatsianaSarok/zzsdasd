@@ -15,8 +15,17 @@ class DataMongo extends UuObjectDao {
     return await super.findOneAndUpdate(filter, gateway, "NONE");
   }
 
-  async get(awid, id) {
+  async get(awid) {
     return await super.findOne({ awid, id });
+  }
+
+  async getCurrent() {
+    return await super.aggregate( [
+        { $sort : { timestamp : -1 } },
+       { $group: {
+     _id: "current",
+     first: { $first: "$$ROOT" }}},
+      ]);
   }
 
   async delete(awid, id) {

@@ -70,6 +70,11 @@
         "realization": "api/controllers/DataController.dayList",
         "httpMethod": "GET",
         "type": "CMD"
+      },
+      "data/getCurrent": {
+        "realization": "api/controllers/DataController.getCurrent",
+        "httpMethod": "GET",
+        "type": "CMD"
       }
     }
   }

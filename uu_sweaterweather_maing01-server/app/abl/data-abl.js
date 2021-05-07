@@ -30,7 +30,22 @@ class DataAbl {
     this.dao = DaoFactory.getDao("data");
   }
 
-  async dayList(awid, dtoIn, session) {
+  async getCurrent(awid, dtoIn) {
+    let validationResult = this.validator.validate("dataGetCurrentDtoInType", dtoIn);
+    // hds 2.2, 2.3, A4, A5
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.listUnsupportedKeys.code,
+      Errors.List.InvalidDtoIn
+    );
+    let dtoOut = await this.dao.getCurrent();
+    // hds 4
+    dtoOut.uuAppErrorMap = uuAppErrorMap;
+    return dtoOut; 
+  }
+
+  async dayList( dtoIn) {
     let validationResult = this.validator.validate("dataDayListDtoInType", dtoIn);
     // hds 2.2, 2.3, A4, A5
     let uuAppErrorMap = ValidationHelper.processValidationResult(

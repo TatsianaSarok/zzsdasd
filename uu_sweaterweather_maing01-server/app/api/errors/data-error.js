@@ -67,7 +67,13 @@ const DayList = {
   
 };
 
+const GetCurrent = {
+  UC_CODE: `${DATA_ERROR_PREFIX}getCurrent/`,
+  
+};
+
 module.exports = {
+  GetCurrent,
   DayList,
   Delete,
   Get,

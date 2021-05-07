@@ -29,3 +29,7 @@ const dataDeleteDtoInType = shape({
 const dataGetDtoInType = shape({
     id: id().isRequired()
 })
+
+const dataGetCurrentDtoInType = shape({
+
+})
