@@ -85,13 +85,14 @@
 
       const Page = createComponent({
         render() {
+          let time = new Date(Date.now()).toISOString() 
           return (
             <UU5.Bricks.Container>
               <UuSweaterweather.Data.ListByGateway 
                 baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/" 
                 gatewayName="Works"
-                graphType="week"
-                startTime="2021-05-04T16:39:34.123Z"
+                graphType="last 24h"
+                startTime={time}
               />
             </UU5.Bricks.Container>
           );
