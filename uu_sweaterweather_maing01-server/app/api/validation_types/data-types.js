@@ -5,13 +5,7 @@ const dataCreateDtoInType = shape({
     temperature: integer(),
     humidity: integer()
 })
-// const dataListDtoInType = shape({
-//     gatewayName: uu5String(),
-//     pageInfo: shape({
-//       pageIndex: integer(),
-//       pageSize: integer()
-//     })
-// })
+
 const dataDayListDtoInType = shape({
     startTime: uu5String(),
     gatewayName: uu5String(),

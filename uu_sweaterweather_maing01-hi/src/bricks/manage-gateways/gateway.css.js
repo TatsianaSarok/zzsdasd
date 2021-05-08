@@ -10,9 +10,13 @@ text-align: center;
 padding-top:7%;
 font-size: 	3em;
 `;
-
+const state = () => Config.Css.css`
+display: flex;
+align-items: center;
+`;
 export default {
     gateway,
     gatewayStyle,
-    icon
+    icon,
+    state
 };

@@ -77,7 +77,8 @@ export const ManageGateway = createVisualComponent({
       const input = {
         id: showGateway.id,
         gatewayName: opt.values.gatewayName,
-        location: opt.values.location
+        location: opt.values.location,
+        state: opt.values.state
       }
       console.log("NewData", input);
       try {
@@ -163,6 +164,14 @@ export const ManageGateway = createVisualComponent({
                     <UU5.Bricks.Text colorSchema="grey" >Gateway name: {value.data.gatewayName}</UU5.Bricks.Text>
                     <UU5.Bricks.Text colorSchema="black" >Gateway location: {value.data.location}</UU5.Bricks.Text>
                     <UU5.Bricks.Text colorSchema="grey" >Gateway id: {value.data.id}</UU5.Bricks.Text>
+                    <UU5.Bricks.Span className={Css.state()}>
+              <UuP.Bricks.State
+                stateType={value.data.state}
+                stateName={value.data.state}
+                type="button"
+              />
+            </UU5.Bricks.Span>
+                    <UU5.Bricks.Text colorSchema="grey" >Gateway state: {value.data.state}</UU5.Bricks.Text>
                   </UU5.Bricks.Card>
                 </>
               )

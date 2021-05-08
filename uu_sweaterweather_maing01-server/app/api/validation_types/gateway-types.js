@@ -4,16 +4,14 @@ const gatewayCreateDtoInType = shape({
     location: uu5String(100),
     state: oneOf(["active", "cancelled", "error"]),
     uuIdentity: uu5String(25),
-    visibility: boolean()
+    state: oneOf(["initial", "active", "cancelled", "error"]),
 })
 
 const gatewayUpdateDtoInType = shape({
     id: id().isRequired(),
-    gatewayName: uu5String(50),
     location: uu5String(100),
-    state: oneOf(["active", "cancelled", "error"]),
-    uuIdentity: uu5String(25),
-    visibility: boolean()
+    state: oneOf(["initial", "active", "cancelled", "error"]),
+    uuIdentity: uu5String(25)
 })
 
 const gatewayGetDtoInType = shape({
