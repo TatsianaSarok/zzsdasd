@@ -140,6 +140,9 @@ export const ManageGateway = createVisualComponent({
             </UU5.Bricks.Card>
 
             {dataGatewayList?.data?.map(value => {
+                let state = Config.gatewayStateList.find(item => item.code === value.data.state)
+              
+    
               return (
                 <>
                   <UU5.Bricks.Card
@@ -148,13 +151,14 @@ export const ManageGateway = createVisualComponent({
                     colorSchema="blue"
                     width={350}
                     bgStyle="filled">
-
-                    <UU5.Bricks.Button size="s"
+                 
+                 { value.data.state === 'closed'&& 
+                  ( <UU5.Bricks.Button size="s"
                       onClick={() => handleDeleteGateway(value.data.id)}
                       bgStyle="transparent">
                       <UU5.Bricks.Icon icon="glyphicon-trash" />
-                    </UU5.Bricks.Button>
-                    <UU5.Bricks.Button
+                    </UU5.Bricks.Button>)}
+                     <UU5.Bricks.Button
                       onClick={() => handleUpdateGatewayForm(value.data)}
                       bgStyle="transparent"
                       colorSchema="blue"
@@ -166,12 +170,11 @@ export const ManageGateway = createVisualComponent({
                     <UU5.Bricks.Text colorSchema="grey" >Gateway id: {value.data.id}</UU5.Bricks.Text>
                     <UU5.Bricks.Span className={Css.state()}>
               <UuP.Bricks.State
-                stateType={value.data.state}
-                stateName={value.data.state}
-                type="button"
+                    stateType={state?.type}
+                    stateName={state?.code} 
+                 type="button"
               />
             </UU5.Bricks.Span>
-                    <UU5.Bricks.Text colorSchema="grey" >Gateway state: {value.data.state}</UU5.Bricks.Text>
                   </UU5.Bricks.Card>
                 </>
               )

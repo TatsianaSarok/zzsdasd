@@ -6,8 +6,7 @@ import SweaterweatherMainContext from "../sweaterweather-main-context";
 import Css from "../sweaterweather.css";
 import DateTime from "./date-time";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
-import CurrentMeasurementView from "../current-measurement-view";
-import CurrentMeasurement from "../current-measurement";
+import CurrentMeasurement from "./current-measurement";
 //@@viewOff:imports
 
 const MenuView = createComponent({
@@ -26,13 +25,12 @@ const MenuView = createComponent({
         let graphName = ["last 24h", "week", "month"];
         const [startTime, setStartTime] = useState(startTime)
         const [graphType, setGraphType] = useState('last 24h')
-        console.log("ContextMenu", props?.dataList?.map(value => {
-            return value.data.gatewayName
-        }));
         const contextData = useContext(SweaterweatherMainContext);
         const [gatewayName, setGatewayName] = useState(props?.dataList[0].data.gatewayName)
         //@@viewOff:hooks
-
+        let suspendedState = props?.dataList?.some(item => {
+            return item.data.gatewayName === gatewayName && item.data.state === 'suspended'
+        })
         //@@viewOn:handlers
         const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
             (profile) => profile === Config.Profiles.AWIDLISENCEOWNER
@@ -53,17 +51,18 @@ const MenuView = createComponent({
             value === 'last 24h' ? setStartTime(dayTime) :
                 value === 'week' ? setStartTime(weekTime) :
                     setStartTime(monthTime);
-
         }
-        console.log("GatNam", gatewayName);
+
         function DropdownMenu() {
             return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {props?.dataList?.map(item => {
-                        return (
-                            <UU5.Bricks.Dropdown.Item label={item.data.gatewayName}
-                                onClick={() => setGatewayName(item.data.gatewayName)} />
-                        )
+                        if (item.data.state !== 'closed') {
+                            return (
+                                <UU5.Bricks.Dropdown.Item label={item.data.gatewayName}
+                                    onClick={() => setGatewayName(item.data.gatewayName)} />
+                            )
+                        }
                     })}
                     {canManage() && (<UU5.Bricks.Dropdown.Item divider />)}
                     {canManage() && (<UU5.Bricks.Dropdown.Item label="Manage gateways" onClick={handleClick} />)}
@@ -81,8 +80,19 @@ const MenuView = createComponent({
                         value={graphType}
                     />
                     <br />
-                    <UuSweaterweather.Data.ListByGateway baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                        gatewayName={gatewayName} graphType={graphType} startTime={startTime} />
+
+                    {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
+                        baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+                        gatewayName={gatewayName} graphType={graphType} startTime={startTime} />) :
+                        (<><br />
+                            <UU5.Common.Error
+                                header={gatewayName} 
+                                colorSchema="yellow-rich"
+                                content="Graph is unavailable at this moment, please try again later" />
+                        </>)}
+
+
+
                 </>
             )
         }
@@ -96,7 +106,7 @@ const MenuView = createComponent({
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
                 <DateTime gatewayName={gatewayName} />
-                <CurrentMeasurement/>
+                <CurrentMeasurement />
                 <Switch />
             </>
         )

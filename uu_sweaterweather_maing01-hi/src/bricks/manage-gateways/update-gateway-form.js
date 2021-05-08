@@ -42,8 +42,9 @@ const UpdateGatewayForm = createVisualComponent({
       content: (
         <UuP.Bricks.State
           key={state.code}
-          stateName={inputLsi[state.code]}
+          stateName={state.code}
           stateType={state.type}
+          color={state.type===''}
           type={"button"}
         />
       )
@@ -74,7 +75,6 @@ const UpdateGatewayForm = createVisualComponent({
                 label="Gateway name"
                 name="gatewayName"
                 value={gateway.gatewayName}
-              // required
               />
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6">
@@ -89,7 +89,8 @@ const UpdateGatewayForm = createVisualComponent({
             <UU5.Forms.SwitchSelector
              items={items} 
              label="state"
-             value={gateway.state} name="state" />
+             value={gateway.state}
+              name="state" />
          </UU5.Bricks.Column>
           </UU5.Bricks.Row>
         </UU5.Forms.ContextForm>

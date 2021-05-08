@@ -2,8 +2,8 @@
 import UU5 from "uu5g04";
 import { createVisualComponent, useContext } from "uu5g04-hooks";
 import Config from "../config/config";
-import DataProvider from "../bricks/menu/data-context/data-provider";
-import DataContext from "../bricks/menu/data-context/data-context";
+import DataProvider from "./data-context/data-provider";
+import DataContext from "./data-context/data-context";
 import CurrentMeasurementView from "./current-measurement-view";
 //@@viewOff:imports
 

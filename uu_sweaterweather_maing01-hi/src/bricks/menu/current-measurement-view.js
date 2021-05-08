@@ -2,7 +2,7 @@
 import UU5 from "uu5g04";
 import { createVisualComponent, useContext } from "uu5g04-hooks";
 import Config from "../config/config";
-import DataContext from "../bricks/menu/data-context/data-context";
+import DataContext from "./data-context/data-context";
 
 
 //@@viewOff:imports
