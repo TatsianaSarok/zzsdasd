@@ -8,7 +8,7 @@ class DataController {
   }
 
   dayList(ucEnv) {
-    return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
+    return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
   }
 
   delete(ucEnv) {

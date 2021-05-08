@@ -45,7 +45,7 @@ class DataAbl {
     return dtoOut; 
   }
 
-  async dayList( dtoIn) {
+  async dayList(awid, dtoIn, session) {
     let validationResult = this.validator.validate("dataDayListDtoInType", dtoIn);
     // hds 2.2, 2.3, A4, A5
     let uuAppErrorMap = ValidationHelper.processValidationResult(
