@@ -6,6 +6,8 @@ import SweaterweatherMainContext from "../sweaterweather-main-context";
 import Css from "../sweaterweather.css";
 import DateTime from "./date-time";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
+import CurrentMeasurementView from "../current-measurement-view";
+import CurrentMeasurement from "../current-measurement";
 //@@viewOff:imports
 
 const MenuView = createComponent({
@@ -94,6 +96,7 @@ const MenuView = createComponent({
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
                 <DateTime gatewayName={gatewayName} />
+                <CurrentMeasurement/>
                 <Switch />
             </>
         )

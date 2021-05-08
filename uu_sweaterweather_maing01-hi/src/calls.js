@@ -53,6 +53,7 @@ let Calls = {
   getCurrent(dtoIn) {
     console.log("List", dtoIn);
     let commandUri = Calls.getCommandUri("data/getCurrent");
+    console.log("Current", Calls.call("get", commandUri, dtoIn));
     return Calls.call("get", commandUri, dtoIn);
   },
   deleteData(dtoIn) {

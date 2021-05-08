@@ -5,6 +5,7 @@ import Config from "../config/config";
 import DataListStateResolver from "../common/resolver/data-list-state-resolver";
 import GatewayContext from "../manage-gateways/gateway-context/gateway-context"
 import MenuView from "../menu/menu-view";
+
 //@@viewOff:imports
 
 const STATICS = {

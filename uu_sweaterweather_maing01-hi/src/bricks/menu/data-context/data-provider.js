@@ -1,7 +1,7 @@
 //@@viewOn:imports
-import { createComponent, useDataList } from "uu5g04-hooks";
+import { createComponent, useDataObject } from "uu5g04-hooks";
 import Calls from "calls";
-import Config from "../config/config";
+import Config from "./config/config";
 import DataContext from "./data-context";
 //@@viewOff:imports
 
@@ -12,14 +12,12 @@ const DataProvider = createComponent({
 
   render({ children }) {
     //@@viewOn:hooks
-    const state = useDataList({
-      pageSize: 200,
+    const state = useDataObject({
       handlerMap: {
         load: Calls.getCurrent,
       },
     });
     //@@viewOff:hooks
-
     //@@viewOn:render
     return <DataContext.Provider value={state}>{children}</DataContext.Provider>;
     //@@viewOff:render
