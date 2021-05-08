@@ -7,6 +7,7 @@ import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-p
 import ManageGateway from "../bricks/manage-gateways/manage-gateway"
 import UuP from "uu_pg01";
 import 'uu_pg01-bricks';
+import DataProvider from "../bricks/menu/data-context/data-provider"
 //@@viewOff:imports
 
 const ManageGateways = createVisualComponent({
@@ -28,9 +29,14 @@ const ManageGateways = createVisualComponent({
         cardView={props.cardView}
       >
         <GatewayProvider {...props}>
+        <DataProvider>
           <ManageGateway />
+              
+        </DataProvider>
         </GatewayProvider>
       </UuP.Bricks.ComponentWrapper>
+    
+    
       </>
     );
     //@@viewOff:render

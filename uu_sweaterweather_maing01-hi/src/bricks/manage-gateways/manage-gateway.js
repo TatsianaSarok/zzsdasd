@@ -7,6 +7,7 @@ import GatewayContext from "./gateway-context/gateway-context"
 import Css from "./gateway.css";
 import AddGatewayForm from "./add-gateway-form";
 import UpdateGatewayForm from "./update-gateway-form";
+import DataContext from "../menu/data-context/data-context"
 //@@viewOff:imports
 
 const STATICS = {
@@ -37,7 +38,8 @@ export const ManageGateway = createVisualComponent({
     const [showGateway, setShowGateway] = useState('');
     //@@viewOff:hooks
     let dataGatewayList = useContext(GatewayContext);
-
+    let dataList = useContext(DataContext)
+console.log("dataCony", dataList);
     //@@viewOn:handlers
     function handleAddGatewayForm() {
       setShowCreateModal(true)
@@ -89,13 +91,16 @@ export const ManageGateway = createVisualComponent({
       }
       setShowUpdateModal(false);
     }
-
+  
     async function handleDeleteGateway(value) {
-      const dtoIn = {
-        id: value
-      };
       try {
-        await dataGatewayList?.handlerMap.delete(dtoIn);
+        await dataList?.handlerMap.delete({gatewayName:value.gatewayName});
+      } catch (e) {
+        "Will work later on error of  delete";
+        return;
+      }
+      try {
+        await dataGatewayList?.handlerMap.delete({id: value.id});
       } catch (e) {
         "Will work later on error of  delete";
         return;
@@ -154,7 +159,7 @@ export const ManageGateway = createVisualComponent({
                  
                  { value.data.state === 'closed'&& 
                   ( <UU5.Bricks.Button size="s"
-                      onClick={() => handleDeleteGateway(value.data.id)}
+                      onClick={() => handleDeleteGateway(value.data)}
                       bgStyle="transparent">
                       <UU5.Bricks.Icon icon="glyphicon-trash" />
                     </UU5.Bricks.Button>)}

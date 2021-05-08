@@ -135,6 +135,7 @@ class GatewayAbl {
     );
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
     dtoIn.awid = awid;
+    dtoIn.state = 'initial'
     let gateway;
     try {
       gateway = await this.dao.create(dtoIn);

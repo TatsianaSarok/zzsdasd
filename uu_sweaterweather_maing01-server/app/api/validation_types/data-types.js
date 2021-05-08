@@ -17,7 +17,7 @@ const dataDayListDtoInType = shape({
 })
 
 const dataDeleteDtoInType = shape({
-     id: string(50).isRequired()
+     gatewayName: string(50).isRequired()
 });
 
 const dataGetDtoInType = shape({
