@@ -49,8 +49,8 @@ export const ListView = createComponent({
               {
                 label: value._id.hour ? `${value._id.hour}` + ":00 " + `${weekday}` :
                   `${weekday}` + ' ' + `${value._id.day}` + '.' + `${value._id.month}`,
-                value: Math.round(value.temperature),
-                value2: Math.round(value.humidity)
+                value: Math.round(value.temperature*10)/10,
+                value2: Math.round(value.humidity*10)/10
               }
             )
           })][0]}
