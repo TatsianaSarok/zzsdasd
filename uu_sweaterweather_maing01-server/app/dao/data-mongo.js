@@ -38,7 +38,7 @@ class DataMongo extends UuObjectDao {
     return await super.find(filter)
   }
 
-  async dayList( gatewayName, startTime, graphType) {
+  async dayList( gatewayId, startTime, graphType) {
     startTime = new Date(startTime)
     if (graphType === 'last 24h') {
       return await super.aggregate([
@@ -47,7 +47,7 @@ class DataMongo extends UuObjectDao {
           {
             $and: [
               { timestamp: { $gte: startTime } },
-              { gatewayName: gatewayName },
+              { gatewayId: gatewayId },
             ]
           }
         },
@@ -73,7 +73,7 @@ class DataMongo extends UuObjectDao {
           {
             $and: [
               { timestamp: { $gte: startTime } },
-              { gatewayName: gatewayName }
+              { gatewayId: gatewayId }
             ]
           }
         },

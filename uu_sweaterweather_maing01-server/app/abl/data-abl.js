@@ -55,7 +55,7 @@ class DataAbl {
       Errors.List.InvalidDtoIn
     );
     //dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-    let dtoOut = await this.dao.dayList(dtoIn.gatewayName, dtoIn.startTime, dtoIn.graphType);
+    let dtoOut = await this.dao.dayList(dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut; 

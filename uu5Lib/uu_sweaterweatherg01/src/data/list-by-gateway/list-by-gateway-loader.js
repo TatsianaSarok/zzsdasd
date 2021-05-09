@@ -34,7 +34,7 @@ export const ListByGatewayLoader = createComponent({
       handlerMap: {
         load: Calls.dayList,
       },
-      initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayName, props.startTime, props.graphType),
+      initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayId, props.startTime, props.graphType),
     });
     //@@viewOff:hooks
 
@@ -49,12 +49,12 @@ export const ListByGatewayLoader = createComponent({
   },
 });
 
-function getInitLoadDtoIn(baseUri, gatewayName, startTime, graphType) {
+function getInitLoadDtoIn(baseUri, gatewayId, startTime, graphType) {
   let dtoIn = {};
   if (baseUri) {
     dtoIn.baseUri = baseUri;
     dtoIn.data = {
-      gatewayName,
+      gatewayId,
       startTime,
       graphType
     }

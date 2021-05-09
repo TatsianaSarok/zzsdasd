@@ -1,6 +1,6 @@
 /* eslint-disable */
 const dataCreateDtoInType = shape({
-    gatewayName: uu5String().isRequired(),
+    gatewayId: uu5String().isRequired(),
     timestamp: Date(),
     temperature: integer(),
     humidity: integer()
@@ -8,7 +8,7 @@ const dataCreateDtoInType = shape({
 
 const dataDayListDtoInType = shape({
     startTime: uu5String(),
-    gatewayName: uu5String(),
+    gatewayId: uu5String(),
     graphType: uu5String(),
     pageInfo: shape({
       pageIndex: integer(),

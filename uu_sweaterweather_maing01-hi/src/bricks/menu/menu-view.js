@@ -25,12 +25,14 @@ const MenuView = createComponent({
         let graphName = ["last 24h", "week", "month"];
         const [startTime, setStartTime] = useState(startTime)
         const [graphType, setGraphType] = useState('last 24h')
+        const [gatewayId, setGatewayId] = useState(props?.dataList[0].data.id)
         const contextData = useContext(SweaterweatherMainContext);
         const [gatewayName, setGatewayName] = useState(props?.dataList[0].data.gatewayName)
         //@@viewOff:hooks
         let suspendedState = props?.dataList?.some(item => {
             return item.data.gatewayName === gatewayName && item.data.state === 'suspended'
         })
+
         //@@viewOn:handlers
         const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
             (profile) => profile === Config.Profiles.AWIDLISENCEOWNER
@@ -52,15 +54,20 @@ const MenuView = createComponent({
                 value === 'week' ? setStartTime(weekTime) :
                     setStartTime(monthTime);
         }
-
+      
         function DropdownMenu() {
+            function handleGateway(value){
+              setGatewayName(value.gatewayName), 
+              setGatewayId(value.id)
+               
+                            }
             return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {props?.dataList?.map(item => {
                         if (item.data.state !== 'closed') {
                             return (
                                 <UU5.Bricks.Dropdown.Item label={item.data.gatewayName}
-                                    onClick={() => setGatewayName(item.data.gatewayName)} />
+                                    onClick={() => handleGateway(item.data)} />
                             )
                         }
                     })}
@@ -83,16 +90,13 @@ const MenuView = createComponent({
 
                     {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
                         baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                        gatewayName={gatewayName} graphType={graphType} startTime={startTime} />) :
+                        gatewayName={gatewayId} graphType={graphType} startTime={startTime} />) :
                         (<><br />
                             <UU5.Common.Error
                                 header={gatewayName} 
                                 colorSchema="yellow-rich"
                                 content="Graph is unavailable at this moment, please try again later" />
                         </>)}
-
-
-
                 </>
             )
         }
