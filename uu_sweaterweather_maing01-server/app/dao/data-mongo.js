@@ -39,63 +39,43 @@ class DataMongo extends UuObjectDao {
   }
 
   async dayList( gatewayId, startTime, graphType) {
+    let gateway = gatewayId
     startTime = new Date(startTime)
-    if (graphType === 'last 24h') {
       return await super.aggregate([
         {
           $match:
           {
             $and: [
               { timestamp: { $gte: startTime } },
-              { gatewayId: gatewayId },
+              { gatewayId: gateway },
             ]
           }
         },
         {
           $group: {
-            _id: {
-              "year": { $year: "$timestamp" },
-              "month": { $month: "$timestamp" },
-              "day": { $dayOfMonth: "$timestamp" },
-              "hour": { $hour: "$timestamp" }
+            _id:   {
+              $cond: { if: { $eq: [ graphType, 'last 24h' ] }, 
+              then:       {
+                "year": { $year: "$timestamp" },
+                "month": { $month: "$timestamp" },
+                "day": { $dayOfMonth: "$timestamp" },
+                "hour": { $hour: "$timestamp" },
+              } ,
+               else:  {
+                          "year": { $year: "$timestamp" },
+                          "month": { $month: "$timestamp" },
+                          "day": { $dayOfMonth: "$timestamp" },
+                        }}
             },
             "temperature": { "$avg": "$temperature" },
             "humidity": { "$avg": "$humidity" }
           }
         },
-        { $sort: { _id: 1 } }
-      ])
-    }
-    else {
-      return await super.aggregate([
-        {
-          $match:
-          {
-            $and: [
-              { timestamp: { $gte: startTime } },
-              { gatewayId: gatewayId }
-            ]
-          }
-        },
-        // {
-        //   $autoBucket
-        // }
-        {
-          $group: {
-            _id: {
-              "year": { $year: "$timestamp" },
-              "month": { $month: "$timestamp" },
-              "day": { $dayOfMonth: "$timestamp" }
-            },
-            "temperature": { "$avg": "$temperature" },
-            "humidity": { "$avg": "$humidity" }
-          }
-        },
-        { $sort: { _id: 1 } }
+        { $sort: { _id: 1 } },
       ])
     }
   }
 
-}
+
 
 module.exports = DataMongo;
