@@ -28,8 +28,8 @@ class DataMongo extends UuObjectDao {
       ]);
   }
 
-  async delete(awid, gatewayName) {
- return   await super.deleteMany({ "gatewayName": gatewayName });
+  async delete(awid, gatewayId) {
+ return  await super.deleteMany({ "gatewayId": gatewayId });
   }
 
   async list(awid, gatewayName) {

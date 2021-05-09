@@ -69,7 +69,7 @@ class DataAbl {
       WARNINGS.deleteUnsupportedKeys.code,
       Errors.Delete.InvalidDtoIn
     );
-    let dtoOut = await this.dao.delete(awid, dtoIn.gatewayName);
+    let dtoOut = await this.dao.delete(awid, dtoIn.gatewayId);
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut;
   }

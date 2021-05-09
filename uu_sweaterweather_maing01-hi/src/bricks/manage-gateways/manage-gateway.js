@@ -94,7 +94,7 @@ console.log("dataCony", dataList);
   
     async function handleDeleteGateway(value) {
       try {
-        await dataList?.handlerMap.delete({gatewayName:value.gatewayName});
+        await dataList?.handlerMap.delete({gatewayId:value.id});
       } catch (e) {
         "Will work later on error of  delete";
         return;
