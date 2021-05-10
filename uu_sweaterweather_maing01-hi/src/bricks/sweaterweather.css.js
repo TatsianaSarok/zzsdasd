@@ -12,9 +12,18 @@ const iconSun = () => Config.Css.css`
 color: blue;
 font-size: 35px;
 `; 
+const dateTime = () => Config.Css.css`
+
+`; 
+const library = () => Config.Css.css`
+
+
+`; 
 
 export default {
     switcher,
     header,
-    iconSun   
+    iconSun,
+    dateTime,
+    library   
 };

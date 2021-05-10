@@ -7,6 +7,7 @@ import Css from "../sweaterweather.css";
 import DateTime from "./date-time";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
 import CurrentMeasurement from "./current-measurement";
+import Day from "./day";
 //@@viewOff:imports
 
 const MenuView = createComponent({
@@ -16,15 +17,6 @@ const MenuView = createComponent({
 
     render(props) {
         //@@viewOn:hooks
-        let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
-        let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
-        let d = new Date();
-        d.setMonth(d.getMonth() - 1)
-        let monthTime = d.toISOString()
-
-        let graphName = ["last 24h", "week", "month"];
-        const [startTime, setStartTime] = useState(dayTime)
-        const [graphType, setGraphType] = useState('last 24h')
         const [gatewayId, setGatewayId] = useState(props?.dataList[0].data.id)
         const contextData = useContext(SweaterweatherMainContext);
         const [gatewayName, setGatewayName] = useState(props?.dataList[0].data.gatewayName)
@@ -48,19 +40,13 @@ const MenuView = createComponent({
                 component: <ManageGateways />, url: { useCase: "managegateways" }
             });
         }
-        function handleChange(value) {
-            setGraphType(value)
-            value === 'last 24h' ? setStartTime(dayTime) :
-                value === 'week' ? setStartTime(weekTime) :
-                    setStartTime(monthTime);
-        }
-      
+
         function DropdownMenu() {
-            function handleGateway(value){
-              setGatewayName(value.gatewayName), 
-              setGatewayId(value.id)
-               
-                            }
+            function handleGateway(value) {
+                setGatewayName(value.gatewayName),
+                    setGatewayId(value.id)
+
+            }
             return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {props?.dataList?.map(item => {
@@ -80,22 +66,24 @@ const MenuView = createComponent({
         function Switch() {
             return (
                 <>
-                    <UU5.Bricks.SwitchSelector
-                        bgStyle="filled"
-                        items={graphName?.map(value => ({ value }))}
-                        onChange={({ value }) => { handleChange(value) }}
-                        value={graphType}
-                    />
-
-                    {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
-                        baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                        gatewayId={gatewayId} graphType={graphType} startTime={startTime|| dayTime} />) :
-                        (<><br />
-                            <UU5.Common.Error
-                                header={gatewayName} 
-                                colorSchema="yellow-rich"
-                                content="Graph is unavailable at this moment, please try again later" />
-                        </>)}
+                    <div className={Css.dateTime()}>
+                        <div >
+                            <Day />
+                            <DateTime />
+                            <CurrentMeasurement />
+                        </div>
+                        <div  className={Css.library()}>
+                        {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
+                            baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+                            gatewayId={gatewayId} />) :
+                            (<><br />
+                                <UU5.Common.Error
+                                    header={gatewayName}
+                                    colorSchema="yellow-rich"
+                                    content="Graph is unavailable at this moment, please try again later" />
+                            </>)}
+                            </div >
+                    </div>
                 </>
             )
         }
@@ -108,8 +96,6 @@ const MenuView = createComponent({
                     Sweaterweather
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
-                <DateTime />
-                <CurrentMeasurement />
                 <Switch />
             </>
         )

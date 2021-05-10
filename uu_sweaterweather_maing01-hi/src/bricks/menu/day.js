@@ -7,9 +7,9 @@ import Config from "../config/config";
 
 //@@viewOff:imports
 
-const DateTime = createVisualComponent({
+const Day = createVisualComponent({
     //@@viewOn:statics
-    displayName: Config.TAG + "DateTime",
+    displayName: Config.TAG + "Day",
     //@@viewOff:statics
 
     //@@viewOn:propTypes
@@ -27,7 +27,7 @@ const DateTime = createVisualComponent({
     render() {
         //@@viewOn:hooks
        // console.log("Version", process.env.VERSION);
-        const [time, setTime] = useState(currentTime);
+        const [dateTime, setDateTime] = useState(currentDate);
         //@@viewOff:hooks
 
         //@@viewOn:private
@@ -36,14 +36,19 @@ const DateTime = createVisualComponent({
 
         //@@viewOn:interface
         let d = new Date();
-        let seconds = d.getSeconds();
-        let minutes = String(d.getMinutes()).padStart(2, "0");;
-        let hours = d.getHours();
-        let currentTime = hours + ":" + minutes 
+        let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const monthNames = ["January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+        let day = days[d.getDay()];
+        let month = monthNames[d.getMonth() ];
+        let date = d.getDate();
+        let year = d.getFullYear();
+        let currentDate = day +" " + date + " " + month + " " + year 
         useEffect(() => {
             setTimeout(
-                () =>  setTime(currentTime),
-                60000
+                () =>  setDateTime(currentDate),
+                86400000
             );
         });
         //@@viewOn:interface
@@ -54,11 +59,11 @@ const DateTime = createVisualComponent({
 
         //@@viewOn:render
         return (
-            <UU5.Bricks.Text>{time||currentTime}</UU5.Bricks.Text>
+            <UU5.Bricks.Text>{dateTime|| currentDate}</UU5.Bricks.Text>
         );
         //@@viewOff:render
     },
 });
 
-export default DateTime;
+export default Day;
 
