@@ -86,11 +86,10 @@ const MenuView = createComponent({
                         onChange={({ value }) => { handleChange(value) }}
                         value={graphType}
                     />
-                    <br />
 
                     {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
                         baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                        gatewayName={gatewayId} graphType={graphType} startTime={startTime} />) :
+                        gatewayId={gatewayId} graphType={graphType} startTime={startTime|| dayTime} />) :
                         (<><br />
                             <UU5.Common.Error
                                 header={gatewayName} 
