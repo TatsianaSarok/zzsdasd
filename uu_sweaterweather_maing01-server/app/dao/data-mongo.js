@@ -20,16 +20,19 @@ class DataMongo extends UuObjectDao {
   }
 
   async getCurrent() {
-    return await super.aggregate( [
-        { $sort : { timestamp : -1 } },
-       { $group: {
-     _id: "current",
-     first: { $first: "$$ROOT" }}},
-      ]);
+    return await super.aggregate([
+      { $sort: { timestamp: -1 } },
+      {
+        $group: {
+          _id: "current",
+          first: { $first: "$$ROOT" }
+        }
+      },
+    ]);
   }
 
   async delete(awid, gatewayId) {
- return  await super.deleteMany({ "gatewayId": gatewayId });
+    return await super.deleteMany({ "gatewayId": gatewayId });
   }
 
   async list(awid, gatewayName) {
@@ -38,43 +41,61 @@ class DataMongo extends UuObjectDao {
     return await super.find(filter)
   }
 
-  async dayList( gatewayId, startTime, graphType) {
+  async dayList(gatewayId, startTime, graphType) {
     let gateway = gatewayId
+    let current = await super.aggregate([
+      { $sort: { timestamp: -1 } },
+      {
+        $group: {
+          _id: "current",
+          first: { $first: "$$ROOT" }
+        }
+      },
+    ]);
     startTime = new Date(startTime)
-      return await super.aggregate([
+    let list = await super.aggregate([
+      {
+        $match:
         {
-          $match:
-          {
-            $and: [
-              { timestamp: { $gte: startTime } },
-              { gatewayId: gateway },
-            ]
-          }
-        },
-        {
-          $group: {
-            _id:   {
-              $cond: { if: { $eq: [ graphType, 'last 24h' ] }, 
-              then:       {
+          $and: [
+            { timestamp: { $gte: startTime } },
+            { gatewayId: gateway },
+          ]
+        }
+      },
+      {
+        $group: {
+          _id: {
+            $cond: {
+              if: { $eq: [graphType, 'last 24h'] },
+              then: {
                 "year": { $year: "$timestamp" },
                 "month": { $month: "$timestamp" },
                 "day": { $dayOfMonth: "$timestamp" },
                 "hour": { $hour: "$timestamp" },
-              } ,
-               else:  {
-                          "year": { $year: "$timestamp" },
-                          "month": { $month: "$timestamp" },
-                          "day": { $dayOfMonth: "$timestamp" },
-                        }}
-            },
-            "temperature": { "$avg": "$temperature" },
-            "humidity": { "$avg": "$humidity" }
-          }
-        },
-        { $sort: { _id: 1 } },
-      ])
+              },
+              else: {
+                "year": { $year: "$timestamp" },
+                "month": { $month: "$timestamp" },
+                "day": { $dayOfMonth: "$timestamp" },
+              }
+            }
+          },
+          "temperature": { "$avg": "$temperature" },
+          "humidity": { "$avg": "$humidity" }
+        }
+
+      },
+      { $sort: { _id: 1 } },
+    ])
+    let output = {
+      current: current,
+      list: list
     }
+    return output;
   }
+
+}
 
 
 
