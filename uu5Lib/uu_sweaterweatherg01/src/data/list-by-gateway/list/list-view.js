@@ -3,6 +3,19 @@ import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../../config/config";
 import "uu5chartg01";
+//import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip,ResponsiveContainer } from 'recharts';
+import {
+  ComposedChart,
+  Line,
+  Area,
+  Bar,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from 'recharts';
 //@@viewOff:imports
 
 const STATICS = {
@@ -29,46 +42,58 @@ export const ListView = createComponent({
   render(props) {
 
     let data = props?.dataList?.map(item => { return item.data })
+    const datas = [data?.map(value => {
+
+      let dateObj = new Date(value._id.year.toString() + "-" +
+        value._id.month.toString() + "-" + value._id.day.toString());
+      let weekday = dateObj.toLocaleString("default", { weekday: "short" })
+      console.log("value", weekday, value.temperature);
+      return (
+        {
+          name: value._id.hour ? `${value._id.hour}` + ":00 " + `${weekday}` :
+            `${weekday}` + ' ' + `${value._id.day}` + '.' + `${value._id.month}`,
+          T: Math.round(value.temperature * 10) / 10,
+          H: Math.round(value.humidity * 10) / 10,
+          // atm: Math.round(value.humidity*10)/10
+        }
+      )
+    })][0]
+
     //@@viewOn:private
     //@@viewOff:private
     //@@viewOn:interface
     //@@viewOff:interface
 
+
     //@@viewOn:render
 
     return (
-<>
-        {props.dataList?.length > 0 ? <UU5.SimpleChart.LineChart
-          data={[data?.map(value => {
-
-            let dateObj = new Date(value._id.year.toString() + "-" +
-              value._id.month.toString() + "-" + value._id.day.toString());
-            let weekday = dateObj.toLocaleString("default", { weekday: "short" })
-            console.log("value", weekday, value.temperature);
-            return (
-              {
-                label: value._id.hour ? `${value._id.hour}` + ":00 " + `${weekday}` :
-                  `${weekday}` + ' ' + `${value._id.day}` + '.' + `${value._id.month}`,
-                value: Math.round(value.temperature*10)/10,
-                value2: Math.round(value.humidity*10)/10
-              }
-            )
-          })][0]}
-          series={[{
-            valueKey: "value",
-            name: "T",
-            colorSchema: "red",
-            chartType: "monotone"
-          },
-          {
-            valueKey: "value2",
-            name: "H",
-            colorSchema: "blue",
-            chartType: "monotone"
-          }
-          ]}
-        /> : "no data"}
-</>
+      <>
+        <div style={{ width: '60%', height: 425 }}>
+          <ResponsiveContainer>
+            <ComposedChart
+              width={500}
+              height={400}
+              data={datas}
+              margin={{
+                top: 20,
+                right: 80,
+                bottom: 20,
+                left: 20,
+              }}
+            >
+              <CartesianGrid stroke="#f5f5f5" />
+              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" />
+              <YAxis label={{ angle: -90, position: 'insideLeft' }} />
+              <Tooltip />
+              <Legend />
+              <Area type="monotone" dataKey="T" fill="#8884d8" stroke="#8884d8" />
+              <Bar dataKey="H" barSize={20} fill="#413ea0" />
+              {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
+            </ComposedChart>
+          </ResponsiveContainer>
+        </div>
+      </>
     )
     //@@viewOff:render
   },

@@ -64,7 +64,7 @@ const MenuView = createComponent({
             return (
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {props?.dataList?.map(item => {
-                        if (item.data.state !== 'closed') {
+                        if (item.data.state !== 'closed' && item.data.state !== 'initial') {
                             return (
                                 <UU5.Bricks.Dropdown.Item label={item.data.gatewayName}
                                     onClick={() => handleGateway(item.data)} />

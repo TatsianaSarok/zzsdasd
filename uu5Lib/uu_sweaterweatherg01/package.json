@@ -6,6 +6,7 @@
   "namespace": "UuSweaterweather",
   "spec": "uu5-lib; uu_appg01_devkit@4.1.0",
   "dependencies": {
+    "recharts": "^2.0.9",
     "uu5chartg01": "^2.5.1",
     "uu5g04": "^1.19.0",
     "uu5tilesg02": "^1.11.0",
