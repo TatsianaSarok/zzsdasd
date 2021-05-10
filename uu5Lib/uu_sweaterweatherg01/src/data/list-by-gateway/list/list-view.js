@@ -69,10 +69,10 @@ export const ListView = createComponent({
 
     return (
       <>
-      <UU5.Bricks.Card style={{ width: '60%', height: 425, float:'right' }} >
+ <UU5.Bricks.Card style={{ width: '60%', height: 425, float:'right' }} >
         <div style={{ width: '100%', height: 425 }}>
           <ResponsiveContainer>
-            <ComposedChart
+          { props.dataList?.length > 0 ? <ComposedChart
               width={500}
               height={400}
               data={datas}
@@ -91,7 +91,7 @@ export const ListView = createComponent({
               <Area type="monotone" dataKey="T" fill="#8884d8" stroke="#8884d8" />
               <Bar dataKey="H" barSize={20} fill="#413ea0" />
               {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
-            </ComposedChart>
+            </ComposedChart>: "no data"}
           </ResponsiveContainer>
         </div>
         </UU5.Bricks.Card>
