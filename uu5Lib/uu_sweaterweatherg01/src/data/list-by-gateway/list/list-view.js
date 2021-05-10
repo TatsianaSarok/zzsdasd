@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../../config/config";
 import "uu5chartg01";
+import CurrentDataView from "./current-data-view";
 //import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip,ResponsiveContainer } from 'recharts';
 import {
   ComposedChart,
@@ -69,6 +70,7 @@ export const ListView = createComponent({
 
     return (
       <>
+      <CurrentDataView/>
         <div style={{ width: '100%', height: 425 }}>
           <ResponsiveContainer>
           { props.dataList?.length > 0 ? <ComposedChart

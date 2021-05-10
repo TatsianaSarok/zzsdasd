@@ -66,13 +66,13 @@ const MenuView = createComponent({
         function Switch() {
             return (
                 <>
-                    <div className={Css.dateTime()}>
-                        <div >
-                            <Day />
+
+                        <div className={Css.dateTime()}>
+                        <Day />
                             <DateTime />
                             <CurrentMeasurement />
                         </div>
-                        <div  className={Css.library()}>
+                        <div >
                         {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
                             baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
                             gatewayId={gatewayId} />) :
@@ -83,7 +83,6 @@ const MenuView = createComponent({
                                     content="Graph is unavailable at this moment, please try again later" />
                             </>)}
                             </div >
-                    </div>
                 </>
             )
         }

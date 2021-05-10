@@ -6,6 +6,7 @@ import UuP from "uu_pg01";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
 import List from "./list/list";
+import CurrentDataLoader from "./current-data-loader";
 
 
 //@@viewOff:imports
@@ -56,7 +57,8 @@ export const ListByGateway = createComponent({
           borderRadius={props.borderRadius}
           cardView={props.cardView}
         >
-          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
+
+          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>       
           <UU5.Bricks.Card style={{ width: '60%', float:"right", clear:"left"}} >
             <UU5.Bricks.SwitchSelector
               bgStyle="filled"
@@ -66,7 +68,7 @@ export const ListByGateway = createComponent({
               value={graphType}
             />
             <List />
-            </UU5.Bricks.Card> 
+            </UU5.Bricks.Card>         
           </ListByGatewayLoader>
         </UuP.Bricks.ComponentWrapper>
       )

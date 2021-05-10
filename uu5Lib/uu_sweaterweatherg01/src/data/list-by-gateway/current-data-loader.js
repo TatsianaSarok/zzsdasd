@@ -10,9 +10,9 @@ import Calls from "calls";
 import { DataContext } from "./../context/data-context";
 //@@viewOff:imports
 
-export const ListByGatewayLoader = createComponent({
+export const CurrentDataLoader = createComponent({
   //@@viewOn:statics
-  displayName: Config.TAG + "ListByGatewayLoader",
+  displayName: Config.TAG + "CurrentDataLoader",
   //@@viewOff:statics
 
   //@@viewOn:propTypes
@@ -32,9 +32,8 @@ export const ListByGatewayLoader = createComponent({
     //@@viewOn:hooks
     const dataDataList = useDataList({
       handlerMap: {
-        load: Calls.dayList,
-      },
-      initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayId, props.startTime, props.graphType),
+        load: Calls.getCurrent,
+      }
     });
     //@@viewOff:hooks
     //@@viewOn:handlers
@@ -48,19 +47,7 @@ export const ListByGatewayLoader = createComponent({
   },
 });
 
-function getInitLoadDtoIn(baseUri, gatewayId, startTime, graphType) {
-  let dtoIn = {};
-  if (baseUri) {
-    dtoIn.baseUri = baseUri;
-    dtoIn.data = {
-      gatewayId,
-      startTime,
-      graphType
-    }
-  }
-  return dtoIn;
-}
 //@@viewOn:helpers
 //@@viewOff:helpers
 
-export default ListByGatewayLoader;
+export default CurrentDataLoader;

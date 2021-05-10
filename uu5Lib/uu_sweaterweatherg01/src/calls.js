@@ -56,6 +56,12 @@
     // console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
      return await Calls.call("get", commandUri, dtoIn.data);
    },
+   getCurrent(dtoIn) {
+    console.log("List", dtoIn);
+    let commandUri = Calls.getCommandUri("data/getCurrent");
+    console.log("Current", Calls.call("get", commandUri, dtoIn));
+    return Calls.call("get", commandUri, dtoIn);
+  },
    deleteData(dtoIn) {
      console.log("DtoIn", dtoIn);
      let commandUri = Calls.getCommandUri("data/delete");

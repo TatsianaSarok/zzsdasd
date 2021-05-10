@@ -3,17 +3,17 @@ import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";
 import Config from "../../config/config";
 import useData from "../../context/use-data";
-import DataListStateResolver from "../../../common/resolver/data-list-state-resolver";
-import ListView from "./list-view";
+import DataStateResolver from "../../../common/resolver/data-list-state-resolver";
+import CurrentDataView from "./current-data-view";
 //@@viewOff:imports
 
 const STATICS = {
   //@@viewOn:statics
-  displayName: Config.TAG + "List",
+  displayName: Config.TAG + "CurrentData",
   //@@viewOff:statics
 };
 
-export const List = createComponent({
+export const CurrentData = createComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
@@ -27,22 +27,22 @@ export const List = createComponent({
   render(props) {
     //@@viewOn:private
     //@@viewOff:private
-    let dataDataList = useData();
-    let dataList = dataDataList.data;
-console.log("d",dataList);
+    let dataCurrentData = useData();
+    let currentData = currentData.data;
+console.log("d",currentData);
     //@@viewOn:interface
     //@@viewOff:interface
 
     //@@viewOn:render
   
     return (
-      <DataListStateResolver dataList={dataDataList}>
-       <ListView dataList={dataList} />
-      </DataListStateResolver>
+      <DataStateResolver currentData={dataCurrentData}>
+       <CurrentDataView currentData={currentData} />
+      </DataStateResolver>
 
     ) 
     //@@viewOff:render
   },
 });
 
-export default List;
+export default CurrentData;
