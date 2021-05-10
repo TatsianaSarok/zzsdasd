@@ -69,7 +69,7 @@ export const ListView = createComponent({
 
     return (
       <>
- <UU5.Bricks.Card style={{ width: '60%', height: 425 }} >
+ <UU5.Bricks.Card style={{ width: '60%'}} >
         <div style={{ width: '100%', height: 425 }}>
           <ResponsiveContainer>
           { props.dataList?.length > 0 ? <ComposedChart
