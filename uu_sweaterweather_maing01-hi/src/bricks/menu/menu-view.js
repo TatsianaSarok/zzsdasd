@@ -109,7 +109,7 @@ const MenuView = createComponent({
                     Sweaterweather
                   <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
                 </div>
-                <DateTime gatewayName={gatewayName} />
+                <DateTime />
                 <CurrentMeasurement />
                 <Switch />
             </>
