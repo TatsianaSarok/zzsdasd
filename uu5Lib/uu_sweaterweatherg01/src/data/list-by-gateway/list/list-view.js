@@ -69,7 +69,8 @@ export const ListView = createComponent({
 
     return (
       <>
-        <div style={{ width: '60%', height: 425 }}>
+      <UU5.Bricks.Card style={{ width: '60%', height: 425 }} >
+        <div style={{ width: '100%', height: 425 }}>
           <ResponsiveContainer>
             <ComposedChart
               width={500}
@@ -93,6 +94,7 @@ export const ListView = createComponent({
             </ComposedChart>
           </ResponsiveContainer>
         </div>
+        </UU5.Bricks.Card>
       </>
     )
     //@@viewOff:render
