@@ -3,7 +3,6 @@ import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../../config/config";
 import "uu5chartg01";
-import CurrentDataView from "./current-data-view";
 //import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip,ResponsiveContainer } from 'recharts';
 import {
   ComposedChart,
@@ -42,7 +41,10 @@ export const ListView = createComponent({
 
   render(props) {
 
-    let data = props?.dataList?.map(item => { return item.data })
+    let data = props?.dataList[0]?.data?.list.map(item => { return item })
+    
+    let currentData = props?.dataList[0]?.data?.current[0].first
+    console.log("props",currentData);
     const datas = [data?.map(value => {
 
       let dateObj = new Date(value._id.year.toString() + "-" +
@@ -70,8 +72,8 @@ export const ListView = createComponent({
 
     return (
       <>
-      <CurrentDataView/>
         <div style={{ width: '100%', height: 425 }}>
+<UU5.Bricks.Text>{currentData.temperature}</UU5.Bricks.Text>
           <ResponsiveContainer>
           { props.dataList?.length > 0 ? <ComposedChart
               width={500}

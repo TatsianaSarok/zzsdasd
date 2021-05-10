@@ -2,22 +2,18 @@ import { DataContext } from "./context/data-context";
 import { useData } from "./context/use-data";
 import ListByGateway from "./list-by-gateway/list-by-gateway";
 import ListByGatewayLoader from "./list-by-gateway/list-by-gateway-loader";
-import CurrentDataLoader from "../data/list-by-gateway/current-data-loader";
-
 const Data = {
   DataContext,
   useData,
   ListByGateway,
   ListByGatewayLoader,
-  CurrentDataLoader
 };
 
 export {
   DataContext,
   useData,
   ListByGateway,
-  ListByGatewayLoader,
-  CurrentDataLoader
+  ListByGatewayLoader
 };
 
 export default Data;

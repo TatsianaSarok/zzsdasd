@@ -6,7 +6,6 @@ import UuP from "uu_pg01";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
 import List from "./list/list";
-import CurrentDataLoader from "./current-data-loader";
 
 
 //@@viewOff:imports

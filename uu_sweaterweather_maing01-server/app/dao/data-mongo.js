@@ -88,10 +88,10 @@ class DataMongo extends UuObjectDao {
       },
       { $sort: { _id: 1 } },
     ])
-    let output = {
+    let output = [{
       current: current,
       list: list
-    }
+    }]
     return output;
   }
 
