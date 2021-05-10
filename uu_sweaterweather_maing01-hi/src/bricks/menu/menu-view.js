@@ -23,7 +23,7 @@ const MenuView = createComponent({
         let monthTime = d.toISOString()
 
         let graphName = ["last 24h", "week", "month"];
-        const [startTime, setStartTime] = useState(startTime)
+        const [startTime, setStartTime] = useState(dayTime)
         const [graphType, setGraphType] = useState('last 24h')
         const [gatewayId, setGatewayId] = useState(props?.dataList[0].data.id)
         const contextData = useContext(SweaterweatherMainContext);
