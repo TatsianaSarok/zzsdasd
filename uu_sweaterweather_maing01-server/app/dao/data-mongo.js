@@ -70,7 +70,6 @@ class DataMongo extends UuObjectDao {
               }
             }
           },
-
           "temperature": { "$avg": "$temperature" },
           "humidity": { "$avg": "$humidity" }
         }
@@ -81,11 +80,11 @@ class DataMongo extends UuObjectDao {
             { $sort: { _id: 1 } },
             { $limit: 200 },
           ],
-          },
           pageInfo: [
             { $group: { _id: 200, total: { $sum: 1 } } },
-          ],
-        },
+          ]
+        }
+      }
     ])
     return list[0]
   }

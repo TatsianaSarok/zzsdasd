@@ -2,12 +2,12 @@
 import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
-import UuP from "uu_pg01";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
 import List from "./list/list";
 import Day from "./list/day";
 import DateTime from "./list/date-time"
+import ListView from "./list/list-view";
 
 //@@viewOff:imports
 
@@ -51,40 +51,30 @@ export const ListByGateway = createComponent({
             setStartTime(monthTime);
       }
       return (
-        <UuP.Bricks.ComponentWrapper
-          colorSchema={props.colorSchema}
-          elevation={props.elevation}
-          borderRadius={props.borderRadius}
-          cardView={props.cardView}
-        >
-
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <UU5.Bricks.Card style={{ width: '60%', height: "600px", borderRadius: "8px" }} >
-                <UU5.Bricks.SwitchSelector size="xl" style={{ borderRadius: "8px", padding: "5px" }}
-                  bgStyle="filled"
-                  colorSchema="indigo-rich"
-                  items={graphName?.map(value => ({ value }))}
-                  onChange={({ value }) => { handleChange(value) }}
-                  value={graphType}
-                />
+              <UU5.Bricks.SwitchSelector size="xl" style={{ borderRadius: "8px", padding: "5px" }}
+                bgStyle="filled"
+                colorSchema="indigo-rich"
+                items={graphName?.map(value => ({ value }))}
+                onChange={({ value }) => { handleChange(value) }}
+                value={graphType}
+              />
               <div style={{ float: "right", marginRight: "10px", fontSize: "20px", fontFamily: 'Orbitron', color: "grey" }}>
                 <Day />
                 <div style={{ textAlign: "center" }}>
                   <DateTime />
                 </div>
               </div>
-              <List />
+              <ListView />
             </UU5.Bricks.Card>
           </ListByGatewayLoader>
-        </UuP.Bricks.ComponentWrapper>
       )
     }
     //@@viewOn:render
 
     return (
-
       <Loader />
-
     )
     //@@viewOff:render
   },

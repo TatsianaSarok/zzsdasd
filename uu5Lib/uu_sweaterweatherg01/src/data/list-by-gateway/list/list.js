@@ -40,7 +40,7 @@ console.log("handler",dataDataList);
        <>
       <div style={{ textAlign: "center", margin: "-12px, 0,-5px,0" }}>
 
-      <CurrentMeasurement currentData={props}/>
+      {/* <CurrentMeasurement currentData={props}/> */}
       </div>
         <div style={{ width: '100%', height: 425 }}>
           <ResponsiveContainer>

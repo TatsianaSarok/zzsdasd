@@ -3,10 +3,8 @@ import UU5 from "uu5g04";
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../../config/config";
 import "uu5chartg01";
-import CurrentMeasurement from "./current-measurement";
-import Day from "./day";
-import DateTime from "./date-time"
-//import { AreaChart, Area, CartesianGrid, XAxis, YAxis, Tooltip,ResponsiveContainer } from 'recharts';
+import useData from "../../context/use-data";
+import DataListStateResolver from "../../../common/resolver/data-list-state-resolver";
 import {
   ComposedChart,
   Line,
@@ -43,7 +41,8 @@ export const ListView = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-console.log("lolo", props?.dataList);
+    let dataDataList = useData();
+    console.log("lolo", dataDataList);
     let data = props?.dataList?.data[0]?.data?.list.map(item => { return item })
 
     let currentData = props?.dataList?.data[0]?.data?.current[0].first
@@ -75,34 +74,35 @@ console.log("lolo", props?.dataList);
 
     return (
       <>
-      <div style={{ textAlign: "center", margin: "-12px, 0,-5px,0" }}>
-
-      <CurrentMeasurement currentData={props}/>
-      </div>
-        <div style={{ width: '100%', height: 425 }}>
-          <ResponsiveContainer>
-            {props.dataList?.length > 0 ? <ComposedChart
-              width={500}
-              height={400}
-              data={datas}
-              margin={{
-                top: 20,
-                right: 80,
-                bottom: 20,
-                left: 20,
-              }}
-            >
-              <CartesianGrid stroke="#f5f5f5" />
-              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" />
-              <YAxis label={{ angle: -90, position: 'insideLeft' }} />
-              <Tooltip />
-              <Legend />
-              <Area type="monotone" dataKey="T" fill="#8884d8" stroke="#8884d8" />
-              <Bar dataKey="H" barSize={20} fill="#413ea0" />
-              {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
-            </ComposedChart> : "no data"}
-          </ResponsiveContainer>
-        </div>
+        <DataListStateResolver dataList={dataDataList}>
+          <div style={{ textAlign: "center", margin: "-12px, 0,-5px,0" }}>
+            {/* <CurrentMeasurement currentData={props}/> */}
+          </div>
+          <div style={{ width: '100%', height: 425 }}>
+            <ResponsiveContainer>
+              {props.dataList?.length > 0 ? <ComposedChart
+                width={500}
+                height={400}
+                data={datas}
+                margin={{
+                  top: 20,
+                  right: 80,
+                  bottom: 20,
+                  left: 20,
+                }}
+              >
+                <CartesianGrid stroke="#f5f5f5" />
+                <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" />
+                <YAxis label={{ angle: -90, position: 'insideLeft' }} />
+                <Tooltip />
+                <Legend />
+                <Area type="monotone" dataKey="T" fill="#8884d8" stroke="#8884d8" />
+                <Bar dataKey="H" barSize={20} fill="#413ea0" />
+                {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
+              </ComposedChart> : "no data"}
+            </ResponsiveContainer>
+          </div>
+        </DataListStateResolver>
       </>
     )
     //@@viewOff:render
