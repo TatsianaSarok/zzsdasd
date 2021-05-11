@@ -6,7 +6,8 @@ import UuP from "uu_pg01";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
 import List from "./list/list";
-
+import Day from "./list/day";
+import DateTime from "./list/date-time"
 
 //@@viewOff:imports
 
@@ -57,17 +58,23 @@ export const ListByGateway = createComponent({
           cardView={props.cardView}
         >
 
-          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>       
-          <UU5.Bricks.Card style={{ width: '60%', float:"right", clear:"left"}} >
-            <UU5.Bricks.SwitchSelector
-              bgStyle="filled"
-              colorSchema="indigo-rich"
-              items={graphName?.map(value => ({ value }))}
-              onChange={({ value }) => { handleChange(value) }}
-              value={graphType}
-            />
-            <List />
-            </UU5.Bricks.Card>         
+          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
+            <UU5.Bricks.Card style={{ width: '60%', height: "600px", borderRadius: "8px" }} >
+                <UU5.Bricks.SwitchSelector size="xl" style={{ borderRadius: "8px", padding: "5px" }}
+                  bgStyle="filled"
+                  colorSchema="indigo-rich"
+                  items={graphName?.map(value => ({ value }))}
+                  onChange={({ value }) => { handleChange(value) }}
+                  value={graphType}
+                />
+              <div style={{ float: "right", marginRight: "10px", fontSize: "20px", fontFamily: 'Orbitron', color: "grey" }}>
+                <Day />
+                <div style={{ textAlign: "center" }}>
+                  <DateTime />
+                </div>
+              </div>
+              <List />
+            </UU5.Bricks.Card>
           </ListByGatewayLoader>
         </UuP.Bricks.ComponentWrapper>
       )
