@@ -19,16 +19,14 @@ class DataMongo extends UuObjectDao {
     return await super.findOne({ awid, id });
   }
 
-  async getCurrent() {
-    return await super.aggregate([
-      { $sort: { timestamp: -1 } },
-      {
-        $group: {
-          _id: "current",
-          first: { $first: "$$ROOT" }
-        }
-      },
-    ]);
+  async getCurrent(gateway) {
+    let currentData = await super.aggregate([
+      {$match: { gatewayId: gateway } },
+      { $sort: { "timestamp": -1 } },
+      { $limit: 1 },
+      { $project: { temperature: 1, humidity: 1 } }
+    ])
+    return currentData[0]
   }
 
   async delete(awid, gatewayId) {
@@ -41,17 +39,8 @@ class DataMongo extends UuObjectDao {
     return await super.find(filter)
   }
 
-  async dayList(gatewayId, startTime, graphType) {
+  async dayList(awid, gatewayId, startTime, graphType) {
     let gateway = gatewayId
-    let current = await super.aggregate([
-      { $sort: { timestamp: -1 } },
-      {
-        $group: {
-          _id: "current",
-          first: { $first: "$$ROOT" }
-        }
-      },
-    ]);
     startTime = new Date(startTime)
     let list = await super.aggregate([
       {
@@ -81,22 +70,26 @@ class DataMongo extends UuObjectDao {
               }
             }
           },
+
           "temperature": { "$avg": "$temperature" },
           "humidity": { "$avg": "$humidity" }
         }
-
       },
-      { $sort: { _id: 1 } },
+      {
+        $facet: {
+          itemList: [
+            { $sort: { _id: 1 } },
+            { $limit: 200 },
+          ],
+          },
+          pageInfo: [
+            { $group: { _id: 200, total: { $sum: 1 } } },
+          ],
+        },
     ])
-    let output = [{
-      current: current,
-      list: list
-    }]
-    return output;
+    return list[0]
   }
-
 }
 
 
-
-module.exports = DataMongo;
+module.exports = DataMongo

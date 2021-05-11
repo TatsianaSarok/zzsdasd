@@ -22,7 +22,12 @@ const WARNINGS = {
     code: `${Errors.List.UC_CODE}unsupportedKeys`,
   },
 };
-
+const DEFAULTS = {
+  sortBy: "name",
+  order: "asc",
+  pageIndex: 0,
+  pageSize: 100
+};
 class DataAbl {
 
   constructor() {
@@ -39,7 +44,7 @@ class DataAbl {
       WARNINGS.listUnsupportedKeys.code,
       Errors.List.InvalidDtoIn
     );
-    let dtoOut = await this.dao.getCurrent();
+    let dtoOut = await this.dao.getCurrent(dtoIn.gatewayId);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut; 
@@ -55,7 +60,10 @@ class DataAbl {
       Errors.List.InvalidDtoIn
     );
     //dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-    let dtoOut = await this.dao.dayList(dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType);
+    if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
+    if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
+    if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
+    let dtoOut = await this.dao.dayList(awid, dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType, dtoIn.pageInfo);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut; 

@@ -25,5 +25,5 @@ const dataGetDtoInType = shape({
 })
 
 const dataGetCurrentDtoInType = shape({
-
+    gatewayId: string(50).isRequired()
 })
