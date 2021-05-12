@@ -38,7 +38,7 @@ export const Left = createVisualComponent({
         logoProps={{
           backgroundImageSrc: "assets/sweater.jpg",
         }}
-        aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about}  style={{fontFamily: 'Brush Script MT', fontSize: "20px",}}/>, href: "about" }]}
+        aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about}  style={{fontFamily: 'Brush Script MT', fontSize: "20px"}}/>, href: "about" }]}
         helpHref={null}
       >
         <Plus4U5.App.MenuTree 

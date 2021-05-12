@@ -22,19 +22,15 @@ const ManageGateways = createVisualComponent({
     //@@viewOn:render
     return (
       <>
-         <UuP.Bricks.ComponentWrapper
-        colorSchema={props.colorSchema}
-        elevation={props.elevation}
-        borderRadius={props.borderRadius}
-        cardView={props.cardView}
-      >
+      <UU5.Bricks.Container>
+        <UU5.Bricks.Row>
         <GatewayProvider {...props}>
         <DataProvider>
-          <ManageGateway />
-              
+          <ManageGateway />   
         </DataProvider>
         </GatewayProvider>
-      </UuP.Bricks.ComponentWrapper>
+        </UU5.Bricks.Row>
+        </UU5.Bricks.Container>
     
     
       </>

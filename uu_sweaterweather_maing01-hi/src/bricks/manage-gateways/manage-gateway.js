@@ -110,12 +110,7 @@ console.log("dataCony", dataList);
 
     //@@viewOn:render
     return (
-      <UuP.Bricks.ComponentWrapper
-        colorSchema={props.colorSchema}
-        elevation={props.elevation}
-        borderRadius={props.borderRadius}
-        cardView={props.cardView}
-      >
+
         <DataListStateResolver dataList={dataGatewayList}>
 
           <AddGatewayForm
@@ -187,7 +182,6 @@ console.log("dataCony", dataList);
 
           </div>
         </DataListStateResolver>
-      </UuP.Bricks.ComponentWrapper>
     )
     //@@viewOff:render
   },
