@@ -89,8 +89,8 @@ export const ListView = createComponent({
                     <YAxis label={{ angle: -90, position: 'insideLeft' }} />
                     <Tooltip />
                     <Legend />
-                    <Area type="monotone" dataKey="T" fill="#8884d8" stroke="#8884d8" />
-                    <Bar dataKey="H" barSize={20} fill="#413ea0" />
+                    <Area type="monotone" dataKey="T" fill="#A0EDED" stroke="#009688" />
+                    <Bar dataKey="H" barSize={20} fill="#009688" />
                     {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
                   </ComposedChart>
                 </ResponsiveContainer>

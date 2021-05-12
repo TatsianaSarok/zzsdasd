@@ -16,8 +16,6 @@ const dateTime = () => Config.Css.css`
 display-flex;
 `; 
 const library = () => Config.Css.css`
-
-
 `; 
 
 export default {
@@ -25,5 +23,5 @@ export default {
     header,
     iconSun,
     dateTime,
-    library   
+    library 
 };

@@ -55,11 +55,11 @@ const [temperature, setTemperature] = useState(props?.currentData.temperature)
         //@@viewOn:render
         return (
             <div style={{float: "right", margin: "10px 15px 0px 0px"}}>
-            <UU5.Bricks.Icon icon="mdi-weather-sunny" style={{fontFamily: 'Brush Script MT', fontSize: "45px", marginRight: "20px",  color:"#f9d71c"}}>
+            <UU5.Bricks.Icon icon="mdi-weather-sunny" style={{fontFamily: 'Brush Script MT', fontSize: "45px", marginRight: "20px",  color:"#ffff00"}}>
             <UU5.Bricks.Text style={{fontFamily: 'Brush Script MT', fontSize: "20px", color: "black"}}> {temperature}&#8451;</UU5.Bricks.Text>
                 </UU5.Bricks.Icon>
                   <UU5.Bricks.Icon icon="mdi-weather-rainy" 
-                   style={{ fontSize: "40px", color: "blue"}}>
+                   style={{ fontSize: "40px", color: "#0e4bef"}}>
                  <UU5.Bricks.Text style={{fontFamily: 'Brush Script MT', fontSize: "20px", color: "black"}}> {props?.currentData.humidity}%</UU5.Bricks.Text>
                   </UU5.Bricks.Icon>
                   </div>

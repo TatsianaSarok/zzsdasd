@@ -2,6 +2,7 @@
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../config/config";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
+import Css from "../sweaterweather.css";
 
 //@@viewOff:imports
 
@@ -27,20 +28,19 @@ const MenuView = createComponent({
             }
             return (
                 <>
-                    <UU5.Bricks.Accordion colorSchema="brown"
-                    size="l">
+                    <UU5.Bricks.Accordion colorSchema="teal" size="l">
                         {props?.dataList?.map(item => {
                             if (item.data.state !== 'closed' && item.data.state !== 'initial') {
                                 return (
-                                    <UU5.Bricks.Panel
+                                    <UU5.Bricks.Panel  
                                         header={item.data.gatewayName }
                                         onClick={() => handleGateway(item.data)}
                                         iconExpanded="mdi-chevron-up"
-                                        iconCollapsed="mdi-chevron-down"
+                                        iconCollapsed="mdi-chevron-down" 
                                     >
                                         {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
                                             baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                            gatewayId={gatewayId} />) :
+                                            gatewayId={gatewayId} gatewayName={gatewayName}/>) :
                                             (<><br />
                                                 <UU5.Common.Error
                                                     header={gatewayName}
@@ -52,7 +52,6 @@ const MenuView = createComponent({
                             }
                         })}
                     </UU5.Bricks.Accordion>
-
                 </>
             )
         }
