@@ -4,11 +4,10 @@ import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
-import List from "./list/list";
 import Day from "./list/day";
-import DateTime from "./list/date-time"
+import Time from "./list/time";
 import ListView from "./list/list-view";
-
+import CurrentData from "./current-data";
 //@@viewOff:imports
 
 const STATICS = {
@@ -29,21 +28,20 @@ export const ListByGateway = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:private
-    //@@viewOff:private
     let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     let d = new Date();
     d.setMonth(d.getMonth() - 1)
     let monthTime = d.toISOString()
-
     let graphName = ["last 24h", "week", "month"];
     const [startTime, setStartTime] = useState(dayTime)
     const [graphType, setGraphType] = useState('last 24h')
-    //@@viewOn:interface
-    //@@viewOff:interface
 
-    function Loader() {
+    return (
+      <SectionWithGraph />
+    )
+
+    function SectionWithGraph() {
       function handleChange(value) {
         setGraphType(value)
         value === 'last 24h' ? setStartTime(dayTime) :
@@ -51,32 +49,30 @@ export const ListByGateway = createComponent({
             setStartTime(monthTime);
       }
       return (
-          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
-            <UU5.Bricks.Card style={{ width: '60%', height: "600px", borderRadius: "8px" }} >
-              <UU5.Bricks.SwitchSelector size="xl" style={{ borderRadius: "8px", padding: "5px" }}
-                bgStyle="filled"
-                colorSchema="indigo-rich"
-                items={graphName?.map(value => ({ value }))}
-                onChange={({ value }) => { handleChange(value) }}
-                value={graphType}
-              />
-              <div style={{ float: "right", marginRight: "10px", fontSize: "20px", fontFamily: 'Orbitron', color: "grey" }}>
-                <Day />
-                <div style={{ textAlign: "center" }}>
-                  <DateTime />
-                </div>
-              </div>
-              <ListView />
-            </UU5.Bricks.Card>
-          </ListByGatewayLoader>
+        <>
+        <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
+          <UU5.Bricks.Card style={{ width: '60%', height:550,borderRadius: "8px"}} >
+            <UU5.Bricks.SwitchSelector  size="l" style={{ borderRadius: "8px" }}
+              bgStyle="filled"
+              colorSchema="indigo-rich"
+              items={graphName?.map(value => ({ value }))}
+              onChange={({ value }) => { handleChange(value) }}
+              value={graphType}
+            /> 
+             <CurrentData   baseUri={props.baseUri} gatewayId={props.gatewayId}/> 
+             <div style={{textAlign: 'center', clear:"both",marginRight: "15px",  fontFamily: 'Brush Script MT', fontSize: "25px"}}  >
+            <Day />
+            </div>    
+                <div style={{ textAlign: 'center',fontFamily: 'Brush Script MT', fontSize: "25px"}}>
+            <Time/>
+            </div>
+            <ListView />
+          </UU5.Bricks.Card>
+        </ListByGatewayLoader>
+        </>
       )
     }
-    //@@viewOn:render
 
-    return (
-      <Loader />
-    )
-    //@@viewOff:render
   },
 });
 

@@ -57,10 +57,10 @@
      return await Calls.call("get", commandUri, dtoIn.data);
    },
    getCurrent(dtoIn) {
-    console.log("List", dtoIn);
-    let commandUri = Calls.getCommandUri("data/getCurrent");
-    console.log("Current", Calls.call("get", commandUri, dtoIn));
-    return Calls.call("get", commandUri, dtoIn);
+    console.log("List", dtoIn.gateway);
+    let commandUri = Calls.getCommandUri("data/getCurrent",dtoIn.baseUri );
+    console.log("Current", Calls.call("get", commandUri, dtoIn.gateway));
+    return Calls.call("get", commandUri, dtoIn.gateway);
   },
    deleteData(dtoIn) {
      console.log("DtoIn", dtoIn);
