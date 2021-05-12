@@ -54,8 +54,9 @@ export const ListByGateway = createComponent({
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <UU5.Bricks.Card style={{
-    width: '60%', height: 550, borderRadius: "8px", display: "block",
-    marginLeft: "auto", marginRight: "auto" }} >
+              width: '60%', height: 550, borderRadius: "8px", display: "block",
+              marginLeft: "auto", marginRight: "auto"
+            }} >
               <UU5.Bricks.SwitchSelector size="l" style={{ borderRadius: "8px" }}
                 bgStyle="filled"
                 colorSchema="teal"
