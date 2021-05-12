@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState } from "uu5g04-hooks";
+import { createVisualComponent, useState, useEffect } from "uu5g04-hooks";
 import Config from "../config/config";
 
 
@@ -29,16 +29,23 @@ const CurrentData = createVisualComponent({
        // console.log("Version", process.env.VERSION);
         //@@viewOff:hooks
 console.log("c", props?.currentData.humidity);
+const [temperature, setTemperature] = useState(props?.currentData.temperature)
         //@@viewOn:private
 
         //@@viewOff:private
 
         //@@viewOn:interface
+        useEffect(() => {
+            // This code is triggered after first render of component and after each change of 'running'.
+           setTimeout(
+              // Calling of setCount changes state. But it does not trigger the effect. There is depedency on 'running'.
+              () => setTemperature(props?.currentData.temperature ),
+              5000
+            );
+      
+            // This arrow function is executed before next effect execution or component unmount.
 
-            // setTimeout(
-            //     () =>  setDateTime(currentDate),
-            //     86400000
-            // );
+          });
         //@@viewOn:interface
 
         //@@viewOn:handlers
@@ -49,7 +56,7 @@ console.log("c", props?.currentData.humidity);
         return (
             <div style={{float: "right", margin: "10px 15px 0px 0px"}}>
             <UU5.Bricks.Icon icon="mdi-weather-sunny" style={{fontFamily: 'Brush Script MT', fontSize: "45px", marginRight: "20px",  color:"#f9d71c"}}>
-            <UU5.Bricks.Text style={{fontFamily: 'Brush Script MT', fontSize: "20px", color: "black"}}> {props?.currentData.temperature}&#8451;</UU5.Bricks.Text>
+            <UU5.Bricks.Text style={{fontFamily: 'Brush Script MT', fontSize: "20px", color: "black"}}> {temperature}&#8451;</UU5.Bricks.Text>
                 </UU5.Bricks.Icon>
                   <UU5.Bricks.Icon icon="mdi-weather-rainy" 
                    style={{ fontSize: "40px", color: "blue"}}>

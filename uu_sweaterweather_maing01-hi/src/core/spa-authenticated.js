@@ -11,6 +11,8 @@ import Bottom from "./bottom";
 import Home from "../routes/home";
 import Sweaterweather from "../routes/sweaterweather";
 import ManageGateways from "../routes/manage-gateways";
+import Lsi from "../config/lsi.js";
+import Css from "./top.css"
 //@@viewOff:imports
 
 const STATICS = {
@@ -57,9 +59,10 @@ export const SpaAuthenticated = createVisualComponent({
     //@@viewOn:render
     return (
       <Plus4U5.App.MenuProvider activeItemId={initialActiveItemId}>
-        <Plus4U5.App.Page
+        <Plus4U5.App.Page 
           {...props}
-          top={<Plus4U5.App.TopBt />}
+          top={
+          <Plus4U5.App.TopBt className={Css.top()} /> }      
           topFixed="smart"
           bottom={<Bottom />}
           type={3}

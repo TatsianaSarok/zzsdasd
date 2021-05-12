@@ -3,11 +3,9 @@ import { createComponent, useContext, useState } from "uu5g04-hooks";
 import Config from "../config/config";
 import ManageGateways from "../../routes/manage-gateways";
 import SweaterweatherMainContext from "../sweaterweather-main-context";
-import Css from "../sweaterweather.css";
-import DateTime from "./date-time";
+
 import * as UuSweaterweather from "uu_sweaterweatherg01";
-import CurrentMeasurement from "./current-measurement";
-import Day from "./day";
+
 //@@viewOff:imports
 
 const MenuView = createComponent({
@@ -24,7 +22,6 @@ const MenuView = createComponent({
         let suspendedState = props?.dataList?.some(item => {
             return item.data.gatewayName === gatewayName && item.data.state === 'suspended'
         })
-
         //@@viewOn:handlers
         const isAwidLisenceOwner = contextData?.data?.authorizedProfileList?.some(
             (profile) => profile === Config.Profiles.AWIDLISENCEOWNER
@@ -48,6 +45,7 @@ const MenuView = createComponent({
 
             }
             return (
+                <>
                 <UU5.Bricks.Dropdown label={gatewayName} bgStyle="transparent" size="l" colorSchema="blue" >
                     {props?.dataList?.map(item => {
                         if (item.data.state !== 'closed' && item.data.state !== 'initial') {
@@ -60,19 +58,27 @@ const MenuView = createComponent({
                     {canManage() && (<UU5.Bricks.Dropdown.Item divider />)}
                     {canManage() && (<UU5.Bricks.Dropdown.Item label="Manage gateways" onClick={handleClick} />)}
                 </UU5.Bricks.Dropdown>
+                {props?.dataList?.map(item => {
+                        if (item.data.state !== 'closed' && item.data.state !== 'initial') {
+              return (  <UU5.Bricks.Accordion colorSchema="default">
+                <UU5.Bricks.Panel
+                  header={item.data.gatewayName}
+                   onClick={() => handleGateway(item.data)}
+                  colorSchema="primary"
+                  iconExpanded="mdi-chevron-up"
+                  iconCollapsed="mdi-chevron-down"
+                />
+                </UU5.Bricks.Accordion>
+                         )
+                        }
+                    })}
+                </>
             )
         }
 
         function Switch() {
             return (
                 <>
-
-                        <div className={Css.dateTime()}>
-                        <Day />
-                            <DateTime />
-                            <CurrentMeasurement />
-                        </div>
-                        <div >
                         {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
                             baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
                             gatewayId={gatewayId} />) :
@@ -82,21 +88,20 @@ const MenuView = createComponent({
                                     colorSchema="yellow-rich"
                                     content="Graph is unavailable at this moment, please try again later" />
                             </>)}
-                            </div >
                 </>
             )
         }
         //@@viewOff:handlers
         //@@viewOn:render
         return (
-            <>
-                <DropdownMenu />
-                <div className={Css.header()}>
-                    Sweaterweather
-                  <UU5.Bricks.Icon icon="mdi-cloud" className={Css.iconSun()} />
-                </div>
-                <Switch />
-            </>
+            <UU5.Bricks.Container >
+            <UU5.Bricks.Row>
+            <DropdownMenu />
+<Switch />
+            </UU5.Bricks.Row>
+          </UU5.Bricks.Container>
+      
+            
         )
         //@@viewOff:render
     }
