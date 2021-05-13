@@ -39,7 +39,7 @@ export const ManageGateway = createVisualComponent({
     //@@viewOff:hooks
     let dataGatewayList = useContext(GatewayContext);
     let dataList = useContext(DataContext)
-console.log("dataCony", dataList);
+    console.log("dataCony", dataList);
     //@@viewOn:handlers
     function handleAddGatewayForm() {
       setShowCreateModal(true)
@@ -91,16 +91,16 @@ console.log("dataCony", dataList);
       }
       setShowUpdateModal(false);
     }
-  
+
     async function handleDeleteGateway(value) {
       try {
-        await dataList?.handlerMap.delete({gatewayId:value.id});
+        await dataList?.handlerMap.delete({ gatewayId: value.id });
       } catch (e) {
         "Will work later on error of  delete";
         return;
       }
       try {
-        await dataGatewayList?.handlerMap.delete({id: value.id});
+        await dataGatewayList?.handlerMap.delete({ id: value.id });
       } catch (e) {
         "Will work later on error of  delete";
         return;
@@ -108,80 +108,103 @@ console.log("dataCony", dataList);
     }
     //@@viewOff:handlers
 
+
     //@@viewOn:render
     return (
 
-        <DataListStateResolver dataList={dataGatewayList}>
+      <DataListStateResolver dataList={dataGatewayList}>
+        <AddGatewayForm
+          shown={showCreateModal}
+          onSave={handleAddGatewaySave}
+          onCancel={handleCloseAddGatewayForm}
+        />
+        <UpdateGatewayForm
+          shown={showUpdateModal}
+          gateway={showGateway}
+          onSave={handleUpdateGatewaySave}
+          onCancel={handleCloseUpdateGatewayForm}
+        />
 
-          <AddGatewayForm
-            shown={showCreateModal}
-            onSave={handleAddGatewaySave}
-            onCancel={handleCloseAddGatewayForm}
-          />
-          <UpdateGatewayForm
-            shown={showUpdateModal}
-            gateway={showGateway}
-            onSave={handleUpdateGatewaySave}
-            onCancel={handleCloseUpdateGatewayForm}
-          />
+        <div className={Css.gateway()} >
+          <UU5.Bricks.Card
+            bgStyle="outline"
+            colorSchema="grey"
+            width={150}>
 
-          <div className={Css.gateway()} >
+            <div className={Css.add()}
+              onClick={handleAddGatewayForm}>
+              <UU5.BlockLayout.Text
+                colorSchema="black"
 
-            <UU5.Bricks.Card
-              colorSchema="grey"
-              width={100}>
-              <div className={Css.icon()}>
-                <UU5.Bricks.Button
-                  onClick={handleAddGatewayForm}
-                  bgStyle="transparent" size="xl">
-                  <UU5.Bricks.Icon icon="mdi-plus-circle" />
-                </UU5.Bricks.Button>
-              </div>
-            </UU5.Bricks.Card>
+                icon="mdi-shape-rectangle-plus" />
+            </div>
+          </UU5.Bricks.Card>
 
-            {dataGatewayList?.data?.map(value => {
-                let state = Config.gatewayStateList.find(item => item.code === value.data.state)
-              
-    
-              return (
-                <>
-                  <UU5.Bricks.Card
-                    className={Css.gatewayStyle()}
-                    bgStyle="transparent"
-                    colorSchema="blue"
-                    width={350}
-                    bgStyle="filled">
-                 
-                 { value.data.state === 'closed'&& 
-                  ( <UU5.Bricks.Button size="s"
-                      onClick={() => handleDeleteGateway(value.data)}
-                      bgStyle="transparent">
-                      <UU5.Bricks.Icon icon="glyphicon-trash" />
-                    </UU5.Bricks.Button>)}
-                     <UU5.Bricks.Button
-                      onClick={() => handleUpdateGatewayForm(value.data)}
-                      bgStyle="transparent"
-                      colorSchema="blue"
-                      size="m"
-                      content={<UU5.Bricks.Icon icon="glyphicon-edit" />}
-                    ></UU5.Bricks.Button>
-                    <UU5.Bricks.Text colorSchema="grey" >Gateway name: {value.data.gatewayName}</UU5.Bricks.Text>
-                    <UU5.Bricks.Text colorSchema="black" >Gateway location: {value.data.location}</UU5.Bricks.Text>
-                    <UU5.Bricks.Text colorSchema="grey" >Gateway id: {value.data.id}</UU5.Bricks.Text>
-                    <UU5.Bricks.Span className={Css.state()}>
-              <UuP.Bricks.State
-                    stateType={state?.type}
-                    stateName={state?.code} 
-                 type="button"
-              />
-            </UU5.Bricks.Span>
-                  </UU5.Bricks.Card>
-                </>
-              )
-            })}
+          {dataGatewayList?.data?.map(value => {
+            let state = Config.gatewayStateList.find(item => item.code === value.data.state)
 
-          </div>
-        </DataListStateResolver>
+
+            return (
+              <>
+                <UU5.Bricks.Card
+                  className={Css.gatewayStyle()}
+                  bgStyle="outline"
+                  colorSchema="back"
+                  width={350}
+
+                //  bgStyle="filled"
+                >
+
+                  <UU5.Bricks.Span className={Css.state()}>
+                    <UuP.Bricks.State
+                      stateType={state?.type}
+                      stateName={state?.code}
+                      type="button"
+                    />
+                  </UU5.Bricks.Span>
+                  <UU5.BlockLayout.Row >
+                    <UU5.BlockLayout.Text
+                      style={{ fontSize: "30px", fontFamily: 'Brush Script MT' }}
+                      weight="primary"
+                      colorSchema="black"
+                    > {value.data.gatewayName}</UU5.BlockLayout.Text>
+                  </UU5.BlockLayout.Row>
+                  <UU5.BlockLayout.Row>
+                    <UU5.Bricks.Link>
+                      <UU5.BlockLayout.Text colorSchema="black" icon="mdi-map-marker" weight="primary">
+                        Location
+                  </UU5.BlockLayout.Text>
+                    </UU5.Bricks.Link> <UU5.BlockLayout.Text colorSchema="black" weight="secondary">{value.data.location}</UU5.BlockLayout.Text>
+                  </UU5.BlockLayout.Row>
+                  <UU5.BlockLayout.Row>
+                    <UU5.BlockLayout.Text colorSchema="black" weight="primary">Id:</UU5.BlockLayout.Text>
+                    <UU5.BlockLayout.Text> {value.data.id} </UU5.BlockLayout.Text>
+                  </UU5.BlockLayout.Row>
+                  <div className={Css.iconSection()}>
+                    {value.data.state === 'closed' &&
+                      (<div onClick={() => handleDeleteGateway(value.data)}>
+                        <UU5.Bricks.Icon
+                          className={Css.icon()}
+                          icon="glyphicon-trash"
+                          bgStyle="transparent"
+                          colorSchema="red"
+                          borderRadius="8px"
+                        /></div>)}
+                    <div onClick={() => handleUpdateGatewayForm(value.data)}>
+                      <UU5.Bricks.Icon
+                        className={Css.icon()}
+                        icon="glyphicon-edit"
+                        bgStyle="transparent"
+                        colorSchema="green"
+                        borderRadius="8px"
+                      /></div></div>
+                </UU5.Bricks.Card>
+              </>
+            )
+          })}
+
+        </div>
+      </DataListStateResolver>
     )
     //@@viewOff:render
   },

@@ -28,11 +28,12 @@ const MenuView = createComponent({
             }
             return (
                 <>
-                    <UU5.Bricks.Accordion colorSchema="teal" size="l">
+                    <UU5.Bricks.Accordion  size="l">
                         {props?.dataList?.map(item => {
                             if (item.data.state !== 'closed' && item.data.state !== 'initial') {
                                 return (
                                     <UU5.Bricks.Panel  
+                                    colorSchema="cyan" 
                                         header={item.data.gatewayName }
                                         onClick={() => handleGateway(item.data)}
                                         iconExpanded="mdi-chevron-up"

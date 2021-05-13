@@ -51,23 +51,23 @@ const UpdateGatewayForm = createVisualComponent({
     });
   })
     return (
-      <UU5.Forms.ContextModal
+      <UU5.Forms.ContextModal 
         shown={shown}
         size="l"
         header={
           <UU5.Forms.ContextHeader
-            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }} />}
+            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }}  />}
             info={<UU5.Bricks.Lsi lsi={{ cs: "Více informací...", en: "More info..." }} />}
           />
         }
         footer={
-          <UU5.Forms.ContextControls
-            buttonSubmitProps={{ content: <UU5.Bricks.Lsi lsi={{ en: "Update", cs: "Vytvořit" }} /> }}
+          <UU5.Forms.ContextControls 
+            buttonSubmitProps={{ content: <UU5.Bricks.Lsi lsi={{ en: "Update", cs: "Vytvořit" }}  /> }}
             buttonCancelProps={{ content: <UU5.Bricks.Lsi lsi={{ en: "Cancel", cs: "Zrušit" }} /> }}
           />
         }
       >
-        <UU5.Forms.ContextForm onSave={onSave} onCancel={onCancel}  >
+        <UU5.Forms.ContextForm  onSave={onSave} onCancel={onCancel}  >
           <UU5.Bricks.Row>
             <UU5.Bricks.Column colWidth="s-6" >
               <UU5.Forms.Text
