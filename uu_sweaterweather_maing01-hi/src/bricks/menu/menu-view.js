@@ -1,9 +1,8 @@
 //@@viewOn:imports
 import { createComponent, useState } from "uu5g04-hooks";
 import Config from "../config/config";
-import * as UuSweaterweather from "uu_sweaterweatherg01";
 import Css from "../sweaterweather.css";
-
+import Graph from "./graph";
 //@@viewOff:imports
 
 const MenuView = createComponent({
@@ -14,77 +13,44 @@ const MenuView = createComponent({
     render(props) {
         //@@viewOn:hooks
         const [gatewayId, setGatewayId] = useState(props?.dataList[0].data.id)
-        const [gatewayName, setGatewayName] = useState(props?.dataList[0].data.gatewayName)
+        const [gatewayName, setGatewayName] = useState("")
         //@@viewOff:hooks
+        console.log("propppp", props);
         let suspendedState = props?.dataList?.some(item => {
             return item.data.gatewayName === gatewayName && item.data.state === 'suspended'
         })
-        //@@viewOn:handlers
-        function DropdownMenu() {
-            function handleGateway(value) {
-                setGatewayName(value.gatewayName),
-                    setGatewayId(value.id)
+        let activeState = props?.dataList?.filter(value => {
+            return value.data.state !== 'closed' && value.data.state !== 'initial'
 
-            }
-            return (
-                <>
-                    <UU5.Bricks.Accordion  size="l">
-                        {props?.dataList?.map(item => {
-                            if (item.data.state !== 'closed' && item.data.state !== 'initial') {
-                                return (
-                                    <UU5.Bricks.Panel  
-                                    colorSchema="cyan" 
-                                        header={item.data.gatewayName }
-                                        onClick={() => handleGateway(item.data)}
-                                        iconExpanded="mdi-chevron-up"
-                                        iconCollapsed="mdi-chevron-down" 
-                                    >
-                                        {!suspendedState ? (<UuSweaterweather.Data.ListByGateway
-                                            baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                            gatewayId={gatewayId} gatewayName={gatewayName}/>) :
-                                            (<><br />
-                                                <UU5.Common.Error
-                                                    header={gatewayName}
-                                                    colorSchema="yellow-rich"
-                                                    content="Graph is unavailable at this moment, please try again later" />
-                                            </>)}
-                                    </UU5.Bricks.Panel>
-                                )
-                            }
-                        })}
-                    </UU5.Bricks.Accordion>
-                </>
-            )
-        }
+        })
+
+        //@@viewOn:handlers
+        function handleName(value) {
+            value?setGatewayName(value): setGatewayName("")
+ }
 
         //@@viewOff:handlers
         //@@viewOn:render
         return (
-           <>
-                    <DropdownMenu />
-                    <UU5.Bricks.GoogleMap
-  mapType="roadmap"
-  latitude={50.0755381}
-  longitude={14.43780049999998}
-  googleApiKey="AIzaSyBkv-K9tpS-MrvvRKOpIGEj7H5wwdHD9pA"
-  markers={[
-    {
-      latitude: 50.0755381,
-      longitude: 14.43780049999998,
-      label: "Prague",
-      title: "Capital city",
-      icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-    },
-    {
-      latitude: 50.0754616,
-      longitude: 14.43686409999998,
-      animation: 'drop',
-      onClick: (map, marker, event) => console.log(map, marker, event)
-    }
-  ]}
-/>
-<UU5.Bricks.ButtonToTop size="m"/>
-                    </>
+            <div  className={Css.tagSelect()}>
+                <UU5.Forms.TagSelect
+                    size="l"
+                    borderRadius={5}
+                    allowCustomTags={false}
+                    availableTags={activeState.map(value => {
+                        if (value.data.state !== 'closed' && value.data.state !== 'initial') {
+                            return ({ "content": value.data['gatewayName'], "value": value.data['id'] })
+                        }
+                    })}
+                    colorSchema="black"
+                    elevation={5}
+                    value={gatewayName}
+                    multiple
+                    onChange={({ value }) => { handleName(value) }}
+                />
+            <Graph gatewayName={gatewayName}  />
+
+            </div>
         )
         //@@viewOff:render
     }

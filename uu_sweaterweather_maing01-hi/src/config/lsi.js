@@ -13,6 +13,10 @@ const Lsi = {
       cs: "O aplikaci",
       en: "About Application",
     },
+    managegateways:{
+      cs: "Spravovat brány",
+      en: "Manage gateways"
+    },
     sweaterweather: {
       cs: "Sweaterweather",
       en: "Sweaterweather",

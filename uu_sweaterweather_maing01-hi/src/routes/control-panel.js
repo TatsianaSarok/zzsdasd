@@ -73,7 +73,7 @@ export const ControlPanel = createVisualComponent({
     return (
       <UU5.Common.Fragment>
         {viewState !== "load" ? (
-          <Plus4U5.App.ArtifactSetter territoryBaseUri={territoryBaseUri} artifactId={artifactId} />
+          <Plus4U5.App.ArtifactSetter header="Ulala" territoryBaseUri={territoryBaseUri} artifactId={artifactId} />
         ) : null}
         {child}
       </UU5.Common.Fragment>

@@ -10,6 +10,8 @@
   "namespace": "UuSweaterweather",
   "spec": "uu5-app; uu_appg01_devkit@4.0.1",
   "dependencies": {
+    "react-elastic-carousel": "^0.11.5",
+    "styled-components": "^5.3.0",
     "systemjs": "0.19.47",
     "uu5chartg01": "^2.5.1",
     "uu5g04": "^1.19.0",

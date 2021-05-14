@@ -4,7 +4,10 @@ display: flex;
 `;
 const gatewayStyle = () => Config.Css.css`
 padding: 20px;
+background-color: rgba(228,223,220, 0.5);
 `;
+
+
 const add = () => Config.Css.css`
 margin: 0;
 position: absolute;

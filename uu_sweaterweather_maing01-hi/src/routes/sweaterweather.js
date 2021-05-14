@@ -39,12 +39,12 @@ const Sweaterweather = createVisualComponent({
       <>
         <UU5.Bricks.Container style={{marginTop:"-30px"}}>
           <UU5.Bricks.Row>
-            {canManage() && <UU5.Bricks.Button onClick={handleClick}
+            {/* {canManage() && <UU5.Bricks.Button onClick={handleClick}
               colorSchema="brown" bgStyle="outline" style={{ float: "right" }}>
               Manage gateways<UU5.Bricks.Icon
-                icon="mdi-settings" /></UU5.Bricks.Button>}
-            <UU5.Bricks.Text className="uu5-common-center"
-              style={{ fontFamily: 'Brush Script MT', fontSize: "50px" }}>Sweaterweather</UU5.Bricks.Text>
+                icon="mdi-settings" /></UU5.Bricks.Button>} */}
+            {/* <UU5.Bricks.Text className="uu5-common-center"
+              style={{ fontFamily: 'Brush Script MT', fontSize: "50px", color:"white" }}>Sweaterweather</UU5.Bricks.Text> */}
             <GatewayProvider {...props}>
               <Menu />
             </GatewayProvider>

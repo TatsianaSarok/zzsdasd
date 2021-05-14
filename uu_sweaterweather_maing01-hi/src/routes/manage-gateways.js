@@ -30,14 +30,19 @@ const ManageGateways = createVisualComponent({
       <UU5.Bricks.Container style={{marginTop:"-30px"}}>
         <UU5.Bricks.Row>
         <UU5.Bricks.Button onClick={handleBack}
-              colorSchema="brown" bgStyle="outline" >
+              style={{color: "#454754" }} bgStyle="transparent" 
+              elevation={5}
+             borderRadius="8px"
+              >
               <UU5.Bricks.Icon
                 icon="plus4u-arrow-left-line" />Back</UU5.Bricks.Button>
         <GatewayProvider {...props}>
         <DataProvider>
-        <UU5.Bricks.Text className="uu5-common-center"
-              style={{ fontFamily: 'Brush Script MT', fontSize: "50px", marginTop:"-20px" }}>Manage gateways</UU5.Bricks.Text>
-          <ManageGateway />   
+        {/* <UU5.Bricks.Text className="uu5-common-center"
+              style={{ fontFamily: 'Brush Script MT', fontSize: "50px", marginTop:"-20px" }}>Manage gateways</UU5.Bricks.Text> */}
+          <div style={{paddingTop:"15px"}}>
+          <ManageGateway /> 
+          </div>  
         </DataProvider>
         </GatewayProvider>
         </UU5.Bricks.Row>

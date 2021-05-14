@@ -127,15 +127,17 @@ export const ManageGateway = createVisualComponent({
 
         <div className={Css.gateway()} >
           <UU5.Bricks.Card
-            bgStyle="outline"
-            colorSchema="grey"
-            width={150}>
+             style={{backgroundColor:"rgba(228,223,220, 0.5)"}}
+             bgStyle="transparent"
+             elevation={3}
+            width={150}
+            borderRadius="8px"
+            >
 
             <div className={Css.add()}
               onClick={handleAddGatewayForm}>
               <UU5.BlockLayout.Text
-                colorSchema="black"
-
+              style={{color: "#454754" }}
                 icon="mdi-shape-rectangle-plus" />
             </div>
           </UU5.Bricks.Card>
@@ -149,10 +151,9 @@ export const ManageGateway = createVisualComponent({
                 <UU5.Bricks.Card
                   className={Css.gatewayStyle()}
                   bgStyle="outline"
-                  colorSchema="back"
+                  elevation={3}
                   width={350}
-
-                //  bgStyle="filled"
+                  borderRadius="8px"
                 >
 
                   <UU5.Bricks.Span className={Css.state()}>
@@ -164,33 +165,31 @@ export const ManageGateway = createVisualComponent({
                   </UU5.Bricks.Span>
                   <UU5.BlockLayout.Row >
                     <UU5.BlockLayout.Text
-                      style={{ fontSize: "30px", fontFamily: 'Brush Script MT' }}
+                      style={{ fontSize: "30px", fontFamily: 'Brush Script MT',  color: "#454754"  }}
                       weight="primary"
-                      colorSchema="black"
                     > {value.data.gatewayName}</UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
                     <UU5.Bricks.Link>
-                      <UU5.BlockLayout.Text colorSchema="black" icon="mdi-map-marker" weight="primary">
+                      <UU5.BlockLayout.Text  style={{color: "#454754" }} icon="mdi-map-marker" weight="primary">
                         Location
                   </UU5.BlockLayout.Text>
-                    </UU5.Bricks.Link> <UU5.BlockLayout.Text colorSchema="black" weight="secondary">{value.data.location}</UU5.BlockLayout.Text>
+                    </UU5.Bricks.Link> <UU5.BlockLayout.Text style={{color: "#454754" }} weight="secondary">{value.data.location}</UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
-                    <UU5.BlockLayout.Text colorSchema="black" weight="primary">Id:</UU5.BlockLayout.Text>
-                    <UU5.BlockLayout.Text> {value.data.id} </UU5.BlockLayout.Text>
+                    <UU5.BlockLayout.Text  style={{color: "#454754" }} weight="primary">Id:</UU5.BlockLayout.Text>
+                    <UU5.BlockLayout.Text  style={{color: "#454754" }}> {value.data.id} </UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <div className={Css.iconSection()}>
                     {value.data.state === 'closed' &&
-                      (<div onClick={() => handleDeleteGateway(value.data)}>
+                      (<div  style={{color: "#C34A36" }} onClick={() => handleDeleteGateway(value.data)}>
                         <UU5.Bricks.Icon
                           className={Css.icon()}
                           icon="glyphicon-trash"
                           bgStyle="transparent"
-                          colorSchema="red"
                           borderRadius="8px"
                         /></div>)}
-                    <div onClick={() => handleUpdateGatewayForm(value.data)}>
+                    <div  style={{color: "#454754" }} onClick={() => handleUpdateGatewayForm(value.data)}>
                       <UU5.Bricks.Icon
                         className={Css.icon()}
                         icon="glyphicon-edit"

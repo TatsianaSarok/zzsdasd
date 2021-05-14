@@ -55,7 +55,8 @@ export const Home = createVisualComponent({
     const attrs = UU5.Common.VisualComponent.getAttrs(props);
     return (
       <div {...attrs}>
-        <Plus4U5.App.ArtifactSetter territoryBaseUri="" artifactId="" />
+        <Plus4U5.App.ArtifactSetter 
+        territoryBaseUri="" artifactId="" />
 
         <UU5.Bricks.Row className={CLASS_NAMES.welcomeRow()}>
           <UU5.Bricks.Column colWidth="x-12 s-3">
