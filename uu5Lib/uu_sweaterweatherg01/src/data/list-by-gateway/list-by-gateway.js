@@ -53,23 +53,23 @@ export const ListByGateway = createComponent({
       return (
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
-            <UU5.Bricks.Card >
+             <div >
               <UU5.Bricks.SwitchSelector size="l" style={{ borderRadius: "8px" }}
                 bgStyle="filled"
-                colorSchema="teal"
+                colorSchema="grey-rich"
                 items={graphName?.map(value => ({ value }))}
                 onChange={({ value }) => { handleChange(value) }}
                 value={graphType}
               />
               <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
-              <div style={{ textAlign: 'center', clear: "both", marginRight: "15px", fontFamily: 'Brush Script MT', fontSize: "25px" }}  >
+              <div style={{ textAlign: 'center', clear: "both", marginRight: "15px", fontFamily: 'Brush Script MT', fontSize: "25px", color: "#454754" }}  >
                 <Day />
               </div>
-              <div style={{ textAlign: 'center', fontFamily: 'Brush Script MT', fontSize: "25px" }}>
+              <div style={{ textAlign: 'center', fontFamily: 'Brush Script MT', fontSize: "25px", color: "#454754" }}>
                 <Time />
               </div>
               <ListView />
-            </UU5.Bricks.Card>
+              </div>
           </ListByGatewayLoader>
         </>
       )

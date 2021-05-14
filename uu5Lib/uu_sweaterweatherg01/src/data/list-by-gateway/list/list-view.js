@@ -71,7 +71,7 @@ export const ListView = createComponent({
 
     return (
       <DataListStateResolver dataList={dataDataList}>
-      <div style={{ width: '100%', height: 405 }}>
+      <div style={{ width: '100%', height: 305 }}>
                 <ResponsiveContainer>
              <ComposedChart
                     width={500}
@@ -89,8 +89,8 @@ export const ListView = createComponent({
                     <YAxis label={{ angle: -90, position: 'insideLeft' }} />
                     <Tooltip />
                     <Legend />
-                    <Area type="monotone" dataKey="T" fill="#A0EDED" stroke="#009688" />
-                    <Bar dataKey="H" barSize={20} fill="#009688" />
+                    <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
+                    <Bar dataKey="H" barSize={20} fill="#866B6E" />
                     {/* <Line type="monotone" dataKey="H" stroke="#ff7300" /> */}
                   </ComposedChart>
                 </ResponsiveContainer>
