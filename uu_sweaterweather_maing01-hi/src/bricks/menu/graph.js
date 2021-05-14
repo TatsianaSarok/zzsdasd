@@ -22,9 +22,11 @@ const Graph = createComponent({
                 return (<div className={Css.carousel()} style={{ paddingTop: "50px" }} >
                     <Carousel controls={false}>
                         {gatewayName.gatewayName.map(item =>
+                         <div style={{width: "95%"}}>
                             <UuSweaterweather.Data.ListByGateway
                                 baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                gatewayId={item} />)}
+                                gatewayId={item} /> </div>)}
+                                
                     </Carousel>
                 </div>)
             }
@@ -35,7 +37,7 @@ const Graph = createComponent({
                             baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
                             gatewayId={item} />)}
                 </div>)
-            } else { return (<div style={{ paddingTop: "15px", textAlign: "center", fontSize: "30px", color: "#866B6E" }}>Please pick one of the provided locations </div>) }
+            } else { return (<div style={{ paddingTop: "15px", textAlign: "center", fontSize: "2em ", color: "#866B6E" }}>Please pick one of the provided locations </div>) }
 
         }
         return (

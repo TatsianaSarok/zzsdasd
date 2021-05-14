@@ -49,7 +49,6 @@ const MenuView = createComponent({
                     onChange={({ value }) => { handleName(value) }}
                 />
             <Graph gatewayName={gatewayName}  />
-
             </div>
         )
         //@@viewOff:render
