@@ -3,7 +3,8 @@ const dataCreateDtoInType = shape({
     gatewayId: uu5String().isRequired(),
     timestamp: Date(),
     temperature: integer(),
-    humidity: integer()
+    humidity: integer(),
+    light: integer()
 })
 
 const dataDayListDtoInType = shape({
