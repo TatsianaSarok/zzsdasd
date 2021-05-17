@@ -1,5 +1,5 @@
 //@@viewOn:imports
-import { createComponent, useDataObject } from "uu5g04-hooks";
+import { createComponent, useDataObject, useState } from "uu5g04-hooks";
 import Calls from "calls";
 import Config from "./config/config";
 //@@viewOff:imports
@@ -24,14 +24,14 @@ const CurrentDataLoader = createComponent({
   //@@viewOff:defaultProps
 
   render({ children, baseUri, gatewayId }) {
-
+    const [currentData, setCurrentData] = useState()
     //@@viewOn:hooks
     let currentDataObject = useDataObject({
       handlerMap: {
         load: handleLoad,
       }
     });
-    let { state, data, newData, pendingData, errorData, handlerMap } = currentDataObject;
+    let { state, newData, pendingData, errorData, handlerMap } = currentDataObject;
     //@@viewOff:hooks
 
     const gateway = {
@@ -39,13 +39,17 @@ const CurrentDataLoader = createComponent({
     }
 
     async function handleLoad() {
+      setCurrentData(await Calls.getCurrent({ baseUri, gateway }))
+      setInterval(async () => {
+        setCurrentData(await Calls.getCurrent({ baseUri, gateway }))
+      }, 600000)
       return await Calls.getCurrent({ baseUri, gateway })
     }
 
     //@@viewOn:render
     return children({
       state,
-      data,
+      currentData,
       newData,
       pendingData,
       errorData,

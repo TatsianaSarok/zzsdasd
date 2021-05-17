@@ -33,11 +33,11 @@ const CurrentData = createVisualComponent({
       return <UU5.Bricks.Loading />;
     }
 
-    function renderReady(data) {
+    function renderReady(currentData) {
       return (
         <>
           <CurrentDataView
-            currentData={data}
+            currentData={currentData}
           />
         </>
       );
@@ -55,7 +55,7 @@ const CurrentData = createVisualComponent({
 
     return (
       <CurrentDataLoader baseUri={baseUri} gatewayId={gatewayId}>
-        {({ state, data, errorData }) => {
+        {({ state, currentData, errorData }) => {
 
           switch (state) {
             case "pending":
@@ -68,7 +68,7 @@ const CurrentData = createVisualComponent({
             case "ready":
             case "readyNoData":
             default:
-              return renderReady(data);
+              return renderReady(currentData);
           }
         }}
       </CurrentDataLoader>
