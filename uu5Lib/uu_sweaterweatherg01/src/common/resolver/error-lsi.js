@@ -1,8 +1,3 @@
-// template: UU5Lsi
-//@@viewOn:revision
-// coded: Petr Příhoda, 6.10.2020
-// reviewed:
-//@@viewOff:revision
 
 const Lsi = {
   error: {

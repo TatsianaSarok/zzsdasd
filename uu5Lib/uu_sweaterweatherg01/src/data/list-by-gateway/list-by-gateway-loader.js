@@ -1,10 +1,7 @@
-
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createComponent, useDataList } from "uu5g04-hooks";
 import "uu_plus4u5g01-bricks";
-
-
 import Config from "./config/config";
 import Calls from "calls";
 import { DataContext } from "./../context/data-context";
@@ -18,29 +15,29 @@ export const ListByGatewayLoader = createComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: UU5.PropTypes.string,
+    gatewayId: UU5.PropTypes.string,
+    graphType: UU5.PropTypes.string,
+    startTime: UU5.PropTypes.string
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     baseUri: undefined,
+    gatewayId: undefined,
+    graphType: undefined,
+    startTime: undefined
   },
   //@@viewOff:defaultProps
 
   render(props) {
-    console.log("propsssssssssss",props);
-    //@@viewOn:hooks
+
     const dataDataList = useDataList({
       handlerMap: {
         load: Calls.dayList,
       },
-      initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayId, props.startTime, props.graphType),
+      initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayId, props.startTime, props.graphType)
     });
-    //@@viewOff:hooks
-    //@@viewOn:handlers
-
-    //@@viewOn:private
-    //@@viewOff:private
 
     //@@viewOn:render
     return <DataContext.Provider value={dataDataList}>{props.children}</DataContext.Provider>;

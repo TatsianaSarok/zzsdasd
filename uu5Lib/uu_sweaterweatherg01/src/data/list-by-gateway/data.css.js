@@ -1,27 +1,26 @@
-// import Config from "./config/config";
-// const switcher = () => Config.Css.css`
-// display: flex;
-// justify-content: center;
-// `;
-// const header = () => Config.Css.css`
-// display: flex;
-// justify-content: center;
-// font-size: 30px;
-// `;  
-// const card = () => Config.Css.css`
-// width: 60%;
-// height: 550;
-// border-radius: 8px;
-// display: block;
-// margin-eft: auto;
-// marginRight: "auto
-// `; 
+import Config from "./config/config";
+const day = () => Config.Css.css`
+text-align: center;
+clear: both;
+margin-right: 15px;
+font-family: Brush Script MT;
+font-size: 25px;
+color: #454754; 
+`;
 
-// export default {
-//     card
+const time = () => Config.Css.css`
+text-align: center;
+font-family: Brush Script MT;
+font-size: 25px;
+color: #454754; 
+`;
 
-// };
-// style={{
-//     width: '60%', height: 550, borderRadius: "8px", display: "block",
-//     marginLeft: "auto", marginRight: "auto", background:"yellow"
-//   }} >
+const menu = () => Config.Css.css`
+border-radius: 8px;
+`;
+
+export default {
+    day,
+    time,
+    menu
+};

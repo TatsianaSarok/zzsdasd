@@ -30,17 +30,6 @@ export const DataListStateResolver = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
-    //@@viewOn:hooks
-    //@@viewOff:hooks
-
-    //@@viewOn:handlers
-    //@@viewOff:handlers
-
-    //@@viewOn:interface
-    //@@viewOff:interface
-
-    //@@viewOn:private
-    //@@viewOff:private
 
     //@@viewOn:render
     let child = null;

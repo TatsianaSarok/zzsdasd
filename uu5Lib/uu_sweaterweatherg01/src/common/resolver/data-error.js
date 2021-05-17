@@ -1,10 +1,3 @@
-// template: uu5ComponentCore DataError
-// templateVersion: 0.2.0
-// documentation: https://uuapp.plus4u.net/uu-bookkit-maing01/ce07c990d31f4917b5b4d75a3a99c2c9/book/page?code=UuShapesQuadrilateralsCoreDataError
-//@@viewOn:revision
-// coded: Petr Příhoda, 6.10.2020
-//@@viewOff:revision
-
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import { createComponent } from "uu5g04-hooks";

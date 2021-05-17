@@ -21,15 +21,24 @@ export const ListByGateway = createComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
-  propTypes: {},
+  propTypes: {
+    baseUri: UU5.PropTypes.string,
+    gatewayId: UU5.PropTypes.string,
+    graphType: UU5.PropTypes.string,
+    startTime: UU5.PropTypes.string
+  },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {},
+  defaultProps: {
+    baseUri: undefined,
+    gatewayId: undefined,
+    graphType: undefined,
+    startTime: undefined
+  },
   //@@viewOff:defaultProps
 
   render(props) {
-    console.log("Name", props);
     let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     let d = new Date();
@@ -53,23 +62,23 @@ export const ListByGateway = createComponent({
       return (
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
-             <div >
-              <UU5.Bricks.SwitchSelector size="l" style={{ borderRadius: "8px" }}
-                bgStyle="filled"
-                colorSchema="grey-rich"
-                items={graphName?.map(value => ({ value }))}
-                onChange={({ value }) => { handleChange(value) }}
-                value={graphType}
-              />
-              <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
-              <div style={{ textAlign: 'center', clear: "both", marginRight: "15px", fontFamily: 'Brush Script MT', fontSize: "25px", color: "#454754" }}  >
-                <Day />
-              </div>
-              <div style={{ textAlign: 'center', fontFamily: 'Brush Script MT', fontSize: "25px", color: "#454754" }}>
-                <Time />
-              </div>
-              <ListView />
-              </div>
+            <UU5.Bricks.SwitchSelector
+              size="l"
+              className={Css.menu()}
+              bgStyle="outline"
+              colorSchema="grey"
+              items={graphName?.map(value => ({ value }))}
+              onChange={({ value }) => { handleChange(value) }}
+              value={graphType}
+            />
+            <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
+            <div className={Css.day()}>
+              <Day />
+            </div>
+            <div className={Css.time()}>
+              <Time />
+            </div>
+            <ListView />
           </ListByGatewayLoader>
         </>
       )

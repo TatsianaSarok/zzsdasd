@@ -8,35 +8,40 @@ const CurrentDataLoader = createComponent({
   //@@viewOn:statics
   displayName: Config.TAG + "CurrentDataLoader",
   //@@viewOff:statics
+
   //@@viewOn:propTypes
   propTypes: {
-    baseUri: UU5.PropTypes.string
+    baseUri: UU5.PropTypes.string,
+    gatewayId: UU5.PropTypes.string
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
-    baseUri: undefined
+    baseUri: undefined,
+    gatewayId: undefined
   },
   //@@viewOff:defaultProps
+
   render({ children, baseUri, gatewayId }) {
+
     //@@viewOn:hooks
     let currentDataObject = useDataObject({
       handlerMap: {
         load: handleLoad,
       }
-
     });
-
     let { state, data, newData, pendingData, errorData, handlerMap } = currentDataObject;
     //@@viewOff:hooks
-    console.log("l", currentDataObject);
-   const gateway={
-        gatewayId:gatewayId
+
+    const gateway = {
+      gatewayId: gatewayId
     }
+
     async function handleLoad() {
-      return await Calls.getCurrent({baseUri, gateway})
+      return await Calls.getCurrent({ baseUri, gateway })
     }
+
     //@@viewOn:render
     return children({
       state,
