@@ -1,7 +1,7 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState } from "uu5g04-hooks";
+import { createVisualComponent, useState, useEffect } from "uu5g04-hooks";
 import Config from "../config/config";
 //@@viewOff:imports
 
@@ -20,9 +20,10 @@ const Day = createVisualComponent({
 
     render() {
         //@@viewOn:hooks
-        const [dateTime, setDateTime] = useState(currentDate);
-        //@@viewOff:hooks
+        const [dateTime, setDateTime] = useState("");
 
+        useEffect(()=>{         
+            setInterval(()=>{       
         let d = new Date();
         let days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -33,14 +34,14 @@ const Day = createVisualComponent({
         let date = d.getDate();
         let year = d.getFullYear();
         let currentDate = day + " " + date + " " + month + " " + year
-        setTimeout(
-            () => setDateTime(currentDate),
-            8640000
-        );
+                setDateTime(currentDate);
+            }, 1000);           
+        },[])
+        //@@viewOff:hooks
 
-        //@@viewOn:render
+        //@@viewOn:render;
         return (
-            <UU5.Bricks.Text>{dateTime || currentDate}</UU5.Bricks.Text>
+            <UU5.Bricks.Text>{dateTime}</UU5.Bricks.Text>
         );
         //@@viewOff:render
     }

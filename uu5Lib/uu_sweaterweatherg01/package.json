@@ -6,6 +6,10 @@
   "namespace": "UuSweaterweather",
   "spec": "uu5-lib; uu_appg01_devkit@4.1.0",
   "dependencies": {
+    "antd": "^4.15.5",
+    "moment": "^2.29.1",
+    "react": "^17.0.2",
+    "react-live-clock": "^5.0.16",
     "recharts": "^2.0.9",
     "uu5chartg01": "^2.5.1",
     "uu5g04": "^1.19.0",

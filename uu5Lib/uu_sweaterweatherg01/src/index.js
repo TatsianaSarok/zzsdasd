@@ -1,7 +1,6 @@
 import UU5 from "uu5g04";
 import Common from "./common/common.js";
 import Data from "./data/data.js";
-
 const UuSweatherweather = {
   Common,
   Data
