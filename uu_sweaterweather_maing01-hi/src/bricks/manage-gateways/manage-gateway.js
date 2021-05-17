@@ -20,26 +20,23 @@ export const ManageGateway = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
-  propTypes: {
-    baseUri: UU5.PropTypes.string
-  },
+  propTypes: {},
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    baseUri: undefined
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
-  render(props) {
+  render() {
+
     //@@viewOn:hooks
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [showGateway, setShowGateway] = useState('');
-    //@@viewOff:hooks
     let dataGatewayList = useContext(GatewayContext);
     let dataList = useContext(DataContext)
-    console.log("dataCony", dataList);
+    //@@viewOff:hooks
+
     //@@viewOn:handlers
     function handleAddGatewayForm() {
       setShowCreateModal(true)
@@ -64,10 +61,10 @@ export const ManageGateway = createVisualComponent({
       }
       setShowCreateModal(false);
     }
+
     function handleUpdateGatewayForm(value) {
       setShowUpdateModal(true)
       setShowGateway(value)
-      console.log("Va", value);
     }
 
     function handleCloseUpdateGatewayForm() {
@@ -108,10 +105,8 @@ export const ManageGateway = createVisualComponent({
     }
     //@@viewOff:handlers
 
-
     //@@viewOn:render
     return (
-
       <DataListStateResolver dataList={dataGatewayList}>
         <AddGatewayForm
           shown={showCreateModal}
@@ -124,28 +119,24 @@ export const ManageGateway = createVisualComponent({
           onSave={handleUpdateGatewaySave}
           onCancel={handleCloseUpdateGatewayForm}
         />
-
         <div className={Css.gateway()} >
           <UU5.Bricks.Card
-             style={{backgroundColor:"rgba(228,223,220, 0.5)"}}
-             bgStyle="transparent"
-             elevation={3}
+            style={{ backgroundColor: "rgba(228,223,220, 0.5)" }}
+            bgStyle="transparent"
+            elevation={3}
             width={150}
             borderRadius="8px"
-            >
-
+          >
             <div className={Css.add()}
               onClick={handleAddGatewayForm}>
               <UU5.BlockLayout.Text
-              style={{color: "#454754" }}
+                style={{ color: "#454754" }}
                 icon="mdi-shape-rectangle-plus" />
             </div>
           </UU5.Bricks.Card>
 
           {dataGatewayList?.data?.map(value => {
             let state = Config.gatewayStateList.find(item => item.code === value.data.state)
-
-
             return (
               <>
                 <UU5.Bricks.Card
@@ -155,7 +146,6 @@ export const ManageGateway = createVisualComponent({
                   width={350}
                   borderRadius="8px"
                 >
-
                   <UU5.Bricks.Span className={Css.state()}>
                     <UuP.Bricks.State
                       stateType={state?.type}
@@ -165,31 +155,43 @@ export const ManageGateway = createVisualComponent({
                   </UU5.Bricks.Span>
                   <UU5.BlockLayout.Row >
                     <UU5.BlockLayout.Text
-                      style={{ fontSize: "30px", fontFamily: 'Brush Script MT',  color: "#454754"  }}
+                      style={{ fontSize: "30px", fontFamily: 'Brush Script MT', color: "#454754" }}
                       weight="primary"
                     > {value.data.gatewayName}</UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
                     <UU5.Bricks.Link>
-                      <UU5.BlockLayout.Text  style={{color: "#454754" }} icon="mdi-map-marker" weight="primary">
-                        Location
+                      <UU5.BlockLayout.Text
+                        style={{ color: "#454754" }}
+                        icon="mdi-map-marker" weight="primary">Location
                   </UU5.BlockLayout.Text>
-                    </UU5.Bricks.Link> <UU5.BlockLayout.Text style={{color: "#454754" }} weight="secondary">{value.data.location}</UU5.BlockLayout.Text>
+                    </UU5.Bricks.Link><UU5.BlockLayout.Text
+                      style={{ color: "#454754" }} weight="secondary">
+                      {" " + value.data.location}
+                    </UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
-                    <UU5.BlockLayout.Text  style={{color: "#454754" }} weight="primary">Id:</UU5.BlockLayout.Text>
-                    <UU5.BlockLayout.Text  style={{color: "#454754" }}> {value.data.id} </UU5.BlockLayout.Text>
+                    <UU5.BlockLayout.Text
+                      style={{ color: "#454754" }}
+                      weight="primary">Id:
+                     </UU5.BlockLayout.Text>
+                    <UU5.BlockLayout.Text
+                      style={{ color: "#454754" }}>
+                      {" " + value.data.id}
+                    </UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <div className={Css.iconSection()}>
                     {value.data.state === 'closed' &&
-                      (<div  style={{color: "#C34A36" }} onClick={() => handleDeleteGateway(value.data)}>
+                      (<div style={{ color: "#C34A36" }}
+                        onClick={() => handleDeleteGateway(value.data)}>
                         <UU5.Bricks.Icon
                           className={Css.icon()}
                           icon="glyphicon-trash"
                           bgStyle="transparent"
                           borderRadius="8px"
                         /></div>)}
-                    <div  style={{color: "#454754" }} onClick={() => handleUpdateGatewayForm(value.data)}>
+                    <div style={{ color: "#454754" }}
+                      onClick={() => handleUpdateGatewayForm(value.data)}>
                       <UU5.Bricks.Icon
                         className={Css.icon()}
                         icon="glyphicon-edit"

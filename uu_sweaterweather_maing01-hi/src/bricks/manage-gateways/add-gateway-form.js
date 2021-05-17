@@ -20,8 +20,8 @@ const AddGatewayForm = createVisualComponent({
 
   //@@viewOn:defaultProps
   defaultProps: {
-    onSave: () => {},
-    onCancel: () => {},
+    onSave: () => { },
+    onCancel: () => { },
     shown: false,
   },
   //@@viewOff:defaultProps
@@ -30,7 +30,7 @@ const AddGatewayForm = createVisualComponent({
     //@@viewOn:render
 
     return (
-      
+
       <UU5.Forms.ContextModal
         shown={shown}
         size="l"
@@ -47,27 +47,28 @@ const AddGatewayForm = createVisualComponent({
           />
         }
       >
-             <UU5.Forms.ContextForm onSave={onSave} onCancel={onCancel}  >
-        <UU5.Bricks.Row>
-          <UU5.Bricks.Column colWidth="s-6" >
-            <UU5.Forms.Text
-              borderRadius="8px"
-              label="Gateway name"
-              name="gatewayName"
-              value=""
-             // required
-            />
-          </UU5.Bricks.Column>
-          <UU5.Bricks.Column colWidth="s-6">
-            <UU5.Forms.Text
-              borderRadius="8px"
-              label={<UU5.Bricks.Lsi lsi={{ en: "Location", cs: "Poloha" }} />}
-              name="location"
-              value=""
-            />
-          </UU5.Bricks.Column>
-        </UU5.Bricks.Row>
-      </UU5.Forms.ContextForm>
+        <UU5.Forms.ContextForm onSave={onSave} onCancel={onCancel}  >
+          <UU5.Bricks.Row>
+            <UU5.Bricks.Column colWidth="s-6" >
+              <UU5.Forms.Text
+                borderRadius="8px"
+                label="Gateway name"
+                name="gatewayName"
+                value=""
+                required
+              />
+            </UU5.Bricks.Column>
+            <UU5.Bricks.Column colWidth="s-6">
+              <UU5.Forms.Text
+                borderRadius="8px"
+                label={<UU5.Bricks.Lsi lsi={{ en: "Location", cs: "Poloha" }} />}
+                name="location"
+                value=""
+                required
+              />
+            </UU5.Bricks.Column>
+          </UU5.Bricks.Row>
+        </UU5.Forms.ContextForm>
       </UU5.Forms.ContextModal>
     );
     //@@viewOff:render

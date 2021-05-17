@@ -10,9 +10,20 @@ const MenuView = createComponent({
     displayName: Config.TAG + "MenuView",
     //@@viewOff:statics
 
+    //@@viewOn:propTypes
+    propTypes: {
+        dataList: UU5.PropTypes.array
+    },
+    //@@viewOff:propTypes
+
+    //@@viewOn:defaultProps
+    defaultProps: {
+        dataList: []
+    },
+
     render(props) {
         //@@viewOn:hooks
-        const [gatewayId, setGatewayId] = useState(props?.dataList[0].data.id)
+        const [gatewayId, setGatewayId] = useState("")
         const [gatewayName, setGatewayName] = useState("")
         //@@viewOff:hooks
         console.log("propppp", props);
@@ -21,18 +32,17 @@ const MenuView = createComponent({
         })
         let activeState = props?.dataList?.filter(value => {
             return value.data.state !== 'closed' && value.data.state !== 'initial'
-
         })
 
         //@@viewOn:handlers
-        function handleName(value) {
-            value?setGatewayName(value): setGatewayName("")
- }
-
+        function handleSetId(value) {
+            setGatewayId(value)
+        }
         //@@viewOff:handlers
+
         //@@viewOn:render
         return (
-            <div  className={Css.tagSelect()}>
+            <div className={Css.tagSelect()}>
                 <UU5.Forms.TagSelect
                     size="l"
                     borderRadius={5}
@@ -44,11 +54,11 @@ const MenuView = createComponent({
                     })}
                     colorSchema="black"
                     elevation={5}
-                    value={gatewayName}
+                    value={gatewayId}
                     multiple
-                    onChange={({ value }) => { handleName(value) }}
+                    onChange={({ value }) => { handleSetId(value) }}
                 />
-            <Graph gatewayName={gatewayName}  />
+                <Graph gatewayId={gatewayId} />
             </div>
         )
         //@@viewOff:render

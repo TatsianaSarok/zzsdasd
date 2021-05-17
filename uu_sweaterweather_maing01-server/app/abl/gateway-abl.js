@@ -58,9 +58,7 @@ class GatewayAbl {
     let dtoOut = {};
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut;
-  }  
-    
-  
+  }
 
   async get(awid, dtoIn, session) {
     let validationResult = this.validator.validate("gatewayGetDtoInType", dtoIn);
@@ -71,9 +69,7 @@ class GatewayAbl {
       WARNINGS.getUnsupportedKeys.code,
       Errors.Get.InvalidDtoIn
     );
-
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-
     // hds 3
     let gateway = await this.dao.get(awid, dtoIn.id);
     if (!gateway) {
@@ -93,18 +89,15 @@ class GatewayAbl {
       WARNINGS.updateUnsupportedKeys.code,
       Errors.Update.InvalidDtoIn
     );
-
     // hds 3
     let gateway = await this.dao.get(awid, dtoIn.id);
     // A5
     if (!gateway) {
       throw new Errors.Update.GatewayDoesNotExist({ uuAppErrorMap }, { gatewayId: dtoIn.id });
     }
-
     // hds 4
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
     // hds 7rs
-
     try {
       dtoIn.awid = awid;
       gateway = await this.dao.update(dtoIn);
@@ -115,15 +108,13 @@ class GatewayAbl {
       }
       throw e;
     }
-
     // hds 8
     gateway.uuAppErrorMap = uuAppErrorMap;
     return gateway;
   }
-  
+
 
   async create(awid, dtoIn, session) {
-
     // hds 2, 2.1
     let validationResult = this.validator.validate("gatewayCreateDtoInType", dtoIn);
     // hds 2.2, 2.3, A3, A4

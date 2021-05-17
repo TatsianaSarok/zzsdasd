@@ -43,9 +43,6 @@ export const Bottom = createVisualComponent({
     return (
       <div {...attrs}>
         uuSweaterweatherMaing01-{process.env.VERSION} © Unicorn{" "}
-        {/* <UU5.Bricks.Link target="_blank" href="TODO"> */}
-          {/* <UU5.Bricks.Lsi lsi={Lsi.bottom.termsOfUse} /> */}
-        {/* </UU5.Bricks.Link> */}
       </div>
     );
     //@@viewOff:render

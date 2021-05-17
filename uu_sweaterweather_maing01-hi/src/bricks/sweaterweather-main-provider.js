@@ -22,7 +22,7 @@ const SweaterweatherMainProvider = createComponent({
     //@@viewOn:render
     return <SweaterweatherMainContext.Provider value={state}>{children}</SweaterweatherMainContext.Provider>;
     //@@viewOff:render
-  },
+  }
 });
 
 export default SweaterweatherMainProvider;

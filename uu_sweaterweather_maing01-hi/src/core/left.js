@@ -4,7 +4,6 @@ import "uu5g04-bricks";
 import { createVisualComponent, useContext } from "uu5g04-hooks";
 import Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-app";
-import Css from "./top.css"
 import Config from "./config/config.js";
 import Lsi from "../config/lsi.js";
 import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
@@ -44,25 +43,23 @@ export const Left = createVisualComponent({
     }
     //@@viewOn:render
     return (
-      
-
       <Plus4U5.App.Left
         {...props}
         logoProps={{
           backgroundImageSrc: "assets/kargol.jpg",
         }}
-        aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about}  style={{fontFamily: 'Brush Script MT', fontSize: "20px", color: "#454754", fontSize:"25px"}}/>, href: "about" }]}
+        aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about} style={{ fontFamily: 'Brush Script MT', fontSize: "20px", color: "#454754", fontSize: "25px" }} />, href: "about" }]}
         helpHref={null}
       >
-        <Plus4U5.App.MenuTree 
-        style={{backgroundColor: 'rgba(228,223,220, 0.9)'}}
+        <Plus4U5.App.MenuTree
+          style={{ backgroundColor: 'rgba(228,223,220, 0.9)' }}
           borderBottom
           // NOTE Item "id" equals to useCase so that item gets automatically selected when route changes (see spa-autheticated.js).
           items={[
-             { id: "home", href: "home", content: <UU5.Bricks.Lsi lsi={Lsi.left.home} style={{color: "#454754", fontSize:"19px"}}/> },
-            { id: "data", href: "sweaterweather", content: <UU5.Bricks.Lsi lsi={Lsi.left.sweaterweather} style={{color: "#454754", fontSize:"19px"}}/> },
-            canManage() && {content: <UU5.Bricks.Lsi lsi={Lsi.left.managegateways} style={{color: "#454754", fontSize:"19px"}} />, href: "managegateways"}
-        ]}
+            { id: "home", href: "home", content: <UU5.Bricks.Lsi lsi={Lsi.left.home} style={{ color: "#454754", fontSize: "19px" }} /> },
+            { id: "data", href: "sweaterweather", content: <UU5.Bricks.Lsi lsi={Lsi.left.sweaterweather} style={{ color: "#454754", fontSize: "19px" }} /> },
+            canManage() && { content: <UU5.Bricks.Lsi lsi={Lsi.left.managegateways} style={{ color: "#454754", fontSize: "19px" }} />, href: "managegateways" }
+          ]}
         />
       </Plus4U5.App.Left>
     );

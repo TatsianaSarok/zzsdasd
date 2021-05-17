@@ -9,9 +9,6 @@ const WARNINGS = {
   createUnsupportedKeys: {
     code: `${Errors.Create.UC_CODE}unsupportedKeys`
   },
-  // updateUnsupportedKeys: {
-  //   code: `${Errors.Update.UC_CODE}unsupportedKeys`,
-  // },
   getUnsupportedKeys: {
     code: `${Errors.Get.UC_CODE}unsupportedKeys`,
   },
@@ -47,7 +44,7 @@ class DataAbl {
     let dtoOut = await this.dao.getCurrent(dtoIn.gatewayId);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
-    return dtoOut; 
+    return dtoOut;
   }
 
   async dayList(awid, dtoIn, session) {
@@ -59,14 +56,13 @@ class DataAbl {
       WARNINGS.listUnsupportedKeys.code,
       Errors.List.InvalidDtoIn
     );
-    //dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
     if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
     if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
     let dtoOut = await this.dao.dayList(awid, dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType, dtoIn.pageInfo);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
-    return dtoOut; 
+    return dtoOut;
   }
 
   async delete(awid, dtoIn) {
@@ -91,9 +87,7 @@ class DataAbl {
       WARNINGS.getUnsupportedKeys.code,
       Errors.Get.InvalidDtoIn
     );
-
     dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-
     // hds 3
     let data = await this.dao.get(awid, dtoIn.id);
     if (!data) {
@@ -104,49 +98,32 @@ class DataAbl {
     return data;
   }
 
-  // async list(awid, dtoIn, session) {
-  //   let validationResult = this.validator.validate("dataListDtoInType", dtoIn);
-  //   // hds 2.2, 2.3, A4, A5
-  //   let uuAppErrorMap = ValidationHelper.processValidationResult(
-  //     dtoIn,
-  //     validationResult,
-  //     WARNINGS.listUnsupportedKeys.code,
-  //     Errors.List.InvalidDtoIn
-  //   );
-  //   dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-  //   let dtoOut = await this.dao.list(awid, dtoIn.gatewayName);
-  //   // hds 4
-  //   dtoOut.uuAppErrorMap = uuAppErrorMap;
-  //   return dtoOut; 
-  //  }
-
   async create(awid, dtoIn, session) {
-      // hds 2, 2.1
-      let validationResult = this.validator.validate("dataCreateDtoInType", dtoIn);
-      // hds 2.2, 2.3, A3, A4
-      let uuAppErrorMap = ValidationHelper.processValidationResult(
-        dtoIn,
-        validationResult,
-        WARNINGS.createUnsupportedKeys.code,
-        Errors.Create.InvalidDtoIn
-      );
-      dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
-      dtoIn.awid = awid;
-      dtoIn.timestamp = new Date(dtoIn.timestamp)
-      let data;
-      try {
-        data = await this.dao.create(dtoIn);
-      } catch (e) {
-        // A8
-        if (e instanceof ObjectStoreError) {
-          throw new Errors.Create.DataDaoCreateFailed({ uuAppErrorMap }, e);
-        }
-        throw e;
+    // hds 2, 2.1
+    let validationResult = this.validator.validate("dataCreateDtoInType", dtoIn);
+    // hds 2.2, 2.3, A3, A4
+    let uuAppErrorMap = ValidationHelper.processValidationResult(
+      dtoIn,
+      validationResult,
+      WARNINGS.createUnsupportedKeys.code,
+      Errors.Create.InvalidDtoIn
+    );
+    dtoIn.uuIdentity = session.getIdentity().getUuIdentity();
+    dtoIn.awid = awid;
+    dtoIn.timestamp = new Date(dtoIn.timestamp)
+    let data;
+    try {
+      data = await this.dao.create(dtoIn);
+    } catch (e) {
+      // A8
+      if (e instanceof ObjectStoreError) {
+        throw new Errors.Create.DataDaoCreateFailed({ uuAppErrorMap }, e);
       }
-      // hds 4
-      data.uuAppErrorMap = uuAppErrorMap;
-
-      return data
+      throw e;
+    }
+    // hds 4
+    data.uuAppErrorMap = uuAppErrorMap;
+    return data
   }
 
 }

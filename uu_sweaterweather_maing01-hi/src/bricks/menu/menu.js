@@ -5,7 +5,6 @@ import Config from "../config/config";
 import DataListStateResolver from "../common/resolver/data-list-state-resolver";
 import GatewayContext from "../manage-gateways/gateway-context/gateway-context"
 import MenuView from "../menu/menu-view";
-
 //@@viewOff:imports
 
 const STATICS = {
@@ -18,28 +17,24 @@ export const Menu = createVisualComponent({
   ...STATICS,
 
   //@@viewOn:propTypes
-  propTypes: {
-    baseUri: UU5.PropTypes.string
-  },
+  propTypes: {},
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
-  defaultProps: {
-    baseUri: undefined
-  },
+  defaultProps: {},
   //@@viewOff:defaultProps
 
   render() {
 
     let dataGatewayList = useContext(GatewayContext);
     let dataList = dataGatewayList?.data;
-    
+
     //@@viewOn:render
-    return  (
+    return (
       <DataListStateResolver dataList={dataGatewayList}>
-      <MenuView dataList={dataList} />
-     </DataListStateResolver>
-    ) 
+        <MenuView dataList={dataList} />
+      </DataListStateResolver>
+    )
     //@@viewOff:render
   },
 });

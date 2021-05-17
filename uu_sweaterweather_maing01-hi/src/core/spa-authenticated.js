@@ -4,7 +4,6 @@ import "uu5g04-bricks";
 import { createVisualComponent, useState } from "uu5g04-hooks";
 import Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-app";
- 
 import Config from "./config/config";
 import Left from "./left";
 import Bottom from "./bottom";
@@ -25,7 +24,6 @@ const STATICS = {
 const About = UU5.Common.Component.lazy(() => import("../routes/about"));
 const InitAppWorkspace = UU5.Common.Component.lazy(() => import("../routes/init-app-workspace"));
 const ControlPanel = UU5.Common.Component.lazy(() => import("../routes/control-panel"));
-
 const DEFAULT_USE_CASE = "home";
 const ROUTES = {
   "": DEFAULT_USE_CASE,
@@ -60,7 +58,6 @@ export const SpaAuthenticated = createVisualComponent({
     return (
       <Plus4U5.App.MenuProvider activeItemId={initialActiveItemId}>
         <Plus4U5.App.Page className={Css.page()} 
-      
           backgroundImageSrc = "assets/logoscop.jpg"
           top={
           <Plus4U5.App.TopBt  className={Css.top()}>

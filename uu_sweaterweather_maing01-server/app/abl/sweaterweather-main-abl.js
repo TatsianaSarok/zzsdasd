@@ -24,24 +24,19 @@ class SweaterweatherMainAbl {
   async load(awid, session, authResult) {
     let workspace = await UuAppWorkspace.get(awid);
     let awscResponse;
-
     if (workspace.artifactUri) {
       let uuBtUriBuilder = UriBuilder.parse(workspace.artifactUri);
       let awscId = uuBtUriBuilder.toUri().parameters.id;
       let awscLoadUri = uuBtUriBuilder.setUseCase("uuAwsc/load").clearParameters().toUri();
-  
-      awscResponse = await AppClient.get(awscLoadUri, { id: awscId }, { session })  
-    }
 
-    return{
+      awscResponse = await AppClient.get(awscLoadUri, { id: awscId }, { session })
+    }
+    return {
       workspace,
       authorizedProfileList: authResult.getIdentityProfiles(),
       awsc: awscResponse && awscResponse.data
     };
   }
-
-
-
 
   async init(uri, dtoIn, session) {
     const awid = uri.getAwid();
@@ -54,7 +49,6 @@ class SweaterweatherMainAbl {
       WARNINGS.initUnsupportedKeys.code,
       Errors.Init.InvalidDtoIn
     );
-
     // HDS 2
     const schemas = ["sweaterweatherMain"];
     let schemaCreateResults = schemas.map(async (schema) => {
@@ -66,24 +60,20 @@ class SweaterweatherMainAbl {
       }
     });
     await Promise.all(schemaCreateResults);
-
     if (dtoIn.uuBtLocationUri) {
       const baseUri = uri.getBaseUri();
       const uuBtUriBuilder = UriBuilder.parse(dtoIn.uuBtLocationUri);
       const location = uuBtUriBuilder.getParameters().id;
       const uuBtBaseUri = uuBtUriBuilder.toUri().getBaseUri();
-
       const createAwscDtoIn = {
         name: "UuSweaterweather",
         typeCode: "uu-sweaterweather-maing01",
         location: location,
         uuAppWorkspaceUri: baseUri,
       };
-
       const awscCreateUri = uuBtUriBuilder.setUseCase("uuAwsc/create").toUri();
       const appClientToken = await AppClientTokenService.createToken(uri, uuBtBaseUri);
       const callOpts = AppClientTokenService.setToken({ session }, appClientToken);
-
       // TODO HDS
       let awscId;
       try {
@@ -97,9 +87,7 @@ class SweaterweatherMainAbl {
           throw new Errors.Init.CreateAwscFailed({ uuAppErrorMap }, { location: dtoIn.uuBtLocationUri }, e);
         }
       }
-
       const artifactUri = uuBtUriBuilder.setUseCase(null).clearParameters().setParameter("id", awscId).toUri();
-
       await UuAppWorkspace.connectArtifact(
         baseUri,
         {
@@ -109,7 +97,6 @@ class SweaterweatherMainAbl {
         session
       );
     }
-
     // HDS 3
     if (dtoIn.uuAppProfileAuthorities) {
       try {
@@ -122,10 +109,8 @@ class SweaterweatherMainAbl {
         throw e;
       }
     }
-
     // HDS 4 - HDS N
     // TODO Implement according to application needs...
-
     // HDS N+1
     const workspace = UuAppWorkspace.get(awid);
 
