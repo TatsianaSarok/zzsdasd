@@ -4,7 +4,6 @@ import { createComponent, useState } from "uu5g04-hooks";
 import Config from "./config/config";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
-import Day from "./list/day";
 import Time from "./list/time";
 import ListView from "./list/list-view";
 import CurrentData from "./current-data";
@@ -66,16 +65,13 @@ export const ListByGateway = createComponent({
               size="l"
               className={Css.menu()}
               bgStyle="outline"
-              colorSchema="brown"
+              colorSchema="brown-rich"
               items={graphName?.map(value => ({ value }))}
               onChange={({ value }) => { handleChange(value) }}
               value={graphType}
             />
             <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
             <div className={Css.day()}>
-              <Day />
-            </div>
-            <div className={Css.time()}>
               <Time />
             </div>
             <ListView />
