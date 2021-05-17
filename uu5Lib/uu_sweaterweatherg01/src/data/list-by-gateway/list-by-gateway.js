@@ -66,7 +66,7 @@ export const ListByGateway = createComponent({
               size="l"
               className={Css.menu()}
               bgStyle="outline"
-              colorSchema="grey"
+              colorSchema="brown"
               items={graphName?.map(value => ({ value }))}
               onChange={({ value }) => { handleChange(value) }}
               value={graphType}
