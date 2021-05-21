@@ -35,9 +35,10 @@ const DateTime = createVisualComponent({
         //@@viewOn:render
         return (
             <>
+                 <UU5.Bricks.Text>{day} <span style={{ fontSize:"20px", border: "2px solid #454754",padding: "5px", paddingRight: "7px",
+  borderRadius: "50px 20px"}}> {time} </span></UU5.Bricks.Text>
              <UU5.Bricks.Text style={{fontSize: "40px"}}>{props.gatewayName}</UU5.Bricks.Text>
-            <UU5.Bricks.Text>{day}</UU5.Bricks.Text>
-            <UU5.Bricks.Text>{time}</UU5.Bricks.Text>
+            
             </>
         );
         //@@viewOff:render
