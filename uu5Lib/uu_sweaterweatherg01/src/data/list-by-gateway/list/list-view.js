@@ -48,7 +48,8 @@ export const ListView = createComponent({
           name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " + `${weekday}` :
             `${weekday}` + ' ' + `${value.data._id.day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
-          H: Math.round(value.data.humidity * 10) / 10
+          H: Math.round(value.data.humidity * 10) / 10,
+          L: Math.round(value.data.light * 10) / 10
         }
       )
     })][0]
@@ -74,6 +75,7 @@ export const ListView = createComponent({
               <YAxis label={{ angle: -90, position: 'insideLeft', color: "#000000" }} />
               <Tooltip />
               <Legend />
+              <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
               <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
               <Bar dataKey="H" barSize={20} fill="#866B6E" />
             </ComposedChart>
