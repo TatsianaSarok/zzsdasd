@@ -61,7 +61,7 @@ const CurrentData = createVisualComponent({
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
 
-        <UU5.Bricks.Icon icon="mdi-lightbulb-outline"
+       {props?.currentData.light && <UU5.Bricks.Icon icon="mdi-lightbulb-outline"
           style={{ fontSize: "40px", color: "#ffba08" }}>
           <UU5.Bricks.Text
             style={{
@@ -70,7 +70,7 @@ const CurrentData = createVisualComponent({
             }}>
             {props?.currentData.light}
           </UU5.Bricks.Text>
-        </UU5.Bricks.Icon>
+        </UU5.Bricks.Icon>}
 
       </div>
     );
