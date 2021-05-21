@@ -38,6 +38,7 @@ export const ListByGateway = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    console.log("props", props);
     let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     let d = new Date();
@@ -72,7 +73,7 @@ export const ListByGateway = createComponent({
             />
             <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
             <div className={Css.day()}>
-              <Time />
+              <Time gatewayName={props.gatewayName}/>
             </div>
             <ListView />
           </ListByGatewayLoader>
