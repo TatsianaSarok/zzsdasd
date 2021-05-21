@@ -24,7 +24,7 @@ class DataMongo extends UuObjectDao {
       {$match: { gatewayId: gateway } },
       { $sort: { "timestamp": -1 } },
       { $limit: 1 },
-      { $project: { temperature: 1, humidity: 1 } }
+      { $project: { temperature: 1, humidity: 1, light: 1 } }
     ])
     return currentData[0]
   }

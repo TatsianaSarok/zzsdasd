@@ -23,20 +23,18 @@ const MenuView = createComponent({
 
     render(props) {
         //@@viewOn:hooks
-        const [gatewayId, setGatewayId] = useState("")
-        const [gatewayName, setGatewayName] = useState("")
+        const [gatewayId, setGatewayId] = useState()
+        const [gatewayState, setGatewayState] = useState([])
         //@@viewOff:hooks
-        console.log("propppp", props);
-        let suspendedState = props?.dataList?.some(item => {
-            return item.data.gatewayName === gatewayName && item.data.state === 'suspended'
-        })
+
+     console.log("state", gatewayId);
         let activeState = props?.dataList?.filter(value => {
             return value.data.state !== 'closed' && value.data.state !== 'initial'
         })
 
         //@@viewOn:handlers
         function handleSetId(value) {
-            setGatewayId(value)
+             setGatewayId(value)
         }
         //@@viewOff:handlers
 
@@ -49,16 +47,16 @@ const MenuView = createComponent({
                     allowCustomTags={false}
                     availableTags={activeState.map(value => {
                         if (value.data.state !== 'closed' && value.data.state !== 'initial') {
-                            return ({ "content": value.data['gatewayName'], "value": value.data['id'] })
+                            return ({ "content": value.data['gatewayName'], "value": value.data['id']+"/"+value.data['state']+"/"+value.data['gatewayName']})
                         }
                     })}
                     colorSchema="black"
                     elevation={5}
                     value={gatewayId}
                     multiple
-                    onChange={({ value }) => { handleSetId(value) }}
+                    onChange={( {value }) => { handleSetId(value) }}
                 />
-                <Graph gatewayId={gatewayId} />
+                  <Graph gatewayId={gatewayId} />  
             </div>
         )
         //@@viewOff:render

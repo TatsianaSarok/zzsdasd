@@ -14,7 +14,7 @@ const Graph = createComponent({
 
     //@@viewOn:propTypes
     propTypes: {
-        gatewayId: UU5.PropTypes.srray
+        gatewayId: UU5.PropTypes.array
     },
     //@@viewOff:propTypes
 
@@ -23,27 +23,43 @@ const Graph = createComponent({
         gatewayId: []
     },
 
-    render(gatewayId) {
+    render(props) {
+        console.log("iteee", props.gatewayId.map(item => {
+            return item.split("/")[1]
+        }))
         function Gateways() {
-            if (gatewayId?.gatewayId.length > 1) {
+            if (props.gatewayId?.length >= 1) {
                 return (<div className={Css.carousel()}
                     style={{ paddingTop: "50px" }} >
-                    <Carousel controls={false}>
-                        {gatewayId.gatewayId.map(item =>
-                            <div style={{ width: "95%" }}>
-                                <UuSweaterweather.Data.ListByGateway
-                                    baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                    gatewayId={item} /> </div>)}
+                    <Carousel>
+                        {props.gatewayId.map(item =>
+                            item.split("/")[1] !== 'suspended' ?
+                                (<div style={{ width: "95%" }}>
+                                    <UuSweaterweather.Data.ListByGateway
+                                        baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+                                        gatewayId={item.split("/")[0]} gatewayName={item.split("/")[2]} /></div>) :
+                                <div>
+                                    <UU5.Common.Error
+                                        bgStyle="filled" errorData="Chosen location is currently unavailable"
+                                        colorSchema="brown" content="Warning" />
+                                </div>)}
                     </Carousel>
                 </div>)
-            } else if (gatewayId?.gatewayId.length === 1) {
-                return (<div style={{ paddingTop: "50px" }} >
-                    {gatewayId.gatewayId.map(item =>
-                        <UuSweaterweather.Data.ListByGateway
-                            baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                            gatewayId={item} />)}
-                </div>)
-            } else {
+            }
+            //  else if (props.gatewayId?.length === 1) {
+            //     return (<div style={{ paddingTop: "50px" }} >
+            //         {props.gatewayId.map(item =>
+            //         item.split("/")[1] !== 'suspended'?
+            //            ( <UuSweaterweather.Data.ListByGateway
+            //                 baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+            //                 gatewayId={item.split("/")[0]} />): <div style={{paddingTop: "50px" }}>
+            //                      <UU5.Common.Error 
+            //     bgStyle="filled" errorData="Chosen location is currently unavailable"
+            //      colorSchema="brown" content="Warning" />
+            //                 </div>)}
+            //     </div>)
+            // } 
+            else {
                 return (
                     <div style={{ paddingTop: "15px", textAlign: "center", fontSize: "2em ", color: "#866B6E" }}>
                         Please pick one or more of the provided locations
