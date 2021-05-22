@@ -1,10 +1,11 @@
 //@@viewOn:imports
-import { createComponent, useState } from "uu5g04-hooks";
+import { createComponent, useState, useLsiValues } from "uu5g04-hooks";
 import Config from "../config/config";
 import * as UuSweaterweather from "uu_sweaterweatherg01";
 import React, { Component } from 'react';
 import Carousel from 'react-elastic-carousel';
 import Css from ".././sweaterweather.css"
+import Lsi from "./menu-lsi";
 //@@viewOff:imports
 
 const Graph = createComponent({
@@ -24,9 +25,9 @@ const Graph = createComponent({
     },
 
     render(props) {
-        console.log("iteee", props.gatewayId.map(item => {
-            return item.split("/")[1]
-        }))
+
+        const inputLsi = useLsiValues(Lsi);
+
         function Gateways() {
             if (props.gatewayId?.length >= 1) {
                 return (<div className={Css.carousel()}
@@ -40,8 +41,8 @@ const Graph = createComponent({
                                         gatewayId={item.split("/")[0]} gatewayName={item.split("/")[2]} /></div>) :
                                 <div>
                                     <UU5.Common.Error
-                                        bgStyle="filled" errorData="Chosen location is currently unavailable"
-                                        colorSchema="brown" content="Warning" />
+                                        bgStyle="filled" errorData={inputLsi.locationUnavailable}
+                                        colorSchema="brown" content={inputLsi.warning} />
                                 </div>)}
                     </Carousel>
                 </div>)
@@ -62,7 +63,7 @@ const Graph = createComponent({
             else {
                 return (
                     <div style={{ paddingTop: "15px", textAlign: "center", fontSize: "2em ", color: "#866B6E" }}>
-                        Please pick one or more of the provided locations
+                       {inputLsi.pickLocation} 
                     </div>)
             }
         }

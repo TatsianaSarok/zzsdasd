@@ -23,11 +23,8 @@ const MenuView = createComponent({
 
     render(props) {
         //@@viewOn:hooks
-        const [gatewayId, setGatewayId] = useState()
-        const [gatewayState, setGatewayState] = useState([])
+        const [gatewayId, setGatewayId] = useState();
         //@@viewOff:hooks
-
-     console.log("state", gatewayId);
         let activeState = props?.dataList?.filter(value => {
             return value.data.state !== 'closed' && value.data.state !== 'initial'
         })

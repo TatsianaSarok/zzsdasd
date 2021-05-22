@@ -54,7 +54,6 @@ export const Left = createVisualComponent({
         <Plus4U5.App.MenuTree
           style={{ backgroundColor: 'rgba(228,223,220, 0.9)' }}
           borderBottom
-          // NOTE Item "id" equals to useCase so that item gets automatically selected when route changes (see spa-autheticated.js).
           items={[
             // { id: "home", href: "home", content: <UU5.Bricks.Lsi lsi={Lsi.left.home} style={{ color: "#454754", fontSize: "19px" }} /> },
             { id: "data", href: "sweaterweather", content: <UU5.Bricks.Lsi lsi={Lsi.left.sweaterweather} style={{ color: "#454754", fontSize: "19px" }} /> },

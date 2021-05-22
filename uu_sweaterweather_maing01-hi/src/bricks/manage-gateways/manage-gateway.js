@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useContext, useState } from "uu5g04-hooks";
+import { createVisualComponent, useContext, useState, useLsiValues } from "uu5g04-hooks";
 import Config from "./config/config";
 import DataListStateResolver from "../common/resolver/data-list-state-resolver";
 import GatewayContext from "./gateway-context/gateway-context"
@@ -8,6 +8,7 @@ import Css from "./gateway.css";
 import AddGatewayForm from "./add-gateway-form";
 import UpdateGatewayForm from "./update-gateway-form";
 import DataContext from "../menu/data-context/data-context"
+import Lsi from "./manage-gateway-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -28,11 +29,11 @@ export const ManageGateway = createVisualComponent({
   //@@viewOff:defaultProps
 
   render() {
-
     //@@viewOn:hooks
     const [showCreateModal, setShowCreateModal] = useState(false);
     const [showUpdateModal, setShowUpdateModal] = useState(false);
     const [showGateway, setShowGateway] = useState('');
+    const inputLsi = useLsiValues(Lsi);
     let dataGatewayList = useContext(GatewayContext);
     let dataList = useContext(DataContext)
     //@@viewOff:hooks
@@ -52,7 +53,6 @@ export const ManageGateway = createVisualComponent({
         gatewayName: opt.values.gatewayName,
         location: opt.values.location
       }
-      console.log("NewData", input);
       try {
         await dataGatewayList?.handlerMap.create(input);
       } catch {
@@ -163,7 +163,7 @@ export const ManageGateway = createVisualComponent({
                     <UU5.Bricks.Link>
                       <UU5.BlockLayout.Text
                         style={{ color: "#454754" }}
-                        icon="mdi-map-marker" weight="primary">Location
+                        icon="mdi-map-marker" weight="primary">{inputLsi.location}
                   </UU5.BlockLayout.Text>
                     </UU5.Bricks.Link><UU5.BlockLayout.Text
                       style={{ color: "#454754" }} weight="secondary">
