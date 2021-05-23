@@ -37,6 +37,7 @@ float:right
 `;
 
 const form = () => Config.Css.css`
+
 .uu5-bricks-modal-dialog {
     background: rgba(228,223,220)
 }
@@ -67,7 +68,13 @@ button.color-schema-blue-rich:hover, .color-schema-primary:hover{
 .uu5-bricks-button-m:hover {
     background-color : rgba(69,71,84, 0.45)
 }
+.color-schema-red.uu5-forms-text-input 
+.uu5-forms-input-form-item.uu5-common-bg-style-outline{
+    background: rgba(228,223,220)
+}
+
 `;
+
 
 export default {
     gateway,

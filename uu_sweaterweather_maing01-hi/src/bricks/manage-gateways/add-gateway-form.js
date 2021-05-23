@@ -3,6 +3,7 @@ import UU5 from "uu5g04";
 import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5g04-forms";
+import Css from "./gateway.css"
 //@@viewOff:imports
 
 const AddGatewayForm = createVisualComponent({
@@ -32,6 +33,7 @@ const AddGatewayForm = createVisualComponent({
     return (
 
       <UU5.Forms.ContextModal
+      className={Css.form()}
         shown={shown}
         size="l"
         header={
