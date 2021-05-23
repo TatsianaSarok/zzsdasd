@@ -7,7 +7,7 @@ const top = () => Config.Css.css`
 
 const menu = () => Config.Css.css`
 display:contents;
-font-size: 50px;
+font-size: 40px;
 font-family: Brush Script MT;
 `; 
 

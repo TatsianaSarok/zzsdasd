@@ -7,6 +7,7 @@ display: flex;
 const gatewayStyle = () => Config.Css.css`
 padding: 20px;
 background-color: rgba(228,223,220, 0.5);
+display: grid
 `;
 
 const add = () => Config.Css.css`

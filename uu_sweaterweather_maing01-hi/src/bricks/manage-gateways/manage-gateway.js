@@ -125,6 +125,7 @@ export const ManageGateway = createVisualComponent({
             bgStyle="transparent"
             elevation={3}
             width={150}
+            minWidth={50}
             borderRadius="8px"
           >
             <div className={Css.add()}
@@ -138,7 +139,7 @@ export const ManageGateway = createVisualComponent({
           {dataGatewayList?.data?.map(value => {
             let state = Config.gatewayStateList.find(item => item.code === value.data.state)
             return (
-              <>
+              
                 <UU5.Bricks.Card
                   className={Css.gatewayStyle()}
                   bgStyle="outline"
@@ -200,7 +201,7 @@ export const ManageGateway = createVisualComponent({
                         borderRadius="8px"
                       /></div></div>
                 </UU5.Bricks.Card>
-              </>
+              
             )
           })}
 

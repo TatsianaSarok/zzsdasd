@@ -39,7 +39,7 @@ function canManage() {
     //@@viewOn:render
     return (
       <>
-       <UU5.Bricks.Container style={{marginTop:"-30px"}}>
+       <UU5.Bricks.Container /*style={{marginTop:"-30px"}}*/>
        {canManage() && ( <UU5.Bricks.Row>
         <UU5.Bricks.Button onClick={handleBack}
               style={{color: "#454754" }} bgStyle="transparent" 
