@@ -1,7 +1,7 @@
 const Lsi = {
     last24h: {
-      en: "last 24h",
-      cs: "posledních 24h"
+      en: "24h",
+      cs: "24h"
     },
     week: {
         en: "week",
