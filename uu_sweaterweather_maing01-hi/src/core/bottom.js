@@ -41,7 +41,7 @@ export const Bottom = createVisualComponent({
     //@@viewOn:render
     const attrs = UU5.Common.VisualComponent.getAttrs(props, CLASS_NAMES.main());
     return (
-      <div {...attrs}>
+      <div {...attrs} >
         uuSweaterweatherMaing01-{process.env.VERSION} © Unicorn{" "}
       </div>
     );

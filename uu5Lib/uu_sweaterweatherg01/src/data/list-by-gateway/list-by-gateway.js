@@ -65,6 +65,7 @@ export const ListByGateway = createComponent({
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <UU5.Bricks.SwitchSelector
+            style={{color: "yellow"}}
               size="l"
               className={Css.menu()}
               bgStyle="outline"

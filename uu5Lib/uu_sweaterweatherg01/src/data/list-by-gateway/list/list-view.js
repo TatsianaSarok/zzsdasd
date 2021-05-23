@@ -58,7 +58,7 @@ export const ListView = createComponent({
     //@@viewOn:render
     return (
       <DataListStateResolver dataList={dataDataList}>
-        <div style={{ width: '100%', height: 301 }}>
+        <div style={{ width: '100%', height: 301}}>
           <ResponsiveContainer>
             <ComposedChart
               width={500}
@@ -72,8 +72,8 @@ export const ListView = createComponent({
               }}
             >
               <CartesianGrid stroke="#f5f5f5" />
-              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0, color: "#000000" }} scale="band" />
-              <YAxis label={{ angle: -90, position: 'insideLeft', color: "#000000" }} />
+              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0, style:{ color: "#000000"} }} scale="band" />
+              <YAxis label={{ angle: -90, position: 'insideLeft', style:{ color: "#000000"} }} />
               <Tooltip />
               <Legend />
               <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />

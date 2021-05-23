@@ -35,11 +35,45 @@ margin: 5px 10px 0 5px;
 float:right
 `;
 
+const form = () => Config.Css.css`
+.uu5-bricks-modal-dialog {
+    background: rgba(228,223,220)
+}
+button.color-schema-blue-rich, .color-schema-primary{
+    background : #454754 
+}
+button.color-schema-blue-rich:hover, .color-schema-primary:hover{
+    background : #333232
+}
+.uu5-forms-input-form-item{
+    background: rgba(228,223,220)
+}
+.uu5-forms-input-form-item: focus{
+    border-color: #454754 
+}
+.uu-xmtvzx:focus {
+    border-color: #454754 
+}
+.uu-13cszwg.uu-rll6kp.uu-147oa3r{
+    background-color : rgba(69,71,84, 0.15)
+}
+.uu-13cszwg:hover{
+    background-color : rgba(69,71,84, 0.15)
+}
+.uu5-bricks-button-m{
+    background-color : rgba(69,71,84, 0.15)
+} 
+.uu5-bricks-button-m:hover {
+    background-color : rgba(69,71,84, 0.45)
+}
+`;
+
 export default {
     gateway,
     gatewayStyle,
     add,
     state,
     icon,
-    iconSection
+    iconSection,
+    form
 };

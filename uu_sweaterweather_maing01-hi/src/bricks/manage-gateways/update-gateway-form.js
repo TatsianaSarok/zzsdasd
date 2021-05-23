@@ -1,9 +1,9 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useLsiValues } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
-import Lsi from "./update-gateway-form.lsi";
 import "uu5g04-forms";
+import Css from "./gateway.css";
 //@@viewOff:imports
 
 const UpdateGatewayForm = createVisualComponent({
@@ -49,12 +49,13 @@ const UpdateGatewayForm = createVisualComponent({
     })
     return (
       <UU5.Forms.ContextModal
+      className={Css.form()}
         shown={shown}
         size="l"
         header={
           <UU5.Forms.ContextHeader
-            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }} />}
-            info={<UU5.Bricks.Lsi lsi={{ cs: "Více informací...", en: "More info..." }} />}
+            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }} style={{color: "#454754"}}/>}
+            info={<UU5.Bricks.Lsi lsi={{ cs: "Více informací...", en: "More info..." }} style={{color: "#454754"}}/>}
           />
         }
         footer={
@@ -64,10 +65,11 @@ const UpdateGatewayForm = createVisualComponent({
           />
         }
       >
-        <UU5.Forms.ContextForm onSave={onSave} onCancel={onCancel}  >
+        <UU5.Forms.ContextForm onSave={onSave} onCancel={onCancel}>
           <UU5.Bricks.Row>
             <UU5.Bricks.Column colWidth="s-6" >
               <UU5.Forms.Text
+                style={{color: "#454754"}}
                 borderRadius="8px"
                 label="Gateway name"
                 name="gatewayName"
@@ -76,6 +78,7 @@ const UpdateGatewayForm = createVisualComponent({
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
+                style={{color: "#454754"}}
                 borderRadius="8px"
                 label={<UU5.Bricks.Lsi lsi={{ en: "Location", cs: "Poloha" }} />}
                 name="location"
