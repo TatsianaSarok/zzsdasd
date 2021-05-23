@@ -56,7 +56,8 @@ class DataMongo extends UuObjectDao {
         $group: {
           _id: {
             $cond: {
-              if: { $eq: [graphType, 'last 24h'] },
+             // if: { $eq: [graphType, 'last 24h', graphType,'posledních 24h'] },
+              if : { $or: [ { $eq: [ graphType, 'last 24h' ] }, { $eq: [ graphType, 'posledních 24h' ] } ] },
               then: {
                 "year": { $year: "$timestamp" },
                 "month": { $month: "$timestamp" },

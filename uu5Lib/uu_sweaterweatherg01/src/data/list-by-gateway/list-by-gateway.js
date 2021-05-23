@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createComponent, useState } from "uu5g04-hooks";
+import { createComponent, useState, useLsiValues } from "uu5g04-hooks";
 import Config from "./config/config";
 import 'uu_pg01-bricks';
 import ListByGatewayLoader from "./list-by-gateway-loader";
@@ -8,6 +8,7 @@ import Time from "./list/time";
 import ListView from "./list/list-view";
 import CurrentData from "./current-data";
 import Css from "./data.css";
+import Lsi from "./list-by-gateway-lsi";
 //@@viewOff:imports
 
 const STATICS = {
@@ -38,15 +39,16 @@ export const ListByGateway = createComponent({
   //@@viewOff:defaultProps
 
   render(props) {
+    const inputLsi = useLsiValues(Lsi)
     console.log("props", props);
     let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     let d = new Date();
     d.setMonth(d.getMonth() - 1)
     let monthTime = d.toISOString()
-    let graphName = ["last 24h", "week", "month"];
+    let graphName = [inputLsi.last24h, inputLsi.week, inputLsi.month];
     const [startTime, setStartTime] = useState(dayTime)
-    const [graphType, setGraphType] = useState('last 24h')
+    const [graphType, setGraphType] = useState(inputLsi.last24h)
 
     return (
       <SectionWithGraph />
@@ -55,8 +57,8 @@ export const ListByGateway = createComponent({
     function SectionWithGraph() {
       function handleChange(value) {
         setGraphType(value)
-        value === 'last 24h' ? setStartTime(dayTime) :
-          value === 'week' ? setStartTime(weekTime) :
+        value === inputLsi.last24h ? setStartTime(dayTime) :
+          value === inputLsi.week ? setStartTime(weekTime) :
             setStartTime(monthTime);
       }
       return (

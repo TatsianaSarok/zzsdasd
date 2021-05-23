@@ -1,9 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState, useEffect } from "uu5g04-hooks";
+import { createVisualComponent, useState, useEffect, useLsiValues } from "uu5g04-hooks";
 import Config from "../config/config";
 import moment from "moment"
+import Lsi from "../list-by-gateway-lsi"
 //@@viewOff:imports
 
 const DateTime = createVisualComponent({
@@ -23,11 +24,12 @@ const DateTime = createVisualComponent({
         //@@viewOn:hooks
         const [time, setTime] = useState("");
         const [day, setDay] = useState("");
+        const inputLsi = useLsiValues(Lsi)
         useEffect(() => {
             setInterval(() => {
                 let date = new Date();
                 setTime(date.toLocaleTimeString('en-IT', { hour12: false }));
-                setDay(moment().format('MMMM Do YYYY'))
+                setDay(moment().locale(inputLsi.day).format('MMMM Do YYYY'))
             }, 1000);
         }, [])
         //@@viewOff:hooks

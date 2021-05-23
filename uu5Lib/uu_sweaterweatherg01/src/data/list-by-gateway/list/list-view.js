@@ -1,9 +1,10 @@
 //@@viewOn:imports
-import { createComponent } from "uu5g04-hooks";
+import { createComponent, useLsiValues } from "uu5g04-hooks";
 import Config from "../../config/config";
 import useData from "../../../data/context/use-data";
 import DataListStateResolver from "../../../common/resolver/data-list-state-resolver";
 import "uu5chartg01";
+import Lsi from "../list-by-gateway-lsi"
 import {
   ComposedChart,
   Area,
@@ -35,12 +36,12 @@ export const ListView = createComponent({
   //@@viewOff:defaultProps
 
   render() {
-
+   const inputLsi = useLsiValues(Lsi)
     let dataDataList = useData();
     const datas = [dataDataList?.data?.map(value => {
       let dateObj = new Date(value.data._id.year.toString() + "-" +
         value.data._id.month.toString() + "-" + value.data._id.day.toString());
-      let weekday = dateObj.toLocaleString("default", { weekday: "short" })
+      let weekday = dateObj.toLocaleString(inputLsi.graphDay, { weekday: "short" })
       console.log("value", weekday, value.data.temperature);
 
       return (
