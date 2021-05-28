@@ -13,6 +13,7 @@ const Sweaterweather = createVisualComponent({
   //@@viewOff:statics
 
   render(props) {
+    console.log("propsForDoc", props);
     //@@viewOn:render
     return (
       <>

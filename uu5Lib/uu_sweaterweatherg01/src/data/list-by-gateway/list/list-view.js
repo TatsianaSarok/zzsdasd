@@ -77,8 +77,8 @@ export const ListView = createComponent({
               <Tooltip />
               <Legend />
               <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
-              <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
               <Bar dataKey="H" barSize={20} fill="#866B6E" />
+              <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
             </ComposedChart>
           </ResponsiveContainer>
         </div>

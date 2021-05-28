@@ -25,7 +25,8 @@ export const ListByGateway = createComponent({
     baseUri: UU5.PropTypes.string,
     gatewayId: UU5.PropTypes.string,
     graphType: UU5.PropTypes.string,
-    startTime: UU5.PropTypes.string
+    startTime: UU5.PropTypes.string,
+    gatewayName: UU5.PropTypes.string
   },
   //@@viewOff:propTypes
 
@@ -34,7 +35,8 @@ export const ListByGateway = createComponent({
     baseUri: undefined,
     gatewayId: undefined,
     graphType: undefined,
-    startTime: undefined
+    startTime: undefined,
+    gatewayName: undefined
   },
   //@@viewOff:defaultProps
 
@@ -63,7 +65,6 @@ export const ListByGateway = createComponent({
       }
       return (
         <>
-          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <UU5.Bricks.SwitchSelector
             style={{color: "yellow"}}
               size="l"
@@ -78,6 +79,7 @@ export const ListByGateway = createComponent({
             <div className={Css.day()}>
               <Time gatewayName={props.gatewayName}/>
             </div>
+            <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <ListView />
           </ListByGatewayLoader>
         </>

@@ -2,18 +2,18 @@
 const dataCreateDtoInType = shape({
     gatewayId: uu5String().isRequired(),
     timestamp: Date(),
-    temperature: integer(),
+    temperature: integer().isRequired(),
     humidity: integer(),
     light: integer()
 })
 
 const dataDayListDtoInType = shape({
-    startTime: uu5String(),
-    gatewayId: uu5String(),
-    graphType: uu5String(),
+    startTime: uu5String().isRequired(),
+    gatewayId: uu5String().isRequired(),
+    graphType: uu5String().isRequired(),
     pageInfo: shape({
-      pageIndex: integer(),
-      pageSize: integer()
+      id: integer(),
+      total: integer()
     })
 })
 
