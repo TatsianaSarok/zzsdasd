@@ -27,17 +27,17 @@ const CurrentData = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ baseUri, gatewayId }) {
-
     //@@viewOff:handlers
     function renderLoad() {
       return <UU5.Bricks.Loading />;
     }
-
-    function renderReady(currentData) {
+    function renderReady(data) {
       return (
         <>
           <CurrentDataView
-            currentData={currentData}
+            currentData={data}
+            baseUri={baseUri}
+            gatewayId={gatewayId}
           />
         </>
       );
@@ -55,7 +55,7 @@ const CurrentData = createVisualComponent({
 
     return (
       <CurrentDataLoader baseUri={baseUri} gatewayId={gatewayId}>
-        {({ state, currentData, errorData }) => {
+        {({ state, data, errorData }) => {
 
           switch (state) {
             case "pending":
@@ -68,7 +68,7 @@ const CurrentData = createVisualComponent({
             case "ready":
             case "readyNoData":
             default:
-              return renderReady(currentData);
+              return renderReady(data);
           }
         }}
       </CurrentDataLoader>
