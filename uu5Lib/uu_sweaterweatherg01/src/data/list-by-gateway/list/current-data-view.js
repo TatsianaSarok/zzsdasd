@@ -44,7 +44,7 @@ const CurrentData = createVisualComponent({
           }
         };
         fetchData();
-    }, 60000)
+    }, 600000)
     return () => clearInterval(id);
   }, [])
 
