@@ -29,7 +29,7 @@ const CurrentData = createVisualComponent({
   //@@viewOff:defaultProps
   render(props) {
     //@@viewOn:hooks
-    const [datas, setDatas] = useState();
+    const [currentData, setCurrentData] = useState();
   useEffect(() => {
     const id = setInterval(() => {
         const fetchData = async () => {
@@ -38,7 +38,7 @@ const CurrentData = createVisualComponent({
             const gateway = {
               gatewayId: props.gatewayId
             }
-            setDatas(await Calls.getCurrent({ baseUri, gateway }));
+            setCurrentData(await Calls.getCurrent({ baseUri, gateway }));
           } catch (error) {
             console.log(error);
           }
@@ -58,7 +58,7 @@ const CurrentData = createVisualComponent({
               fontFamily: 'Brush Script MT',
               fontSize: "20px", color: "black"
             }}>
-            {datas?.temperature||props?.currentData.temperature}&#8451;
+            {currentData?.temperature||props?.currentData.temperature}&#8451;
               </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
 
@@ -69,7 +69,7 @@ const CurrentData = createVisualComponent({
               fontFamily: 'Brush Script MT',
               fontSize: "20px", color: "black"
             }}>
-            {datas?.humidity||props?.currentData.humidity}%
+            {currentData?.humidity||props?.currentData.humidity}%
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
 
@@ -80,7 +80,7 @@ const CurrentData = createVisualComponent({
               fontFamily: 'Brush Script MT',
               fontSize: "20px", color: "black"
             }}>
-            {datas?.light||props?.currentData.light}
+            {currentData?.light||props?.currentData.light}
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>}
 
