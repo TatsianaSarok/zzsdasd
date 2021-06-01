@@ -9,6 +9,8 @@ import ListView from "./list/list-view";
 import CurrentData from "./current-data";
 import Css from "./data.css";
 import Lsi from "./list-by-gateway-lsi";
+import React from "react";
+
 //@@viewOff:imports
 
 const STATICS = {
@@ -53,10 +55,18 @@ export const ListByGateway = createComponent({
     const [graphType, setGraphType] = useState(inputLsi.last24h)
 
     return (
-      <SectionWithGraph />
+      <>
+        <div>
+          <span style={{ paddingLeft: "75px" }}><SwitchGraph /></span>
+          <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
+          <div className={Css.day()}>
+            <Time gatewayName={props.gatewayName} />
+          </div>
+          <SectionWithGraph />
+        </div>
+      </>
     )
-
-    function SectionWithGraph() {
+    function SwitchGraph() {
       function handleChange(value) {
         setGraphType(value)
         value === inputLsi.last24h ? setStartTime(dayTime) :
@@ -64,28 +74,27 @@ export const ListByGateway = createComponent({
             setStartTime(monthTime);
       }
       return (
+        <UU5.Bricks.SwitchSelector
+          style={{ color: "yellow" }}
+          size="l"
+          className={Css.menu()}
+          bgStyle="outline"
+          colorSchema="brown-rich"
+          items={graphName?.map(value => ({ value }))}
+          onChange={({ value }) => { handleChange(value) }}
+          value={graphType}
+        />
+      )
+    }
+    function SectionWithGraph() {
+      return (
         <>
-            <UU5.Bricks.SwitchSelector
-            style={{color: "yellow"}}
-              size="l"
-              className={Css.menu()}
-              bgStyle="outline"
-              colorSchema="brown-rich"
-              items={graphName?.map(value => ({ value }))}
-              onChange={({ value }) => { handleChange(value) }}
-              value={graphType}
-            />
-            <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
-            <div className={Css.day()}>
-              <Time gatewayName={props.gatewayName}/>
-            </div>
-            <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
+          <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
             <ListView />
           </ListByGatewayLoader>
         </>
       )
     }
-
   },
 });
 

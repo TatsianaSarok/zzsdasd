@@ -5,6 +5,8 @@ import { createVisualComponent, useState, useEffect, useLsiValues } from "uu5g04
 import Config from "../config/config";
 import moment from "moment"
 import Lsi from "../list-by-gateway-lsi"
+import Css from "../data.css"
+import FlipClock from 'x-react-flipclock'
 //@@viewOff:imports
 
 const DateTime = createVisualComponent({
@@ -22,13 +24,11 @@ const DateTime = createVisualComponent({
 
     render(props) {
         //@@viewOn:hooks
-        const [time, setTime] = useState("");
         const [day, setDay] = useState("");
         const inputLsi = useLsiValues(Lsi)
+
         useEffect(() => {
             setInterval(() => {
-                let date = new Date();
-                setTime(date.toLocaleTimeString('en-IT', { hour12: false }));
                 setDay(moment().locale(inputLsi.day).format('MMMM Do YYYY'))
             }, 1000);
         }, [])
@@ -36,15 +36,29 @@ const DateTime = createVisualComponent({
 
         //@@viewOn:render
         return (
-            <>
-                <UU5.Bricks.Text>{day} <span style={{
-                    fontSize: "20px", border: "2px solid #454754", padding: "5px", paddingRight: "7px",
-                    borderRadius: "50px 20px"
-                }}> {time} </span></UU5.Bricks.Text>
-                <UU5.Bricks.Text style={{ fontSize: "40px" }}>{props.gatewayName}</UU5.Bricks.Text>
+            <div style={{/*border: "1px solid #866B6E", padding:"20px 20px 20px 20px", */display: "inline-block"/*, borderRadius: "15px",background:"rgba(228,223,220, 0.3)"*/ }}>
+                <div className={Css.clock()}>
+                    <span>{props.gatewayName}</span>
+                    <FlipClock
+                        type="clock"
+                        units={[
+                            {
+                                sep: ' ',
+                                type: 'hours',
+                                title: 'hour',
+                            },
+                            {
+                                sep: ':',
+                                type: 'minutes',
+                                title: 'minute',
+                            }
+                        ]}
+                    />
+                    <span>{day}</span>
+                </div>
+            </div>
+        )
 
-            </>
-        );
         //@@viewOff:render
     }
 });
