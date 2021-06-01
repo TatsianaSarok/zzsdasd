@@ -41,10 +41,6 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },
-      "data/list": {
-        "sysStateList": ["active"],
-        "profileList": ["Public"]
-      },
       "data/get": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
@@ -57,7 +53,7 @@
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },
-      "data/dayList": {
+      "data/list": {
         "sysStateList": ["active"],
         "profileList": ["Public"]
       },

@@ -22,16 +22,16 @@ const Create = {
   }
 };
 
-const List = {
-  UC_CODE: `${DATA_ERROR_PREFIX}list/`,
-  InvalidDtoIn: class extends SweaterweatherMainUseCaseError {
-    constructor() {
-      super(...arguments);
-      this.code = `${Delete.UC_CODE}invalidDtoIn`;
-      this.message = "DtoIn is not valid.";
-    }
-}
-};
+// const List = {
+//   UC_CODE: `${DATA_ERROR_PREFIX}list/`,
+//   InvalidDtoIn: class extends SweaterweatherMainUseCaseError {
+//     constructor() {
+//       super(...arguments);
+//       this.code = `${Delete.UC_CODE}invalidDtoIn`;
+//       this.message = "DtoIn is not valid.";
+//     }
+// }
+// };
 
 const Get = {
   UC_CODE: `${DATA_ERROR_PREFIX}get/`,
@@ -62,8 +62,8 @@ const Delete = {
 }
 };
 
-const DayList = {
-  UC_CODE: `${DATA_ERROR_PREFIX}dayList/`,
+const List = {
+  UC_CODE: `${DATA_ERROR_PREFIX}list/`,
   
 };
 
@@ -74,9 +74,8 @@ const GetCurrent = {
 
 module.exports = {
   GetCurrent,
-  DayList,
+  List,
   Delete,
   Get,
-  List,
   Create
 };

@@ -44,9 +44,9 @@ let Calls = {
     return await Calls.getWorkspace();
   },
 
-  async dayList(dtoIn) {
+  async list(dtoIn) {
     console.log("dtoIn", dtoIn);
-    let commandUri = Calls.getCommandUri("data/dayList", dtoIn.baseUri);
+    let commandUri = Calls.getCommandUri("data/list", dtoIn.baseUri);
     console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
     return await Calls.call("get", commandUri, dtoIn.data);
   },

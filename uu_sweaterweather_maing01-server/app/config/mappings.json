@@ -46,11 +46,6 @@
         "httpMethod": "POST",
         "type": "CMD"
       },
-      "data/list": {
-        "realization": "api/controllers/DataController.list",
-        "httpMethod": "GET",
-        "type": "CMD"
-      },
       "data/get": {
         "realization": "api/controllers/DataController.get",
         "httpMethod": "GET",
@@ -66,8 +61,8 @@
         "httpMethod": "POST",
         "type": "CMD"
       },
-      "data/dayList": {
-        "realization": "api/controllers/DataController.dayList",
+      "data/list": {
+        "realization": "api/controllers/DataController.list",
         "httpMethod": "GET",
         "type": "CMD"
       },

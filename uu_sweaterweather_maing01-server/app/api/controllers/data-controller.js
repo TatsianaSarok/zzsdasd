@@ -7,8 +7,8 @@ class DataController {
     return DataAbl.getCurrent(ucEnv.getUri().getAwid(), ucEnv.getDtoIn());
   }
 
-  dayList(ucEnv) {
-    return DataAbl.dayList(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
+  list(ucEnv) {
+    return DataAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
   }
 
   delete(ucEnv) {
@@ -19,9 +19,9 @@ class DataController {
     return DataAbl.get(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
   }
 
-  list(ucEnv) {
-    return DataAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
-  }
+  // list(ucEnv) {
+  //   return DataAbl.list(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());
+  // }
 
   create(ucEnv) {
     return DataAbl.create(ucEnv.getUri().getAwid(), ucEnv.getDtoIn(), ucEnv.getSession());

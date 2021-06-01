@@ -51,8 +51,8 @@ const CurrentData = createVisualComponent({
     //@@viewOn:render
     return (
       <div style={{ float: "right", margin: "10px 15px 0px 0px", paddingRight: "75px" }}>
-        <UU5.Bricks.Icon icon="mdi-weather-sunny"
-          style={{ fontFamily: 'Brush Script MT', fontSize: "50px", marginRight: "20px", color: "#f7fd04" }}>
+        <UU5.Bricks.Icon icon="mdi-fire"
+          style={{ fontFamily: 'Brush Script MT', fontSize: "50px", marginRight: "20px", color: "orange" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',

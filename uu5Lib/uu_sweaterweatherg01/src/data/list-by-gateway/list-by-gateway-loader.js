@@ -34,7 +34,7 @@ export const ListByGatewayLoader = createComponent({
 
     const dataDataList = useDataList({
       handlerMap: {
-        load: Calls.dayList,
+        load: Calls.list,
       },
       initialDtoIn: getInitLoadDtoIn(props.baseUri, props.gatewayId, props.startTime, props.graphType)
     });

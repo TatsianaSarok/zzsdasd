@@ -47,8 +47,8 @@ class DataAbl {
     return dtoOut;
   }
 
-  async dayList(awid, dtoIn, session) {
-    let validationResult = this.validator.validate("dataDayListDtoInType", dtoIn);
+  async list(awid, dtoIn, session) {
+    let validationResult = this.validator.validate("dataListDtoInType", dtoIn);
     // hds 2.2, 2.3, A4, A5
     let uuAppErrorMap = ValidationHelper.processValidationResult(
       dtoIn,
@@ -59,7 +59,7 @@ class DataAbl {
     if (!dtoIn.pageInfo) dtoIn.pageInfo = {};
     if (!dtoIn.pageInfo.pageSize) dtoIn.pageInfo.pageSize = DEFAULTS.pageSize;
     if (!dtoIn.pageInfo.pageIndex) dtoIn.pageInfo.pageIndex = DEFAULTS.pageIndex;
-    let dtoOut = await this.dao.dayList(awid, dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType, dtoIn.pageInfo);
+    let dtoOut = await this.dao.list(awid, dtoIn.gatewayId, dtoIn.startTime, dtoIn.graphType, dtoIn.pageInfo);
     // hds 4
     dtoOut.uuAppErrorMap = uuAppErrorMap;
     return dtoOut;

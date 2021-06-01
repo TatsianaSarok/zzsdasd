@@ -7,7 +7,7 @@ const dataCreateDtoInType = shape({
     light: integer()
 })
 
-const dataDayListDtoInType = shape({
+const dataListDtoInType = shape({
     startTime: uu5String().isRequired(),
     gatewayId: uu5String().isRequired(),
     graphType: uu5String().isRequired(),

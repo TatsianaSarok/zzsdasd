@@ -33,13 +33,13 @@ class DataMongo extends UuObjectDao {
     return await super.deleteMany({ "gatewayId": gatewayId });
   }
 
-  async list(awid, gatewayName) {
-    let filter = { awid };
-    gatewayName && (filter.gatewayName = gatewayName);
-    return await super.find(filter)
-  }
+  // async list(awid, gatewayName) {
+  //   let filter = { awid };
+  //   gatewayName && (filter.gatewayName = gatewayName);
+  //   return await super.find(filter)
+  // }
 
-  async dayList(awid, gatewayId, startTime, graphType) {
+  async list(awid, gatewayId, startTime, graphType) {
     let gateway = gatewayId
     startTime = new Date(startTime)
     let list = await super.aggregate([
