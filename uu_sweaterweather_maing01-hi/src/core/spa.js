@@ -34,7 +34,7 @@ export const Spa = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <SessionProvider session={UU5.Environment.getSession()}>
+      //<SessionProvider session={UU5.Environment.getSession()}>
         <SweaterweatherMainProvider>
           <SweaterweatherMainContext.Consumer>
           {({ state, errorData }) => {
@@ -53,7 +53,7 @@ export const Spa = createVisualComponent({
             }}
           </SweaterweatherMainContext.Consumer>
 </SweaterweatherMainProvider>
-</SessionProvider>
+//</SessionProvider>
      
 
     );

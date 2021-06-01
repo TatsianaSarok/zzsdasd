@@ -9,6 +9,7 @@ import {
   ComposedChart,
   Area,
   Bar,
+  Line,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -76,9 +77,9 @@ export const ListView = createComponent({
               <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" />
               <Tooltip />
               <Legend />
-              <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
               <Bar dataKey="H" barSize={20} fill="#866B6E" />
-              <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
+              <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
+              <Line type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
             </ComposedChart>
           </ResponsiveContainer>
         </div>
