@@ -39,6 +39,25 @@ color: white !important;
 .uu-1whczb8:active {
     background-color: rgb(134, 107, 110);
 }
+.uu-15z2z1m:focus, .uu-15z2z1m:active {
+    padding: 2px;
+    border-width: 1px;
+    border-color: rgb(121 85 72 / 1%);
+}
+.uu-15z2z1m {
+    padding: 3px;
+    border-width: 1px;
+    border-color: rgb(189 189 189 / 0%);
+    border-radius: 2px;
+}
+.uu-1088yji {
+    border-radius: 5px;
+    background-color: rgb(134, 107, 110);
+}
+.uu-1whczb8:active {
+    background-color: rgb(134, 107, 110);
+    border-radius: 5px;
+}
 `;
 
 export default {

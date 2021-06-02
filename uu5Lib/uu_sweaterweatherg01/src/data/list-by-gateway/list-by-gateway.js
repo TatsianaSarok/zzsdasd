@@ -77,7 +77,7 @@ export const ListByGateway = createComponent({
         <span className={Css.selector()}>
         <UU5.Bricks.SwitchSelector
           style={{ color: "yellow" }}
-          size="l"
+          size="xl"
           className={Css.menu()}
           bgStyle="outline"
           colorSchema="brown-rich"

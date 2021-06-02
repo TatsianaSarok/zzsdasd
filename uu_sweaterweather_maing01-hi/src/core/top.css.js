@@ -18,7 +18,7 @@ background-size: 100% 100%;
     background-color: #866B6E !important;
 }
 `; 
- 
+
 export default {
     top,
     page, 
