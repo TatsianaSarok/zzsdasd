@@ -18,7 +18,6 @@ display: inline-block;
     width: fit-content;
     display: flex;
 }
-
 .FlipClock .flipUnitContainer .ContainerTitle {
     display: none;
 }
@@ -26,8 +25,16 @@ display: inline-block;
 background-color: #866B6E;
 }
 `;
+
+const selector = () => Config.Css.css`
+.uu-1088yji {
+background-color: rgb(134, 107, 110);
+}
+`;
+
 export default {
     day,
     menu,
-    clock
+    clock,
+    selector
 };

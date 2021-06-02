@@ -41,7 +41,10 @@ button.rec-dot_active{
 button.ehkxHv:enabled {
     background-color: rgba(228,223,220, 0.8);
 }
-.rec.rec-arrow:hover {
+.cGKbZh:hover:enabled, .cGKbZh:focus:enabled {
+    background-color: rgba(103,58,183,0.1);
+}
+.rec.rec-arrow:hover, .rec.rec-arrow:focus {
     border-radius: 20%;
     background-color: rgba(134,107,110);
 }

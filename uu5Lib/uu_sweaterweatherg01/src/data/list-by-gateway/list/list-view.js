@@ -47,8 +47,8 @@ export const ListView = createComponent({
 
       return (
         {
-          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " + `${weekday}` :
-            `${weekday}` + ' ' + `${value.data._id.day}` + '.' + `${value.data._id.month}`,
+          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " /*+ `${weekday}`*/ :
+           /* `${weekday}` + ' ' + */`${value.data._id.day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
           H: Math.round(value.data.humidity * 10) / 10,
           L: Math.round(value.data.light * 10) / 10
@@ -73,8 +73,8 @@ export const ListView = createComponent({
               }}
             >
               <CartesianGrid stroke="#f5f5f5" />
-              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0}} scale="band" stroke="black" />
-              <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" />
+              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0}} scale="band" stroke="#f5f5f5" />
+              <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="#f5f5f5" />
               <Tooltip />
               <Legend />
               <Bar dataKey="H" barSize={20} fill="#866B6E" />

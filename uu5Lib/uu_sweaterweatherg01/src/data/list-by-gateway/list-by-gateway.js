@@ -74,6 +74,7 @@ export const ListByGateway = createComponent({
             setStartTime(monthTime);
       }
       return (
+        <span className={Css.selector()}>
         <UU5.Bricks.SwitchSelector
           style={{ color: "yellow" }}
           size="l"
@@ -84,6 +85,7 @@ export const ListByGateway = createComponent({
           onChange={({ value }) => { handleChange(value) }}
           value={graphType}
         />
+        </span>
       )
     }
     function SectionWithGraph() {
