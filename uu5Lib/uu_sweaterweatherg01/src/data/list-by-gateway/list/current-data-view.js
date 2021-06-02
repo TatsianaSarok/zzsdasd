@@ -56,7 +56,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "black"
+              fontSize: "20px", color: "#454754"
             }}>
             {currentData?.temperature || props?.currentData.temperature}&#8451;
               </UU5.Bricks.Text>
@@ -67,7 +67,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "black"
+              fontSize: "20px", color: "#454754"
             }}>
             {currentData?.humidity || props?.currentData.humidity}%
           </UU5.Bricks.Text>
@@ -77,7 +77,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "black"
+              fontSize: "20px", color: "#454754"
             }}>
             {currentData?.light || props?.currentData.light}
           </UU5.Bricks.Text>

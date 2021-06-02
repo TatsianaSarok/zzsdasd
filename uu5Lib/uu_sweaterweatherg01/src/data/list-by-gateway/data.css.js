@@ -30,6 +30,15 @@ const selector = () => Config.Css.css`
 .uu-1088yji {
 background-color: rgb(134, 107, 110);
 }
+button.uu-13cszwg.uu-tyii52{
+    color: #454754;
+}
+.uu-1088yji {
+color: white !important;   
+}
+.uu-1whczb8:active {
+    background-color: rgb(134, 107, 110);
+}
 `;
 
 export default {
