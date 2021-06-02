@@ -73,8 +73,8 @@ export const ListView = createComponent({
               }}
             >
               <CartesianGrid stroke="#4547544f" />
-              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0}} scale="band" stroke="#454754" />
-              <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="#454754" />
+              <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0}} scale="band" stroke="black" />
+              <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" />
               <Tooltip />
               <Legend />
               <Bar dataKey="H" barSize={20} fill="#866B6E" />
