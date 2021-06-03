@@ -26,7 +26,7 @@ const CurrentData = createVisualComponent({
   },
   //@@viewOff:defaultProps
 
-  render({ baseUri, gatewayId }) {
+  render({ baseUri, gatewayId, gatewayName }) {
     //@@viewOff:handlers
     function renderLoad() {
       return <UU5.Bricks.Loading />;
@@ -38,6 +38,7 @@ const CurrentData = createVisualComponent({
             currentData={data}
             baseUri={baseUri}
             gatewayId={gatewayId}
+            gatewayName={gatewayName}
           />
         </>
       );

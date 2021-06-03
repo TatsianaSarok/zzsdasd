@@ -24,11 +24,15 @@ const MenuView = createComponent({
     render(props) {
         //@@viewOn:hooks
         const [gatewayId, setGatewayId] = useState();
+      
         //@@viewOff:hooks
         let activeState = props?.dataList?.filter(value => {
+            console.log("value",value);
             return value.data.state !== 'closed' && value.data.state !== 'initial'
         })
-
+  console.log("gatewayId", activeState.map(value=>{
+      return value.data.location['сoordinates']
+  }));
         //@@viewOn:handlers
         function handleSetId(value) {
              setGatewayId(value)
@@ -44,8 +48,9 @@ const MenuView = createComponent({
                     allowCustomTags={false}
                     availableTags={activeState.map(value => {
                         if (value.data.state !== 'closed' && value.data.state !== 'initial') {
-                            return ({ "content": value.data['gatewayName'], "value": value.data['id']+"/"+value.data['state']+"/"+value.data['gatewayName']})
+                            return ({ "content": value.data['gatewayName'], "value": value.data['id']+"/"+value.data.location+"/"+value.data['state']+"/"+value.data['gatewayName']})
                         }
+                        
                     })}
                     colorSchema="black"
                     elevation={5}

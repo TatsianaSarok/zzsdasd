@@ -34,11 +34,11 @@ const Graph = createComponent({
                     style={{ paddingTop: "50px" }} >
                     <Carousel>
                         {props.gatewayId.map(item =>
-                            item.split("/")[1] !== 'suspended' ?
+                            item.split("/")[2] !== 'suspended' ?
                                 (<div style={{ width: "99%" }}>
                                     <UuSweaterweather.Data.ListByGateway
                                         baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                        gatewayId={item.split("/")[0]} gatewayName={item.split("/")[2]} /></div>) :
+                                        gatewayId={item.split("/")[0]} gatewayName={item.split("/")[3]} location={item.split("/")[1]} /></div>) :
                                 <div>
                                     <UU5.Common.Error
                                         bgStyle="filled" errorData={inputLsi.locationUnavailable}

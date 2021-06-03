@@ -1,9 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
 import "uu5g04-bricks"
-import { createVisualComponent, useState, useRef, useEffect } from "uu5g04-hooks";
+import { createVisualComponent, useState, useLsiValues, useEffect } from "uu5g04-hooks";
 import Config from "../config/config";
 import Calls from "calls";
+import Lsi from "../list-by-gateway-lsi"
 //@@viewOff:imports
 
 const CurrentData = createVisualComponent({
@@ -28,7 +29,9 @@ const CurrentData = createVisualComponent({
 
   //@@viewOff:defaultProps
   render(props) {
+    console.log("Propsss", props);
     //@@viewOn:hooks
+    let inputLsi = useLsiValues(Lsi)
     const [currentData, setCurrentData] = useState();
     useEffect(() => {
       const id = setInterval(() => {
@@ -50,9 +53,22 @@ const CurrentData = createVisualComponent({
 
     //@@viewOn:render
     return (
-      <div style={{ float: "right", margin: "10px 15px 0px 0px", paddingRight: "75px" }}>
-        <UU5.Bricks.Icon icon="mdi-fire"
-          style={{ fontFamily: 'Brush Script MT', fontSize: "50px", marginRight: "20px", color: "orange" }}>
+      <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "65px", textAlign:"center"}}>
+       <UU5.Bricks.Card style={{padding: "10px", background:"rgba(228,223,220, 0.1)", borderRadius: "10px"}} elevation={3}> 
+       <UU5.Bricks.Text
+            style={{
+              fontSize: "20px", color: "#454754"
+            }}>
+            {inputLsi.currentMeasurements}
+            <UU5.Bricks.Link
+  href={props.location}
+  target="_blank"
+>
+{props.gatewayName}
+</UU5.Bricks.Link>
+              </UU5.Bricks.Text>
+              <UU5.Bricks.Icon icon="mdi-fire"
+          style={{ fontFamily: 'Brush Script MT', fontSize: "20px", marginRight: "20px", color: "orange" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -61,9 +77,8 @@ const CurrentData = createVisualComponent({
             {currentData?.temperature || props?.currentData.temperature}&#8451;
               </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
-
         <UU5.Bricks.Icon icon="mdi-meteor"
-          style={{ fontSize: "50px", color: "#3297C3" }}>
+          style={{ fontSize: "20px", color: "#3297C3" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -73,7 +88,7 @@ const CurrentData = createVisualComponent({
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
         {props?.currentData.light && (<UU5.Bricks.Icon icon="mdi-lightbulb-on-outline"
-          style={{ fontSize: "50px", color: "#f7fd04", paddingLeft: "20px" }}>
+          style={{ fontSize: "20px", color: "#f7fd04", paddingLeft: "20px" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -82,6 +97,7 @@ const CurrentData = createVisualComponent({
             {currentData?.light || props?.currentData.light}
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>)}
+       </UU5.Bricks.Card>
       </div>
     );
     //@@viewOff:render

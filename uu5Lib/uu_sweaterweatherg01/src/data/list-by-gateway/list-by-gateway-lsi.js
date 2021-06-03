@@ -18,6 +18,10 @@ const Lsi = {
     day: {
       en: "en",
       cs: "cs"
+    },
+    currentMeasurements: {
+      en: "Current measurements in",
+      cs: "Aktuální měření v"
     }
   };
   export default Lsi;

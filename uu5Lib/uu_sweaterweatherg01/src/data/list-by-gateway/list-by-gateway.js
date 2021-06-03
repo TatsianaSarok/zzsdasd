@@ -58,7 +58,7 @@ export const ListByGateway = createComponent({
       <>
         <div>
           <span style={{ paddingLeft: "75px" }}><SwitchGraph /></span>
-          <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} />
+          <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} gatewayName={props.gatewayName} />
           <div className={Css.day()}>
             <Time gatewayName={props.gatewayName} />
           </div>
@@ -76,7 +76,6 @@ export const ListByGateway = createComponent({
       return (
         <span className={Css.selector()}>
         <UU5.Bricks.SwitchSelector
-          style={{ color: "yellow" }}
           size="xl"
           className={Css.menu()}
           bgStyle="outline"

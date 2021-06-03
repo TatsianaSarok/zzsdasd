@@ -51,7 +51,10 @@ export const ManageGateway = createVisualComponent({
       console.log("opt", opt);
       const input = {
         gatewayName: opt.values.gatewayName,
-        location: opt.values.location
+        location: {
+         href: opt.values.href,
+         coordinates: opt.values.сoordinates
+        }
       }
       try {
         await dataGatewayList?.handlerMap.create(input);
@@ -76,7 +79,10 @@ export const ManageGateway = createVisualComponent({
       const input = {
         id: showGateway.id,
         gatewayName: opt.values.gatewayName,
-        location: opt.values.location,
+        location:  {
+          href: opt.values.href,
+          сoordinates: opt.values.сoordinates
+         },
         state: opt.values.state
       }
       console.log("NewData", input);

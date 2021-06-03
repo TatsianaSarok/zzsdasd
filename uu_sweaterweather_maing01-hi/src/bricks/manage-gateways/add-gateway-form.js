@@ -62,11 +62,20 @@ const AddGatewayForm = createVisualComponent({
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
+                style={{color: "#454754"}}
                 borderRadius="8px"
-                label={<UU5.Bricks.Lsi lsi={{ en: "Location", cs: "Poloha" }} />}
-                name="location"
+                label={<UU5.Bricks.Lsi lsi={{ en: "Link to the map", cs: "Odkaz na mapu" }} />}
+                name="href"
                 value=""
-                required
+              />
+            </UU5.Bricks.Column>
+            <UU5.Bricks.Column colWidth="s-6">
+              <UU5.Forms.Text
+                style={{color: "#454754"}}
+                borderRadius="8px"
+                label={<UU5.Bricks.Lsi lsi={{ en: "Coordinates", cs: "Souřadnice" }} />}
+                name="coordinates"
+                value=""
               />
             </UU5.Bricks.Column>
           </UU5.Bricks.Row>
