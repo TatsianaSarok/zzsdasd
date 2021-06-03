@@ -30,7 +30,7 @@ const UpdateGatewayForm = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ shown, onSave, onCancel, gateway }) {
-    console.log("gateway", gateway);
+
     //@@viewOn:render
     let items = [];
     Config.gatewayStateList.map(state => {
@@ -77,24 +77,24 @@ const UpdateGatewayForm = createVisualComponent({
                 value={gateway.gatewayName}
               />
             </UU5.Bricks.Column>
-            {/* <UU5.Bricks.Column colWidth="s-6">
+             <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
                 label={<UU5.Bricks.Lsi lsi={{ en: "Link to the map", cs: "Odkaz na mapu" }} />}
                 name="href"
-                value={gateway.location.href}
+                value={gateway.location?.href}
               />
-            </UU5.Bricks.Column>*/}
-            <UU5.Bricks.Column colWidth="s-6">
+            </UU5.Bricks.Column>
+              <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
                 label={<UU5.Bricks.Lsi lsi={{ en: "Coordinates", cs: "Souřadnice" }} />}
-                name="coordinates"
-                value={gateway.location['href']}
+                name="сoordinates"
+                value={gateway.location?.сoordinates}
               />
-            </UU5.Bricks.Column> 
+            </UU5.Bricks.Column>   
             <UU5.Bricks.Column>
               <UU5.Forms.SwitchSelector
                 items={items}

@@ -74,7 +74,7 @@ const AddGatewayForm = createVisualComponent({
                 style={{color: "#454754"}}
                 borderRadius="8px"
                 label={<UU5.Bricks.Lsi lsi={{ en: "Coordinates", cs: "Souřadnice" }} />}
-                name="coordinates"
+                name="сoordinates"
                 value=""
               />
             </UU5.Bricks.Column>

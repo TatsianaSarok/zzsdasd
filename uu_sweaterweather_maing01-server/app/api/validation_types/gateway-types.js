@@ -1,6 +1,9 @@
 /* eslint-disable */
 const gatewayCreateDtoInType = shape({
-    gatewayName: uu5String(50).isRequired(),
+    gatewayName:shape({
+        cs: string(500).isRequired(),
+        en: string(500).isRequired()
+    }).isRequired(), 
     location:shape({
         href: string(200),
         сoordinates: string(200)
@@ -9,7 +12,10 @@ const gatewayCreateDtoInType = shape({
 
 const gatewayUpdateDtoInType = shape({
     id: id().isRequired(),
-    gatewayName: uu5String(50),
+    gatewayName:shape({
+        cs: string(500).isRequired(),
+        en: string(500).isRequired()
+    }).isRequired(), 
     location: shape({
         href: string(200),
         сoordinates: string(200)

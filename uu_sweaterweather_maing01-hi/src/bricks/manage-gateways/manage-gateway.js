@@ -51,10 +51,10 @@ export const ManageGateway = createVisualComponent({
       console.log("opt", opt);
       const input = {
         gatewayName: opt.values.gatewayName,
-        location: {
-         href: opt.values.href,
-         coordinates: opt.values.сoordinates
-        }
+        location:{
+          сoordinates: opt.values.сoordinates,
+          href: opt.values.href
+         },
       }
       try {
         await dataGatewayList?.handlerMap.create(input);
@@ -79,7 +79,7 @@ export const ManageGateway = createVisualComponent({
       const input = {
         id: showGateway.id,
         gatewayName: opt.values.gatewayName,
-        location:  {
+        location:{
           href: opt.values.href,
           сoordinates: opt.values.сoordinates
          },
@@ -167,15 +167,13 @@ export const ManageGateway = createVisualComponent({
                     > {value.data.gatewayName}</UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
-                    <UU5.Bricks.Link>
                       <UU5.BlockLayout.Text
                         style={{ color: "#454754" }}
-                        icon="mdi-map-marker" weight="primary">{inputLsi.location}
-                  </UU5.BlockLayout.Text>
-                    </UU5.Bricks.Link><UU5.BlockLayout.Text
+                        icon="mdi-map-marker" weight="primary">{inputLsi.location}</UU5.BlockLayout.Text>
+                        <UU5.Bricks.Link href={value.data.location.href}  target="_blank"
                       style={{ color: "#454754" }} weight="secondary">
-                      {" " + value.data.location}
-                    </UU5.BlockLayout.Text>
+                      {" " + value.data.location?.сoordinates}
+                    </UU5.Bricks.Link>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
                     <UU5.BlockLayout.Text
