@@ -54,15 +54,16 @@ const CurrentData = createVisualComponent({
     //@@viewOn:render
     return (
       <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "65px", textAlign:"center"}}>
-       <UU5.Bricks.Card style={{padding: "10px", background:"rgba(228,223,220, 0.1)", borderRadius: "10px"}} elevation={3}> 
+       <UU5.Bricks.Card style={{padding: "10px", background:"#866B6E", borderRadius: "10px"}} elevation={3}> 
        <UU5.Bricks.Text
             style={{
-              fontSize: "20px", color: "#454754"
+              fontSize: "20px", color: "White"
             }}>
             {inputLsi.currentMeasurements}
             <UU5.Bricks.Link
   href={props.location.href}
   target="_blank"
+  style={{color: "white"}}
 >
 <UU5.Bricks.Lsi lsi={{cs:" "+props.gatewayName.cs, en:" "+props.gatewayName.en}}/>
 </UU5.Bricks.Link>
@@ -72,7 +73,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "#454754"
+              fontSize: "20px", color: "white"
             }}>
             {currentData?.temperature || props?.currentData.temperature}&#8451;
               </UU5.Bricks.Text>
@@ -82,7 +83,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "#454754"
+              fontSize: "20px", color: "white"
             }}>
             {currentData?.humidity || props?.currentData.humidity}%
           </UU5.Bricks.Text>
@@ -92,7 +93,7 @@ const CurrentData = createVisualComponent({
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
-              fontSize: "20px", color: "#454754"
+              fontSize: "20px", color: "white"
             }}>
             {currentData?.light || props?.currentData.light}
           </UU5.Bricks.Text>

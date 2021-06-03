@@ -24,7 +24,7 @@ const MenuView = createComponent({
     render(props) {
         //@@viewOn:hooks
         const [gatewayId, setGatewayId] = useState();
-      
+      console.log("gatewayIdddd", gatewayId);
         //@@viewOff:hooks
         let activeState = props?.dataList?.filter(value => {
             console.log("value",value);
@@ -48,7 +48,7 @@ const MenuView = createComponent({
                     allowCustomTags={false}
                     availableTags={activeState.map(value => {
                         if (value.data.state !== 'closed' && value.data.state !== 'initial') {
-                            return ({ "content": value.data['gatewayName'], "value": value.data['id']+"/"+value.data.location+"/"+value.data['state']+"/"+value.data['gatewayName']})
+                            return ({ "content": <UU5.Bricks.Lsi lsi={{cs:value.data.gatewayName.cs, en:value.data.gatewayName.en }}/>, "value": value.data['id']+"/-/"+value.data.location.href+"/-/"+value.data['state']+"/-/"+value.data.gatewayName.cs+"/-/"+value.data.gatewayName.en})
                         }
                         
                     })}
