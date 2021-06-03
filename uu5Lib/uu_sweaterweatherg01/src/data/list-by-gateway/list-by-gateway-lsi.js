@@ -22,6 +22,10 @@ const Lsi = {
     currentMeasurements: {
       en: "Current measurements in",
       cs: "Aktuální měření v"
-    }
+    },
+    noAvailableData :{
+         en: "No available data for the last",
+         cs: "Nejsou k dispozici žádná data za poslední"
+       }
   };
   export default Lsi;

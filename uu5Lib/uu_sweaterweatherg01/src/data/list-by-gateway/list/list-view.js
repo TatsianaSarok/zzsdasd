@@ -36,7 +36,7 @@ export const ListView = createComponent({
   defaultProps: {},
   //@@viewOff:defaultProps
 
-  render() {
+  render(props) {
     const inputLsi = useLsiValues(Lsi)
     let dataDataList = useData();
     const datas = [dataDataList?.data?.map(value => {
@@ -55,13 +55,13 @@ export const ListView = createComponent({
         }
       )
     })][0]
-
+console.log("dataList", datas?.length);
     //@@viewOn:render
     return (
       <DataListStateResolver dataList={dataDataList}>
         <div style={{ width: '100%', height: 301 }}>
-          <ResponsiveContainer>
-            <ComposedChart
+        {datas?.length? ( <ResponsiveContainer>
+           <ComposedChart
               width={500}
               height={400}
               data={datas}
@@ -81,7 +81,8 @@ export const ListView = createComponent({
               <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
               <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
             </ComposedChart>
-          </ResponsiveContainer>
+          </ResponsiveContainer>):
+           (<div style={{paddingTop:"20px"}}><UU5.Common.Error  content={inputLsi.noAvailableData + props.graphType}  bgStyle="filled" colorSchema="brown"/></div>)}
         </div>
       </DataListStateResolver>
     )

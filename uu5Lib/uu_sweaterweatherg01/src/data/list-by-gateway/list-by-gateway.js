@@ -91,7 +91,7 @@ export const ListByGateway = createComponent({
       return (
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
-            <ListView />
+            <ListView graphType={graphType}/>
           </ListByGatewayLoader>
         </>
       )
