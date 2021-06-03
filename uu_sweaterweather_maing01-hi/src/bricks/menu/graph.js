@@ -35,7 +35,7 @@ const Graph = createComponent({
                     <Carousel>
                         {props.gatewayId.map(item =>
                             item.split("/")[2] !== 'suspended' ?
-                                (<div style={{ width: "99%" }}>
+                                (<div style={{ width: "99%", background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px", minHeight: "600px" }}>
                                     <UuSweaterweather.Data.ListByGateway
                                         baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
                                         gatewayId={item.split("/-/")[0]} gatewayName={{cs:item.split("/-/")[3], en: item.split("/-/")[4]}} location={{href: item.split("/-/")[1]}} /></div>) :
