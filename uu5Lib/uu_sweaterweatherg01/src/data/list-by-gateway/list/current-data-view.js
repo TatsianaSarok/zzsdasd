@@ -57,7 +57,7 @@ const CurrentData = createVisualComponent({
       <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "70px", textAlign:"center", paddingTop: "15px"}}>
        <UU5.Bricks.Text
             style={{
-              fontSize: "18px", color: "rgb(69, 71, 84)", paddingBottom: "5px"
+              fontSize: "18px", color: "black", paddingBottom: "5px"
             }}>
             {inputLsi.currentMeasurements+" "}
             <UU5.Bricks.Link
