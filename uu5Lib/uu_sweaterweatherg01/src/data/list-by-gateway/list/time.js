@@ -38,7 +38,7 @@ const DateTime = createVisualComponent({
         return (
             <div style={{/*border: "1px solid #866B6E", padding:"20px 20px 20px 20px", */display: "inline-block"/*, borderRadius: "15px",background:"rgba(228,223,220, 0.3)"*/ }}>
                 <div className={Css.clock()}>
-                    <span>{props.gatewayName}</span>
+                    <span><UU5.Bricks.Lsi lsi={{cs: props.gatewayName.cs, en: props.gatewayName.en}}/></span>
                     <FlipClock
                         type="clock"
                         units={[

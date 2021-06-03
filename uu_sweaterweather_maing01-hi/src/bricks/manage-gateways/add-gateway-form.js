@@ -1,9 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useLsiValues  } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5g04-forms";
 import Css from "./gateway.css"
+import Lsi from "./update-gateway-form.lsi"
 //@@viewOff:imports
 
 const AddGatewayForm = createVisualComponent({
@@ -29,7 +30,7 @@ const AddGatewayForm = createVisualComponent({
 
   render({ shown, onSave, onCancel }) {
     //@@viewOn:render
-
+let inputLsi = useLsiValues(Lsi)
     return (
 
       <UU5.Forms.ContextModal
@@ -54,8 +55,17 @@ const AddGatewayForm = createVisualComponent({
             <UU5.Bricks.Column colWidth="s-6" >
               <UU5.Forms.Text
                 borderRadius="8px"
-                label="Gateway name"
-                name="gatewayName"
+                label={inputLsi.gatewayNameCs}
+                name="gatewayNameCs"
+                value=""
+                required
+              />
+            </UU5.Bricks.Column>
+            <UU5.Bricks.Column colWidth="s-6" >
+              <UU5.Forms.Text
+                borderRadius="8px"
+                label={inputLsi.gatewayNameEn}
+                name="gatewayNameEn"
                 value=""
                 required
               />
@@ -64,7 +74,7 @@ const AddGatewayForm = createVisualComponent({
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
-                label={<UU5.Bricks.Lsi lsi={{ en: "Link to the map", cs: "Odkaz na mapu" }} />}
+                label={inputLsi.link}
                 name="href"
                 value=""
               />
@@ -73,7 +83,7 @@ const AddGatewayForm = createVisualComponent({
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
-                label={<UU5.Bricks.Lsi lsi={{ en: "Coordinates", cs: "Souřadnice" }} />}
+                label={inputLsi.coordinates}
                 name="сoordinates"
                 value=""
               />

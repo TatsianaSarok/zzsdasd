@@ -64,7 +64,7 @@ const CurrentData = createVisualComponent({
   href={props.location.href}
   target="_blank"
 >
-{" "+ props.gatewayName}
+<UU5.Bricks.Lsi lsi={{cs:" "+props.gatewayName.cs, en:" "+props.gatewayName.en}}/>
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
               <UU5.Bricks.Icon icon="mdi-fire"

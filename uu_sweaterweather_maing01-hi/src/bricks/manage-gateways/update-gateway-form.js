@@ -1,9 +1,10 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent } from "uu5g04-hooks";
+import { createVisualComponent, useLsiValues } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5g04-forms";
 import Css from "./gateway.css";
+import Lsi from "./update-gateway-form.lsi"
 //@@viewOff:imports
 
 const UpdateGatewayForm = createVisualComponent({
@@ -30,7 +31,7 @@ const UpdateGatewayForm = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ shown, onSave, onCancel, gateway }) {
-
+   let inputLsi = useLsiValues(Lsi)
     //@@viewOn:render
     let items = [];
     Config.gatewayStateList.map(state => {
@@ -72,16 +73,25 @@ const UpdateGatewayForm = createVisualComponent({
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
-                label="Gateway name"
-                name="gatewayName"
-                value={gateway.gatewayName}
+                label={inputLsi.gatewayNameCs}
+                name="gatewayNameCs"
+                value={gateway.gatewayName?.cs}
+              />
+            </UU5.Bricks.Column>
+            <UU5.Bricks.Column colWidth="s-6" >
+              <UU5.Forms.Text
+                style={{color: "#454754"}}
+                borderRadius="8px"
+                label={inputLsi.gatewayNameEn}
+                name="gatewayNameEn"
+                value={gateway.gatewayName?.en}
               />
             </UU5.Bricks.Column>
              <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
-                label={<UU5.Bricks.Lsi lsi={{ en: "Link to the map", cs: "Odkaz na mapu" }} />}
+                label={inputLsi.link}
                 name="href"
                 value={gateway.location?.href}
               />
@@ -90,7 +100,7 @@ const UpdateGatewayForm = createVisualComponent({
               <UU5.Forms.Text
                 style={{color: "#454754"}}
                 borderRadius="8px"
-                label={<UU5.Bricks.Lsi lsi={{ en: "Coordinates", cs: "Souřadnice" }} />}
+                label={inputLsi.coordinates}
                 name="сoordinates"
                 value={gateway.location?.сoordinates}
               />

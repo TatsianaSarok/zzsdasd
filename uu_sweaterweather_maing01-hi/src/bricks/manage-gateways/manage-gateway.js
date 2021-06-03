@@ -37,7 +37,7 @@ export const ManageGateway = createVisualComponent({
     let dataGatewayList = useContext(GatewayContext);
     let dataList = useContext(DataContext)
     //@@viewOff:hooks
-
+console.log("data",dataGatewayList );
     //@@viewOn:handlers
     function handleAddGatewayForm() {
       setShowCreateModal(true)
@@ -50,7 +50,10 @@ export const ManageGateway = createVisualComponent({
     async function handleAddGatewaySave(opt) {
       console.log("opt", opt);
       const input = {
-        gatewayName: opt.values.gatewayName,
+        gatewayName: {
+          cs: opt.values.gatewayNameCs,
+          en: opt.values.gatewayNameEn
+        },
         location:{
           сoordinates: opt.values.сoordinates,
           href: opt.values.href
@@ -78,7 +81,10 @@ export const ManageGateway = createVisualComponent({
       console.log("opt", opt);
       const input = {
         id: showGateway.id,
-        gatewayName: opt.values.gatewayName,
+        gatewayName: {
+          cs: opt.values.gatewayNameCs,
+          en: opt.values.gatewayNameEn
+        },
         location:{
           href: opt.values.href,
           сoordinates: opt.values.сoordinates
@@ -164,7 +170,7 @@ export const ManageGateway = createVisualComponent({
                     <UU5.BlockLayout.Text
                       style={{ fontSize: "30px", fontFamily: 'Brush Script MT', color: "#454754" }}
                       weight="primary"
-                    > {value.data.gatewayName}</UU5.BlockLayout.Text>
+                  > <UU5.Bricks.Lsi lsi={{cs:value.data.gatewayName.cs, en: value.data.gatewayName.en}}/></UU5.BlockLayout.Text>
                   </UU5.BlockLayout.Row>
                   <UU5.BlockLayout.Row>
                       <UU5.BlockLayout.Text
