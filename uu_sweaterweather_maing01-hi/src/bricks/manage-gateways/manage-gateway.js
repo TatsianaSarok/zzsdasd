@@ -131,7 +131,7 @@ console.log("data",dataGatewayList );
           onSave={handleUpdateGatewaySave}
           onCancel={handleCloseUpdateGatewayForm}
         />
-        <div className={Css.gateway()} >
+        <span className={Css.gateway()} >
           <UU5.Bricks.Card
             style={{ backgroundColor: "rgba(228,223,220, 0.5)" }}
             bgStyle="transparent"
@@ -215,7 +215,7 @@ console.log("data",dataGatewayList );
             )
           })}
 
-        </div>
+        </span>
       </DataListStateResolver>
     )
     //@@viewOff:render

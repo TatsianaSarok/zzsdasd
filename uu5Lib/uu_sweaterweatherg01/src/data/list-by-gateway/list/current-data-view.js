@@ -53,8 +53,9 @@ const CurrentData = createVisualComponent({
 
     //@@viewOn:render
     return (
+      
       <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "65px", textAlign:"center"}}>
-       <UU5.Bricks.Card style={{padding: "30px 15px", background:"rgb(233, 220, 212,0.6)", borderRadius: "10px"}} elevation={3}> 
+       <UU5.Bricks.Card style={{padding: "30px 15px", background:"rgba(228,223,220, 0.3)", borderRadius: "10px"}} elevation={3}> 
        <UU5.Bricks.Text
             style={{
               fontSize: "18px", color: "rgb(69, 71, 84)", paddingBottom: "5px"
@@ -89,7 +90,7 @@ const CurrentData = createVisualComponent({
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
         {props?.currentData.light && (<UU5.Bricks.Icon icon="mdi-lightbulb-on-outline"
-          style={{ fontSize: "20px", color: "#f7fd04", paddingLeft: "20px" }}>
+          style={{ fontSize: "20px", color: "#e40017", paddingLeft: "20px" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',

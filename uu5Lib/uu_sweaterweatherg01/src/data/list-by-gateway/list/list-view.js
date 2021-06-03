@@ -77,9 +77,9 @@ console.log("dataList", datas?.length);
               <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" />
               <Tooltip />
               <Legend />
-              <Bar dataKey="H" barSize={20} fill="#866B6E" />
-              <Area type="monotone" dataKey="L" fill="#866B6E" stroke="#866B6E" />
-              <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
+              <Line dataKey="H" barSize={20} fill="orange" stroke="orange" />
+              <Line type="monotone" dataKey="L" fill="#3297C3" stroke="#3297C3" />
+              <Line type="monotone" dataKey="T" fill="#e40017" stroke="#e40017" />
             </ComposedChart>
           </ResponsiveContainer>):
            (<div style={{padding:"20px 75px"}}><UU5.Common.Error  content={inputLsi.noAvailableData + props.graphType}  bgStyle="filled" colorSchema="brown"/></div>)}
