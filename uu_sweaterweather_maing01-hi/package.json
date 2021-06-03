@@ -18,13 +18,13 @@
     "uu5tilesg02": "^1.12.1",
     "uu_contentkitg01": "^2.0.0",
     "uu_plus4u5g01": "^4.0.0",
-    "uu_sweaterweatherg01": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/1.0.2-beta/uu_sweaterweatherg01.tgz",
+    "uu_sweaterweatherg01": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/1.0.3-beta/uu_sweaterweatherg01.tgz",
     "uu_territoryg01": "^1.0.0"
   },
   "uuBuildSettings": {
     "externals": {
       "uu_sweaterweatherg01": {
-        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/1.0.2-beta/"
+        "cdnBaseUri": "https://cdn.plus4u.net/beta/uu-sweaterweatherg01/1.0.3-beta/"
       }
     }
   },

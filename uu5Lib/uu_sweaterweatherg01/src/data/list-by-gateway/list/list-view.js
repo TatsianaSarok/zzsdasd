@@ -82,7 +82,7 @@ console.log("dataList", datas?.length);
               <Area type="monotone" dataKey="T" fill="#E9DCD4" stroke="#866B6E" />
             </ComposedChart>
           </ResponsiveContainer>):
-           (<div style={{paddingTop:"20px"}}><UU5.Common.Error  content={inputLsi.noAvailableData + props.graphType}  bgStyle="filled" colorSchema="brown"/></div>)}
+           (<div style={{padding:"20px 75px"}}><UU5.Common.Error  content={inputLsi.noAvailableData + props.graphType}  bgStyle="filled" colorSchema="brown"/></div>)}
         </div>
       </DataListStateResolver>
     )
