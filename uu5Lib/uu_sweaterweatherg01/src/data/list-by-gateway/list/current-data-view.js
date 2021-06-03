@@ -54,7 +54,7 @@ const CurrentData = createVisualComponent({
     //@@viewOn:render
     return (
       
-      <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "70px", textAlign:"center"}}>
+      <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "70px", textAlign:"center", paddingTop: "15px"}}>
        <UU5.Bricks.Text
             style={{
               fontSize: "18px", color: "rgb(69, 71, 84)", paddingBottom: "5px"
@@ -63,8 +63,7 @@ const CurrentData = createVisualComponent({
             <UU5.Bricks.Link
   href={props.location.href}
   target="_blank"
-  onBlur={<UU5.Bricks.Text>"ulala"</UU5.Bricks.Text>}
-  style={{color: "white", fontWeight:"bold", borderRadius:"5px", border: "1px solid rgb(134, 107, 110)", padding:"5px", backgroundColor: "rgb(134, 107, 110)"}}
+  style={{color: "white", borderRadius:"5px", border: "1px solid rgb(134, 107, 110)", padding:"5px", backgroundColor: "rgb(134, 107, 110)"}}
 >
 <UU5.Bricks.Lsi lsi={{cs:props.gatewayName.cs, en:props.gatewayName.en}}/>
 </UU5.Bricks.Link>
