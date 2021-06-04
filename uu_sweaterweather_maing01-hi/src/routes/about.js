@@ -31,6 +31,12 @@ const CLASS_NAMES = {
       text-align: center;
     }
 
+    .plus4u5-app-author-position {
+      color: black;
+      text-align: center;
+      max-width: 100%;
+  }
+
     > *:last-child {
       padding-bottom: 56px;
     }
@@ -43,10 +49,27 @@ const CLASS_NAMES = {
       height: 80px;
     }
   `,
+  technologies: () => Config.Css.css`
+  .plus4u5-app-technologies-row {
+    color: black;
+    margin: 20px 0 0 0;
+}
+ .plus4u5-app-technologies-main-technologies {
+color: black;
+}
+}
+  `,
+
   termsOfUse: () => Config.Css.css`
     text-align:center;
     margin-top: 56px;
+    color: black;
   `,
+  organisation: () => Config.Css.css`
+  .plus4u5-app-licence-row-title {
+   color:#454754;
+  }
+`,
 };
 
 export const About = createVisualComponent({
@@ -87,8 +110,7 @@ export const About = createVisualComponent({
           author = UU5.Common.Tools.merge({}, author);
           author.role =
             author.role && typeof author.role === "object" ? <UU5.Bricks.Lsi lsi={author.role} /> : author.role;
-           author.src =
-            author.src || Calls.getCommandUri("getAppAuthorPhoto", { uuIdentity: author.uuIdentity }).toString();
+          author.uuIdentity = author.uuIdentity
           return author;
         })
       );
@@ -101,9 +123,9 @@ export const About = createVisualComponent({
         <Plus4U5.App.ArtifactSetter territoryBaseUri="" artifactId="" />
 
         <Plus4U5.App.About header={header} content={about} />
-        <Plus4U5.App.Licence organisation={organisation} authorities={authorities} />
+        <Plus4U5.App.Licence className={CLASS_NAMES.organisation()} organisation={organisation} authorities={authorities} />
         <Plus4U5.App.Authors header={creatorsHeader} leadingAuthors={leadingAuthors} otherAuthors={otherAuthors} />
-        <Plus4U5.App.Technologies technologies={technologies} content={content} />
+        <Plus4U5.App.Technologies className={CLASS_NAMES.technologies()} technologies={technologies} content={content} />
         {licence.termsOfUse && (
           <UU5.Bricks.P className={CLASS_NAMES.termsOfUse()}>
             <UU5.Bricks.Link href={licence.termsOfUse} target="_blank" content={termsOfUse} />
