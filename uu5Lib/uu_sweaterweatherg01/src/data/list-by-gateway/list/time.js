@@ -36,9 +36,12 @@ const DateTime = createVisualComponent({
 
         //@@viewOn:render
         return (
-            <div style={{/*border: "1px solid #866B6E", padding:"20px 20px 20px 20px", */display: "inline-block"/*, borderRadius: "15px",background:"rgba(228,223,220, 0.3)"*/ }}>
+            <div style={{ display: "inline-block" }}>
                 <div className={Css.clock()}>
-                    <span><UU5.Bricks.Lsi lsi={{cs: props.gatewayName.cs, en: props.gatewayName.en}}/></span>
+                    <span onMouseOver={"ulala"}><UU5.Bricks.Link
+                    style={{color:"rgb(69, 71, 84)" }}
+                        href={props.location.href}
+                        target="_blank" ><UU5.Bricks.Lsi lsi={{ cs: props.gatewayName.cs, en: props.gatewayName.en }} /></UU5.Bricks.Link></span>
                     <FlipClock
                         type="clock"
                         units={[

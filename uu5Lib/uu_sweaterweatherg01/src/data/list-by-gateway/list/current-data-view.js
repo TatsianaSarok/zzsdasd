@@ -5,6 +5,7 @@ import { createVisualComponent, useState, useLsiValues, useEffect } from "uu5g04
 import Config from "../config/config";
 import Calls from "calls";
 import Lsi from "../list-by-gateway-lsi"
+import Css from "../data.css"
 //@@viewOff:imports
 
 const CurrentData = createVisualComponent({
@@ -54,10 +55,11 @@ const CurrentData = createVisualComponent({
     //@@viewOn:render
     return (
       
-      <div style={{ float: "right", margin: "0px 15px 0px 0px", paddingRight: "70px", textAlign:"center", paddingTop: "15px"}}>
+      <div  className={Css.float()} style={{ margin: "0px 15px 0px 0px", textAlign:"center", paddingTop: "12px"}}>
        <UU5.Bricks.Text
+       className={Css.current()}
             style={{
-              fontSize: "18px", color: "black", paddingBottom: "5px"
+              fontSize: "18px", color: "black", paddingBottom: "10px"
             }}>
             {inputLsi.currentMeasurements+" "}
             <UU5.Bricks.Link
@@ -68,8 +70,9 @@ const CurrentData = createVisualComponent({
 <UU5.Bricks.Lsi lsi={{cs:props.gatewayName.cs, en:props.gatewayName.en}}/>
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
-              <UU5.Bricks.Icon icon="mdi-fire"
-          style={{ fontFamily: 'Brush Script MT', fontSize: "20px", marginRight: "20px", color: "#e40017" }}>
+              
+             <span className={Css.icons()} style={{fontFamily: 'Brush Script MT', fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
+          style={{  marginRight: "20px", color: "#e40017" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -79,7 +82,7 @@ const CurrentData = createVisualComponent({
               </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
         <UU5.Bricks.Icon icon="mdi-meteor"
-          style={{ fontSize: "20px", color: "#342ead" }}>
+          style={{ color: "#342ead" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -89,7 +92,7 @@ const CurrentData = createVisualComponent({
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>
         {props?.currentData.light && (<UU5.Bricks.Icon icon="mdi-lightbulb-on-outline"
-          style={{ fontSize: "20px", color: "#f75f00", paddingLeft: "20px" }}>
+          style={{ color: "#f75f00", paddingLeft: "20px" }}>
           <UU5.Bricks.Text
             style={{
               fontFamily: 'Brush Script MT',
@@ -97,7 +100,7 @@ const CurrentData = createVisualComponent({
             }}>
             {currentData?.light || props?.currentData.light}
           </UU5.Bricks.Text>
-        </UU5.Bricks.Icon>)}
+        </UU5.Bricks.Icon>)}</span>
       </div>
     );
     //@@viewOff:render

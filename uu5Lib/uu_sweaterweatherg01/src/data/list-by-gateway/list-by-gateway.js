@@ -56,14 +56,12 @@ export const ListByGateway = createComponent({
 
     return (
       <>
-        {/* <div style={{background:"rgba(228,223,220, 0.5)", paddingTop: "30px", borderRadius: "10px"}}> */}
           <span style={{ paddingLeft: "75px" }}><SwitchGraph /></span>
           <CurrentData baseUri={props.baseUri} gatewayId={props.gatewayId} gatewayName={props.gatewayName} location={props.location}/>
           <div className={Css.day()}>
-            <Time gatewayName={props.gatewayName} />
+            <Time gatewayName={props.gatewayName} location={props.location}/>
           </div>
           <SectionWithGraph />
-        {/* </div> */}
       </>
     )
     function SwitchGraph() {

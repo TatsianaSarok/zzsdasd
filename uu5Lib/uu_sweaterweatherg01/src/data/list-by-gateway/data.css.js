@@ -60,9 +60,31 @@ color: white !important;
 }
 `;
 
+const current = () => Config.Css.css`
+@media only screen and (max-width: 700px) {
+display: none
+  }
+`;
+
+const icons = () => Config.Css.css`
+@media only screen and (max-width: 470px) {
+text-align: center;
+  }
+`;
+
+const float = () => Config.Css.css`
+@media only screen and (min-width: 700px) {
+padding-right: 70px;
+float: right;
+  }
+`;
+
 export default {
     day,
     menu,
     clock,
-    selector
+    selector,
+    current,
+    icons,
+    float
 };
