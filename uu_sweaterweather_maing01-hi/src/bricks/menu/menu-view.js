@@ -32,9 +32,6 @@ const MenuView = createComponent({
             console.log("value",value);
             return value.data.state !== 'closed' && value.data.state !== 'initial'
         })
-  console.log("gatewayId", activeState.map(value=>{
-      return value.data.location['сoordinates']
-  }));
         //@@viewOn:handlers
         function handleSetId(value) {
              setGatewayId(value)
@@ -50,7 +47,7 @@ const MenuView = createComponent({
                     allowCustomTags={false}
                     availableTags={activeState.map(value => {
                         if (value.data.state !== 'closed' && value.data.state !== 'initial') {
-                            return ({ "content": <UU5.Bricks.Lsi lsi={{cs:value.data.gatewayName.cs, en:value.data.gatewayName.en }}/>, "value": value.data['id']+"/-/"+value.data.location.href+"/-/"+value.data['state']+"/-/"+value.data.gatewayName.cs+"/-/"+value.data.gatewayName.en})
+                            return ({ "content": <UU5.Bricks.Lsi lsi={{cs:value.data.gatewayName?.cs, en:value.data?.gatewayName?.en }}/>, "value": value.data['id']+"/-/"+value.data.location?.href+"/-/"+value.data['state']+"/-/"+value.data?.gatewayName?.cs+"/-/"+value.data?.gatewayName?.en})
                         }
                         
                     })}
