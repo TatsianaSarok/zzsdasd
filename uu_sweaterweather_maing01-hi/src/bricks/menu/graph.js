@@ -35,7 +35,7 @@ const Graph = createComponent({
                     <Carousel>
                         {props.gatewayId.map(item =>
                             item.split("/")[2] !== 'suspended' ?
-                                (<div style={{ width: "99%", background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px", minHeight: "500px" }}>
+                                (<div style={{ width: "99%", background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px", minHeight: "525px" }}>
                                     <UuSweaterweather.Data.ListByGateway
                                         baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
                                         gatewayId={item.split("/-/")[0]} gatewayName={{cs:item.split("/-/")[3], en: item.split("/-/")[4]}} location={{href: item.split("/-/")[1]}} /></div>) :
@@ -47,19 +47,7 @@ const Graph = createComponent({
                     </Carousel>
                 </div>)
             }
-            //  else if (props.gatewayId?.length === 1) {
-            //     return (<div style={{ paddingTop: "50px" }} >
-            //         {props.gatewayId.map(item =>
-            //         item.split("/")[1] !== 'suspended'?
-            //            ( <UuSweaterweather.Data.ListByGateway
-            //                 baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-            //                 gatewayId={item.split("/")[0]} />): <div style={{paddingTop: "50px" }}>
-            //                      <UU5.Common.Error 
-            //     bgStyle="filled" errorData="Chosen location is currently unavailable"
-            //      colorSchema="brown" content="Warning" />
-            //                 </div>)}
-            //     </div>)
-            // } 
+
             else {
                 return (
                     <div style={{ paddingTop: "15px", textAlign: "center", fontSize: "2em ", color: "#866B6E" }}>

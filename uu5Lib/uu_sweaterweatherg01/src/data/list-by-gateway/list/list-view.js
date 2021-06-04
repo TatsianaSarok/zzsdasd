@@ -77,8 +77,8 @@ console.log("dataList", datas?.length);
               <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" />
               <Tooltip />
               <Legend />
-              <Line dataKey="H" barSize={20} fill="orange" stroke="orange" />
-              <Line type="monotone" dataKey="L" fill="#3297C3" stroke="#3297C3" />
+              <Line type="monotone" dataKey="H" barSize={20} fill="#342ead" stroke="#342ead" />
+              <Line type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />
               <Line type="monotone" dataKey="T" fill="#e40017" stroke="#e40017" />
             </ComposedChart>
           </ResponsiveContainer>):
