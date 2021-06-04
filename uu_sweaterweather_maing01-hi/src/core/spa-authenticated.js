@@ -24,7 +24,7 @@ const STATICS = {
 const About = UU5.Common.Component.lazy(() => import("../routes/about"));
 const InitAppWorkspace = UU5.Common.Component.lazy(() => import("../routes/init-app-workspace"));
 const ControlPanel = UU5.Common.Component.lazy(() => import("../routes/control-panel"));
-const DEFAULT_USE_CASE = "home";
+const DEFAULT_USE_CASE = "sweaterweather";
 const ROUTES = {
   "sweaterweather": DEFAULT_USE_CASE,
   about: { component: <About /> },
