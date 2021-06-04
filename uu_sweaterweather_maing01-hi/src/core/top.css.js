@@ -11,6 +11,12 @@ font-size: 40px;
 font-family: Brush Script MT;
 `; 
 
+const left = () => Config.Css.css`
+.plusu-app-yp8714{
+    background-image: linear-gradient(to top, #454754, #554f5d, #675865, #77616a, #866b6e);
+}
+`;
+
 const page = () => Config.Css.css`
 background: no-repeat url("assets/karpo.jpg");
 background-size: 100% 100%;
@@ -22,5 +28,6 @@ background-size: 100% 100%;
 export default {
     top,
     page, 
-    menu
+    menu,
+    left
 };

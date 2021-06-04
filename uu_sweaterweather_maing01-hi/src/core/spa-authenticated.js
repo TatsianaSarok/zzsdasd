@@ -26,8 +26,7 @@ const InitAppWorkspace = UU5.Common.Component.lazy(() => import("../routes/init-
 const ControlPanel = UU5.Common.Component.lazy(() => import("../routes/control-panel"));
 const DEFAULT_USE_CASE = "home";
 const ROUTES = {
-  "": DEFAULT_USE_CASE,
-  home: { component: <Home /> },
+  "sweaterweather": DEFAULT_USE_CASE,
   about: { component: <About /> },
   sweaterweather: { component: <Sweaterweather /> },
   managegateways: { component: <ManageGateways /> },

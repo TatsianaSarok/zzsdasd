@@ -24,7 +24,9 @@ const MenuView = createComponent({
     render(props) {
         //@@viewOn:hooks
         const [gatewayId, setGatewayId] = useState();
-      console.log("gatewayIdddd", gatewayId);
+      console.log("gatewayIdddd", gatewayId?.map(item=>{
+          return item.split("/")[2] 
+      }));
         //@@viewOff:hooks
         let activeState = props?.dataList?.filter(value => {
             console.log("value",value);

@@ -4,6 +4,7 @@ import "uu5g04-bricks";
 import { createVisualComponent, useLsi } from "uu5g04-hooks";
 import Plus4U5 from "uu_plus4u5g01";
 import "uu_plus4u5g01-app";
+import Calls from 'calls'
 
 import Config from "./config/config.js";
 import Lsi from "../config/lsi.js";
@@ -86,8 +87,8 @@ export const About = createVisualComponent({
           author = UU5.Common.Tools.merge({}, author);
           author.role =
             author.role && typeof author.role === "object" ? <UU5.Bricks.Lsi lsi={author.role} /> : author.role;
-          // author.src =
-          //   author.src || Calls.getCommandUri("getAppAuthorPhoto", { uuIdentity: author.uuIdentity }).toString();
+           author.src =
+            author.src || Calls.getCommandUri("getAppAuthorPhoto", { uuIdentity: author.uuIdentity }).toString();
           return author;
         })
       );

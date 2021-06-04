@@ -7,6 +7,7 @@ import "uu_plus4u5g01-app";
 import Config from "./config/config.js";
 import Lsi from "../config/lsi.js";
 import SweaterweatherMainContext from "../bricks/sweaterweather-main-context";
+import Css from "./top.css"
 //@@viewOff:imports
 
 
@@ -45,8 +46,9 @@ export const Left = createVisualComponent({
     return (
       <Plus4U5.App.Left
         {...props}
+        className={Css.left()}
         logoProps={{
-          backgroundImageSrc: "assets/kargol.jpg",
+          backgroundImageSrc: "assets/kargol.jpg",   
         }}
         aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about} style={{ fontFamily: 'Brush Script MT', fontSize: "20px", color: "#454754", fontSize: "25px" }} />, href: "about" }]}
         helpHref={null}
