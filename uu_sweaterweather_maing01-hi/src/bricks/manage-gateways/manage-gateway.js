@@ -51,12 +51,12 @@ console.log("data",dataGatewayList );
       console.log("opt", opt);
       const input = {
         gatewayName: {
-          cs: opt.values.gatewayNameCs,
-          en: opt.values.gatewayNameEn
+          cs: opt.values.gatewayNameCs.toString(),
+          en: opt.values.gatewayNameEn.toString()
         },
         location:{
-          сoordinates: opt.values.сoordinates,
-          href: opt.values.href
+          сoordinates: opt.values.сoordinates.toString(),
+          href: opt.values.href.toString()
          },
       }
       try {
@@ -82,12 +82,12 @@ console.log("data",dataGatewayList );
       const input = {
         id: showGateway.id,
         gatewayName: {
-          cs: opt.values.gatewayNameCs,
-          en: opt.values.gatewayNameEn
+          cs: opt.values.gatewayNameCs.toString(),
+          en: opt.values.gatewayNameEn.toString()
         },
         location:{
-          href: opt.values.href,
-          сoordinates: opt.values.сoordinates
+          href: opt.values.href.toString(),
+          сoordinates: opt.values.сoordinates.toString()
          },
         state: opt.values.state
       }
