@@ -18,7 +18,7 @@ const dataListDtoInType = shape({
 })
 
 const dataDeleteDtoInType = shape({
-     gatewayId: string(50).isRequired()
+     gatewayId: uu5String(50).isRequired()
 });
 
 const dataGetDtoInType = shape({
@@ -26,5 +26,5 @@ const dataGetDtoInType = shape({
 })
 
 const dataGetCurrentDtoInType = shape({
-    gatewayId: string(50).isRequired()
+    gatewayId: uu5String(50).isRequired()
 })
