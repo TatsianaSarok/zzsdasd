@@ -44,18 +44,17 @@ export const ListView = createComponent({
         value.data._id.month.toString() + "-" + value.data._id.day.toString());
       let weekday = dateObj.toLocaleString(inputLsi.graphDay, { weekday: "short" })
       console.log("value", weekday, value.data.temperature);
-
       return (
         {
           name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " /*+ `${weekday}`*/ :
            /* `${weekday}` + ' ' + */`${value.data._id.day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
           H: Math.round(value.data.humidity * 10) / 10,
-          L: Math.round(value.data.light * 10) / 10
+          L: Math.round(value.data.light/ 10 ) 
         }
       )
     })][0]
-console.log("dataList", datas?.length);
+    let isLight =  datas?.some(item=> {return item.L !== 0})
     //@@viewOn:render
     return (
       <DataListStateResolver dataList={dataDataList}>
@@ -78,7 +77,7 @@ console.log("dataList", datas?.length);
               <Tooltip />
               <Legend />
               <Line type="monotone" dataKey="H" barSize={20} fill="#342ead" stroke="#342ead" />
-              <Line type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />
+           {isLight &&(<Line type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />)}
               <Line type="monotone" dataKey="T" fill="#e40017" stroke="#e40017" />
             </ComposedChart>
           </ResponsiveContainer>):

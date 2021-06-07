@@ -98,7 +98,7 @@ const CurrentData = createVisualComponent({
               fontFamily: 'Brush Script MT',
               fontSize: "20px", color: "rgb(69, 71, 84)"
             }}>
-            {currentData?.light || props?.currentData.light}
+            {currentData?.light || props?.currentData.light}{"hLx"} 
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>)}</span>
       </div>
