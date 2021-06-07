@@ -37,7 +37,7 @@ export const ManageGateway = createVisualComponent({
     let dataGatewayList = useContext(GatewayContext);
     let dataList = useContext(DataContext)
     //@@viewOff:hooks
-console.log("data",dataGatewayList );
+    console.log("Version", "9.0");
     //@@viewOn:handlers
     function handleAddGatewayForm() {
       setShowCreateModal(true)

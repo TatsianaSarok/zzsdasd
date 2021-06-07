@@ -40,8 +40,8 @@ const DateTime = createVisualComponent({
                 <div className={Css.clock()}>
                     <span onMouseOver={"ulala"}><UU5.Bricks.Link
                     style={{color:"rgb(69, 71, 84)" }}
-                        href={props.location.href}
-                        target="_blank" ><UU5.Bricks.Lsi lsi={{ cs: props.gatewayName.cs, en: props.gatewayName.en }} /></UU5.Bricks.Link></span>
+                        href={props.location?.href}
+                        target="_blank" ><UU5.Bricks.Lsi lsi={{ cs: props.gatewayName?.cs, en: props?.gatewayName.en }} /></UU5.Bricks.Link></span>
                     <FlipClock
                         type="clock"
                         units={[

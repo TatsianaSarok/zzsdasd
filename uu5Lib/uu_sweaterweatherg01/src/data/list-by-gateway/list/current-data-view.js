@@ -63,11 +63,11 @@ const CurrentData = createVisualComponent({
             }}>
             {inputLsi.currentMeasurements+" "}
             <UU5.Bricks.Link
-  href={props.location.href}
+  href={props.location?.href}
   target="_blank"
   style={{color: "white", borderRadius:"5px", border: "1px solid rgb(134, 107, 110)", padding:"7px", backgroundColor: "rgb(134, 107, 110)"}}
 >
-<UU5.Bricks.Lsi lsi={{cs:props.gatewayName.cs, en:props.gatewayName.en}}/>
+<UU5.Bricks.Lsi lsi={{cs:props.gatewayName?.cs, en:props.gatewayName?.en}}/>
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
               
