@@ -57,8 +57,9 @@ export const ListView = createComponent({
     let isLight = datas?.some(item => { return item.L !== 0 })
     //@@viewOn:render
     return (
-      <DataListStateResolver dataList={dataDataList}>
-        <div style={{ width: '100%', height: 301,  minWidth: "510px" }}>
+      <DataListStateResolver dataList={dataDataList} >
+       <div style={{ width: '100%',   minWidth: "450px" ,  background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px", minHeight: "545px"  }}>
+        <div style={{ width: '100%', height: 301,  minWidth: "450px" }}>
           {datas?.length ? (<ResponsiveContainer>
             <ComposedChart
               width={500}
@@ -73,7 +74,6 @@ export const ListView = createComponent({
             >
               <CartesianGrid stroke="#4547544f" />
               <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" stroke="black" />
-              {/* <YAxis label={{ angle: -90, position: 'insideLeft'}} stroke="black" /> */}
               <YAxis yAxisId="left" label={{ angle: -90, position: 'insideLeft' }} stroke="#e40017" />
               <YAxis yAxisId="right" orientation="right" label={{ angle: -90, position: 'insideLeft' }} stroke="#342ead" />
               <Tooltip />
@@ -84,7 +84,7 @@ export const ListView = createComponent({
           </ResponsiveContainer>) :
             (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
         </div>
-        {isLight && (<div style={{ width: '95%', height: 301, minWidth: "450px"}}>
+        {isLight && (<div style={{ width: '100%', height: 301, minWidth: "450px"}}>
           {datas?.length ? (<ResponsiveContainer>
             <ComposedChart
               width={500}
@@ -99,14 +99,16 @@ export const ListView = createComponent({
             >
               <CartesianGrid stroke="#4547544f" />
               <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" stroke="black" />
-              <YAxis label={{ angle: -90, position: 'insideLeft' }} stroke="#f75f00" />
+              <YAxis yAxisId="left" label={{ angle: -90, position: 'insideLeft' }} stroke="#f75f00" />
+              <YAxis yAxisId="right" orientation="right" label={{ angle: -90, position: 'insideLeft' }} stroke="#ffffff26" />
               <Tooltip />
               <Legend />
-              <Line type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />
+              <Line yAxisId="left" type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />
             </ComposedChart>
           </ResponsiveContainer>) :
             (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
         </div>)}
+        </div>
       </DataListStateResolver>
     )
     //@@viewOff:render
