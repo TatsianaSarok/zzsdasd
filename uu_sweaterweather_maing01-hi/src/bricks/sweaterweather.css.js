@@ -5,20 +5,37 @@ display: flex;
 justify-content: center;
 `;
 
+const graph = () => Config.Css.css`
+@media only screen and (min-width: 480px) {
+width: 100%;
+background: rgba(228,223,220, 0.8);
+padding-top: 30px;
+border-radius: 10px;
+min-height: 845px;
+}
+@media only screen and (max-width: 480px) {
+width: 100%;
+background: rgba(228,223,220, 0.8);
+padding-top: 16.9px;
+border-radius: 10px;
+min-height: 840px;
+  }
+`;
+
 const header = () => Config.Css.css`
 display: flex;
 justify-content: center;
 font-size: 30px;
-`; 
+`;
 
 const iconSun = () => Config.Css.css`
 color: blue;
 font-size: 35px;
-`; 
+`;
 
 const dateTime = () => Config.Css.css`
 display-flex;
-`; 
+`;
 
 const tagSelect = () => Config.Css.css`
 .uu5-forms-item-list {
@@ -31,7 +48,7 @@ const tagSelect = () => Config.Css.css`
 .uu5-forms-select-option {
 background-color: rgba(228,223,220, 0.8);
 }
-`; 
+`;
 
 const carousel = () => Config.Css.css`
 .slider-container {
@@ -55,13 +72,14 @@ button.ehkxHv:enabled {
     border-radius: 20%;
     background-color: rgba(134,107,110);
 }
-`; 
+`;
 
 export default {
     switcher,
     header,
     iconSun,
     dateTime,
-    tagSelect ,
-    carousel
+    tagSelect,
+    carousel,
+    graph
 };

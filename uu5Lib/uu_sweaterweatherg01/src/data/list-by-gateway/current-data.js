@@ -50,7 +50,7 @@ const CurrentData = createVisualComponent({
         case "load":
         case "loadNext":
         default:
-          return <UU5.Bricks.Error content="No records for this period of time!" error={errorData.error} errorData={errorData.data} />;
+          return null;
       }
     }
     //@@viewOn:render

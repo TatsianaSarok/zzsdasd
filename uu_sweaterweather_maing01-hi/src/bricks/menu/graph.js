@@ -34,7 +34,7 @@ const Graph = createComponent({
                     style={{ paddingTop: "50px" }} >
                     <Carousel verticalMode={true}>
                         {props.gatewayId.map(item =>
-                        (<div style={{ width: "100%", background: "rgba(228,223,220, 0.8)", paddingTop: "20px", borderRadius: "10px", minHeight: "840px" }}>
+                        (<div className={Css.graph()}>
                             <div style={{ width: "100%" }}>
                                 <UuSweaterweather.Data.ListByGateway
                                     baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"

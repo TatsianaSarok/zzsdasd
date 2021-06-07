@@ -81,7 +81,7 @@ export const ListView = createComponent({
                 <Line yAxisId="left" type="monotone" dataKey="T" fill="#e40017" stroke="#e40017" />
               </ComposedChart>
             </ResponsiveContainer>) :
-              (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
+              (<div style={{ padding: "20px 75px", fontSize: "18px" }}><UU5.Common.Error content={inputLsi.noAvailableData} bgStyle="filled" colorSchema="brown" /></div>)}
           </div>
           {isLight && (<div style={{ width: '100%', height: 301, minWidth: "270px" }}>
             {datas?.length ? (<ResponsiveContainer>
@@ -105,7 +105,7 @@ export const ListView = createComponent({
                 <Line yAxisId="left" type="monotone" dataKey="L" fill="#f75f00" stroke="#f75f00" />
               </ComposedChart>
             </ResponsiveContainer>) :
-              (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
+              (<div style={{ padding: "20px 75px", fontSize: "18px" }}><UU5.Common.Error content={inputLsi.noAvailableData} bgStyle="filled" colorSchema="brown" /></div>)}
           </div>)}
         </div>) : (<div style={{ padding: "70px", fontSize: "18px", minWidth: "270px" }}> <UU5.Common.Error
           bgStyle="filled"

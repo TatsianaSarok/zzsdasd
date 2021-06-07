@@ -24,8 +24,8 @@ const Lsi = {
     cs: "Aktuální měření v"
   },
   noAvailableData: {
-    en: "No available data for the last",
-    cs: "Nejsou k dispozici žádná data za poslední"
+    en: "Ups, seems like there is no records for the chosen period of time!",
+    cs: "Ups, zdá se, že za zvolené časové období nejsou k dispozici žádná data!"
   },
   locationUnavailable: {
     en: "Chosen location is currently unavailable",

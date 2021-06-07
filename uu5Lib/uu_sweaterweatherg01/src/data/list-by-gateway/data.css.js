@@ -74,7 +74,7 @@ text-align: center;
 
 const float = () => Config.Css.css`
 @media only screen and (min-width: 700px) {
-padding-right: 60px;
+padding-right: 50px;
 float: right;
   }
 `;
