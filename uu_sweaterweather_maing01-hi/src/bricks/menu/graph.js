@@ -34,25 +34,17 @@ const Graph = createComponent({
                     style={{ paddingTop: "50px" }} >
                     <Carousel verticalMode={true}>
                         {props.gatewayId.map(item =>
-                            item.split("/-/")[2] !== 'suspended' ?
-                                (<div style={{  width: "100%", background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px", minHeight: "840px"}}>
-                                    <div style={{ width: "100%" }}>
-                                    <UuSweaterweather.Data.ListByGateway
-                                        baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
-                                        gatewayId={item.split("/-/")[0]} state={item.split("/-/")[2]} gatewayName={{cs:item.split("/-/")[3], en: item.split("/-/")[4]}} location={{href: item.split("/-/")[1]}} /></div></div>) :
-                                <div>
-                                    <UU5.Common.Error
-                                        bgStyle="filled" errorData={inputLsi.locationUnavailable}
-                                        colorSchema="brown" content={inputLsi.warning} />
-                                </div>)}
+                        (<div style={{ width: "100%", background: "rgba(228,223,220, 0.8)", paddingTop: "20px", borderRadius: "10px", minHeight: "840px" }}>
+                            <div style={{ width: "100%" }}>
+                                <UuSweaterweather.Data.ListByGateway
+                                    baseUri="https://uuapp.plus4u.net/uun-bot21sft03-maing01/f18929c5921d4abebf5ac7a9eb2e7162/"
+                                    gatewayId={item.split("/-/")[0]} state={item.split("/-/")[2]} gatewayName={{ cs: item.split("/-/")[3], en: item.split("/-/")[4] }} location={{ href: item.split("/-/")[1] }} /></div></div>) ) }
                     </Carousel>
-                </div>)
-            }
-
+                </div>)}
             else {
                 return (
                     <div style={{ paddingTop: "15px", textAlign: "center", fontSize: "2em ", color: "#866B6E" }}>
-                       {inputLsi.pickLocation} 
+                        {inputLsi.pickLocation}
                     </div>)
             }
         }

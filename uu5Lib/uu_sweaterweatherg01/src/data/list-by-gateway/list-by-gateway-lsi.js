@@ -30,10 +30,6 @@ const Lsi = {
   locationUnavailable: {
     en: "Chosen location is currently unavailable",
     cs: "Vybraná poloha není momentálně k dispozici"
-  },
-  warning: {
-    en: "Warning",
-    cs: "Varování"
   }
 };
 export default Lsi;
