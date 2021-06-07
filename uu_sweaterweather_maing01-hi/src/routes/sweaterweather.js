@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useContext } from "uu5g04-hooks";
+import { createVisualComponent } from "uu5g04-hooks";
 import Config from "./config/config";
 import GatewayProvider from "../bricks/manage-gateways/gateway-context/gateway-provider"
 import Menu from "../bricks/menu/menu"
@@ -13,11 +13,10 @@ const Sweaterweather = createVisualComponent({
   //@@viewOff:statics
 
   render(props) {
-    console.log("propsForDoc", props);
     //@@viewOn:render
     return (
       <>
-        <UU5.Bricks.Container style={{marginTop:"-30px"}}>
+        <UU5.Bricks.Container style={{ marginTop: "-30px" }}>
           <UU5.Bricks.Row>
             <GatewayProvider {...props}>
               <Menu />

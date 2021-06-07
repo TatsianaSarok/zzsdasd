@@ -36,14 +36,11 @@ const GatewayProvider = createComponent({
     }
 
     async function handleDeleteGateway(dtoIn) {
-      console.log("dtoInProvid", dtoIn);
       return await Calls.deleteGateway(dtoIn)
     }
 
     async function handleUpdateGateway(dtoIn) {
       const dtoOut = await Calls.updateGateway(dtoIn)
-      console.log("dtoIn", dtoIn);
-      console.log("dtoOut", dtoOut);
       return await Calls.updateGateway(dtoIn);
     }
     

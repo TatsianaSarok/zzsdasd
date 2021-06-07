@@ -15,14 +15,22 @@ const CurrentData = createVisualComponent({
   //@@viewOn:propTypes
   propTypes: {
     baseUri: UU5.PropTypes.string,
-    gatewayId: UU5.PropTypes.string
+    gatewayId: UU5.PropTypes.string,
+    state: UU5.PropTypes.string,
+    location: UU5.PropTypes.object,
+    gatewayName: UU5.PropTypes.object,
+    state: UU5.PropTypes.string
   },
   //@@viewOff:propTypes
 
   //@@viewOn:defaultProps
   defaultProps: {
     baseUri: undefined,
-    gatewayId: undefined
+    gatewayId: undefined,
+    state: undefined,
+    location: {},
+    gatewayName: {},
+    state: UU5.PropTypes.string
   },
   //@@viewOff:defaultProps
 

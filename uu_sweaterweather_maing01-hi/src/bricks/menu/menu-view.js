@@ -24,15 +24,13 @@ const MenuView = createComponent({
     render(props) {
         //@@viewOn:hooks
         const [gatewayId, setGatewayId] = useState();
-      console.log("Version", "9.0");
         //@@viewOff:hooks
         let activeState = props?.dataList?.filter(value => {
-            console.log("value",value);
             return value.data.state !== 'closed' && value.data.state !== 'initial'
         })
         //@@viewOn:handlers
         function handleSetId(value) {
-             setGatewayId(value)
+            setGatewayId(value)
         }
         //@@viewOff:handlers
 
@@ -45,17 +43,17 @@ const MenuView = createComponent({
                     allowCustomTags={false}
                     availableTags={activeState.map(value => {
                         if (value.data.state !== 'closed' && value.data.state !== 'initial') {
-                            return ({ "content": <UU5.Bricks.Lsi lsi={{cs:value.data.gatewayName?.cs, en:value.data?.gatewayName?.en }}/>, "value": value.data['id']+"/-/"+value.data.location?.href+"/-/"+value.data['state']+"/-/"+value.data?.gatewayName?.cs+"/-/"+value.data?.gatewayName?.en})
+                            return ({ "content": <UU5.Bricks.Lsi lsi={{ cs: value.data.gatewayName?.cs, en: value.data?.gatewayName?.en }} />, "value": value.data['id'] + "/-/" + value.data.location?.href + "/-/" + value.data['state'] + "/-/" + value.data?.gatewayName?.cs + "/-/" + value.data?.gatewayName?.en })
                         }
-                        
+
                     })}
                     colorSchema="black"
                     elevation={5}
                     value={gatewayId}
                     multiple
-                    onChange={( {value }) => { handleSetId(value) }}
+                    onChange={({ value }) => { handleSetId(value) }}
                 />
-                  <Graph gatewayId={gatewayId} />  
+                <Graph gatewayId={gatewayId} />
             </div>
         )
         //@@viewOff:render

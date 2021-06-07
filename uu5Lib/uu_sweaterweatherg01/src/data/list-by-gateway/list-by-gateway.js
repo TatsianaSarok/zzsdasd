@@ -10,7 +10,6 @@ import CurrentData from "./current-data";
 import Css from "./data.css";
 import Lsi from "./list-by-gateway-lsi";
 import React from "react";
-
 //@@viewOff:imports
 
 const STATICS = {
@@ -28,7 +27,8 @@ export const ListByGateway = createComponent({
     gatewayId: UU5.PropTypes.string,
     graphType: UU5.PropTypes.string,
     startTime: UU5.PropTypes.string,
-    gatewayName: UU5.PropTypes.string
+    gatewayName: UU5.PropTypes.object,
+    state: UU5.PropTypes.string
   },
   //@@viewOff:propTypes
 
@@ -38,13 +38,13 @@ export const ListByGateway = createComponent({
     gatewayId: undefined,
     graphType: undefined,
     startTime: undefined,
-    gatewayName: undefined
+    gatewayName: {},
+    state: undefined
   },
   //@@viewOff:defaultProps
 
   render(props) {
     const inputLsi = useLsiValues(Lsi)
-    console.log("props", props);
     let dayTime = new Date(Date.now() - 86400 * 1000).toISOString()
     let weekTime = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString()
     let d = new Date();
@@ -56,12 +56,12 @@ export const ListByGateway = createComponent({
 
     return (
       <>
-          <span style={{ paddingLeft: "55px" }}><SwitchGraph /></span>
-          <CurrentData baseUri={props.baseUri} state={props.state} gatewayId={props.gatewayId} gatewayName={props.gatewayName} location={props.location}/>
-          <div className={Css.day()}>
-            <Time gatewayName={props.gatewayName} location={props.location}/>
-          </div>
-          <SectionWithGraph />
+        <span style={{ paddingLeft: "55px" }}><SwitchGraph /></span>
+        <CurrentData baseUri={props.baseUri} state={props.state} gatewayId={props.gatewayId} gatewayName={props.gatewayName} location={props.location} />
+        <div className={Css.day()}>
+          <Time gatewayName={props.gatewayName} location={props.location} />
+        </div>
+        <SectionWithGraph />
       </>
     )
     function SwitchGraph() {
@@ -73,15 +73,15 @@ export const ListByGateway = createComponent({
       }
       return (
         <span className={Css.selector()}>
-        <UU5.Bricks.SwitchSelector
-          size="xl"
-          className={Css.menu()}
-          bgStyle="outline"
-          colorSchema="brown-rich"
-          items={graphName?.map(value => ({ value }))}
-          onChange={({ value }) => { handleChange(value) }}
-          value={graphType}
-        />
+          <UU5.Bricks.SwitchSelector
+            size="xl"
+            className={Css.menu()}
+            bgStyle="outline"
+            colorSchema="brown-rich"
+            items={graphName?.map(value => ({ value }))}
+            onChange={({ value }) => { handleChange(value) }}
+            value={graphType}
+          />
         </span>
       )
     }
@@ -89,7 +89,7 @@ export const ListByGateway = createComponent({
       return (
         <>
           <ListByGatewayLoader startTime={startTime} graphType={graphType} gatewayId={props.gatewayId} baseUri={props.baseUri}>
-            <ListView graphType={graphType} state={props.state}/>
+            <ListView graphType={graphType} state={props.state} />
           </ListByGatewayLoader>
         </>
       )

@@ -20,7 +20,6 @@ let Calls = {
 
   loadSweaterweatherMain(dtoIn) {
     let commandUri = Calls.getCommandUri("sweaterweatherMain/load");
-   // let baseUri = Calls.APP_BASE_URI 
     return Calls.call("get", commandUri, dtoIn );
   },
 
@@ -45,44 +44,34 @@ let Calls = {
   },
 
   async list(dtoIn) {
-    console.log("dtoIn", dtoIn);
     let commandUri = Calls.getCommandUri("data/list", dtoIn.baseUri);
-    console.log("dtoOut",await Calls.call("get", commandUri, dtoIn.data));
     return await Calls.call("get", commandUri, dtoIn.data);
   },
   getCurrent(dtoIn) {
-    console.log("List", dtoIn);
     let commandUri = Calls.getCommandUri("data/getCurrent");
-    console.log("Current", Calls.call("get", commandUri, dtoIn));
     return Calls.call("get", commandUri, dtoIn);
   },
   deleteData(dtoIn) {
-    console.log("DtoIn", dtoIn);
     let commandUri = Calls.getCommandUri("data/delete");
     return Calls.call("post", commandUri, dtoIn);
   },
   listGateway(dtoIn) {
-    console.log("List", dtoIn);
     let commandUri = Calls.getCommandUri("gateway/list");
     return Calls.call("get", commandUri, dtoIn);
   },
   getGateway(dtoIn) {
-    console.log("Get", dtoIn);
     let commandUri = Calls.getCommandUri("gateway/get");
     return Calls.call("get", commandUri, dtoIn);
   },
   createGateway( dtoIn) {
-    console.log("DtoIn",  dtoIn);
     let commandUri = Calls.getCommandUri("gateway/create");
     return Calls.call("post", commandUri, dtoIn);
   },
   deleteGateway(dtoIn) {
-    console.log("this is dtoIn ++++++++++++++++++++++",  dtoIn);
     let commandUri = Calls.getCommandUri("gateway/delete");
     return Calls.call("post", commandUri, dtoIn);
   },
   updateGateway( dtoIn) {
-    console.log("dtoIn", dtoIn);
     const commandUri = Calls.getCommandUri("gateway/update",  dtoIn);
     return Calls.call("post", commandUri, dtoIn);
   },

@@ -35,26 +35,26 @@ export const Spa = createVisualComponent({
     //@@viewOn:render
     return (
       //<SessionProvider session={UU5.Environment.getSession()}>
-        <SweaterweatherMainProvider>
-          <SweaterweatherMainContext.Consumer>
+      <SweaterweatherMainProvider>
+        <SweaterweatherMainContext.Consumer>
           {({ state, errorData }) => {
-              switch (state) {
-                case "pending":
-                case "pendingNoData":
-                  return <UU5.Bricks.Loading />;
-                case "error":
-                case "errorNoData":
-                  return <UU5.Bricks.Error error={errorData.error} />;
-                case "ready":
-                case "readyNoData":
-                default:
-                  return    <SpaAuthenticated {...props} />;
-              }
-            }}
-          </SweaterweatherMainContext.Consumer>
-</SweaterweatherMainProvider>
-//</SessionProvider>
-     
+            switch (state) {
+              case "pending":
+              case "pendingNoData":
+                return <UU5.Bricks.Loading />;
+              case "error":
+              case "errorNoData":
+                return <UU5.Bricks.Error error={errorData.error} />;
+              case "ready":
+              case "readyNoData":
+              default:
+                return <SpaAuthenticated {...props} />;
+            }
+          }}
+        </SweaterweatherMainContext.Consumer>
+      </SweaterweatherMainProvider>
+      //</SessionProvider>
+
 
     );
     //@@viewOff:render

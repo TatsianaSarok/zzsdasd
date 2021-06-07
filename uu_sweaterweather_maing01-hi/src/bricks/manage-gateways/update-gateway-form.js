@@ -31,7 +31,7 @@ const UpdateGatewayForm = createVisualComponent({
   //@@viewOff:defaultProps
 
   render({ shown, onSave, onCancel, gateway }) {
-   let inputLsi = useLsiValues(Lsi)
+    let inputLsi = useLsiValues(Lsi)
     //@@viewOn:render
     let items = [];
     Config.gatewayStateList.map(state => {
@@ -51,13 +51,13 @@ const UpdateGatewayForm = createVisualComponent({
     })
     return (
       <UU5.Forms.ContextModal
-      className={Css.form()}
+        className={Css.form()}
         shown={shown}
         size="l"
         header={
           <UU5.Forms.ContextHeader
-            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }} style={{color: "#454754"}}/>}
-            info={<UU5.Bricks.Lsi lsi={{ cs: "Více informací...", en: "More info..." }} style={{color: "#454754"}}/>}
+            content={<UU5.Bricks.Lsi lsi={{ en: "Update gateway", cs: "Přidat bránu" }} style={{ color: "#454754" }} />}
+            info={<UU5.Bricks.Lsi lsi={{ cs: "Více informací...", en: "More info..." }} style={{ color: "#454754" }} />}
           />
         }
         footer={
@@ -71,7 +71,7 @@ const UpdateGatewayForm = createVisualComponent({
           <UU5.Bricks.Row>
             <UU5.Bricks.Column colWidth="s-6" >
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.gatewayNameCs}
                 name="gatewayNameCs"
@@ -80,31 +80,31 @@ const UpdateGatewayForm = createVisualComponent({
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6" >
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.gatewayNameEn}
                 name="gatewayNameEn"
                 value={gateway.gatewayName?.en}
               />
             </UU5.Bricks.Column>
-             <UU5.Bricks.Column colWidth="s-6">
+            <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.link}
                 name="href"
                 value={gateway.location?.href}
               />
             </UU5.Bricks.Column>
-              <UU5.Bricks.Column colWidth="s-6">
+            <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.coordinates}
                 name="сoordinates"
                 value={gateway.location?.сoordinates}
               />
-            </UU5.Bricks.Column>   
+            </UU5.Bricks.Column>
             <UU5.Bricks.Column>
               <UU5.Forms.SwitchSelector
                 items={items}

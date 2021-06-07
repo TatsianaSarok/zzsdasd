@@ -45,7 +45,7 @@ export const SpaAuthenticated = createVisualComponent({
 
   render(props) {
     //@@viewOn:private
-//@@viewOn:handlers
+    //@@viewOn:handlers
     let [initialActiveItemId] = useState(() => {
       let url = UU5.Common.Url.parse(window.location.href);
       return url.useCase || DEFAULT_USE_CASE;
@@ -56,17 +56,17 @@ export const SpaAuthenticated = createVisualComponent({
     //@@viewOn:render
     return (
       <Plus4U5.App.MenuProvider activeItemId={initialActiveItemId}>
-        <Plus4U5.App.Page className={Css.page()} 
-          backgroundImageSrc = "assets/logoscop.jpg"
+        <Plus4U5.App.Page className={Css.page()}
+          backgroundImageSrc="assets/logoscop.jpg"
           top={
-          <Plus4U5.App.TopBt  className={Css.top()}>
-          <Plus4U5.App.MenuTree className={Css.menu()}
-          borderBottom
-          items={[
-            { id: "data", href: "sweaterweather", content: <UU5.Bricks.Lsi lsi={Lsi.left.sweaterweather} style={{ color:"#866B6E"}} /> }
-        ]}
-        />
-      </Plus4U5.App.TopBt> }      
+            <Plus4U5.App.TopBt className={Css.top()}>
+              <Plus4U5.App.MenuTree className={Css.menu()}
+                borderBottom
+                items={[
+                  { id: "data", href: "sweaterweather", content: <UU5.Bricks.Lsi lsi={Lsi.left.sweaterweather} style={{ color: "#866B6E" }} /> }
+                ]}
+              />
+            </Plus4U5.App.TopBt>}
           topFixed="smart"
           bottom={<Bottom />}
           type={3}

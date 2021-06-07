@@ -7,8 +7,6 @@ import "uu5chartg01";
 import Lsi from "../list-by-gateway-lsi"
 import {
   ComposedChart,
-  Area,
-  Bar,
   Line,
   XAxis,
   YAxis,
@@ -43,7 +41,6 @@ export const ListView = createComponent({
       let dateObj = new Date(value.data._id.year.toString() + "-" +
         value.data._id.month.toString() + "-" + value.data._id.day.toString());
       let weekday = dateObj.toLocaleString(inputLsi.graphDay, { weekday: "short" })
-      console.log("value", weekday, value.data.temperature);
       return (
         {
           name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " : `${value.data._id.day}` + '.' + `${value.data._id.month}`,
@@ -53,7 +50,6 @@ export const ListView = createComponent({
         }
       )
     })][0]
-    console.log("datas,", datas);
     let isLight = datas?.some(item => { return item.L !== 0 })
     //@@viewOn:render
     return (

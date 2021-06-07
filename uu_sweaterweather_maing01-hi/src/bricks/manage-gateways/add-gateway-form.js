@@ -1,6 +1,6 @@
 //@@viewOn:imports
 import UU5 from "uu5g04";
-import { createVisualComponent, useLsiValues  } from "uu5g04-hooks";
+import { createVisualComponent, useLsiValues } from "uu5g04-hooks";
 import Config from "./config/config";
 import "uu5g04-forms";
 import Css from "./gateway.css"
@@ -30,11 +30,11 @@ const AddGatewayForm = createVisualComponent({
 
   render({ shown, onSave, onCancel }) {
     //@@viewOn:render
-let inputLsi = useLsiValues(Lsi)
+    let inputLsi = useLsiValues(Lsi)
     return (
 
       <UU5.Forms.ContextModal
-      className={Css.form()}
+        className={Css.form()}
         shown={shown}
         size="l"
         header={
@@ -72,7 +72,7 @@ let inputLsi = useLsiValues(Lsi)
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.link}
                 name="href"
@@ -81,7 +81,7 @@ let inputLsi = useLsiValues(Lsi)
             </UU5.Bricks.Column>
             <UU5.Bricks.Column colWidth="s-6">
               <UU5.Forms.Text
-                style={{color: "#454754"}}
+                style={{ color: "#454754" }}
                 borderRadius="8px"
                 label={inputLsi.coordinates}
                 name="сoordinates"

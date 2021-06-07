@@ -48,7 +48,7 @@ export const Left = createVisualComponent({
         {...props}
         className={Css.left()}
         logoProps={{
-          backgroundImageSrc: "assets/kargol.jpg",   
+          backgroundImageSrc: "assets/kargol.jpg",
         }}
         aboutItems={[{ content: <UU5.Bricks.Lsi lsi={Lsi.left.about} style={{ fontFamily: 'Brush Script MT', fontSize: "20px", color: "#454754", fontSize: "25px" }} />, href: "about" }]}
         helpHref={null}
