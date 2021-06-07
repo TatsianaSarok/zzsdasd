@@ -46,13 +46,14 @@ export const ListView = createComponent({
       console.log("value", weekday, value.data.temperature);
       return (
         {
-          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " :`${value.data._id.day}` + '.' + `${value.data._id.month}`,
+          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " : `${value.data._id.day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
           H: Math.round(value.data.humidity * 10) / 10,
           L: Math.round(value.data.light * 10) / 10
         }
       )
     })][0]
+    console.log("datas,", datas);
     let isLight = datas?.some(item => { return item.L !== 0 })
     //@@viewOn:render
     return (
@@ -72,7 +73,7 @@ export const ListView = createComponent({
                 }}
               >
                 <CartesianGrid stroke="#4547544f" />
-                <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" stroke="black" />
+                <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} stroke="black" />
                 <YAxis yAxisId="left" label={{ angle: -90, position: 'insideLeft' }} stroke="#e40017" />
                 <YAxis yAxisId="right" orientation="right" label={{ angle: -90, position: 'insideLeft' }} stroke="#342ead" />
                 <Tooltip />
@@ -97,7 +98,7 @@ export const ListView = createComponent({
                 }}
               >
                 <CartesianGrid stroke="#4547544f" />
-                <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} scale="band" stroke="black" />
+                <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} stroke="black" />
                 <YAxis yAxisId="left" label={{ angle: -90, position: 'insideLeft' }} stroke="#f75f00" />
                 <YAxis yAxisId="right" orientation="right" label={{ angle: -90, position: 'insideLeft' }} stroke="#ffffff26" />
                 <Tooltip />
