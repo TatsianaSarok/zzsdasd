@@ -30,8 +30,9 @@ const CurrentData = createVisualComponent({
 
   //@@viewOff:defaultProps
   render(props) {
-    console.log("Propsss", props);
+    console.log("Propsss", props.state);
     //@@viewOn:hooks
+    let isSuspended = props.state === 'suspended';
     let inputLsi = useLsiValues(Lsi)
     const [currentData, setCurrentData] = useState();
     useEffect(() => {
@@ -70,7 +71,7 @@ const CurrentData = createVisualComponent({
 <UU5.Bricks.Lsi lsi={{cs:props.gatewayName?.cs, en:props.gatewayName?.en}}/>
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
-             <span className={Css.icons()} style={{fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
+              {!isSuspended &&(<span className={Css.icons()} style={{fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
           style={{  marginRight: "20px", color: "#e40017" }}>
           <UU5.Bricks.Text
             style={{
@@ -99,7 +100,7 @@ const CurrentData = createVisualComponent({
             }}>
             {currentData?.light || props?.currentData.light}<span style={{fontFamily: "sans-serif"}}>{" lx"}</span>
           </UU5.Bricks.Text>
-        </UU5.Bricks.Icon>)}</span>
+        </UU5.Bricks.Icon>)}</span>)}
       </div>
     );
     //@@viewOff:render
