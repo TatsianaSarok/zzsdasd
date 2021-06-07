@@ -71,7 +71,7 @@ const CurrentData = createVisualComponent({
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
               
-             <span className={Css.icons()} style={{fontFamily: 'Brush Script MT', fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
+             <span className={Css.icons()} style={{fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
           style={{  marginRight: "20px", color: "#e40017" }}>
           <UU5.Bricks.Text
             style={{
@@ -98,7 +98,7 @@ const CurrentData = createVisualComponent({
               fontFamily: 'Brush Script MT',
               fontSize: "20px", color: "rgb(69, 71, 84)"
             }}>
-            {currentData?.light || props?.currentData.light}{"hLx"} 
+            {currentData?.light || props?.currentData.light}<span style={{fontFamily: "sans-serif"}}>{" lx"}</span>
           </UU5.Bricks.Text>
         </UU5.Bricks.Icon>)}</span>
       </div>

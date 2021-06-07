@@ -58,17 +58,17 @@ export const ListView = createComponent({
     //@@viewOn:render
     return (
       <DataListStateResolver dataList={dataDataList} >
-        <div style={{ width: '100%', height: 301,  minWidth: "450px" }}>
+        <div style={{ width: '100%', height: 301,  minWidth: "270px" }}>
           {datas?.length ? (<ResponsiveContainer>
             <ComposedChart
-              width={500}
+              width={300}
               height={400}
               data={datas}
               margin={{
                 top: 20,
-                right: 20,
+                right: 7,
                 bottom: 20,
-                left: 20,
+                left: 7,
               }}
             >
               <CartesianGrid stroke="#4547544f" />
@@ -83,17 +83,17 @@ export const ListView = createComponent({
           </ResponsiveContainer>) :
             (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
         </div>
-        {isLight && (<div style={{ width: '100%', height: 301, minWidth: "450px"}}>
+        {isLight && (<div style={{ width: '100%', height: 301, minWidth: "270px"}}>
           {datas?.length ? (<ResponsiveContainer>
             <ComposedChart
-              width={500}
+              width={300}
               height={400}
               data={datas}
               margin={{
                 top: 20,
-                right: 20,
+                right: 7,
                 bottom: 20,
-                left: 20,
+                left: 7,
               }}
             >
               <CartesianGrid stroke="#4547544f" />
