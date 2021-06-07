@@ -58,7 +58,6 @@ export const ListView = createComponent({
     //@@viewOn:render
     return (
       <DataListStateResolver dataList={dataDataList} >
-       <div style={{ width: '100%',   minWidth: "450px" ,  background: "rgba(228,223,220, 0.8)", paddingTop:"20px", borderRadius:"10px" }}>
         <div style={{ width: '100%', height: 301,  minWidth: "450px" }}>
           {datas?.length ? (<ResponsiveContainer>
             <ComposedChart
@@ -108,7 +107,6 @@ export const ListView = createComponent({
           </ResponsiveContainer>) :
             (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
         </div>)}
-        </div>
       </DataListStateResolver>
     )
     //@@viewOff:render

@@ -36,7 +36,7 @@ const DateTime = createVisualComponent({
 
         //@@viewOn:render
         return (
-            <div style={{ display: "inline-block", paddingBottom: "10px" }}>
+            <div style={{ display: "inline-block"}}>
                 <div className={Css.clock()}>
                     <span onMouseOver={"ulala"}><UU5.Bricks.Link
                     style={{color:"rgb(69, 71, 84)" }}
