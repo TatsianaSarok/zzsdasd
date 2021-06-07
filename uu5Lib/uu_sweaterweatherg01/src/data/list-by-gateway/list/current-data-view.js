@@ -70,7 +70,6 @@ const CurrentData = createVisualComponent({
 <UU5.Bricks.Lsi lsi={{cs:props.gatewayName?.cs, en:props.gatewayName?.en}}/>
 </UU5.Bricks.Link>
               </UU5.Bricks.Text>
-              
              <span className={Css.icons()} style={{fontSize: "30px",paddingTop: "10px",}}><UU5.Bricks.Icon icon="mdi-fire"
           style={{  marginRight: "20px", color: "#e40017" }}>
           <UU5.Bricks.Text

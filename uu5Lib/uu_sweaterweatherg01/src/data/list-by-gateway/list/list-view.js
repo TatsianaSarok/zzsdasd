@@ -46,7 +46,7 @@ export const ListView = createComponent({
       console.log("value", weekday, value.data.temperature);
       return (
         {
-          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " : `${value.data._id.day}` + '.' + `${value.data._id.month}`,
+          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " :`${value.data._id.day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
           H: Math.round(value.data.humidity * 10) / 10,
           L: Math.round(value.data.light * 10) / 10
@@ -107,7 +107,7 @@ export const ListView = createComponent({
             </ResponsiveContainer>) :
               (<div style={{ padding: "20px 75px" }}><UU5.Common.Error content={inputLsi.noAvailableData + props.graphType} bgStyle="filled" colorSchema="brown" /></div>)}
           </div>)}
-        </div>) : (<div style={{ padding: "70px", fontSize: "18px", padding: "7px", minWidth: "270px" }}> <UU5.Common.Error
+        </div>) : (<div style={{ padding: "70px", fontSize: "18px", minWidth: "270px" }}> <UU5.Common.Error
           bgStyle="filled"
           colorSchema="brown" content={inputLsi.locationUnavailable} />
         </div>)}
