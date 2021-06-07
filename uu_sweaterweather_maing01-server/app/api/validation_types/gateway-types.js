@@ -1,24 +1,24 @@
 /* eslint-disable */
 const gatewayCreateDtoInType = shape({
     gatewayName:shape({
-        cs: uu5String(500).isRequired(),
-        en: uu5String(500).isRequired()
+        cs: string(500).isRequired(),
+        en: string(500).isRequired()
     }).isRequired(), 
     location:shape({
-        href: uu5String(200),
-        сoordinates: uu5String(200)
+        href: string(200),
+        сoordinates: string(200)
     }).isRequired()
 })
 
 const gatewayUpdateDtoInType = shape({
     id: id().isRequired(),
     gatewayName:shape({
-        cs: uu5String(500).isRequired(),
-        en: uu5String(500).isRequired()
+        cs: string(500).isRequired(),
+        en: string(500).isRequired()
     }).isRequired(), 
     location: shape({
-        href: uu5String(200),
-        сoordinates: uu5String(200)
+        href: string(200),
+        сoordinates: string(200)
     }).isRequired(),
     state: oneOf(["initial", "active", "suspended", "closed"]),
     uuIdentity: uu5String(25)
