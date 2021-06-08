@@ -82,8 +82,8 @@ export const ListView = createComponent({
               >
                 <CartesianGrid stroke="#4547544f" />
                 <XAxis dataKey="name" label={{ angle: 90, position: 'insideTopRight',}} stroke="black" />
-                <YAxis yAxisId="left" label={{ value: "Temperature, ℃", angle: -90, position: 'insideLeft', stroke:"#e40017" }} stroke="#e40017" />
-                <YAxis  yAxisId="right" orientation="right" label={{value:"Humidity, %", angle: 90, position: 'insideRight', stroke:"#342ead"}} stroke="#342ead" />
+                <YAxis yAxisId="left" label={{ value: "℃ ",position: 'top', stroke:"#e40017" }} stroke="#e40017" />
+                <YAxis  yAxisId="right" orientation="right" label={{value:"% ", position: 'top', stroke:"#342ead"}} stroke="#342ead" />
                 <Tooltip />
                 <Legend />
                 <Line yAxisId="right" type="monotone" dataKey="H" barSize={20} fill="#342ead" stroke="#342ead" />
@@ -107,7 +107,7 @@ export const ListView = createComponent({
               >
                 <CartesianGrid stroke="#4547544f" />
                 <XAxis dataKey="name" label={{ position: 'insideBottomRight', offset: 0 }} stroke="black" />
-                <YAxis yAxisId="left" label={{ value: "Light intensity, lx", angle: -90, position: 'insideLeft',stroke:"#f75f00" }} stroke="#f75f00" />
+                <YAxis yAxisId="left" label={{ value: "lx   ", position: 'top',stroke:"#f75f00" }} stroke="#f75f00" />
                 <YAxis yAxisId="right" orientation="right" label={{ angle: -90, position: 'insideLeft' }} stroke="#ffffff26" />
                 <Tooltip />
                 <Legend />
