@@ -10,6 +10,8 @@ const graph = () => Config.Css.css`
 width: 100%;
 background: rgba(228,223,220, 0.8);
 padding-top: 30px;
+padding-right: 20px;
+padding-left: 20px;
 border-radius: 10px;
 min-height: 845px;
 }
