@@ -41,9 +41,10 @@ export const ListView = createComponent({
       let dateObj = new Date(value.data._id.year.toString() + "-" +
         value.data._id.month.toString() + "-" + value.data._id.day.toString());
       let weekday = dateObj.toLocaleString(inputLsi.graphDay, { weekday: "short" })
+      let day = value.data._id.day.toString().length === 1? "0"+ value.data._id.day: value.data._id.day
       return (
         {
-          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " : `${value.data._id.day}` + '.' + `${value.data._id.month}`,
+          name: value.data._id.hour ? `${value.data._id.hour}` + ":00 " : `${day}` + '.' + `${value.data._id.month}`,
           T: Math.round(value.data.temperature * 10) / 10,
           H: Math.round(value.data.humidity * 10) / 10,
           L: Math.round(value.data.light * 10) / 10
